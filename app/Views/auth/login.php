@@ -17,25 +17,46 @@
                                 <div class="col px-5">
                                     <div class="px-5">
                                         <div class="text-center">
-                                            <img src="img/logo.png" alt="RH Wedding Logo" class="mb-4" width="80px">
+                                            <img src="/img/logo.png" alt="RH Wedding Logo" class="mb-4" width="80px">
                                         </div>
-                                        <form class="user">
+                                        <?= view('Myth\Auth\Views\_message_block') ?>
+                                        <form action="<?= route_to('login') ?>" method="post" class="user">
+                                            <?= csrf_field() ?>
+                                            <?php if ($config->validFields === ['email']) : ?>
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control form-control-user <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.email') ?>">
+                                                    <div class="invalid-feedback">
+                                                        <?= session('errors.login') ?>
+                                                    </div>
+                                                </div>
+                                            <?php else : ?>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-user <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.emailOrUsername') ?>">
+                                                    <div class="invalid-feedback">
+                                                        <?= session('errors.login') ?>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
+
                                             <div class="form-group">
-                                                <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email Address">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox small">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                    <label class="custom-control-label" for="customCheck">Show
-                                                        Password</label>
+                                                <input type="password" class="form-control form-control-user <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" name="password" id="exampleInputPassword" placeholder="Password">
+                                                <div class="invalid-feedback">
+                                                    <?= session('errors.password') ?>
                                                 </div>
                                             </div>
-                                            <a href="index.html" class="btn btn-wild-watermelon btn-user btn-block">
+
+                                            <?php if ($config->allowRemembering) : ?>
+                                                <div class="form-group">
+                                                    <div class="custom-control custom-checkbox small">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck" name="remember" <?php if (old('remember')) : ?> checked <?php endif ?>>
+                                                        <label class="custom-control-label" for="customCheck">Remember Me</label>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
+
+                                            <button type="submit" class="btn btn-wild-watermelon btn-user btn-block">
                                                 Sign In
-                                            </a>
+                                            </button>
                                             <hr>
                                             <p class="mb-4 small text-center">You can use the account and password
                                                 below to sign in</p>
@@ -52,14 +73,18 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        <div class="text-center mb-2 mt-4">
-                                            <a class="small text-body" href="forgot-password.html">Forgot
-                                                Password?</a>
-                                        </div>
-                                        <div class="text-center small">
-                                            No account? <a class="text-wild-watermelon" href="<?= base_url('register'); ?>">
-                                                Create one! </a>
-                                        </div>
+                                        <?php if ($config->activeResetter) : ?>
+                                            <div class="text-center mb-2 mt-4">
+                                                <a class="small text-body" href="<?= route_to('forgot') ?>">Forgot
+                                                    Password?</a>
+                                            </div>
+                                        <?php endif; ?>
+                                        <?php if ($config->allowRegistration) : ?>
+                                            <div class="text-center small">
+                                                No account? <a class="text-wild-watermelon" href="<?= route_to('register') ?>">
+                                                    Create one! </a>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
