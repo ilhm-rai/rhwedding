@@ -1,4 +1,4 @@
-<?= $this->extend('template/auth'); ?>
+<?= $this->extend('templates/auth'); ?>
 
 <?= $this->section('content'); ?>
 <div class="container-fluid overflow-hidden px-0">
@@ -17,7 +17,7 @@
                                 <div class="col px-5">
                                     <div class="px-5">
                                         <div class="text-center">
-                                            <img src="img/logo.png" alt="RH Wedding Logo" class="mb-4" width="80px">
+                                            <img src="/img/logo.png" alt="RH Wedding Logo" class="mb-4" width="80px">
                                         </div>
                                         <?= view('Myth\Auth\Views\_message_block') ?>
                                         <form action="<?= route_to('register') ?>" method="post" class="user">
