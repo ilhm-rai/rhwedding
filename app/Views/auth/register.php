@@ -19,31 +19,34 @@
                                         <div class="text-center">
                                             <img src="img/logo.png" alt="RH Wedding Logo" class="mb-4" width="80px">
                                         </div>
-                                        <form class="user">
+                                        <?= view('Myth\Auth\Views\_message_block') ?>
+                                        <form action="<?= route_to('register') ?>" method="post" class="user">
                                             <div class="form-group">
-                                                <input type="email" class="form-control form-control-user" id="email" aria-describedby="emailHelp" placeholder="Email Address">
+                                                <input type="email" class="form-control form-control-user <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" id="email" name="email" aria-describedby="emailHelp" placeholder="Email Address" value="<?= old('email') ?>">
+                                                <div class="invalid-feedback">
+                                                    <?= session('errors.email') ?>
+                                                </div>
+                                                <small id="emailHelp" class="form-text text-muted"><?= lang('Auth.weNeverShare') ?></small>
                                             </div>
+
                                             <div class="form-group">
-                                                <input type="username" class="form-control form-control-user" id="username" placeholder="Username">
+                                                <input type="username" class="form-control form-control-user <?php if (session('errors.username')) : ?>is-invalid<?php endif ?>" id="username" name="username" placeholder="Username" value="<?= old('username') ?>">
+                                                <div class="invalid-feedback">
+                                                    <?= session('errors.username') ?>
+                                                </div>
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-sm-6 mb-2">
-                                                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password">
+                                                    <input type="password" class="form-control form-control-user <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" name="password" id="password" placeholder="Password" autocomplete="off">
                                                 </div>
                                                 <div class="col-sm-6 mb-2">
-                                                    <input type="password" class="form-control form-control-user" id="repeatPassword" placeholder="Repeat Password">
+                                                    <input type="password" class="form-control form-control-user <?php if (session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>" name="pass_confirm" id="pass_confirm" placeholder="Repeat Password" autocomplete="off">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox small">
-                                                    <input type="checkbox" class="custom-control-input" id="passwordCheck">
-                                                    <label class="custom-control-label" for="passwordCheck">Show
-                                                        Password</label>
-                                                </div>
-                                            </div>
-                                            <a href="index.html" class="btn btn-wild-watermelon btn-user btn-block">
+
+                                            <button type="submit" class="btn btn-wild-watermelon btn-user btn-block">
                                                 Register
-                                            </a>
+                                            </button>
                                             <hr>
                                             <p class="mb-4 small text-center">You can use the account and password
                                                 below for registration</p>
@@ -64,7 +67,7 @@
                                             <a class="small text-body" href="forgot-password.html">Forgot
                                                 password?</a>
                                         </div>
-                                        <p class="small text-center"> Already have an account?<a class="text-wild-watermelon" href="<?= base_url('login'); ?>">
+                                        <p class="small text-center"> Already have an account?<a class="text-wild-watermelon" href="<?= route_to('login') ?>">
                                                 Sign In! </a></p>
                                     </div>
                                 </div>
