@@ -8,7 +8,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        MENU
+        Admin
     </div>
 
     <li class="nav-item">
@@ -20,12 +20,18 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="user.html">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
             <div class="nav-icon">
                 <i class="fas fa-fw fa-user"></i>
             </div>
-            <span>Users</span>
+            <span>User</span>
         </a>
+        <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
+            <div class="bg-light py-2 collapse-inner rounded">
+                <a href="/admin/users" class="collapse-item" href="buttons.html">User List</a>
+                <a class="collapse-item" href="buttons.html">User Category</a>
+            </div>
+        </div>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/">
