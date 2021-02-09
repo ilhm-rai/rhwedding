@@ -4,10 +4,10 @@ namespace App\Controllers;
 
 class Auth extends BaseController
 {
-    public function signIn()
+    public function login()
     {
-        $data['title'] = 'Sign In';
-        return view('auth/sign_in', $data);
+        $data['title'] = 'login';
+        return view('auth/login', $data);
     }
 
     public function register()

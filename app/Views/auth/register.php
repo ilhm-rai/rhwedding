@@ -64,7 +64,7 @@
                                             <a class="small text-body" href="forgot-password.html">Forgot
                                                 password?</a>
                                         </div>
-                                        <p class="small text-center"> Already have an account?<a class="text-wild-watermelon" href="<?= base_url('sign-in'); ?>">
+                                        <p class="small text-center"> Already have an account?<a class="text-wild-watermelon" href="<?= base_url('login'); ?>">
                                                 Sign In! </a></p>
                                     </div>
                                 </div>

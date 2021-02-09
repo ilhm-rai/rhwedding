@@ -57,8 +57,8 @@
                                                 Password?</a>
                                         </div>
                                         <div class="text-center small">
-                                            Doesn't have an account? <a class="text-wild-watermelon" href="<?= base_url('register'); ?>">
-                                                Create an Account! </a>
+                                            No account? <a class="text-wild-watermelon" href="<?= base_url('register'); ?>">
+                                                Create one! </a>
                                         </div>
                                     </div>
                                 </div>
