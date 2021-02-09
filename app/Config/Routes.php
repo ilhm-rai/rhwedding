@@ -8,7 +8,7 @@ $routes = Services::routes();
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
 if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
-	require SYSTEMPATH . 'Config/Routes.php';
+    require SYSTEMPATH . 'Config/Routes.php';
 }
 
 /**
@@ -36,9 +36,10 @@ $routes->get('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
 
 $routes->group('admin', function ($routes) {
-	$routes->add('dashboard', 'Admin\Dashboard::index');
-	$routes->add('users', 'Admin\User::index');
-	$routes->add('vendors', 'Admin\Vendor::index');
+    $routes->add('/', 'Admin\Dashboard::index');
+    $routes->add('dashboard', 'Admin\Dashboard::index');
+    $routes->add('users', 'Admin\User::index');
+    $routes->add('vendors', 'Admin\Vendor::index');
 });
 
 /**
@@ -55,5 +56,5 @@ $routes->group('admin', function ($routes) {
  * needing to reload it.
  */
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
-	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
+    require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
