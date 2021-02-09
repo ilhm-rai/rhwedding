@@ -38,6 +38,7 @@ $routes->get('/register', 'Auth::register');
 $routes->group('admin', function ($routes) {
 	$routes->add('dashboard', 'Admin\Dashboard::index');
 	$routes->add('users', 'Admin\User::index');
+	$routes->add('vendors', 'Admin\Vendor::index');
 });
 
 /**
