@@ -1,4 +1,4 @@
-<?= $this->extend('template/auth'); ?>
+<?= $this->extend('templates/auth'); ?>
 
 <?= $this->section('content'); ?>
 <div class="container-fluid overflow-hidden px-0">

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title; ?></title>
-    <?= $this->include('template/_style.php'); ?>
+    <?= $this->include('templates/_style.php'); ?>
     <link href="<?= base_url('css/dataTables.bootstrap4.min.css'); ?>" rel="stylesheet">
 </head>
 
@@ -16,7 +16,7 @@
     <div id="wrapper">
         <!-- Sidebar -->
 
-        <?= $this->include('template/sidebar'); ?>
+        <?= $this->include('templates/sidebar'); ?>
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column ltb-border-radius-65px ">
@@ -25,7 +25,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <?= $this->include('template/topbar'); ?>
+                <?= $this->include('templates/topbar'); ?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -75,7 +75,7 @@
             </div>
         </div>
     </div>
-    <?= $this->include('template/_script.php'); ?>
+    <?= $this->include('templates/_script.php'); ?>
     <script src="<?= base_url('js/jquery.dataTables.min.js'); ?>"></script>
     <script src="<?= base_url('js/dataTables.bootstrap4.min.js'); ?>"></script>
     <?= $this->renderSection('script'); ?>

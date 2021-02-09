@@ -1,4 +1,4 @@
-<?= $this->extend('template/admin'); ?>
+<?= $this->extend('templates/admin'); ?>
 
 <?= $this->section('content'); ?>
 <div class="container-fluid content-frame mb-5">
