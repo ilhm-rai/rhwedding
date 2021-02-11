@@ -14,6 +14,7 @@
                     <th>Username</th>
                     <th>Email</th>
                     <th>Address</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -23,6 +24,7 @@
                     <th>Username</th>
                     <th>Email</th>
                     <th>Address</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </tfoot>
@@ -32,6 +34,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -43,6 +48,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -54,6 +62,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -65,6 +76,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -76,6 +90,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -87,6 +104,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -98,6 +118,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -109,6 +132,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -120,6 +146,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -131,6 +160,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -142,6 +174,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -153,6 +188,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -164,6 +202,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -175,6 +216,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -186,6 +230,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -197,6 +244,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -208,6 +258,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -219,6 +272,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -230,6 +286,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
@@ -241,6 +300,9 @@
                     <td>thomas</td>
                     <td>thomas.smith@gmail.com</td>
                     <td>Tasikmalaya, Jawa Barat</td>
+                    <td>
+                        <div class="btn btn-success btn-sm">Active</div>
+                    </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
