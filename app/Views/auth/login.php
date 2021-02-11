@@ -17,7 +17,7 @@
                                 <div class="col px-5">
                                     <div class="px-5">
                                         <div class="text-center">
-                                            <img src="img/logo.png" alt="RH Wedding Logo" class="mb-4" width="80px">
+                                            <img src="<?= ('img/logo.png'); ?>" alt="RH Wedding Logo" class="mb-4" width="80px">
                                         </div>
                                         <form class="user">
                                             <div class="form-group">
