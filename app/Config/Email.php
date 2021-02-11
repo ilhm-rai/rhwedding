@@ -10,12 +10,12 @@ class Email extends BaseConfig
 	/**
 	 * @var string
 	 */
-	public $fromEmail = 'codetariannoreply@gmail.com';
+	public $fromEmail;
 
 	/**
 	 * @var string
 	 */
-	public $fromName = 'Codetarian x RH Wedding Planner';
+	public $fromName;
 
 	/**
 	 * @var string
@@ -55,14 +55,14 @@ class Email extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $SMTPUser = 'codetariannoreply@gmail.com';
+	public $SMTPUser;
 
 	/**
 	 * SMTP Password
 	 *
 	 * @var string
 	 */
-	public $SMTPPass = 'tariancodetarian';
+	public $SMTPPass;
 
 	/**
 	 * SMTP Port
