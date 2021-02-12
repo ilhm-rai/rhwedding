@@ -51,6 +51,10 @@ $routes->group('admin/users', function ($routes) {
 	$routes->add('permissions', 'Admin\User::userPermission');
 });
 
+$routes->group('admin/vendors/services', function ($routes) {
+	$routes->add('', 'Admin\VendorService::show');
+});
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing
