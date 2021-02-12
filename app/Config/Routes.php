@@ -41,9 +41,14 @@ $routes->group('admin', function ($routes) {
 	$routes->add('vendors', 'Admin\Vendor::index');
 });
 
+<<<<<<< HEAD
 $routes->group('admin/users/roles', function ($routes) {
 	$routes->add('', 'Admin\UserRole::show');
 	$routes->add('add', 'Admin\UserRole::add');
+=======
+$routes->group('admin/users', function ($routes) {
+	$routes->add('permissions', 'Admin\User::userPermission');
+>>>>>>> front-end
 });
 
 /**
