@@ -42,6 +42,11 @@ $routes->group('admin', function ($routes) {
     $routes->add('vendors', 'Admin\Vendor::index');
 });
 
+$routes->group('admin/users/roles', function ($routes) {
+	$routes->add('', 'Admin\UserRole::show');
+	$routes->add('add', 'Admin\UserRole::add');
+});
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing
