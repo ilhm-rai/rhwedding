@@ -45,6 +45,10 @@ $routes->group('admin/users/roles', function ($routes) {
 	$routes->add('', 'Admin\UserRole::show');
 });
 
+$routes->group('admin/vendors/services', function ($routes) {
+	$routes->add('', 'Admin\VendorService::show');
+});
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing
