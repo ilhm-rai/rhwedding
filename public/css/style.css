@@ -97,9 +97,18 @@ body, .text-body {
     background: #FF5876;
 }
 
+.btn-outline-wild-watermelon {
+    background-color: white;
+    color: #FF5876;
+    border: 1px solid #FF5876;
+    font-weight: 500;
+}
+
+.btn-outline-wild-watermelon:hover,
 .btn-wild-watermelon {
     background-color: #FF5876;
     color: white;
+    font-weight: 500;
 }
 
 .btn-wild-watermelon:hover {
