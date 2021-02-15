@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Feb 2021 pada 10.15
+-- Waktu pembuatan: 15 Feb 2021 pada 05.21
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `rhwedding`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `address`
+--
+
+CREATE TABLE `address` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `province` varchar(50) DEFAULT NULL,
+  `postal_code` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -133,7 +147,8 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (12, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-09 10:02:25', 1),
 (13, '::1', 'muhamadarsal71@gmail.com', 6, '2021-02-09 11:44:24', 1),
 (14, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-09 11:45:03', 1),
-(15, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-11 01:19:02', 1);
+(15, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-11 01:19:02', 1),
+(16, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-13 01:26:06', 1);
 
 -- --------------------------------------------------------
 
@@ -190,6 +205,18 @@ CREATE TABLE `auth_users_permissions` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `migrations`
 --
 
@@ -208,7 +235,92 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
-(1, '2017-11-20-223112', 'Myth\\Auth\\Database\\Migrations\\CreateAuthTables', 'default', 'Myth\\Auth', 1612863292, 1);
+(1, '2017-11-20-223112', 'Myth\\Auth\\Database\\Migrations\\CreateAuthTables', 'default', 'Myth\\Auth', 1612863292, 1),
+(2, '2021-02-14-180156', 'App\\Database\\Migrations\\Vendors', 'default', 'App', 1613361171, 2),
+(3, '2021-02-14-181713', 'App\\Database\\Migrations\\VendorsServices', 'default', 'App', 1613361171, 2),
+(4, '2021-02-14-182221', 'App\\Database\\Migrations\\VendorsLevel', 'default', 'App', 1613361171, 2),
+(5, '2021-02-14-182655', 'App\\Database\\Migrations\\Services', 'default', 'App', 1613361171, 2),
+(6, '2021-02-15-030514', 'App\\Database\\Migrations\\Products', 'default', 'App', 1613361171, 2),
+(7, '2021-02-15-031357', 'App\\Database\\Migrations\\ProductsCategory', 'default', 'App', 1613361171, 2),
+(8, '2021-02-15-031539', 'App\\Database\\Migrations\\Category', 'default', 'App', 1613361171, 2),
+(9, '2021-02-15-031922', 'App\\Database\\Migrations\\ProductsImages', 'default', 'App', 1613361171, 2),
+(10, '2021-02-15-032238', 'App\\Database\\Migrations\\ProductsReview', 'default', 'App', 1613361171, 2),
+(11, '2021-02-15-033131', 'App\\Database\\Migrations\\Address', 'default', 'App', 1613361172, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `vendor_id` int(11) UNSIGNED NOT NULL,
+  `product_service_id` int(11) UNSIGNED NOT NULL,
+  `product_code` varchar(20) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `product_main_image` varchar(255) NOT NULL,
+  `product_video` varchar(255) DEFAULT NULL,
+  `product_description` text DEFAULT NULL,
+  `product_sold` int(11) NOT NULL,
+  `price` int(11) DEFAULT NULL,
+  `total_review` int(11) NOT NULL,
+  `active` int(1) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `products_category`
+--
+
+CREATE TABLE `products_category` (
+  `product_id` int(11) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `products_images`
+--
+
+CREATE TABLE `products_images` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `product_id` int(11) UNSIGNED NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `products_review`
+--
+
+CREATE TABLE `products_review` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
+  `product_id` int(11) UNSIGNED NOT NULL,
+  `transaction_id` int(11) UNSIGNED NOT NULL,
+  `rating` int(1) DEFAULT NULL,
+  `review` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `services`
+--
+
+CREATE TABLE `services` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -223,6 +335,7 @@ CREATE TABLE `users` (
   `full_name` varchar(128) DEFAULT NULL,
   `user_image` varchar(255) NOT NULL DEFAULT 'default.svg',
   `password_hash` varchar(255) NOT NULL,
+  `address_id` int(11) DEFAULT NULL,
   `reset_hash` varchar(255) DEFAULT NULL,
   `reset_at` datetime DEFAULT NULL,
   `reset_expires` datetime DEFAULT NULL,
@@ -240,15 +353,63 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `username`, `full_name`, `user_image`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'rizkyardi.ilhami06@gmail.com', 'rizkyardi', NULL, 'default.svg', '$2y$10$G5j5k7jijPQRT344Lrt6Qukr8M.KhzktVz9R6Sg.2lPMRHDQjxDLy', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:16:46', '2021-02-09 04:17:59', NULL),
-(4, 'rizky.mahasiswa@stmik-tasikmalaya.ac.id', 'rizkymhs', NULL, 'default.svg', '$2y$10$o1VNfJulkKi79N8alnbUau.4hN8BU0CK4jj7L7h/hjfc83nkBuC52', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:38:59', '2021-02-09 04:40:05', NULL),
-(5, 'muhamadarsaludin71@gmail.com', 'arsal', NULL, 'default.svg', '$2y$10$jrA4SNtwP2SWzc6mGhup6.9mXkG1HH1n5q3CZL0EclnEoGKoJDxBi', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 08:00:49', '2021-02-09 08:01:53', NULL),
-(6, 'muhamadarsal71@gmail.com', 'arsal71', NULL, 'default.svg', '$2y$10$wINjXA9yc9hY4lJs5hphLOZ8CxlfHPSU8hWvA3Sj1/mtXZtz2DdbK', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 08:54:00', '2021-02-09 08:55:59', NULL);
+INSERT INTO `users` (`id`, `email`, `username`, `full_name`, `user_image`, `password_hash`, `address_id`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'rizkyardi.ilhami06@gmail.com', 'rizkyardi', NULL, 'default.svg', '$2y$10$G5j5k7jijPQRT344Lrt6Qukr8M.KhzktVz9R6Sg.2lPMRHDQjxDLy', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:16:46', '2021-02-09 04:17:59', NULL),
+(4, 'rizky.mahasiswa@stmik-tasikmalaya.ac.id', 'rizkymhs', NULL, 'default.svg', '$2y$10$o1VNfJulkKi79N8alnbUau.4hN8BU0CK4jj7L7h/hjfc83nkBuC52', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:38:59', '2021-02-09 04:40:05', NULL),
+(5, 'muhamadarsaludin71@gmail.com', 'arsal', NULL, 'default.svg', '$2y$10$jrA4SNtwP2SWzc6mGhup6.9mXkG1HH1n5q3CZL0EclnEoGKoJDxBi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 08:00:49', '2021-02-09 08:01:53', NULL),
+(6, 'muhamadarsal71@gmail.com', 'arsal71', NULL, 'default.svg', '$2y$10$wINjXA9yc9hY4lJs5hphLOZ8CxlfHPSU8hWvA3Sj1/mtXZtz2DdbK', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 08:54:00', '2021-02-09 08:55:59', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `vendors`
+--
+
+CREATE TABLE `vendors` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
+  `vendor_code` varchar(20) NOT NULL,
+  `vendor_name` varchar(255) NOT NULL,
+  `vendor_logo` varchar(255) NOT NULL DEFAULT 'default.svg',
+  `vendor_level_id` int(11) UNSIGNED NOT NULL,
+  `vendor_description` text DEFAULT NULL,
+  `active` int(1) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `vendors_level`
+--
+
+CREATE TABLE `vendors_level` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `vendors_services`
+--
+
+CREATE TABLE `vendors_services` (
+  `vendor_id` int(11) UNSIGNED NOT NULL,
+  `service_id` int(11) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `address`
+--
+ALTER TABLE `address`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `auth_activation_attempts`
@@ -312,9 +473,39 @@ ALTER TABLE `auth_users_permissions`
   ADD KEY `user_id_permission_id` (`user_id`,`permission_id`);
 
 --
+-- Indeks untuk tabel `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `products_images`
+--
+ALTER TABLE `products_images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `products_review`
+--
+ALTER TABLE `products_review`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `services`
+--
+ALTER TABLE `services`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -326,8 +517,26 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `username` (`username`);
 
 --
+-- Indeks untuk tabel `vendors`
+--
+ALTER TABLE `vendors`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `vendors_level`
+--
+ALTER TABLE `vendors_level`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
+
+--
+-- AUTO_INCREMENT untuk tabel `address`
+--
+ALTER TABLE `address`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_activation_attempts`
@@ -345,7 +554,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
@@ -366,16 +575,58 @@ ALTER TABLE `auth_tokens`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT untuk tabel `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `products_images`
+--
+ALTER TABLE `products_images`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `products_review`
+--
+ALTER TABLE `products_review`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `services`
+--
+ALTER TABLE `services`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `vendors`
+--
+ALTER TABLE `vendors`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `vendors_level`
+--
+ALTER TABLE `vendors_level`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
