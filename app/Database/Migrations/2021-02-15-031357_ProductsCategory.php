@@ -14,7 +14,7 @@ class ProductsCategory extends Migration
 				'constraint' => 11,
 				'unsigned'       => true,
 			],
-			'product_id' => [
+			'product_category_id' => [
 				'type' => 'INT',
 				'constraint' => 11,
 				'unsigned'       => true,
