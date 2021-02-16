@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Feb 2021 pada 05.21
+-- Waktu pembuatan: 16 Feb 2021 pada 16.27
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -20,20 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `rhwedding`
 --
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `address`
---
-
-CREATE TABLE `address` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `city` varchar(50) DEFAULT NULL,
-  `province` varchar(50) DEFAULT NULL,
-  `postal_code` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -148,7 +134,8 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (13, '::1', 'muhamadarsal71@gmail.com', 6, '2021-02-09 11:44:24', 1),
 (14, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-09 11:45:03', 1),
 (15, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-11 01:19:02', 1),
-(16, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-13 01:26:06', 1);
+(16, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-13 01:26:06', 1),
+(17, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-16 07:28:52', 1);
 
 -- --------------------------------------------------------
 
@@ -245,7 +232,8 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 (8, '2021-02-15-031539', 'App\\Database\\Migrations\\Category', 'default', 'App', 1613361171, 2),
 (9, '2021-02-15-031922', 'App\\Database\\Migrations\\ProductsImages', 'default', 'App', 1613361171, 2),
 (10, '2021-02-15-032238', 'App\\Database\\Migrations\\ProductsReview', 'default', 'App', 1613361171, 2),
-(11, '2021-02-15-033131', 'App\\Database\\Migrations\\Address', 'default', 'App', 1613361172, 2);
+(11, '2021-02-15-033131', 'App\\Database\\Migrations\\Address', 'default', 'App', 1613361172, 2),
+(12, '2021-02-16-151144', 'App\\Database\\Migrations\\UsersProfile', 'default', 'App', 1613488765, 3);
 
 -- --------------------------------------------------------
 
@@ -332,10 +320,9 @@ CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(30) DEFAULT NULL,
-  `full_name` varchar(128) DEFAULT NULL,
   `user_image` varchar(255) NOT NULL DEFAULT 'default.svg',
   `password_hash` varchar(255) NOT NULL,
-  `address_id` int(11) DEFAULT NULL,
+  `profile_id` int(11) DEFAULT NULL,
   `reset_hash` varchar(255) DEFAULT NULL,
   `reset_at` datetime DEFAULT NULL,
   `reset_expires` datetime DEFAULT NULL,
@@ -353,11 +340,28 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `username`, `full_name`, `user_image`, `password_hash`, `address_id`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'rizkyardi.ilhami06@gmail.com', 'rizkyardi', NULL, 'default.svg', '$2y$10$G5j5k7jijPQRT344Lrt6Qukr8M.KhzktVz9R6Sg.2lPMRHDQjxDLy', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:16:46', '2021-02-09 04:17:59', NULL),
-(4, 'rizky.mahasiswa@stmik-tasikmalaya.ac.id', 'rizkymhs', NULL, 'default.svg', '$2y$10$o1VNfJulkKi79N8alnbUau.4hN8BU0CK4jj7L7h/hjfc83nkBuC52', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:38:59', '2021-02-09 04:40:05', NULL),
-(5, 'muhamadarsaludin71@gmail.com', 'arsal', NULL, 'default.svg', '$2y$10$jrA4SNtwP2SWzc6mGhup6.9mXkG1HH1n5q3CZL0EclnEoGKoJDxBi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 08:00:49', '2021-02-09 08:01:53', NULL),
-(6, 'muhamadarsal71@gmail.com', 'arsal71', NULL, 'default.svg', '$2y$10$wINjXA9yc9hY4lJs5hphLOZ8CxlfHPSU8hWvA3Sj1/mtXZtz2DdbK', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 08:54:00', '2021-02-09 08:55:59', NULL);
+INSERT INTO `users` (`id`, `email`, `username`, `user_image`, `password_hash`, `profile_id`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'rizkyardi.ilhami06@gmail.com', 'rizkyardi', 'default.svg', '$2y$10$G5j5k7jijPQRT344Lrt6Qukr8M.KhzktVz9R6Sg.2lPMRHDQjxDLy', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:16:46', '2021-02-09 04:17:59', NULL),
+(4, 'rizky.mahasiswa@stmik-tasikmalaya.ac.id', 'rizkymhs', 'default.svg', '$2y$10$o1VNfJulkKi79N8alnbUau.4hN8BU0CK4jj7L7h/hjfc83nkBuC52', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:38:59', '2021-02-09 04:40:05', NULL),
+(5, 'muhamadarsaludin71@gmail.com', 'arsal', 'default.svg', '$2y$10$jrA4SNtwP2SWzc6mGhup6.9mXkG1HH1n5q3CZL0EclnEoGKoJDxBi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 08:00:49', '2021-02-09 08:01:53', NULL),
+(6, 'muhamadarsal71@gmail.com', 'arsal71', 'default.svg', '$2y$10$wINjXA9yc9hY4lJs5hphLOZ8CxlfHPSU8hWvA3Sj1/mtXZtz2DdbK', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 08:54:00', '2021-02-09 08:55:59', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users_profile`
+--
+
+CREATE TABLE `users_profile` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `full_name` varchar(128) DEFAULT NULL,
+  `user_image` varchar(255) DEFAULT 'default.svg',
+  `contact` varchar(15) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `province` varchar(50) DEFAULT NULL,
+  `postal_code` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -404,12 +408,6 @@ CREATE TABLE `vendors_services` (
 --
 -- Indexes for dumped tables
 --
-
---
--- Indeks untuk tabel `address`
---
-ALTER TABLE `address`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `auth_activation_attempts`
@@ -517,6 +515,12 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `username` (`username`);
 
 --
+-- Indeks untuk tabel `users_profile`
+--
+ALTER TABLE `users_profile`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `vendors`
 --
 ALTER TABLE `vendors`
@@ -531,12 +535,6 @@ ALTER TABLE `vendors_level`
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
-
---
--- AUTO_INCREMENT untuk tabel `address`
---
-ALTER TABLE `address`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_activation_attempts`
@@ -554,7 +552,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
@@ -584,7 +582,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `products`
@@ -615,6 +613,12 @@ ALTER TABLE `services`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `users_profile`
+--
+ALTER TABLE `users_profile`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `vendors`
