@@ -8,9 +8,11 @@ use App\Models\UserModel;
 class User extends BaseController
 {
     protected $userModel;
+    protected $db;
     public function __construct()
     {
         $this->userModel = new UserModel();
+        $this->db = \Config\Database::connect();
     }
 
     public function index()
@@ -22,10 +24,19 @@ class User extends BaseController
         return view('admin/user/index', $data);
     }
 
+    public function detail($username)
+    {
+        $data = [
+            'title'  => 'Detail User | RH Wedding Planner',
+            'user'  => $this->userModel->getUser('username', $username),
+        ];
+        return view('admin/user/detail', $data);
+    }
+
     public function group()
     {
-        $db      = \Config\Database::connect();
-        $builder = $db->table('auth_groups');
+
+        $builder = $this->db->table('auth_groups');
         $query   = $builder->get();
         $data = [
             'title'  => 'User Group | RH Wedding Planner',

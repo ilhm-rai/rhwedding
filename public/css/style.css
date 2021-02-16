@@ -1,6 +1,8 @@
-body, .text-body {
+body,
+.text-body {
     color: #3C4043 !important;
 }
+
 .nav-link .nav-icon {
     height: 35px;
     width: 35px;
@@ -22,17 +24,18 @@ body, .text-body {
     color: #808090;
 }
 
-.sidebar .nav-link span{
+.sidebar .nav-link span {
     color: #7E7E7E;
 }
 
-.nav-link.active .nav-icon{
+.nav-link.active .nav-icon {
     background-image: linear-gradient(to bottom right, #FF5876, #FF9384);
 }
 
 .nav-link.active i {
     color: white;
 }
+
 .nav-link.active span {
     font-weight: bold;
 }
@@ -69,7 +72,7 @@ body, .text-body {
 }
 
 .bg-gradient-main {
-    background-image: linear-gradient(to bottom right,#FF5876, #FF9384);
+    background-image: linear-gradient(to bottom right, #FF5876, #FF9384);
     color: white;
 }
 
@@ -112,7 +115,7 @@ body, .text-body {
 }
 
 .shadow {
-    box-shadow: 0 5px 20px 0 rgba(58,59,69,.15) !important;
+    box-shadow: 0 5px 20px 0 rgba(58, 59, 69, .15) !important;
 }
 
 .shadow-wild-watermelon {
@@ -121,6 +124,12 @@ body, .text-body {
 
 .text-wild-watermelon {
     color: #FF5876 !important;
+}
+
+.text-info {
+    color: #7E7E7E !important;
+    font-weight: normal;
+    font-size: .8em;
 }
 
 .pagination .page-item.previous.disabled .page-link,
@@ -135,14 +144,14 @@ body, .text-body {
     color: white;
 }
 
-.pagination .page-item .page-link{
+.pagination .page-item .page-link {
     border: 0;
     border-radius: 10px;
     margin-right: 10px;
     color: #FF5876;
 }
 
-.pagination .page-item.active .page-link{
+.pagination .page-item.active .page-link {
     background-color: #FF5876;
     color: white;
 }
@@ -162,10 +171,10 @@ body, .text-body {
     background-position: center;
 }
 
-.bg-none{
+.bg-none {
     background-color: rgba(255, 255, 255, 0) !important;
 }
 
-.td-align-middle td{
+.td-align-middle td {
     vertical-align: middle;
 }
