@@ -10,243 +10,41 @@
         <table class="table table-bordered" id="dataUsers" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>No</th>
                     <th>Username</th>
                     <th>Email</th>
-                    <th>Address</th>
+                    <th>Active</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>Name</th>
+                    <th>No</th>
                     <th>Username</th>
                     <th>Email</th>
-                    <th>Address</th>
+                    <th>Active</th>
                     <th>Action</th>
                 </tr>
             </tfoot>
             <tbody>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Thomas Smith</td>
-                    <td>thomas</td>
-                    <td>thomas.smith@gmail.com</td>
-                    <td>Tasikmalaya, Jawa Barat</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
+                <?php $i = 1; ?>
+                <?php foreach ($users as $user) : ?>
+                    <tr>
+                        <td><?= $i++; ?></td>
+                        <td><?= $user['username']; ?></td>
+                        <td><?= $user['email']; ?></td>
+                        <td> <button type="button" class="btn <?= ($user['active'] == 1) ? 'btn-success' : 'btn-warning'; ?> btn-sm small"><?= ($user['active'] == 1) ? 'Active' : 'Disable'; ?></button></td>
+                        <td class="text-center">
+                            <a href="/user/detail/<?= $user['username']; ?>" class="btn btn-success btn-sm rounded-pill small">Detail</a>
+                            <a href="/user/edit/<?= $user['username']; ?>" class="btn btn-info btn-sm rounded-pill small">Edit</a>
+                            <form action="/user/<?= $user['id']; ?>" method="POST" class="d-inline">
+                                <?= csrf_field(); ?>
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-danger btn-sm rounded-pill small" onclick="return confirm('Apakah anda yakin akan menghapus data?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

@@ -28,8 +28,8 @@
         </a>
         <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-light py-2 collapse-inner rounded">
-                <a href="/admin/users" class="collapse-item" href="buttons.html">User List</a>
-                <a class="collapse-item" href="buttons.html">User Category</a>
+                <a href="/admin/user" class="collapse-item" href="buttons.html">User List</a>
+                <a href="/admin/user/group" class="collapse-item" href="buttons.html">User Group</a>
             </div>
         </div>
     </li>
