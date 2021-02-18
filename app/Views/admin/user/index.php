@@ -13,6 +13,7 @@
                     <th>No</th>
                     <th>Username</th>
                     <th>Email</th>
+                    <th>Address</th>
                     <th>Active</th>
                     <th>Action</th>
                 </tr>
@@ -22,6 +23,7 @@
                     <th>No</th>
                     <th>Username</th>
                     <th>Email</th>
+                    <th>Address</th>
                     <th>Active</th>
                     <th>Action</th>
                 </tr>
