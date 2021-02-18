@@ -24,6 +24,7 @@ class User extends BaseController
         return view('admin/user/index', $data);
     }
 
+
     public function detail($username)
     {
         $data = [
@@ -44,5 +45,12 @@ class User extends BaseController
         ];
         // dd($data);
         return view('admin/user/group', $data);
+    }
+    
+    public function userPermission()
+    {
+        $data['title'] = 'User Permissions';
+        return view('admin/user/user_permission', $data);
+
     }
 }
