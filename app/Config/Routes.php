@@ -40,6 +40,8 @@ $routes->group('admin', function ($routes) {
     $routes->add('dashboard', 'Admin\Dashboard::index', ['filter' => 'role:admin']);
     $routes->add('user', 'Admin\User::index', ['filter' => 'role:admin']);
     $routes->add('vendors', 'Admin\Vendor::index');
+	$routes->add('vendors', 'Admin\Vendor::index');
+	$routes->add('products', 'Admin\Product::index');
 });
 
 $routes->group('admin/users/roles', function ($routes) {
@@ -53,6 +55,10 @@ $routes->group('admin/users', function ($routes) {
 
 $routes->group('admin/vendors/services', function ($routes) {
 	$routes->add('', 'Admin\VendorService::show');
+});
+
+$routes->group('admin/products/categories', function ($routes) {
+	$routes->add('', 'Admin\ProductCategory::show');
 });
 
 /**
