@@ -12,7 +12,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link active" href="/">
+        <a class="nav-link active" href="/admin">
             <div class="nav-icon">
                 <i class="fas fa-fw fa-home"></i>
             </div>
@@ -28,8 +28,8 @@
         </a>
         <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-light py-2 collapse-inner rounded">
-                <a href="/admin/user" class="collapse-item" href="buttons.html">User List</a>
-                <a href="/admin/user/group" class="collapse-item" href="buttons.html">User Group</a>
+                <a href="/admin/users" class="collapse-item" href="buttons.html">User List</a>
+                <a href="/admin/users/permissions" class="collapse-item" href="buttons.html">User Permissions</a>
             </div>
         </div>
     </li>

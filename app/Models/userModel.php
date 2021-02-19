@@ -17,4 +17,19 @@ class UserModel extends Model
             return $this->where([$type => $value])->first();
         }
     }
+
+
+    public function getPermissions($type = 'id', $value = false)
+    {
+        $db = \Config\Database::connect();
+        $builder = $this->db->table('auth_groups');
+
+        if ($value == false) {
+            $query   = $builder->get();
+            return $query->getResultArray();
+        } else {
+            // return $this->where([$type => $value])->first();
+        }
+    }
+    
 }

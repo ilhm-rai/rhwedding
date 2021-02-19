@@ -33,23 +33,16 @@ class User extends BaseController
         ];
         return view('admin/user/detail', $data);
     }
-
-    public function group()
-    {
-
-        $builder = $this->db->table('auth_groups');
-        $query   = $builder->get();
-        $data = [
-            'title'  => 'User Group | RH Wedding Planner',
-            'groups'  => $query->getResultArray()
-        ];
-        // dd($data);
-        return view('admin/user/group', $data);
-    }
     
     public function userPermission()
     {
-        $data['title'] = 'User Permissions';
+        $builder = $this->db->table('auth_groups');
+        $query   = $builder->get();
+        $data = [
+            'title'  => 'User Permissions | RH Wedding Planner',
+            'permissions'  => $this->userModel->getPermissions()
+        ];
+        // dd($data);
         return view('admin/user/user_permission', $data);
 
     }

@@ -38,9 +38,8 @@ $routes->get('/register', 'Auth::register');
 $routes->group('admin', function ($routes) {
     $routes->add('/', 'Admin\Dashboard::index', ['filter' => 'role:admin']);
     $routes->add('dashboard', 'Admin\Dashboard::index', ['filter' => 'role:admin']);
-    $routes->add('user', 'Admin\User::index', ['filter' => 'role:admin']);
+    $routes->add('users', 'Admin\User::index', ['filter' => 'role:admin']);
     $routes->add('vendors', 'Admin\Vendor::index');
-	$routes->add('vendors', 'Admin\Vendor::index');
 	$routes->add('products', 'Admin\Product::index');
 });
 
