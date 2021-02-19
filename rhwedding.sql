@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Feb 2021 pada 16.27
+-- Waktu pembuatan: 19 Feb 2021 pada 15.21
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -197,6 +197,7 @@ CREATE TABLE `auth_users_permissions` (
 
 CREATE TABLE `category` (
   `id` int(11) UNSIGNED NOT NULL,
+  `vendor_id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -247,6 +248,7 @@ CREATE TABLE `products` (
   `product_service_id` int(11) UNSIGNED NOT NULL,
   `product_code` varchar(20) NOT NULL,
   `product_name` varchar(255) NOT NULL,
+  `product_slug` varchar(255) NOT NULL,
   `product_main_image` varchar(255) NOT NULL,
   `product_video` varchar(255) DEFAULT NULL,
   `product_description` text DEFAULT NULL,
@@ -265,7 +267,9 @@ CREATE TABLE `products` (
 --
 
 CREATE TABLE `products_category` (
-  `product_id` int(11) UNSIGNED NOT NULL
+  `id` int(11) UNSIGNED NOT NULL,
+  `product_id` int(11) UNSIGNED NOT NULL,
+  `category_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -275,7 +279,6 @@ CREATE TABLE `products_category` (
 --
 
 CREATE TABLE `products_images` (
-  `id` int(11) UNSIGNED NOT NULL,
   `product_id` int(11) UNSIGNED NOT NULL,
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -320,9 +323,8 @@ CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(30) DEFAULT NULL,
-  `user_image` varchar(255) NOT NULL DEFAULT 'default.svg',
   `password_hash` varchar(255) NOT NULL,
-  `profile_id` int(11) DEFAULT NULL,
+  `profile_id` int(11) UNSIGNED DEFAULT NULL,
   `reset_hash` varchar(255) DEFAULT NULL,
   `reset_at` datetime DEFAULT NULL,
   `reset_expires` datetime DEFAULT NULL,
@@ -340,11 +342,11 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `username`, `user_image`, `password_hash`, `profile_id`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'rizkyardi.ilhami06@gmail.com', 'rizkyardi', 'default.svg', '$2y$10$G5j5k7jijPQRT344Lrt6Qukr8M.KhzktVz9R6Sg.2lPMRHDQjxDLy', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:16:46', '2021-02-09 04:17:59', NULL),
-(4, 'rizky.mahasiswa@stmik-tasikmalaya.ac.id', 'rizkymhs', 'default.svg', '$2y$10$o1VNfJulkKi79N8alnbUau.4hN8BU0CK4jj7L7h/hjfc83nkBuC52', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:38:59', '2021-02-09 04:40:05', NULL),
-(5, 'muhamadarsaludin71@gmail.com', 'arsal', 'default.svg', '$2y$10$jrA4SNtwP2SWzc6mGhup6.9mXkG1HH1n5q3CZL0EclnEoGKoJDxBi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 08:00:49', '2021-02-09 08:01:53', NULL),
-(6, 'muhamadarsal71@gmail.com', 'arsal71', 'default.svg', '$2y$10$wINjXA9yc9hY4lJs5hphLOZ8CxlfHPSU8hWvA3Sj1/mtXZtz2DdbK', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 08:54:00', '2021-02-09 08:55:59', NULL);
+INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `profile_id`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'rizkyardi.ilhami06@gmail.com', 'rizkyardi', '$2y$10$G5j5k7jijPQRT344Lrt6Qukr8M.KhzktVz9R6Sg.2lPMRHDQjxDLy', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:16:46', '2021-02-09 04:17:59', NULL),
+(4, 'rizky.mahasiswa@stmik-tasikmalaya.ac.id', 'rizkymhs', '$2y$10$o1VNfJulkKi79N8alnbUau.4hN8BU0CK4jj7L7h/hjfc83nkBuC52', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:38:59', '2021-02-09 04:40:05', NULL),
+(5, 'muhamadarsaludin71@gmail.com', 'arsal', '$2y$10$jrA4SNtwP2SWzc6mGhup6.9mXkG1HH1n5q3CZL0EclnEoGKoJDxBi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 08:00:49', '2021-02-09 08:01:53', NULL),
+(6, 'muhamadarsal71@gmail.com', 'arsal71', '$2y$10$wINjXA9yc9hY4lJs5hphLOZ8CxlfHPSU8hWvA3Sj1/mtXZtz2DdbK', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 08:54:00', '2021-02-09 08:55:59', NULL);
 
 -- --------------------------------------------------------
 
@@ -401,6 +403,7 @@ CREATE TABLE `vendors_level` (
 --
 
 CREATE TABLE `vendors_services` (
+  `id` int(11) UNSIGNED NOT NULL,
   `vendor_id` int(11) UNSIGNED NOT NULL,
   `service_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -474,7 +477,8 @@ ALTER TABLE `auth_users_permissions`
 -- Indeks untuk tabel `category`
 --
 ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vendor_id` (`vendor_id`);
 
 --
 -- Indeks untuk tabel `migrations`
@@ -486,19 +490,32 @@ ALTER TABLE `migrations`
 -- Indeks untuk tabel `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vendor_id` (`vendor_id`),
+  ADD KEY `product_service_id` (`product_service_id`);
+
+--
+-- Indeks untuk tabel `products_category`
+--
+ALTER TABLE `products_category`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Indeks untuk tabel `products_images`
 --
 ALTER TABLE `products_images`
-  ADD PRIMARY KEY (`id`);
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indeks untuk tabel `products_review`
 --
 ALTER TABLE `products_review`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `transaction_id` (`transaction_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indeks untuk tabel `services`
@@ -512,7 +529,8 @@ ALTER TABLE `services`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `profile_id` (`profile_id`);
 
 --
 -- Indeks untuk tabel `users_profile`
@@ -524,13 +542,23 @@ ALTER TABLE `users_profile`
 -- Indeks untuk tabel `vendors`
 --
 ALTER TABLE `vendors`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_id` (`user_id`),
+  ADD KEY `vendor_level_id` (`vendor_level_id`);
 
 --
 -- Indeks untuk tabel `vendors_level`
 --
 ALTER TABLE `vendors_level`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `vendors_services`
+--
+ALTER TABLE `vendors_services`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vendor_id` (`vendor_id`),
+  ADD KEY `service_id` (`service_id`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -591,9 +619,9 @@ ALTER TABLE `products`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `products_images`
+-- AUTO_INCREMENT untuk tabel `products_category`
 --
-ALTER TABLE `products_images`
+ALTER TABLE `products_category`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -633,6 +661,12 @@ ALTER TABLE `vendors_level`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `vendors_services`
+--
+ALTER TABLE `vendors_services`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
@@ -662,6 +696,59 @@ ALTER TABLE `auth_tokens`
 ALTER TABLE `auth_users_permissions`
   ADD CONSTRAINT `auth_users_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `auth_permissions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `auth_users_permissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `category`
+--
+ALTER TABLE `category`
+  ADD CONSTRAINT `category_ibfk_2` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`id`) ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`product_service_id`) REFERENCES `vendors_services` (`id`) ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `products_category`
+--
+ALTER TABLE `products_category`
+  ADD CONSTRAINT `products_category_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_category_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `products_images`
+--
+ALTER TABLE `products_images`
+  ADD CONSTRAINT `products_images_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `products_review`
+--
+ALTER TABLE `products_review`
+  ADD CONSTRAINT `products_review_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_review_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`profile_id`) REFERENCES `users_profile` (`id`) ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `vendors`
+--
+ALTER TABLE `vendors`
+  ADD CONSTRAINT `vendors_ibfk_1` FOREIGN KEY (`vendor_level_id`) REFERENCES `vendors_level` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `vendors_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `vendors_services`
+--
+ALTER TABLE `vendors_services`
+  ADD CONSTRAINT `vendors_services_ibfk_1` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `vendors_services_ibfk_2` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
