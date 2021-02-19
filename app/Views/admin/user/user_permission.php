@@ -35,7 +35,7 @@
                         <td><?= $i++; ?></td>
                         <td><?= $permission['name']; ?></td>
                         <td><?= $permission['description']; ?></td>
-                        <td>4</td>
+                        <td><?= $permission['amount']; ?></td>
                         <td>
                             <div class="btn btn-success btn-sm">Active</div>
                         </td>

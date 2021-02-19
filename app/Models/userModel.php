@@ -25,8 +25,14 @@ class UserModel extends Model
         $builder = $this->db->table('auth_groups');
 
         if ($value == false) {
-            $query   = $builder->get();
-            return $query->getResultArray();
+        $query = "SELECT `auth_groups`.*, `group_id`, COUNT(`group_id`) AS amount
+            FROM `auth_groups_users`
+            JOIN `auth_groups`
+            ON `group_id` = `id`
+            GROUP BY `group_id`
+        ";
+
+            return $this->db->query($query)->getResultArray();
         } else {
             // return $this->where([$type => $value])->first();
         }
