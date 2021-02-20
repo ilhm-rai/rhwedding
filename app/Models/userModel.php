@@ -8,7 +8,14 @@ class UserModel extends Model
 {
     protected $table = 'users';
     protected $useTimestamps = true;
-    
+    protected $db;
+
+    public function __construct()
+    {
+        $this->db = \Config\Database::connect();
+    }
+
+
     public function getUser($type = 'id', $value = false)
     {
         if ($value == false) {
@@ -19,9 +26,8 @@ class UserModel extends Model
     }
 
 
-    public function getPermissions($type = 'id', $value = false)
+    public function getRoles($type = 'id', $value = false)
     {
-        $db = \Config\Database::connect();
         $builder = $this->db->table('auth_groups');
 
         if ($value == false) {

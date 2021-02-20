@@ -29,7 +29,8 @@
         <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-light py-2 collapse-inner rounded">
                 <a href="/admin/users" class="collapse-item" href="buttons.html">User List</a>
-                <a href="/admin/users/permissions" class="collapse-item" href="buttons.html">User Permissions</a>
+                <a href="/admin/users/roles" class="collapse-item" href="buttons.html">User Roles</a>
+                <!-- <a href="/admin/users/permissions" class="collapse-item" href="buttons.html">User Permissions</a> -->
             </div>
         </div>
     </li>
