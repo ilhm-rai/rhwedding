@@ -46,6 +46,7 @@ $routes->group('admin', function ($routes) {
 $routes->group('admin/users/roles', function ($routes) {
 	$routes->add('', 'Admin\UserRole::show');
 	$routes->add('add', 'Admin\UserRole::add');
+	$routes->add('save', 'Admin\UserRole::save');
 });
 
 $routes->group('admin/users', function ($routes) {

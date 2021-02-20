@@ -35,13 +35,20 @@ class UserModel extends Model
             FROM `auth_groups_users`
             JOIN `auth_groups`
             ON `group_id` = `id`
-            GROUP BY `group_id`
+            GROUP BY `id`
         ";
 
             return $this->db->query($query)->getResultArray();
         } else {
             // return $this->where([$type => $value])->first();
         }
+    }
+
+    public function saveRole($data)
+    {
+        $groups = $this->db->table('auth_groups');
+        $groups->insert($data);
+
     }
     
 }

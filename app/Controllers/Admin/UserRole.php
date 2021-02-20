@@ -16,16 +16,35 @@ class UserRole extends BaseController
     public function show()
     {
         $data = [
-            'title'  => 'User Permissions | RH Wedding Planner',
+            'title'  => 'User Roles | RH Wedding Planner',
             'roles'  => $this->userModel->getRoles()
         ];
         return view('admin/user/show_user_role', $data);
     }
-    public function userPermission()
-    {
-       
-        // dd($data);
-        return view('admin/user/user_permission', $data);
+    
 
+    public function add()
+    {
+        $data = [
+            'title'  => 'Add User Roles | RH Wedding Planner',
+            'validation' => \Config\Services::validation(),
+        ];
+        return view('admin/user/add_user_role', $data);   
+    }
+
+    public function save()
+    {
+        if (!$this->validate([
+            'role' => 'required'
+        ])) {
+            return redirect()->to('/admin/users/roles/add')->withInput();
+        }
+        $this->userModel->saveRole([
+            'name' => $this->request->getVar('role'),
+            'description' => $this->request->getVar('description'),
+            'active' => 1
+        ]);
+        session()->setFlashdata('message', 'Role was successfully added');
+        return redirect()->to('/admin/users/roles');
     }
 }
