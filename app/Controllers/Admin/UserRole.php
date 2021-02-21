@@ -3,23 +3,24 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\UserModel;
+use App\Models\roleModel;
 class UserRole extends BaseController
 {
 
-    protected $userModel;
+    protected $roleModel;
+
     public function __construct()
     {
-        $this->userModel = new UserModel();
+        $this->roleModel = new RoleModel();
     }
 
-    public function show()
+    public function index()
     {
         $data = [
             'title'  => 'User Roles | RH Wedding Planner',
-            'roles'  => $this->userModel->getRoles()
+            'roles'  => $this->roleModel->getRoles()
         ];
-        return view('admin/user/show_user_role', $data);
+        return view('admin/user/role/index', $data);
     }
     
 
@@ -29,7 +30,7 @@ class UserRole extends BaseController
             'title'  => 'Add User Roles | RH Wedding Planner',
             'validation' => \Config\Services::validation(),
         ];
-        return view('admin/user/add_user_role', $data);   
+        return view('admin/user/role/add', $data);   
     }
 
     public function save()
@@ -39,7 +40,7 @@ class UserRole extends BaseController
         ])) {
             return redirect()->to('/admin/users/roles/add')->withInput();
         }
-        $this->userModel->saveRole([
+        $this->roleModel->saveRole([
             'name' => $this->request->getVar('role'),
             'description' => $this->request->getVar('description'),
             'active' => 1
@@ -51,8 +52,17 @@ class UserRole extends BaseController
     public function delete($id)
     {
         // cari role berdasarkan id
-        $this->userModel->deleteRole($id);
+        $this->roleModel->deleteRole($id);
         session()->setFlashdata('message', 'Role has been successfully deleted');
         return redirect()->to('/admin/users/roles');
+    }
+
+    public function detail($id)
+    {
+        $data = [
+            'title'  => 'Detail Roles | RH Wedding Planner',
+            'role'  => $this->roleModel->getRoles('id', $id),
+        ];
+        return view('admin/user/detail_user_role', $data);
     }
 }

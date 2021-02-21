@@ -38,21 +38,27 @@ $routes->get('/register', 'Auth::register');
 $routes->group('admin', function ($routes) {
     $routes->add('/', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
     $routes->add('dashboard', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
-    $routes->add('users', 'Admin\User::index', ['filter' => 'role:Admin']);
-    $routes->add('vendors', 'Admin\Vendor::index');
+	// Admin/users
+	$routes->group('users', function($routes){
+		$routes->add('/', 'Admin\User::index');
+		// admin/users/roles
+		$routes->group('roles', function($routes){
+			$routes->add('/', 'Admin\UserRole::index');
+			$routes->add('add', 'Admin\UserRole::add');
+			$routes->add('save', 'Admin\UserRole::save');
+			$routes->add('edit', 'Admin\UserRole::edit');
+		});
+	});
+    
+	$routes->group('permissions', function($routes){});
+	$routes->group('vendors', function($routes){});
+	$routes->group('products', function($routes){});
+	$routes->add('permissions', 'Admin\User::userPermission');
+	$routes->add('vendors', 'Admin\Vendor::index');
 	$routes->add('products', 'Admin\Product::index');
 });
 
-$routes->group('admin/users/roles', function ($routes) {
-	$routes->add('', 'Admin\UserRole::show');
-	$routes->add('add', 'Admin\UserRole::add');
-	$routes->add('save', 'Admin\UserRole::save');
-});
 $routes->delete('admin/users/roles/(:num)', 'Admin\UserRole::delete/$1');
-
-$routes->group('admin/users', function ($routes) {
-	$routes->add('permissions', 'Admin\User::userPermission');
-});
 
 $routes->group('admin/vendors/services', function ($routes) {
 	$routes->add('', 'Admin\VendorService::show');
