@@ -44,7 +44,15 @@ class UserRole extends BaseController
             'description' => $this->request->getVar('description'),
             'active' => 1
         ]);
-        session()->setFlashdata('message', 'Role was successfully added');
+        session()->setFlashdata('message', 'Role has been successfully added');
+        return redirect()->to('/admin/users/roles');
+    }
+    
+    public function delete($id)
+    {
+        // cari role berdasarkan id
+        $this->userModel->deleteRole($id);
+        session()->setFlashdata('message', 'Role has been successfully deleted');
         return redirect()->to('/admin/users/roles');
     }
 }

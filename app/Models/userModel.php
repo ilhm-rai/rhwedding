@@ -26,29 +26,37 @@ class UserModel extends Model
     }
 
 
+
+    // User Role
     public function getRoles($type = 'id', $value = false)
     {
         $builder = $this->db->table('auth_groups');
 
         if ($value == false) {
-        $query = "SELECT `auth_groups`.*, `group_id`, COUNT(`group_id`) AS amount
-            FROM `auth_groups_users`
-            JOIN `auth_groups`
-            ON `group_id` = `id`
-            GROUP BY `id`
+        $query = "SELECT `ag`.*, `agu`.`group_id`, COUNT(`agu`.`group_id`) AS amount
+            FROM `auth_groups` AS `ag`
+            LEFT JOIN `auth_groups_users` AS `agu`
+            ON `ag`.`id` = `agu`.`group_id`
+            GROUP BY `agu`.`group_id`
+            ORDER BY `ag`.`id` ASC
         ";
 
             return $this->db->query($query)->getResultArray();
         } else {
-            // return $this->where([$type => $value])->first();
+            return $builder->getWhere([$type => $value])->getRowArray();
         }
     }
 
     public function saveRole($data)
     {
-        $groups = $this->db->table('auth_groups');
-        $groups->insert($data);
-
+        $builder = $this->db->table('auth_groups');
+        $builder->insert($data);
+    }
+    
+    public function deleteRole($id)
+    {
+        $builder = $this->db->table('auth_groups');
+        $builder->delete(['id' => $id]);
     }
     
 }

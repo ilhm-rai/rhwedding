@@ -7,13 +7,17 @@
         <h1 class="content-heading mb-0 text-gray-800">User Roles</h1>
     </div>
     <a href="/admin/users/roles/add" class="btn btn-wild-watermelon rounded-pill mb-3">Add New Role</a>
+    <?php if (session()->getFlashdata('message')) : ?>
+        <div class="alert alert-success" role="alert">
+            <?= session()->getFlashdata('message'); ?>
+        </div>
+    <?php endif; ?>
     <div class="table-responsive">
         <table class="table table-bordered" id="dataUsers" width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <th>No</th>
                     <th>Role</th>
-                    <th>Description</th>
                     <th>User Amount</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -23,7 +27,6 @@
                 <tr>
                     <th>No</th>
                     <th>Role</th>
-                    <th>Description</th>
                     <th>User Amount</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -34,7 +37,6 @@
                     <tr>
                         <td><?= $i++; ?></td>
                         <td><?= $role['name']; ?></td>
-                        <td><?= $role['description']; ?></td>
                         <td><?= $role['amount']; ?></td>
                         <td> 
                             <button type="button" class="btn btn-sm <?= ($role['active'] == 1) ? 'btn-success' : 'btn-warning'; ?> btn-sm small"><?= ($role['active'] == 1) ? 'Active' : 'Disable'; ?></button>
@@ -42,7 +44,12 @@
                         <td class="text-center">
                             <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                             <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                            <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
+                            <!-- <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button> -->
+                            <form action="/admin/users/roles/<?= $role['id']; ?>" method="POST" class="d-inline">
+                                <?= csrf_field(); ?>
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-danger btn-sm rounded-pill small" onclick="return confirm('Apakah anda yakin akan menghapus data?')">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>
