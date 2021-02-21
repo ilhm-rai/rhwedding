@@ -7,6 +7,9 @@
         <h1 class="content-heading mb-0 text-gray-800">User Roles</h1>
     </div>
     <a href="/admin/users/roles/add" class="btn btn-wild-watermelon rounded-pill mb-3">Add New Role</a>
+
+    <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
+
     <?php if (session()->getFlashdata('message')) : ?>
         <div class="alert alert-success" role="alert">
             <?= session()->getFlashdata('message'); ?>
@@ -45,10 +48,10 @@
                             <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                             <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
                             <!-- <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button> -->
-                            <form action="/admin/users/roles/<?= $role['id']; ?>" method="POST" class="d-inline">
+                            <form action="/admin/users/roles/<?= $role['id']; ?>" method="POST" class="d-inline form-delete">
                                 <?= csrf_field(); ?>
                                 <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="btn btn-danger btn-sm rounded-pill small" onclick="return confirm('Apakah anda yakin akan menghapus data?')">Delete</button>
+                                <button type="submit" class="btn btn-danger btn-sm rounded-pill small btn-delete" >Delete</button>
                             </form>
                         </td>
                     </tr>
