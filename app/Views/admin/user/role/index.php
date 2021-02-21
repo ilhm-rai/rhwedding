@@ -45,8 +45,8 @@
                             <button type="button" class="btn btn-sm <?= ($role['active'] == 1) ? 'btn-success' : 'btn-warning'; ?> btn-sm small"><?= ($role['active'] == 1) ? 'Active' : 'Disable'; ?></button>
                         </td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                            <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
+                            <a href="/admin/users/roles/detail/<?= $role['id']; ?>" class="btn btn-success btn-sm rounded-pill small">Detail</a>
+                            <a href="/admin/users/roles/edit/<?= $role['id']; ?>" class="btn btn-info btn-sm rounded-pill small">Edit</a>
                             <!-- <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button> -->
                             <form action="/admin/users/roles/<?= $role['id']; ?>" method="POST" class="d-inline form-delete">
                                 <?= csrf_field(); ?>

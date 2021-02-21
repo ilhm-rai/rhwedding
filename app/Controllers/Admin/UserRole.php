@@ -4,14 +4,17 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\roleModel;
+use App\Models\userModel;
 class UserRole extends BaseController
 {
 
     protected $roleModel;
+    protected $userModel;
 
     public function __construct()
     {
         $this->roleModel = new RoleModel();
+        $this->userModel = new UserModel();
     }
 
     public function index()
@@ -40,7 +43,7 @@ class UserRole extends BaseController
         ])) {
             return redirect()->to('/admin/users/roles/add')->withInput();
         }
-        $this->roleModel->saveRole([
+        $this->roleModel->save([
             'name' => $this->request->getVar('role'),
             'description' => $this->request->getVar('description'),
             'active' => 1
@@ -52,17 +55,46 @@ class UserRole extends BaseController
     public function delete($id)
     {
         // cari role berdasarkan id
-        $this->roleModel->deleteRole($id);
+        $this->roleModel->delete($id);
         session()->setFlashdata('message', 'Role has been successfully deleted');
         return redirect()->to('/admin/users/roles');
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'title'  => 'Edit Roles | RH Wedding Planner',
+            'validation' => \Config\Services::validation(),
+            'role'  => $this->roleModel->getWhere(['id' => $id])->getRowArray(),
+        ];
+        return view('admin/user/role/edit', $data);
+    }
+
+    public function update($id)
+    {
+        if (!$this->validate([
+            'role' => 'required',
+        ])) {
+            return redirect()->to('/admin/users/roles/edit/' . $id)->withInput();
+        }
+        $this->roleModel->save([
+            'id'    => $id,
+            'name' => $this->request->getVar('role'),
+            'description' => $this->request->getVar('description'),
+        ]);
+        session()->setFlashdata('message', 'Role has been successfully edited');
+        return redirect()->to('/admin/users/roles/detail/' . $id);
     }
 
     public function detail($id)
     {
         $data = [
             'title'  => 'Detail Roles | RH Wedding Planner',
-            'role'  => $this->roleModel->getRoles('id', $id),
+            'role'  => $this->roleModel->getWhere(['id' => $id])->getRowArray(),
+            'users'  => $this->userModel->getUsersByRole($id),
         ];
-        return view('admin/user/detail_user_role', $data);
+        // dd($data);
+        return view('admin/user/role/detail', $data);
     }
+
 }

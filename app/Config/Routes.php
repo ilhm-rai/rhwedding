@@ -46,7 +46,9 @@ $routes->group('admin', function ($routes) {
 			$routes->add('/', 'Admin\UserRole::index');
 			$routes->add('add', 'Admin\UserRole::add');
 			$routes->add('save', 'Admin\UserRole::save');
-			$routes->add('edit', 'Admin\UserRole::edit');
+			$routes->add('edit/(:num)', 'Admin\UserRole::edit/$1');
+			$routes->add('update/(:num)', 'Admin\UserRole::update/$1');
+			$routes->add('detail/(:num)', 'Admin\UserRole::detail/$1');
 		});
 	});
     
