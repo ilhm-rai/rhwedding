@@ -24,7 +24,7 @@
             <div class="nav-icon">
                 <i class="fas fa-fw fa-user"></i>
             </div>
-            <span>User</span>
+            <span>Users</span>
         </a>
         <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-light py-2 collapse-inner rounded">
@@ -35,12 +35,17 @@
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVendor" aria-expanded="true" aria-controls="collapseUser">
             <div class="nav-icon">
                 <i class="fas fa-fw fa-users"></i>
             </div>
             <span>Vendors</span>
         </a>
+        <div id="collapseVendor" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
+            <div class="bg-light py-2 collapse-inner rounded">
+                <a href="/admin/vendors" class="collapse-item" href="buttons.html">Vendor List</a>
+            </div>
+        </div>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/">

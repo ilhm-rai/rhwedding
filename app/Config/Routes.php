@@ -38,7 +38,7 @@ $routes->get('/register', 'Auth::register');
 $routes->group('admin', function ($routes) {
     $routes->add('/', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
     $routes->add('dashboard', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
-	// Admin/users
+	// admin/users
 	$routes->group('users', function($routes){
 		$routes->add('/', 'Admin\User::index');
 		// admin/users/roles
@@ -50,13 +50,15 @@ $routes->group('admin', function ($routes) {
 			$routes->add('update/(:num)', 'Admin\UserRole::update/$1');
 			$routes->add('detail/(:num)', 'Admin\UserRole::detail/$1');
 		});
-		
+		// admin/users/permissions
 		$routes->group('permissions', function($routes){
 			$routes->add('/', 'Admin\UserPermission::index');
 		});
 	});
-    
-	$routes->group('vendors', function($routes){});
+    // Admin/vendors
+	$routes->group('vendors', function($routes){
+		$routes->add('/', 'Admin\Vendor::index');
+	});
 	$routes->group('products', function($routes){});
 	$routes->add('permissions', 'Admin\User::userPermission');
 	$routes->add('vendors', 'Admin\Vendor::index');

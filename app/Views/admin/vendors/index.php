@@ -1,4 +1,4 @@
-<?= $this->extend('template/admin'); ?>
+<?= $this->extend('templates/admin'); ?>
 
 <?= $this->section('content'); ?>
 <div class="container-fluid content-frame mb-5 shadow">
@@ -15,7 +15,7 @@
                     <th width='100px'>Logo</th>
                     <th>Vendor Name</th>
                     <th>Service</th>
-                    <th>Address</th>
+                    <th>Owner</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -25,83 +25,26 @@
                     <th>Logo</th>
                     <th>Vendor Name</th>
                     <th>Service</th>
-                    <th>Address</th>
+                    <th>Owner</th>
                     <th>Action</th>
                 </tr>
             </tfoot>
             <tbody>
+                <?php $i = 1; ?>
+                <?php foreach($vendors as $vendor): ?>
                 <tr>
-                    <td>1</td>
-                    <td><img src="<?= base_url('img/vendors/example-1.png'); ?>" alt="" class="w-100"></td>
-                    <td>ARTHAUS ASPEN</td>
-                    <td>Photography</td>
-                    <td>Tasikmalaya</td>
+                    <td><?= $i++; ?></td>
+                    <td><img src="/img/vendors/logo/<?= $vendor['vendor_logo']; ?>" alt="" class="w-100"></td>
+                    <td><?= $vendor['vendor_name']; ?></td>
+                    <td><?= $vendor['service_name']; ?></td>
+                    <td><?= $vendor['owner']; ?></td>
                     <td class="text-center">
                         <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
                         <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
                         <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td><img src="<?= base_url('img/vendors/example-2.jpg'); ?>" alt="" class="w-100"></td>
-                    <td>Owl Creative</td>
-                    <td>Decoration</td>
-                    <td>Tasikmalaya</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td><img src="<?= base_url('img/vendors/example-3.jpg'); ?>" alt="" class="w-100"></td>
-                    <td>Isabel Giles</td>
-                    <td>Hair&Makeup</td>
-                    <td>Tasikmalaya</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td><img src="<?= base_url('img/vendors/example-4.png'); ?>" alt="" class="w-100"></td>
-                    <td>Monica Lin</td>
-                    <td>Hair&Makeup</td>
-                    <td>Tasikmalaya</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td><img src="<?= base_url('img/vendors/example-5.png'); ?>" alt="grand-aston-bali" class="w-100"></td>
-                    <td>SAROVAR</td>
-                    <td>Venue</td>
-                    <td>Bandung</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td><img src="<?= base_url('img/vendors/example-6.png'); ?>" alt="" class="w-100"></td>
-                    <td>GRAND ASTON BALI</td>
-                    <td>Venue</td>
-                    <td>Bali</td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
-                    </td>
-                </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
