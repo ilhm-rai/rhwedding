@@ -39,9 +39,13 @@
                     <td><?= $vendor['service_name']; ?></td>
                     <td><?= $vendor['owner']; ?></td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
+                        <a href="/admin/vendors/detail/<?= $vendor['id']; ?>" class="btn btn-success btn-sm rounded-pill small">Detail</a>
+                        <a href="/admin/vendors/edit/<?= $vendor['id']; ?>" class="btn btn-info btn-sm rounded-pill small">Edit</a>
+                        <form action="/admin/vendors/<?= $vendor['id']; ?>" method="POST" class="d-inline form-delete">
+                            <?= csrf_field(); ?>
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger btn-sm rounded-pill small btn-delete" >Delete</button>
+                        </form>
                     </td>
                 </tr>
                 <?php endforeach; ?>

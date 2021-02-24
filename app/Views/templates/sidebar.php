@@ -28,9 +28,9 @@
         </a>
         <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-light py-2 collapse-inner rounded">
-                <a href="/admin/users" class="collapse-item" href="buttons.html">User List</a>
-                <a href="/admin/users/roles" class="collapse-item" href="buttons.html">User Roles</a>
-                <a href="/admin/users/permissions" class="collapse-item" href="buttons.html">User Permissions</a>
+                <a href="/admin/users" class="collapse-item">User List</a>
+                <a href="/admin/users/roles" class="collapse-item">User Roles</a>
+                <a href="/admin/users/permissions" class="collapse-item">User Permissions</a>
             </div>
         </div>
     </li>
@@ -43,7 +43,8 @@
         </a>
         <div id="collapseVendor" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-light py-2 collapse-inner rounded">
-                <a href="/admin/vendors" class="collapse-item" href="buttons.html">Vendor List</a>
+                <a href="/admin/vendors" class="collapse-item">Vendor List</a>
+                <a href="/admin/vendors/services" class="collapse-item">Vendor Services</a>
             </div>
         </div>
     </li>

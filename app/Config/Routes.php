@@ -55,9 +55,13 @@ $routes->group('admin', function ($routes) {
 			$routes->add('/', 'Admin\UserPermission::index');
 		});
 	});
-    // Admin/vendors
+    // admin/vendors
 	$routes->group('vendors', function($routes){
 		$routes->add('/', 'Admin\Vendor::index');
+		// admin/vendors/services
+		$routes->group('services', function($routes){
+			$routes->add('/', 'Admin\VendorService::index');
+		});
 	});
 	$routes->group('products', function($routes){});
 	$routes->add('permissions', 'Admin\User::userPermission');
