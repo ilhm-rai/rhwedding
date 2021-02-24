@@ -58,11 +58,6 @@
                 </tr>
             </tfoot>
             <tbody>
-            <?php if(!$users) :?>
-            <tr>
-                <td colspan="6" class="text-center">No data available in table</td>
-            </tr>
-            <?php endif; ?>
                 <?php $i = 1; ?>
                 <?php foreach ($users as $user) : ?>
                     <tr>
@@ -86,4 +81,11 @@
         </table>
     </div>
 </div>
+<?= $this->endSection(); ?>
+<?= $this->section('script'); ?>
+<script>
+    $(document).ready(function() {
+        $('#dataUsers').DataTable();
+    });
+</script>
 <?= $this->endSection(); ?>

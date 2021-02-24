@@ -50,9 +50,12 @@ $routes->group('admin', function ($routes) {
 			$routes->add('update/(:num)', 'Admin\UserRole::update/$1');
 			$routes->add('detail/(:num)', 'Admin\UserRole::detail/$1');
 		});
+		
+		$routes->group('permissions', function($routes){
+			$routes->add('/', 'Admin\UserPermission::index');
+		});
 	});
     
-	$routes->group('permissions', function($routes){});
 	$routes->group('vendors', function($routes){});
 	$routes->group('products', function($routes){});
 	$routes->add('permissions', 'Admin\User::userPermission');
