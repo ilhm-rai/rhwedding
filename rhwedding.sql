@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Feb 2021 pada 15.21
+-- Waktu pembuatan: 24 Feb 2021 pada 14.44
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -55,17 +55,19 @@ INSERT INTO `auth_activation_attempts` (`id`, `ip_address`, `user_agent`, `token
 CREATE TABLE `auth_groups` (
   `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL
+  `description` varchar(255) NOT NULL,
+  `active` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data untuk tabel `auth_groups`
 --
 
-INSERT INTO `auth_groups` (`id`, `name`, `description`) VALUES
-(1, 'admin', 'Administrator'),
-(2, 'vendor', 'vendor partners'),
-(3, 'user', 'Regular user');
+INSERT INTO `auth_groups` (`id`, `name`, `description`, `active`) VALUES
+(1, 'Admin', 'Administrator', 1),
+(2, 'Vendor', 'vendor partners', 1),
+(3, 'User', 'Regular user', 1),
+(4, 'Cashier', 'RH Wedding Planner Cashier', 1);
 
 -- --------------------------------------------------------
 
@@ -135,7 +137,15 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (14, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-09 11:45:03', 1),
 (15, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-11 01:19:02', 1),
 (16, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-13 01:26:06', 1),
-(17, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-16 07:28:52', 1);
+(17, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-16 07:28:52', 1),
+(18, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-19 08:59:14', 1),
+(19, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-20 10:49:47', 1),
+(20, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-20 22:39:52', 1),
+(21, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-21 00:19:23', 1),
+(22, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-21 01:32:53', 1),
+(23, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-21 07:39:00', 1),
+(24, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-24 00:33:46', 1),
+(25, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-24 06:45:23', 1);
 
 -- --------------------------------------------------------
 
@@ -313,6 +323,13 @@ CREATE TABLE `services` (
   `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `services`
+--
+
+INSERT INTO `services` (`id`, `name`, `icon`, `description`) VALUES
+(1, 'Venue', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -377,12 +394,20 @@ CREATE TABLE `vendors` (
   `vendor_code` varchar(20) NOT NULL,
   `vendor_name` varchar(255) NOT NULL,
   `vendor_logo` varchar(255) NOT NULL DEFAULT 'default.svg',
-  `vendor_level_id` int(11) UNSIGNED NOT NULL,
+  `vendor_level_id` int(11) UNSIGNED NOT NULL DEFAULT 1,
   `vendor_description` text DEFAULT NULL,
-  `active` int(1) NOT NULL,
+  `active` int(1) NOT NULL DEFAULT 1,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `vendors`
+--
+
+INSERT INTO `vendors` (`id`, `user_id`, `vendor_code`, `vendor_name`, `vendor_logo`, `vendor_level_id`, `vendor_description`, `active`, `created_at`, `updated_at`) VALUES
+(2, 5, 'VND_0220210001', 'Grand Aston Bali', 'logo1.png', 4, NULL, 1, '2021-02-24 14:48:01', '2021-02-24 14:48:01'),
+(3, 6, 'VND_0220210002', 'Sarovar', 'logo2.png', 1, NULL, 1, '2021-02-24 14:50:28', '2021-02-24 14:50:28');
 
 -- --------------------------------------------------------
 
@@ -396,6 +421,16 @@ CREATE TABLE `vendors_level` (
   `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `vendors_level`
+--
+
+INSERT INTO `vendors_level` (`id`, `name`, `description`) VALUES
+(1, 'Classic', NULL),
+(2, 'Silver', NULL),
+(3, 'Gold', NULL),
+(4, 'Platinum', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -407,6 +442,14 @@ CREATE TABLE `vendors_services` (
   `vendor_id` int(11) UNSIGNED NOT NULL,
   `service_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `vendors_services`
+--
+
+INSERT INTO `vendors_services` (`id`, `vendor_id`, `service_id`) VALUES
+(1, 2, 1),
+(2, 3, 1);
 
 --
 -- Indexes for dumped tables
@@ -574,13 +617,13 @@ ALTER TABLE `auth_activation_attempts`
 -- AUTO_INCREMENT untuk tabel `auth_groups`
 --
 ALTER TABLE `auth_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
@@ -634,7 +677,7 @@ ALTER TABLE `products_review`
 -- AUTO_INCREMENT untuk tabel `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
@@ -652,19 +695,19 @@ ALTER TABLE `users_profile`
 -- AUTO_INCREMENT untuk tabel `vendors`
 --
 ALTER TABLE `vendors`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `vendors_level`
 --
 ALTER TABLE `vendors_level`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `vendors_services`
 --
 ALTER TABLE `vendors_services`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
