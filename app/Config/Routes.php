@@ -61,6 +61,11 @@ $routes->group('admin', function ($routes) {
 		// admin/vendors/services
 		$routes->group('services', function($routes){
 			$routes->add('/', 'Admin\VendorService::index');
+			$routes->add('add', 'Admin\VendorService::add');
+			$routes->add('save', 'Admin\VendorService::save');
+			$routes->add('edit/(:num)', 'Admin\VendorService::edit/$1');
+			$routes->add('update/(:num)', 'Admin\VendorService::update/$1');
+			$routes->add('detail/(:num)', 'Admin\VendorService::detail/$1');
 		});
 	});
 	$routes->group('products', function($routes){});
@@ -70,6 +75,18 @@ $routes->group('admin', function ($routes) {
 });
 
 $routes->delete('admin/users/roles/(:num)', 'Admin\UserRole::delete/$1');
+$routes->delete('admin/vendors/services/(:num)', 'Admin\VendorService::delete/$1');
+
+
+
+
+
+
+
+
+
+
+
 
 $routes->group('admin/vendors/services', function ($routes) {
 	$routes->add('', 'Admin\VendorService::show');

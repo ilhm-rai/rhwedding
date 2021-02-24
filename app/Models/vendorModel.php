@@ -29,4 +29,17 @@ class VendorModel extends Model
         }
     }
 
+    public function getVendorsByService($id)
+    {
+        $query = "SELECT `s`.`name` as `service_name`,`v`.*
+            FROM `services` AS `s`
+            JOIN `vendors_services` AS `vs`
+            ON `s`.`id` = `vs`.`service_id`
+            JOIN `vendors` AS `v`
+            ON `vs`.`vendor_id` = `v`.`id`
+            WHERE `s`.`id` = $id
+        "; 
+        return $this->db->query($query)->getResultArray();
+    }
+
 }
