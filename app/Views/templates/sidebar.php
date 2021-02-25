@@ -45,6 +45,7 @@
             <div class="bg-light py-2 collapse-inner rounded">
                 <a href="/admin/vendors" class="collapse-item">Vendor List</a>
                 <a href="/admin/vendors/services" class="collapse-item">Vendor Services</a>
+                <a href="/admin/vendors/level" class="collapse-item">Vendor Level</a>
             </div>
         </div>
     </li>

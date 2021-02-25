@@ -3,28 +3,28 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\serviceModel;
+use App\Models\levelModel;
 use App\Models\vendorModel;
 
-class VendorService extends BaseController
+class VendorLevel extends BaseController
 {
 
-    protected $serviceModel;
+    protected $levelModel;
     protected $vendorModel;
    
     public function __construct()
     {
-        $this->serviceModel = new ServiceModel();
+        $this->levelModel = new LevelModel();
         $this->vendorModel = new VendorModel();
     }
 
     public function index()
     {
         $data = [
-            'title'  => 'Vendor Services | RH Wedding Planner',
-            'services'  => $this->serviceModel->getServices()
+            'title'  => 'Vendor level | RH Wedding Planner',
+            'level'  => $this->levelModel->getLevel()
         ];
-        return view('admin/vendors/service/index', $data);
+        return view('admin/vendors/level/index', $data);
     }
 
     public function add()

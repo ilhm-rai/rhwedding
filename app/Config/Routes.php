@@ -67,6 +67,15 @@ $routes->group('admin', function ($routes) {
 			$routes->add('update/(:num)', 'Admin\VendorService::update/$1');
 			$routes->add('detail/(:num)', 'Admin\VendorService::detail/$1');
 		});
+		// admin/vendors/leve
+		$routes->group('level', function($routes){
+			$routes->add('/', 'Admin\VendorLevel::index');
+			$routes->add('add', 'Admin\VendorLevel::add');
+			$routes->add('save', 'Admin\VendorLevel::save');
+			$routes->add('edit/(:num)', 'Admin\VendorLevel::edit/$1');
+			$routes->add('update/(:num)', 'Admin\VendorLevel::update/$1');
+			$routes->add('detail/(:num)', 'Admin\VendorLevel::detail/$1');
+		});
 	});
 	$routes->group('products', function($routes){});
 	$routes->add('permissions', 'Admin\User::userPermission');
