@@ -4,33 +4,27 @@
 <div class="container-fluid content-frame mb-5 shadow">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="content-heading mb-0 text-gray-800">Detail Vendors Service</h1>
+        <h1 class="content-heading mb-0 text-gray-800">Detail Vendors Level</h1>
     </div>
-    <a href="/admin/vendors/services/edit/<?= $service['id']; ?>" class="btn btn-wild-watermelon rounded-pill mb-3">Edit Role</a>
+    <a href="/admin/vendors/level/edit/<?= $level['id']; ?>" class="btn btn-wild-watermelon rounded-pill mb-3">Edit Role</a>
     <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
     <?php if (session()->getFlashdata('message')) : ?>
         <div class="alert alert-success" role="alert">
             <?= session()->getFlashdata('message'); ?>
         </div>
     <?php endif; ?>
-    <form action="/admin/vendors/service/update/<?= $service['id']; ?>" method="post" class="user">
+    <form action="/admin/vendors/level/update/<?= $level['id']; ?>" method="post" class="user">
     <?= csrf_field(); ?>
         <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label">Service Name</label>
+            <label for="name" class="col-sm-2 col-form-label">Level Name</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Service Name" value="<?= (old('name')) ? old('name') : $service['name']; ?>" readonly>
+                <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Service Name" value="<?= (old('name')) ? old('name') : $level['name']; ?>" readonly>
             </div>
         </div>
         <div class="form-group row">
             <label for="description" class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="description" name="description" rows="4" readonly><?= $service['description']; ?></textarea>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="description" class="col-sm-2 col-form-label">Status</label>
-            <div class="col-sm-10">
-                <button type="button" class="btn btn-sm <?= ($service['active'] == 1) ? 'btn-success' : 'btn-warning'; ?> btn-sm small"><?= ($service['active'] == 1) ? 'Active' : 'Disable'; ?></button>
+                <textarea class="form-control" id="description" name="description" rows="4" readonly><?= $level['description']; ?></textarea>
             </div>
         </div>
     </form>
@@ -41,7 +35,7 @@
                     <th>No</th>
                     <th width='100px'>Logo</th>
                     <th>Vendor Name</th>
-                    <th>Service</th>
+                    <th>Level</th>
                     <!-- <th>Owner</th> -->
                     <th>Action</th>
                 </tr>
@@ -51,7 +45,7 @@
                     <th>No</th>
                     <th>Logo</th>
                     <th>Vendor Name</th>
-                    <th>Service</th>
+                    <th>Level</th>
                     <!-- <th>Owner</th> -->
                     <th>Action</th>
                 </tr>
@@ -63,7 +57,7 @@
                     <td><?= $i++; ?></td>
                     <td><img src="/img/vendors/logo/<?= $vendor['vendor_logo']; ?>" alt="" class="w-100"></td>
                     <td><?= $vendor['vendor_name']; ?></td>
-                    <td><?= $vendor['service_name']; ?></td>
+                    <td><?= $vendor['level']; ?></td>
                     
                     <td class="text-center">
                         <a href="/admin/vendors/detail/<?= $vendor['id']; ?>" class="btn btn-success btn-sm rounded-pill small">Detail</a>

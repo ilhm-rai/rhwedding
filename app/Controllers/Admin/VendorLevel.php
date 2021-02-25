@@ -55,19 +55,19 @@ class VendorLevel extends BaseController
     public function delete($id)
     {
         // cari role berdasarkan id
-        $this->serviceModel->delete($id);
-        session()->setFlashdata('message', 'Service has been successfully deleted');
-        return redirect()->to('/admin/vendors/services');
+        $this->levelModel->delete($id);
+        session()->setFlashdata('message', 'Level has been successfully deleted');
+        return redirect()->to('/admin/vendors/level');
     }
 
     public function edit($id)
     {
         $data = [
-            'title'  => 'Edit Services | RH Wedding Planner',
+            'title'  => 'Edit Level | RH Wedding Planner',
             'validation' => \Config\Services::validation(),
-            'service'  => $this->serviceModel->getWhere(['id' => $id])->getRowArray(),
+            'level'  => $this->levelModel->getWhere(['id' => $id])->getRowArray(),
         ];
-        return view('admin/vendors/service/edit', $data);
+        return view('admin/vendors/level/edit', $data);
     }
 
     public function update($id)
@@ -75,25 +75,25 @@ class VendorLevel extends BaseController
         if (!$this->validate([
             'name' => 'required',
         ])) {
-            return redirect()->to('/admin/vendors/services/edit/' . $id)->withInput();
+            return redirect()->to('/admin/vendors/level/edit/' . $id)->withInput();
         }
-        $this->serviceModel->save([
+        $this->levelModel->save([
             'id'    => $id,
             'name' => $this->request->getVar('name'),
             'description' => $this->request->getVar('description'),
         ]);
-        session()->setFlashdata('message', 'Service has been successfully edited');
-        return redirect()->to('/admin/vendors/services/detail/' . $id);
+        session()->setFlashdata('message', 'Level has been successfully edited');
+        return redirect()->to('/admin/vendors/level/detail/' . $id);
     }
 
     public function detail($id)
     {
         $data = [
-            'title'  => 'Detail Service | RH Wedding Planner',
-            'service'  => $this->serviceModel->getWhere(['id' => $id])->getRowArray(),
-            'vendors'  => $this->vendorModel->getVendorsByService($id),
+            'title'  => 'Detail Level | RH Wedding Planner',
+            'level'  => $this->levelModel->getWhere(['id' => $id])->getRowArray(),
+            'vendors'  => $this->vendorModel->getVendorsByLevel($id),
         ];
         // dd($data);
-        return view('admin/vendors/service/detail', $data);
+        return view('admin/vendors/level/detail', $data);
     }
 }

@@ -41,5 +41,15 @@ class VendorModel extends Model
         "; 
         return $this->db->query($query)->getResultArray();
     }
+    public function getVendorsByLevel($id)
+    {
+        $query = "SELECT `vl`.`name` as `level`,`v`.*
+            FROM `vendors_level` AS `vl`
+            JOIN `vendors` AS `v`
+            ON `vl`.`id` = `v`.`vendor_level_id`
+            WHERE `vl`.`id` = $id
+        "; 
+        return $this->db->query($query)->getResultArray();
+    }
 
 }
