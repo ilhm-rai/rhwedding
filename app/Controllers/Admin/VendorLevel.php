@@ -30,10 +30,10 @@ class VendorLevel extends BaseController
     public function add()
     {
         $data = [
-            'title'  => 'Add Vendor Service | RH Wedding Planner',
+            'title'  => 'Add Vendor Level | RH Wedding Planner',
             'validation' => \Config\Services::validation(),
         ];
-        return view('admin/vendors/service/add', $data);   
+        return view('admin/vendors/level/add', $data);   
     }
 
     public function save()
@@ -41,15 +41,15 @@ class VendorLevel extends BaseController
         if (!$this->validate([
             'name' => 'required'
         ])) {
-            return redirect()->to('/admin/vendors/services/add')->withInput();
+            return redirect()->to('/admin/vendors/level/add')->withInput();
         }
-        $this->serviceModel->save([
+        $this->levelModel->save([
             'name' => $this->request->getVar('name'),
             'description' => $this->request->getVar('description'),
             'active' => 1
         ]);
-        session()->setFlashdata('message', 'Service been successfully added');
-        return redirect()->to('/admin/vendors/services');
+        session()->setFlashdata('message', 'Level been successfully added');
+        return redirect()->to('/admin/vendors/level');
     }
 
     public function delete($id)

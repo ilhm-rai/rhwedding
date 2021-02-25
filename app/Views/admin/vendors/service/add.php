@@ -10,7 +10,7 @@
     <form action="/admin/vendors/services/save" method="post" class="user">
     <?= csrf_field(); ?>
         <div class="form-group row">
-            <label for="role" class="col-sm-2 col-form-label">Service Name</label>
+            <label for="name" class="col-sm-2 col-form-label">Service Name</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control form-control-user <?= ($validation->hasError('name') ? 'is-invalid' : ''); ?>" id="name" name="name" placeholder="name">
                 <div class="invalid-feedback">
