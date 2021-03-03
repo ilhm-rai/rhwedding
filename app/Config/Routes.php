@@ -83,6 +83,21 @@ $routes->group('admin', function ($routes) {
 	$routes->add('products', 'Admin\Product::index');
 });
 
+
+// route for vendor
+$routes->group('vendor', function ($routes) {
+	$routes->add('/', 'Vendor\Dashboard::index', ['filter' => 'role:Admin,Vendor']);
+	// vendor/myvendor
+	$routes->group('myvendor', function($routes){
+		$routes->add('/', 'Vendor\MyVendor::index');
+		$routes->add('/profile', 'Vendor\MyVendor::index');
+		$routes->group('service', function($routes){
+			$routes->add('/', 'Vendor\MyVendor::service');
+		});
+	});
+});
+
+
 $routes->delete('admin/users/roles/(:num)', 'Admin\UserRole::delete/$1');
 $routes->delete('admin/vendors/services/(:num)', 'Admin\VendorService::delete/$1');
 $routes->delete('admin/vendors/level/(:num)', 'Admin\VendorLevel::delete/$1');

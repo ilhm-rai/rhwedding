@@ -54,6 +54,14 @@
         Vendor
     </div>
     <li class="nav-item">
+        <a class="nav-link" href="/vendor">
+            <div class="nav-icon">
+                <i class="fas fa-fw fa-home"></i>
+            </div>
+            <span>Dashboard</span>
+        </a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShop" aria-expanded="true" aria-controls="collapseUser">
             <div class="nav-icon">
             <i class="fas fa-fw fa-store"></i>
@@ -62,10 +70,10 @@
         </a>
         <div id="collapseShop" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-light py-2 collapse-inner rounded">
-                <a href="/admin/vendors" class="collapse-item">Vendor Profile</a>
-                <a href="/admin/vendors" class="collapse-item">Vendor Service</a>
-                <a href="/admin/vendors" class="collapse-item">Vendor Rating</a>
-                <a href="/admin/vendors" class="collapse-item">Vendor Decoration</a>
+                <a href="/vendor/myvendor/" class="collapse-item">Vendor Profile</a>
+                <a href="/vendor/myvendor/service" class="collapse-item">Vendor Service</a>
+                <a href="/vendor/myvendor/" class="collapse-item">Vendor Rating</a>
+                <a href="/vendor/myvendor/" class="collapse-item">Vendor Decoration</a>
             </div>
         </div>
     </li>
@@ -83,14 +91,6 @@
                 <a href="/admin/vendors" class="collapse-item">Product Category</a>
             </div>
         </div>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/">
-            <div class="nav-icon">
-                <i class="fas fa-fw fa-shopping-bag"></i>
-            </div>
-            <span>Product</span>
-        </a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/">
