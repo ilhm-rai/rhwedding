@@ -69,6 +69,7 @@ $routes->group('admin', function ($routes) {
     // admin/vendors
 	$routes->group('vendors', function($routes){
 		$routes->add('/', 'Admin\Vendor::index');
+		$routes->add('detail/(:num)', 'Admin\Vendor::detail/$1');
 		// admin/vendors/services
 		$routes->group('services', function($routes){
 			$routes->add('/', 'Admin\VendorService::index');
