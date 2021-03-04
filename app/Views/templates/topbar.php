@@ -5,7 +5,6 @@ if(logged_in()){
     $myInfo = $usersModel->getUser($id);
 }
 ?>
-
 <nav class="navbar navbar-expand navbar-light topbar mb-4 static-to">
 
     <!-- Sidebar Toggle (Topbar) -->

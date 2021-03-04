@@ -10,7 +10,7 @@
         <div class="col-md-3">
             <ul class="navbar-nav bg-white sidebar border-right">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/">
+                    <a class="nav-link active" href="/admin/user/detail/<?= $user['id']; ?>">
                         <div class="row">
                             <div class="nav-icon mr-3">
                                 <i class="fas fa-fw fa-user"></i>
@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">
+                    <a class="nav-link" href="/admin/user/vendoruser/<?= $user['id']; ?>">
                         <div class="row">
                             <div class="nav-icon mr-3">
                                 <i class="fas fa-fw fa-users"></i>

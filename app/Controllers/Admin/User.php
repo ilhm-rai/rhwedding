@@ -29,7 +29,18 @@ class User extends BaseController
             'title'  => 'Detail User | RH Wedding Planner',
             'user'  => $this->usersModel->getUser($id),
         ];
+        // dd($data);
         return view('admin/user/detail', $data);
+    }
+
+    public function vendoruser($id)
+    {
+        $data = [
+            'title'  => 'Detail User',
+            'user'  => $this->usersModel->getUser($id),
+        ];
+        // dd($data);
+        return view('vendor/myvendor/profile', $data);
     }
     
 }

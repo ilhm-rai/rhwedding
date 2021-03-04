@@ -3,8 +3,8 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\serviceModel;
-use App\Models\vendorModel;
+use App\Models\ServiceModel;
+use App\Models\VendorModel;
 
 class VendorService extends BaseController
 {

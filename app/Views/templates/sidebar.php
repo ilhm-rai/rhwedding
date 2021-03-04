@@ -1,3 +1,10 @@
+<?php 
+if(logged_in()){
+    $id = user()->id;
+    $usersModel = Model('UsersModel');
+    $myInfo = $usersModel->getUser($id);
+}
+?>
 <ul class="navbar-nav bg-white sidebar accordion" id="accordionSidebar">
 
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin/dashboard'); ?>">
@@ -71,9 +78,9 @@
         <div id="collapseShop" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-light py-2 collapse-inner rounded">
                 <a href="/vendor/myvendor/" class="collapse-item">Vendor Profile</a>
-                <a href="/vendor/myvendor/service" class="collapse-item">Vendor Service</a>
-                <a href="/vendor/myvendor/" class="collapse-item">Vendor Rating</a>
-                <a href="/vendor/myvendor/" class="collapse-item">Vendor Decoration</a>
+                <a href="/vendor/myvendor/service/<?= $myInfo['vendor_id']; ?>" class="collapse-item">Vendor Service</a>
+                <!-- <a href="/vendor/myvendor/" class="collapse-item">Vendor Rating</a> -->
+                <!-- <a href="/vendor/myvendor/" class="collapse-item">Vendor Decoration</a> -->
             </div>
         </div>
     </li>
