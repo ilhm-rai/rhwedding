@@ -4,13 +4,18 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class UsersModel extends Model
 {
     protected $table = 'users';
     protected $useTimestamps = true;
     protected $db;
 
 
+    protected $allowedFields = [
+        'email', 'username', 'password_hash', 'reset_hash', 'reset_at', 'reset_expires', 'activate_hash',
+        'status', 'status_message', 'active', 'force_pass_reset', 'permissions', 'deleted_at',
+    ];
+ 
     public function getUser($type = 'id', $value = false)
     {
         if ($value == false) {

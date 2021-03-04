@@ -96,7 +96,7 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img class="mr-2 img-profile rounded-circle" src="/img/default.svg">
-                <span class="d-none d-lg-inline text-gray-600 small mr-2"><?= (user()->full_name) ? user()->full_name : user()->username ?></span>
+                <span class="d-none d-lg-inline text-gray-600 small mr-2"><?= user()->username ?></span>
                 <span class="fa fa-angle-down text-wild-watermelon"></span>
             </a>
             <!-- Dropdown - User Information -->

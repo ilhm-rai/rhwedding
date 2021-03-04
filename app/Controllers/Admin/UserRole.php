@@ -3,18 +3,18 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\roleModel;
-use App\Models\userModel;
+use App\Models\RoleModel;
+use App\Models\UsersModel;
 class UserRole extends BaseController
 {
 
     protected $roleModel;
-    protected $userModel;
+    protected $usersModel;
 
     public function __construct()
     {
         $this->roleModel = new RoleModel();
-        $this->userModel = new UserModel();
+        $this->usersModel = new UsersModel();
     }
 
     public function index()
@@ -91,7 +91,7 @@ class UserRole extends BaseController
         $data = [
             'title'  => 'Detail Roles | RH Wedding Planner',
             'role'  => $this->roleModel->getWhere(['id' => $id])->getRowArray(),
-            'users'  => $this->userModel->getUsersByRole($id),
+            'users'  => $this->usersModel->getUsersByRole($id),
         ];
         // dd($data);
         return view('admin/user/role/detail', $data);

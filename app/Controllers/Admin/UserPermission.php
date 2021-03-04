@@ -3,14 +3,14 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\userModel;
+use App\Models\UsersModel;
 class UserPermission extends BaseController
 {
-    protected $userModel;
+    protected $usersModel;
 
     public function __construct()
     {
-        $this->userModel = new UserModel();
+        $this->usersModel = new UsersModel();
     }
 
     public function index()

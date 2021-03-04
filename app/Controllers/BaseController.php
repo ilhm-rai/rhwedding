@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-
+use App\Models\UsersModel;
 /**
  * Class BaseController
  *
@@ -19,6 +19,7 @@ use CodeIgniter\Controller;
 
 class BaseController extends Controller
 {
+
 
 	/**
 	 * An array of helpers to be loaded automatically upon

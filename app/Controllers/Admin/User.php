@@ -3,21 +3,21 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\UserModel;
+use App\Models\UsersModel;
 
 class User extends BaseController
 {
-    protected $userModel;
+    protected $usersModel;
     public function __construct()
     {
-        $this->userModel = new UserModel();
+        $this->usersModel = new UsersModel();
     }
 
     public function index()
     {
         $data = [
             'title'  => 'User List | RH Wedding Planner',
-            'users'  => $this->userModel->getUser(),
+            'users'  => $this->usersModel->getUser(),
         ];
         return view('admin/user/index', $data);
     }
@@ -27,7 +27,7 @@ class User extends BaseController
     {
         $data = [
             'title'  => 'Detail User | RH Wedding Planner',
-            'user'  => $this->userModel->getUser('username', $username),
+            'user'  => $this->usersModel->getUser('username', $username),
         ];
         return view('admin/user/detail', $data);
     }
