@@ -53,15 +53,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputFirst">First Name</label>
-                        <input type="text" class="form-control" id="inputFirst" placeholder="">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputLast">Last Name</label>
-                        <input type="text" class="form-control" id="inputLast" placeholder="">
-                    </div>
+                <div class="form-group">
+                    <label for="inputFullname">Username</label>
+                    <input type="text" class="form-control" id="inputFullname" value="<?= $user['full_name']; ?>">
                 </div>
                 <div class="form-group">
                     <label for="inputUsername">Username</label>
@@ -73,6 +67,17 @@
                     <div class="valid-feedback">
                         Email Verified!
                     </div>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contct</label>
+                    <input type="telp" class="form-control" id="contact" value="<?= $user['contact']; ?>">
+                </div>
+                <div class="form-group">
+                    <label for="postal_code">Postal Code</label>
+                    <input type="telp" class="form-control" id="postal_code" value="<?= $user['postal_code']; ?>">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" id="address" name="address" rows="4" ><?= $user['address']; ?></textarea>
                 </div>
             </form>
         </div>

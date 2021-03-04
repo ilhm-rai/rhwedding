@@ -16,22 +16,38 @@ class UsersModel extends Model
         'status', 'status_message', 'active', 'force_pass_reset', 'permissions', 'deleted_at',
     ];
  
-    public function getUser($type = 'id', $value = false)
+    public function getUser($id = false)
     {
-        if ($value == false) {
-            $query = "SELECT `ag`.`name` as `role_name`,`u`.`id`,`u`.`username`,`u`.`email`,`u`.`active`
-            FROM `auth_groups` AS `ag`
+        if(!$id){
+            
+            $query = "SELECT `u`.`id`,`u`.`username`,`u`.`email`,`u`.`active`,`ag`.`name` as `role_name`, `up`.`full_name`, `up`.`user_image`, `up`.`contact`, `up`.`address`, `up`.`city`, `up`.`province`, `up`.`postal_code`, `v`.`vendor_name`, `v`.`vendor_logo`,`v`.`vendor_billboard`,`v`.`vendor_description`,`v`.`active` AS `vendor_active`, `v`.`created_at` AS `vendor_create`
+            FROM `users` AS `u`
+            JOIN `users_profile` AS `up`
+            ON `u`.id = `up`.`user_id`
             JOIN `auth_groups_users` AS `agu`
-            ON `ag`.`id` = `agu`.`group_id`
-            JOIN `users` AS `u`
             ON `agu`.`user_id` = `u`.`id`
-        "; 
+            JOIN `auth_groups` AS `ag`
+            ON `ag`.`id` = `agu`.`group_id`
+            LEFT JOIN `vendors` AS `v`
+            ON `u`.`id` = `v`.`user_id`
+        ";
         return $this->db->query($query)->getResultArray();
-        } else {
-            return $this->where([$type => $value])->first();
+        }else{
+            $query = "SELECT `u`.`id`,`u`.`username`,`u`.`email`,`u`.`active`,`ag`.`name` as `role_name`, `up`.`full_name`, `up`.`user_image`, `up`.`contact`, `up`.`address`, `up`.`city`, `up`.`province`, `up`.`postal_code`, `v`.`vendor_name`, `v`.`vendor_logo`,`v`.`vendor_billboard`,`v`.`vendor_description`,`v`.`active` AS `vendor_active`, `v`.`created_at` AS `vendor_create`
+        FROM `users` AS `u`
+        JOIN `users_profile` AS `up`
+        ON `u`.id = `up`.`user_id`
+        JOIN `auth_groups_users` AS `agu`
+        ON `agu`.`user_id` = `u`.`id`
+        JOIN `auth_groups` AS `ag`
+        ON `ag`.`id` = `agu`.`group_id`
+        LEFT JOIN `vendors` AS `v`
+        ON `u`.`id` = `v`.`user_id`
+        WHERE `u`.`id` = $id
+        ";
         }
+        return $this->db->query($query)->getRowArray();
     }
-    
     public function getUsersByRole($id)
     {
         $query = "SELECT `ag`.`name` as `role_name`,`u`.`id`,`u`.`username`,`u`.`email`,`u`.`active`

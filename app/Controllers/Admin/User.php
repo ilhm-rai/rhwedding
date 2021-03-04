@@ -23,11 +23,11 @@ class User extends BaseController
     }
 
 
-    public function detail($username)
+    public function detail($id)
     {
         $data = [
             'title'  => 'Detail User | RH Wedding Planner',
-            'user'  => $this->usersModel->getUser('username', $username),
+            'user'  => $this->usersModel->getUser($id),
         ];
         return view('admin/user/detail', $data);
     }
