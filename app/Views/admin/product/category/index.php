@@ -1,4 +1,4 @@
-<?= $this->extend('template/admin'); ?>
+<?= $this->extend('templates/admin'); ?>
 
 <?= $this->section('content'); ?>
 <div class="container-fluid content-frame mb-5 shadow">
@@ -37,9 +37,9 @@
                             <div class="btn btn-success btn-sm">Active</div>
                         </td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                            <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                            <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
+                            <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
+                            <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></button>
+                            <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
                         </td>
                     </tr>
                     <tr>
@@ -51,9 +51,10 @@
                             <div class="btn btn-success btn-sm">Active</div>
                         </td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                            <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                            <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
+
+                            <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
+                            <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></button>
+                            <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
                         </td>
                     </tr>
                     <tr>
@@ -65,9 +66,10 @@
                             <div class="btn btn-success btn-sm">Active</div>
                         </td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                            <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                            <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
+
+                            <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
+                            <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></button>
+                            <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
                         </td>
                     </tr>
                 </tbody>
