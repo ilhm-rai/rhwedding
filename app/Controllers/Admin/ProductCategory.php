@@ -6,9 +6,9 @@ use App\Controllers\BaseController;
 
 class ProductCategory extends BaseController
 {
-    public function show()
+    public function index()
     {
         $data['title'] = 'Product Categories - RH Wedding';
-        return view('admin/product/product_category', $data);
+        return view('admin/product/category/index', $data);
     }
 }
