@@ -39,4 +39,12 @@ class User extends BaseController
         ];
         return view('admin/user/profile', $data);
     }
+
+    public function vendor()
+    {
+        $data = [
+            'title'  => 'My Vendor | RH Wedding Planner',
+        ];
+        return view('admin/user/vendor', $data);
+    }
 }

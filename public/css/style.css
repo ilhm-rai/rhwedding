@@ -203,3 +203,8 @@ body,
 .form-control.rounded-pill{
     padding-left: 15px;
 }
+
+.badge-geyser{
+    background-color: #d7e2e5;
+    color: #8F85FE;
+}

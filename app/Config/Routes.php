@@ -42,6 +42,7 @@ $routes->group('admin', function ($routes) {
 	$routes->group('users', function ($routes) {
 		$routes->add('/', 'Admin\User::index');
 		$routes->add('profile', 'Admin\User::profile');
+		$routes->add('vendor', 'Admin\User::vendor');
 		// admin/users/roles
 		$routes->group('roles', function ($routes) {
 			$routes->add('/', 'Admin\UserRole::index');
