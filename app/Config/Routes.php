@@ -8,7 +8,7 @@ $routes = Services::routes();
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
 if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
-    require SYSTEMPATH . 'Config/Routes.php';
+	require SYSTEMPATH . 'Config/Routes.php';
 }
 
 /**
@@ -36,13 +36,14 @@ $routes->get('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
 
 $routes->group('admin', function ($routes) {
-    $routes->add('/', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
-    $routes->add('dashboard', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
+	$routes->add('/', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
+	$routes->add('dashboard', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
 	// admin/users
-	$routes->group('users', function($routes){
+	$routes->group('users', function ($routes) {
 		$routes->add('/', 'Admin\User::index');
+		$routes->add('profile', 'Admin\User::profile');
 		// admin/users/roles
-		$routes->group('roles', function($routes){
+		$routes->group('roles', function ($routes) {
 			$routes->add('/', 'Admin\UserRole::index');
 			$routes->add('add', 'Admin\UserRole::add');
 			$routes->add('save', 'Admin\UserRole::save');
@@ -51,15 +52,15 @@ $routes->group('admin', function ($routes) {
 			$routes->add('detail/(:num)', 'Admin\UserRole::detail/$1');
 		});
 		// admin/users/permissions
-		$routes->group('permissions', function($routes){
+		$routes->group('permissions', function ($routes) {
 			$routes->add('/', 'Admin\UserPermission::index');
 		});
 	});
-    // admin/vendors
-	$routes->group('vendors', function($routes){
+	// admin/vendors
+	$routes->group('vendors', function ($routes) {
 		$routes->add('/', 'Admin\Vendor::index');
 		// admin/vendors/services
-		$routes->group('services', function($routes){
+		$routes->group('services', function ($routes) {
 			$routes->add('/', 'Admin\VendorService::index');
 			$routes->add('add', 'Admin\VendorService::add');
 			$routes->add('save', 'Admin\VendorService::save');
@@ -68,7 +69,7 @@ $routes->group('admin', function ($routes) {
 			$routes->add('detail/(:num)', 'Admin\VendorService::detail/$1');
 		});
 		// admin/vendors/leve
-		$routes->group('level', function($routes){
+		$routes->group('level', function ($routes) {
 			$routes->add('/', 'Admin\VendorLevel::index');
 			$routes->add('add', 'Admin\VendorLevel::add');
 			$routes->add('save', 'Admin\VendorLevel::save');
@@ -77,15 +78,22 @@ $routes->group('admin', function ($routes) {
 			$routes->add('detail/(:num)', 'Admin\VendorLevel::detail/$1');
 		});
 	});
-	$routes->group('products', function($routes){});
+	$routes->group('products', function ($routes) {
+		$routes->add('/', 'Admin\Product::index');
+
+		$routes->group('category', function ($routes) {
+			$routes->add('/', 'Admin\ProductCategory::index');
+		});
+	});
 	$routes->add('permissions', 'Admin\User::userPermission');
 	$routes->add('vendors', 'Admin\Vendor::index');
-	$routes->add('products', 'Admin\Product::index');
 });
 
 $routes->delete('admin/users/roles/(:num)', 'Admin\UserRole::delete/$1');
 $routes->delete('admin/vendors/services/(:num)', 'Admin\VendorService::delete/$1');
 $routes->delete('admin/vendors/level/(:num)', 'Admin\VendorLevel::delete/$1');
+
+$routes->delete('users/profile', 'User::profile');
 
 
 
@@ -120,5 +128,5 @@ $routes->group('admin/products/categories', function ($routes) {
  * needing to reload it.
  */
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
-    require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
+	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
