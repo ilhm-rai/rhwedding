@@ -5,7 +5,7 @@
         <div class="col-3">
             <ul class="navbar-nav bg-white sidebar accordion border-right pt-4" id="accordionSidebar">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin">
+                    <a class="nav-link active" href="/admin/users/profile">
                         <div class="nav-icon">
                             <i class="fas fa-fw fa-user"></i>
                         </div>
@@ -13,7 +13,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin">
+                    <a class="nav-link" href="/admin/vendors/my">
                         <div class="nav-icon">
                             <i class="fas fa-fw fa-store"></i>
                         </div>
