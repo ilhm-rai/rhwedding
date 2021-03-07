@@ -37,7 +37,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVendor" aria-expanded="true" aria-controls="collapseUser">
             <div class="nav-icon">
-                <i class="fas fa-fw fa-users"></i>
+                <i class="fas fa-fw fa-store"></i>
             </div>
             <span>Vendors</span>
         </a>
@@ -50,12 +50,18 @@
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct">
             <div class="nav-icon">
                 <i class="fas fa-fw fa-shopping-bag"></i>
             </div>
-            <span>Product</span>
+            <span>Products</span>
         </a>
+        <div id="collapseProduct" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
+            <div class="bg-light py-2 collapse-inner rounded">
+                <a href="/admin/products" class="collapse-item">Product List</a>
+                <a href="/admin/products/category" class="collapse-item">Product Category</a>
+            </div>
+        </div>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/">
