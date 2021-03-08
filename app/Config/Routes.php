@@ -82,6 +82,7 @@ $routes->group('admin', function ($routes) {
 	});
 	$routes->group('products', function ($routes) {
 		$routes->add('/', 'Admin\Product::index');
+		$routes->add('add', 'Admin\Product::add');
 
 		$routes->group('category', function ($routes) {
 			$routes->add('/', 'Admin\ProductCategory::index');

@@ -17,4 +17,10 @@ class Product extends BaseController
         $data['title'] = 'Products Catalog - RH Wedding';
         return view('admin/product/catalog', $data);
     }
+
+    public function add()
+    {
+        $data['title'] = 'Add New Product - RH Wedding';
+        return view('admin/product/add', $data);
+    }
 }
