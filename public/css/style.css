@@ -1,6 +1,7 @@
 body,
 .text-body {
-  color: #3c4043 !important;
+  /* color: #3c4043 !important; */
+  color: #7e7e7e !important;
 }
 
 .nav-link .nav-icon {
@@ -14,8 +15,18 @@ body,
   align-items: center;
 }
 
+.btn-action,
 .sidebar .nav-link .nav-icon {
-  background-color: rgba(228, 228, 229, 0.45);
+  /* background-color: rgba(228, 228, 229, 0.45); */
+  background-color: rgba(212, 212, 212, 0.45);
+}
+
+.btn-action {
+  color: #808090;
+}
+
+.btn-action:hover {
+  background-color: rgba(177, 177, 177, 0.45);
 }
 
 .nav-link i {
@@ -110,14 +121,14 @@ video {
   background-color: white;
   color: #ff5876;
   border: 1px solid #ff5876;
-  font-weight: 500;
+  /* font-weight: 500; */
 }
 
 .btn-outline-wild-watermelon:hover,
 .btn-wild-watermelon {
   background-color: #ff5876;
   color: white;
-  font-weight: 500;
+  /* font-weight: 500; */
 }
 
 .btn-wild-watermelon:hover {
@@ -195,4 +206,18 @@ video {
 
 .td-align-middle td {
   vertical-align: middle;
+}
+
+.form-group > label,
+.form-group small {
+  margin-left: 15px;
+}
+
+.form-control.rounded-pill {
+  padding-left: 15px;
+}
+
+.badge-geyser {
+  background-color: #d7e2e5;
+  color: #8f85fe;
 }

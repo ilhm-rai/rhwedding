@@ -1,11 +1,11 @@
-<?= $this->extend('template/admin'); ?>
+<?= $this->extend('templates/admin'); ?>
 
 <?= $this->section('content'); ?>
 <div class="container-fluid content-frame mb-5 shadow">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="content-heading mb-0 text-gray-800">Products</h1>
-        <a href="#" class="d-block d-sm-inline-block btn rounded-pill btn-wild-watermelon"><i class="fas fa-plus-square mr-1"></i> Add</a>
+        <a href="#" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill"><i class="fas fa-plus-square mr-1"></i> Add</a>
     </div>
     <div class="row mb-4">
         <div class="col">
@@ -29,7 +29,7 @@
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </div>
-            <button type="submit" class="btn btn-wild-watermelon btn-sm rounded-pill">Find</button>
+            <button type="submit" class="btn btn-wild-watermelon rounded-pill btn-sm">Find</button>
         </div>
     </div>
     <div class="table-responsive">
@@ -77,7 +77,7 @@
                             <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                         </div>
                     </td>
-                    <td><img src="<?= base_url('img/vendors/example-1.png'); ?>" alt="" class="w-100"></td>
+                    <td><img src="<?= base_url('img/vendors/logo/example-1.png'); ?>" alt="" class="w-100"></td>
                     <td>ARTHAUS ASPEN</td>
                     <td>Photography</td>
                     <td>Rp4.000.000,-</td>
@@ -85,9 +85,10 @@
                         <button type="button" class="btn btn-success btn-sm">Active</button>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
+
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></button>
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
                     </td>
                 </tr>
                 <tr>
@@ -98,7 +99,7 @@
                             <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                         </div>
                     </td>
-                    <td><img src="<?= base_url('img/vendors/example-2.jpg'); ?>" alt="" class="w-100"></td>
+                    <td><img src="<?= base_url('img/vendors/logo/example-2.png'); ?>" alt="" class="w-100"></td>
                     <td>Owl Creative</td>
                     <td>Decoration</td>
                     <td>Rp4.000.000,-</td>
@@ -106,9 +107,10 @@
                         <button type="button" class="btn btn-success btn-sm">Active</button>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
+
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></button>
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
                     </td>
                 </tr>
                 <tr>
@@ -119,7 +121,7 @@
                             <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                         </div>
                     </td>
-                    <td><img src="<?= base_url('img/vendors/example-3.jpg'); ?>" alt="" class="w-100"></td>
+                    <td><img src="<?= base_url('img/vendors/logo/example-3.png'); ?>" alt="" class="w-100"></td>
                     <td>Isabel Giles</td>
                     <td>Hair&Makeup</td>
                     <td>Rp4.000.000,-</td>
@@ -127,9 +129,10 @@
                         <button type="button" class="btn btn-success btn-sm">Active</button>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
+
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></button>
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
                     </td>
                 </tr>
                 <tr>
@@ -140,7 +143,7 @@
                             <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                         </div>
                     </td>
-                    <td><img src="<?= base_url('img/vendors/example-4.png'); ?>" alt="" class="w-100"></td>
+                    <td><img src="<?= base_url('img/vendors/logo/example-4.png'); ?>" alt="" class="w-100"></td>
                     <td>Monica Lin</td>
                     <td>Hair&Makeup</td>
                     <td>Rp4.000.000,-</td>
@@ -148,9 +151,9 @@
                         <button type="button" class="btn btn-success btn-sm">Active</button>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></button>
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
                     </td>
                 </tr>
                 <tr>
@@ -161,7 +164,7 @@
                             <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                         </div>
                     </td>
-                    <td><img src="<?= base_url('img/vendors/example-5.png'); ?>" alt="grand-aston-bali" class="w-100"></td>
+                    <td><img src="<?= base_url('img/vendors/logo/logo2.png'); ?>" alt="sarovar" class="w-100"></td>
                     <td>SAROVAR</td>
                     <td>Venue</td>
                     <td>Rp4.000.000,-</td>
@@ -169,9 +172,10 @@
                         <button type="button" class="btn btn-success btn-sm">Active</button>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
+
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></button>
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
                     </td>
                 </tr>
                 <tr>
@@ -182,7 +186,7 @@
                             <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                         </div>
                     </td>
-                    <td><img src="<?= base_url('img/vendors/example-6.png'); ?>" alt="" class="w-100"></td>
+                    <td><img src="<?= base_url('img/vendors/logo/logo1.png'); ?>" alt="grand-aston-bali" class="w-100"></td>
                     <td>GRAND ASTON BALI</td>
                     <td>Venue</td>
                     <td>Rp4.000.000,-</td>
@@ -190,9 +194,9 @@
                         <button type="button" class="btn btn-success btn-sm">Active</button>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-success btn-sm rounded-pill small">Detail</button>
-                        <button type="button" class="btn btn-info btn-sm rounded-pill small">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button>
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></button>
+                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
                     </td>
                 </tr>
             </tbody>

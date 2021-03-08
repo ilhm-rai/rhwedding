@@ -33,6 +33,7 @@ class User extends BaseController
         return view('admin/user/detail', $data);
     }
 
+
     public function vendoruser($id)
     {
         $data = [
@@ -43,4 +44,11 @@ class User extends BaseController
         return view('vendor/myvendor/profile', $data);
     }
     
+    public function profile()
+    {
+        $data = [
+            'title'  => 'Profile | RH Wedding Planner',
+        ];
+        return view('admin/user/profile', $data);
+    }
 }
