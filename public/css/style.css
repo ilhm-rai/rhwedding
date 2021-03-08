@@ -115,6 +115,11 @@ body,
     border: 1px solid #FF5876;
 }
 
+.btn-gray {
+    background-color: #7E7E7E;
+    color: white;
+}
+
 .btn-outline-wild-watermelon:hover,
 .btn-wild-watermelon {
     background-color: #FF5876;
@@ -195,7 +200,7 @@ body,
     vertical-align: middle;
 }
 
-.form-group > label,
+.form-group > label.v-form-label,
 .form-group small {
     margin-left: 15px;
 }
@@ -207,4 +212,22 @@ body,
 .badge-geyser{
     background-color: #d7e2e5;
     color: #8F85FE;
+}
+
+.video-add,
+.img-add {
+    border: 1px solid #fa4566;
+    border-radius: 25px;
+    border-style: dashed;
+    padding: 5px;
+    width: 150px;
+    height: 168px;
+    background: url("/img/plus-icon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.video-add {
+    width: 100%;
+    min-height: 150px;
 }
