@@ -5,7 +5,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="content-heading mb-0 text-gray-800">Products</h1>
-        <a href="#" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill"><i class="fas fa-plus-square mr-1"></i> Add</a>
+        <a href="/admin/products/add" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill"><i class="fas fa-plus-square mr-1"></i> Add</a>
     </div>
     <div class="row mb-4">
         <div class="col">
