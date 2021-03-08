@@ -38,11 +38,11 @@
                     <img src="/img/jumbotron-admin.jpg" alt="" class="img-fluid mb-4">
                     <form>
                         <div class="form-group">
-                            <label for="owner">Owner</label>
+                            <label for="owner" class="v-form-label">Owner</label>
                             <input type="text" class="form-control rounded-pill" id="owner">
                         </div>
                         <div class="form-group">
-                            <label for="services">Services</label>
+                            <label for="services" class="v-form-label">Services</label>
                             <div class="service-group d-block ml-3">
                                 <span class="badge badge-geyser p-2">Wedding Planner</span>
                                 <span class="badge badge-geyser p-2">Makeup Artist</span>
@@ -50,11 +50,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="address">Address</label>
+                            <label for="address" class="v-form-label">Address</label>
                             <textarea class="form-control" id="address" rows="5" style="border-radius: 20px;"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="description">Description</label>
+                            <label for="description" class="v-form-label">Description</label>
                             <textarea class="form-control" id="description" rows="5" style="border-radius: 20px;"></textarea>
                         </div>
                         <button type="submit" class="btn btn-wild-watermelon rounded">Save</button>
