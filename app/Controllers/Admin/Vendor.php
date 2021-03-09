@@ -23,6 +23,17 @@ class Vendor extends BaseController
         return view('admin/vendors/index', $data);
     }
 
+
+    public function detail($id)
+    {
+        $data = [
+            'title'  => 'My Vendor',
+            'vendor'  => $this->vendorModel->getVendorBy($id),
+        ];
+        // dd($data);
+        return view('admin/vendors/detail', $data);
+    }
+
     public function myVendor()
     {
         $data = [

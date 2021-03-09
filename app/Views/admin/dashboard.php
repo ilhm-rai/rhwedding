@@ -4,6 +4,7 @@
 
 <img src="<?= base_url('img/jumbotron-admin.jpg'); ?>" class="img-fluid mb-4" alt="Jumbotron image">
 
+
 <!-- Content Row -->
 <div class="row">
 
@@ -13,12 +14,12 @@
             <div class="card-body text-white">
                 <div class="row no-gutters align-items-center">
                     <div class="col-auto mr-3">
-                        <i class="fas fa-calendar fa-2x "></i>
+                        <i class="fas fa-wallet fa-2x"></i>
                     </div>
                     <div class="col">
                         <div class="text-xs font-weight-bold text-uppercase mb-1">
-                            Earnings (Monthly)</div>
-                        <div class="h5 mb-0 font-weight-bold">Rp. 21.000.000</div>
+                            My Wallet</div>
+                        <div class="h5 mb-0 font-weight-bold">Rp103.000.000</div>
                     </div>
                 </div>
             </div>
@@ -35,8 +36,8 @@
                     </div>
                     <div class="col">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Earnings (Annual)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. 103.000.000</div>
+                            Earnings (Monthly)</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Rp21.000.000</div>
                     </div>
                 </div>
             </div>
@@ -52,7 +53,7 @@
                         <i class="fas fa-calendar-alt fa-2x text-gray-300"></i>
                     </div>
                     <div class="col">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Events
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Events
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">

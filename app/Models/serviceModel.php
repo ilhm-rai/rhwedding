@@ -25,7 +25,17 @@ class ServiceModel extends Model
             GROUP BY `s`.`id`
             ORDER BY `s`.`id` ASC
         ";
-
             return $this->db->query($query)->getResultArray();
     }    
+
+    public function getServiceByVendorId($id)
+    {
+        $query = "SELECT `s`.*
+            FROM `vendors_services` AS `vs`
+            JOIN `services` AS `s`
+            ON `s`.`id` = `vs`. `service_id`
+            WHERE `vs`.`vendor_id` = $id
+        ";
+            return $this->db->query($query)->getResultArray();
+    }
 }

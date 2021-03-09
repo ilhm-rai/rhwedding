@@ -43,7 +43,7 @@
                         <td><?= $user['role_name']; ?></td>
                         <td> <button type="button" class="btn <?= ($user['active'] == 1) ? 'btn-success' : 'btn-warning'; ?> btn-sm small"><?= ($user['active'] == 1) ? 'Active' : 'Disable'; ?></button></td>
                         <td class="text-center">
-                            <a href="/admin/user/detail/<?= $user['username']; ?>" class="btn btn-success btn-sm rounded-pill small">Detail</a>
+                            <a href="/admin/user/detail/<?= $user['id']; ?>" class="btn btn-success btn-sm rounded-pill small">Detail</a>
                             <a href="/admin/user/edit/<?= $user['username']; ?>" class="btn btn-info btn-sm rounded-pill small">Edit</a>
                             <form action="/user/<?= $user['id']; ?>" method="POST" class="d-inline">
                                 <?= csrf_field(); ?>

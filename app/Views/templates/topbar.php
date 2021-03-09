@@ -1,3 +1,10 @@
+<?php 
+if(logged_in()){
+    $id = user()->id;
+    $usersModel = Model('UsersModel');
+    $myInfo = $usersModel->getUser($id);
+}
+?>
 <nav class="navbar navbar-expand navbar-light topbar mb-4 static-to">
 
     <!-- Sidebar Toggle (Topbar) -->
@@ -95,8 +102,8 @@
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="mr-2 img-profile rounded-circle" src="/img/default.svg">
-                <span class="d-none d-lg-inline text-gray-600 small mr-2"><?= (user()->full_name) ? user()->full_name : user()->username ?></span>
+                <img class="mr-2 img-profile rounded-circle" src="/img/users/profile/<?= $myInfo['user_image']; ?>">
+                <span class="d-none d-lg-inline text-gray-600 small mr-2"><?= $myInfo['full_name']; ?></span>
                 <span class="fa fa-angle-down text-wild-watermelon"></span>
             </a>
             <!-- Dropdown - User Information -->

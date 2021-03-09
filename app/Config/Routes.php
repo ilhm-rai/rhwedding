@@ -35,6 +35,17 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
 
+
+// route for vendor
+$routes->group('/vendor', function ($routes) {
+	$routes->add('/', 'Vendor\Dashboard::index', ['filter' => 'role:Admin,Vendor']);
+	$routes->group('myvendor', function($routes){
+		$routes->add('/', 'Vendor\Myvendor::index');
+		$routes->add('service/(:num)', 'Vendor\Myvendor::service/$1');
+	});
+});
+
+
 $routes->group('admin', function ($routes) {
 	$routes->add('/', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
 	$routes->add('dashboard', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
@@ -59,6 +70,7 @@ $routes->group('admin', function ($routes) {
 	// admin/vendors
 	$routes->group('vendors', function ($routes) {
 		$routes->add('/', 'Admin\Vendor::index');
+		$routes->add('detail/(:num)', 'Admin\Vendor::detail/$1');
 		$routes->add('my', 'Admin\Vendor::myVendor');
 		$routes->add('my/service', 'Admin\Vendor::service');
 		// admin/vendors/services
@@ -91,6 +103,9 @@ $routes->group('admin', function ($routes) {
 	$routes->add('permissions', 'Admin\User::userPermission');
 	$routes->add('vendors', 'Admin\Vendor::index');
 });
+
+
+
 
 $routes->delete('admin/users/roles/(:num)', 'Admin\UserRole::delete/$1');
 $routes->delete('admin/vendors/services/(:num)', 'Admin\VendorService::delete/$1');

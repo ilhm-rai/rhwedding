@@ -11,6 +11,26 @@ class VendorModel extends Model
     protected $db;
 
 
+    public function getVendorBy($id)
+    {
+        $query = "SELECT `u`.`id`,`u`.`username`,`u`.`email`,`u`.`active`,`ag`.`name` as `role_name`, `up`.`full_name`, `up`.`user_image`, `up`.`contact`, `up`.`address`, `up`.`city`, `up`.`province`, `up`.`postal_code`, `v`.`id` AS `vendor_id` ,`v`.`vendor_name`, `v`.`vendor_logo`,`v`.`vendor_billboard`,`v`.`vendor_description`,`vl`.`name` AS `vendor_level` ,`v`.`active` AS `vendor_active`, `v`.`created_at` AS `vendor_create`
+        FROM `users` AS `u`
+        JOIN `users_profile` AS `up`
+        ON `u`.id = `up`.`user_id`
+        JOIN `auth_groups_users` AS `agu`
+        ON `agu`.`user_id` = `u`.`id`
+        JOIN `auth_groups` AS `ag`
+        ON `ag`.`id` = `agu`.`group_id`
+        LEFT JOIN `vendors` AS `v`
+        ON `u`.`id` = `v`.`user_id`
+        JOIN `vendors_level` AS `vl`
+        ON `v`.`vendor_level_id` = `vl`.`id`
+        WHERE `v`.`id` = $id
+        ";
+        return $this->db->query($query)->getRowArray();
+    }
+
+
     public function getVendor($type = 'id', $value = false)
     {
         if ($value == false) {

@@ -1,3 +1,10 @@
+<?php 
+if(logged_in()){
+    $id = user()->id;
+    $usersModel = Model('UsersModel');
+    $myInfo = $usersModel->getUser($id);
+}
+?>
 <ul class="navbar-nav bg-white sidebar accordion" id="accordionSidebar">
 
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin/dashboard'); ?>">
@@ -49,17 +56,55 @@
             </div>
         </div>
     </li>
+      <!-- Heading -->
+    <div class="sidebar-heading">
+        Vendor
+    </div>
     <li class="nav-item">
+<<<<<<< HEAD
+        <a class="nav-link" href="/vendor">
+=======
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct">
+>>>>>>> 6c425bfe05a4c4ee82b08babc9a1f7200bf7f21b
             <div class="nav-icon">
-                <i class="fas fa-fw fa-shopping-bag"></i>
+                <i class="fas fa-fw fa-home"></i>
+            </div>
+            <span>Dashboard</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShop" aria-expanded="true" aria-controls="collapseUser">
+            <div class="nav-icon">
+            <i class="fas fa-fw fa-store"></i>
+            </div>
+            <span>My Vendor</span>
+        </a>
+        <div id="collapseShop" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
+            <div class="bg-light py-2 collapse-inner rounded">
+                <a href="/vendor/myvendor/" class="collapse-item">Vendor Profile</a>
+                <a href="/vendor/myvendor/service/<?= $myInfo['vendor_id']; ?>" class="collapse-item">Vendor Service</a>
+                <!-- <a href="/vendor/myvendor/" class="collapse-item">Vendor Rating</a> -->
+                <!-- <a href="/vendor/myvendor/" class="collapse-item">Vendor Decoration</a> -->
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseUser">
+            <div class="nav-icon">
+            <i class="fas fa-fw fa-store"></i>
             </div>
             <span>Products</span>
         </a>
         <div id="collapseProduct" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-light py-2 collapse-inner rounded">
+<<<<<<< HEAD
+                <a href="/admin/vendors" class="collapse-item">Product List</a>
+                <a href="/admin/vendors" class="collapse-item">Product Catalog</a>
+                <a href="/admin/vendors" class="collapse-item">Product Category</a>
+=======
                 <a href="/admin/products" class="collapse-item">Product List</a>
                 <a href="/admin/products/category" class="collapse-item">Product Category</a>
+>>>>>>> 6c425bfe05a4c4ee82b08babc9a1f7200bf7f21b
             </div>
         </div>
     </li>

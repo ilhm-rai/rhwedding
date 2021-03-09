@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Feb 2021 pada 14.44
+-- Waktu pembuatan: 04 Mar 2021 pada 11.40
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -44,7 +44,13 @@ INSERT INTO `auth_activation_attempts` (`id`, `ip_address`, `user_agent`, `token
 (2, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.146 Safari/537.36', 'b44b37d6b6189a8e8ecc3d22ad749e0d', '2021-02-09 04:40:04'),
 (3, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36', 'd8c70315ef7869c070d837b71b0e6243', '2021-02-09 08:01:53'),
 (4, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36', '7cc1e3dbd514daaa56f34e158417c4f0', '2021-02-09 08:55:59'),
-(5, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36', '7cc1e3dbd514daaa56f34e158417c4f0', '2021-02-09 08:56:14');
+(5, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36', '7cc1e3dbd514daaa56f34e158417c4f0', '2021-02-09 08:56:14'),
+(6, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Safari/537.36', '38104d53defd216884c16e28f09915ee', '2021-03-04 01:19:14'),
+(7, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Safari/537.36', '73a17ad45c0cea060980456036622cc3', '2021-03-04 01:22:34'),
+(8, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Safari/537.36', '76d396e5c10d7f9519d548ec0777a6fc', '2021-03-04 01:27:00'),
+(9, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Safari/537.36', 'b28e656a31a38f442edaf201ad6b1a3c', '2021-03-04 01:30:14'),
+(10, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Safari/537.36', '73a17ad45c0cea060980456036622cc3', '2021-03-04 01:30:46'),
+(11, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Safari/537.36', '9a01a96cb28f2220231d066aae13503c', '2021-03-04 01:47:29');
 
 -- --------------------------------------------------------
 
@@ -98,8 +104,8 @@ CREATE TABLE `auth_groups_users` (
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (1, 1),
 (1, 5),
-(2, 6),
-(3, 4);
+(3, 4),
+(3, 12);
 
 -- --------------------------------------------------------
 
@@ -145,7 +151,17 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (22, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-21 01:32:53', 1),
 (23, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-21 07:39:00', 1),
 (24, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-24 00:33:46', 1),
-(25, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-24 06:45:23', 1);
+(25, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-24 06:45:23', 1),
+(26, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-24 10:26:47', 1),
+(27, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-25 09:04:16', 1),
+(28, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-02-28 08:01:50', 1),
+(29, '::1', 'muhamadarsal71@gmail.com', 6, '2021-03-03 06:42:00', 1),
+(30, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-03 06:42:55', 1),
+(31, '::1', 'muhamadarsal71@gmail.com', 8, '2021-03-04 01:19:31', 1),
+(32, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-04 01:20:21', 1),
+(33, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-04 01:30:46', 1),
+(34, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-04 01:48:03', 1),
+(35, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-04 04:10:38', 1);
 
 -- --------------------------------------------------------
 
@@ -319,7 +335,7 @@ CREATE TABLE `products_review` (
 CREATE TABLE `services` (
   `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
-  `icon` varchar(255) DEFAULT NULL,
+  `active` int(11) DEFAULT 1,
   `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -327,8 +343,9 @@ CREATE TABLE `services` (
 -- Dumping data untuk tabel `services`
 --
 
-INSERT INTO `services` (`id`, `name`, `icon`, `description`) VALUES
-(1, 'Venue', NULL, NULL);
+INSERT INTO `services` (`id`, `name`, `active`, `description`) VALUES
+(1, 'Venue', 1, NULL),
+(4, 'Decoration', 1, '');
 
 -- --------------------------------------------------------
 
@@ -341,7 +358,6 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `username` varchar(30) DEFAULT NULL,
   `password_hash` varchar(255) NOT NULL,
-  `profile_id` int(11) UNSIGNED DEFAULT NULL,
   `reset_hash` varchar(255) DEFAULT NULL,
   `reset_at` datetime DEFAULT NULL,
   `reset_expires` datetime DEFAULT NULL,
@@ -359,11 +375,11 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `profile_id`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'rizkyardi.ilhami06@gmail.com', 'rizkyardi', '$2y$10$G5j5k7jijPQRT344Lrt6Qukr8M.KhzktVz9R6Sg.2lPMRHDQjxDLy', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:16:46', '2021-02-09 04:17:59', NULL),
-(4, 'rizky.mahasiswa@stmik-tasikmalaya.ac.id', 'rizkymhs', '$2y$10$o1VNfJulkKi79N8alnbUau.4hN8BU0CK4jj7L7h/hjfc83nkBuC52', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:38:59', '2021-02-09 04:40:05', NULL),
-(5, 'muhamadarsaludin71@gmail.com', 'arsal', '$2y$10$jrA4SNtwP2SWzc6mGhup6.9mXkG1HH1n5q3CZL0EclnEoGKoJDxBi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 08:00:49', '2021-02-09 08:01:53', NULL),
-(6, 'muhamadarsal71@gmail.com', 'arsal71', '$2y$10$wINjXA9yc9hY4lJs5hphLOZ8CxlfHPSU8hWvA3Sj1/mtXZtz2DdbK', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 08:54:00', '2021-02-09 08:55:59', NULL);
+INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'rizkyardi.ilhami06@gmail.com', 'rizkyardi', '$2y$10$G5j5k7jijPQRT344Lrt6Qukr8M.KhzktVz9R6Sg.2lPMRHDQjxDLy', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:16:46', '2021-02-09 04:17:59', NULL),
+(4, 'rizky.mahasiswa@stmik-tasikmalaya.ac.id', 'rizkymhs', '$2y$10$o1VNfJulkKi79N8alnbUau.4hN8BU0CK4jj7L7h/hjfc83nkBuC52', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 04:38:59', '2021-02-09 04:40:05', NULL),
+(5, 'muhamadarsaludin71@gmail.com', 'arsal', '$2y$10$jrA4SNtwP2SWzc6mGhup6.9mXkG1HH1n5q3CZL0EclnEoGKoJDxBi', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-02-09 08:00:49', '2021-02-09 08:01:53', NULL),
+(12, 'muhamadarsal71@gmail.com', 'arsal71', '$2y$10$jD9H/47/Nn1QdyTnH6EfW.3yaD928XZo19B1E2Ae82QDvEmr0DZZK', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-03-04 01:47:11', '2021-03-04 01:47:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -373,6 +389,7 @@ INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `profile_id`, `
 
 CREATE TABLE `users_profile` (
   `id` int(11) UNSIGNED NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
   `full_name` varchar(128) DEFAULT NULL,
   `user_image` varchar(255) DEFAULT 'default.svg',
   `contact` varchar(15) DEFAULT NULL,
@@ -381,6 +398,16 @@ CREATE TABLE `users_profile` (
   `province` varchar(50) DEFAULT NULL,
   `postal_code` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `users_profile`
+--
+
+INSERT INTO `users_profile` (`id`, `user_id`, `full_name`, `user_image`, `contact`, `address`, `city`, `province`, `postal_code`) VALUES
+(1, 5, 'Muhamad Arsaludin', 'default.svg', NULL, NULL, NULL, NULL, NULL),
+(4, 12, 'arsal71', 'default.svg', NULL, NULL, NULL, NULL, NULL),
+(5, 4, 'rizkymhs', 'default.svg', NULL, NULL, NULL, NULL, NULL),
+(6, 1, 'rizkyardi', 'default.svg', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -394,6 +421,7 @@ CREATE TABLE `vendors` (
   `vendor_code` varchar(20) NOT NULL,
   `vendor_name` varchar(255) NOT NULL,
   `vendor_logo` varchar(255) NOT NULL DEFAULT 'default.svg',
+  `vendor_billboard` varchar(255) NOT NULL DEFAULT 'default.png',
   `vendor_level_id` int(11) UNSIGNED NOT NULL DEFAULT 1,
   `vendor_description` text DEFAULT NULL,
   `active` int(1) NOT NULL DEFAULT 1,
@@ -405,9 +433,10 @@ CREATE TABLE `vendors` (
 -- Dumping data untuk tabel `vendors`
 --
 
-INSERT INTO `vendors` (`id`, `user_id`, `vendor_code`, `vendor_name`, `vendor_logo`, `vendor_level_id`, `vendor_description`, `active`, `created_at`, `updated_at`) VALUES
-(2, 5, 'VND_0220210001', 'Grand Aston Bali', 'logo1.png', 4, NULL, 1, '2021-02-24 14:48:01', '2021-02-24 14:48:01'),
-(3, 6, 'VND_0220210002', 'Sarovar', 'logo2.png', 1, NULL, 1, '2021-02-24 14:50:28', '2021-02-24 14:50:28');
+INSERT INTO `vendors` (`id`, `user_id`, `vendor_code`, `vendor_name`, `vendor_logo`, `vendor_billboard`, `vendor_level_id`, `vendor_description`, `active`, `created_at`, `updated_at`) VALUES
+(2, 1, 'VND_0220210001', 'Grand Aston Bali', 'logo1.png', 'default.png', 4, NULL, 1, '2021-02-24 14:48:01', '2021-02-24 14:48:01'),
+(3, 4, 'VND_0220210002', 'Sarovar', 'logo2.png', 'default.png', 1, NULL, 1, '2021-02-24 14:50:28', '2021-02-24 14:50:28'),
+(4, 5, 'VND_0220210001', 'RH', 'default.svg', 'rhvideo.mp4', 4, 'Official vendor from RH Wedding Planner', 1, '2021-03-03 19:45:09', '2021-03-03 19:45:09');
 
 -- --------------------------------------------------------
 
@@ -428,7 +457,7 @@ CREATE TABLE `vendors_level` (
 INSERT INTO `vendors_level` (`id`, `name`, `description`) VALUES
 (1, 'Classic', NULL),
 (2, 'Silver', NULL),
-(3, 'Gold', NULL),
+(3, 'Gold', ''),
 (4, 'Platinum', NULL);
 
 -- --------------------------------------------------------
@@ -572,14 +601,14 @@ ALTER TABLE `services`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `profile_id` (`profile_id`);
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indeks untuk tabel `users_profile`
 --
 ALTER TABLE `users_profile`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indeks untuk tabel `vendors`
@@ -611,7 +640,7 @@ ALTER TABLE `vendors_services`
 -- AUTO_INCREMENT untuk tabel `auth_activation_attempts`
 --
 ALTER TABLE `auth_activation_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_groups`
@@ -623,7 +652,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
@@ -677,31 +706,31 @@ ALTER TABLE `products_review`
 -- AUTO_INCREMENT untuk tabel `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `users_profile`
 --
 ALTER TABLE `users_profile`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `vendors`
 --
 ALTER TABLE `vendors`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `vendors_level`
 --
 ALTER TABLE `vendors_level`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `vendors_services`
@@ -774,10 +803,10 @@ ALTER TABLE `products_review`
   ADD CONSTRAINT `products_review_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `users`
+-- Ketidakleluasaan untuk tabel `users_profile`
 --
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`profile_id`) REFERENCES `users_profile` (`id`) ON UPDATE CASCADE;
+ALTER TABLE `users_profile`
+  ADD CONSTRAINT `users_profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `vendors`
