@@ -39,28 +39,46 @@
         <div class="form-group row">
             <label for="productImage" class="col-sm-2 col-form-label">Product Image</label>
             <div class="col-sm-10 d-flex justify-content-between">
-                <div class="custom-file img-add">
-                    <input type="file" class="custom-file-input h-100" id="validatedCustomFile" required>
+                <div class="img-add">
+                    <label for="file-input">
+                        <img src="/img/jumbotron-admin.jpg" class="object-fit" />
+                    </label>
+                    <input id="file-input" type="file" />
                 </div>
-                <div class="custom-file img-add">
-                    <input type="file" class="custom-file-input h-100" id="validatedCustomFile" required>
+                <div class="img-add">
+                    <label for="file-input-1">
+                        <img src="/img/plus-icon.png" />
+                    </label>
+                    <input id="file-input-1" type="file" />
                 </div>
-                <div class="custom-file img-add">
-                    <input type="file" class="custom-file-input h-100" id="validatedCustomFile" required>
+                <div class="img-add">
+                    <label for="file-input-2">
+                        <img src="/img/plus-icon.png" />
+                    </label>
+                    <input id="file-input-2" type="file" />
                 </div>
-                <div class="custom-file img-add">
-                    <input type="file" class="custom-file-input h-100" id="validatedCustomFile" required>
+                <div class="img-add">
+                    <label for="file-input-3">
+                        <img src="/img/plus-icon.png" />
+                    </label>
+                    <input id="file-input-3" type="file" />
                 </div>
-                <div class="custom-file img-add">
-                    <input type="file" class="custom-file-input h-100" id="validatedCustomFile" required>
+                <div class="img-add">
+                    <label for="file-input-4">
+                        <img src="/img/plus-icon.png" />
+                    </label>
+                    <input id="file-input-4" type="file" />
                 </div>
             </div>
         </div>
         <div class="form-group row">
             <label for="productVideo" class="col-sm-2 col-form-label">Product Video</label>
             <div class="col-sm-10">
-                <div class="custom-file video-add">
-                    <input type="file" class="custom-file-input h-100" id="validatedCustomFile" required>
+                <div class="video-add">
+                    <label for="file-input-4">
+                        <img src="/img/plus-icon.png" />
+                    </label>
+                    <input id="file-input-4" type="file" />
                 </div>
             </div>
         </div>

@@ -229,20 +229,47 @@ video {
 
 .video-add,
 .img-add {
+    position: relative;
     border: 1px solid #fa4566;
     border-radius: 25px;
     border-style: dashed;
     padding: 5px;
     width: 150px;
     height: 168px;
-    background: url("/img/plus-icon.png");
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 .video-add {
     width: 100%;
     min-height: 150px;
+}
+
+.img-add > input[type=file],
+.video-add > input[type=file]{
+    display: none;
+}
+
+.video-add label,
+.img-add label {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.object-fit {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .custom-file-input{

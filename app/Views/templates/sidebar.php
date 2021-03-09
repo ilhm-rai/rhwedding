@@ -1,5 +1,5 @@
-<?php 
-if(logged_in()){
+<?php
+if (logged_in()) {
     $id = user()->id;
     $usersModel = Model('UsersModel');
     $myInfo = $usersModel->getUser($id);
@@ -56,16 +56,12 @@ if(logged_in()){
             </div>
         </div>
     </li>
-      <!-- Heading -->
+    <!-- Heading -->
     <div class="sidebar-heading">
         Vendor
     </div>
     <li class="nav-item">
-<<<<<<< HEAD
-        <a class="nav-link" href="/vendor">
-=======
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct">
->>>>>>> 6c425bfe05a4c4ee82b08babc9a1f7200bf7f21b
             <div class="nav-icon">
                 <i class="fas fa-fw fa-home"></i>
             </div>
@@ -75,7 +71,7 @@ if(logged_in()){
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShop" aria-expanded="true" aria-controls="collapseUser">
             <div class="nav-icon">
-            <i class="fas fa-fw fa-store"></i>
+                <i class="fas fa-fw fa-store"></i>
             </div>
             <span>My Vendor</span>
         </a>
@@ -91,20 +87,19 @@ if(logged_in()){
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseUser">
             <div class="nav-icon">
-            <i class="fas fa-fw fa-store"></i>
+                <i class="fas fa-fw fa-store"></i>
             </div>
             <span>Products</span>
         </a>
         <div id="collapseProduct" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-light py-2 collapse-inner rounded">
-<<<<<<< HEAD
-                <a href="/admin/vendors" class="collapse-item">Product List</a>
-                <a href="/admin/vendors" class="collapse-item">Product Catalog</a>
-                <a href="/admin/vendors" class="collapse-item">Product Category</a>
-=======
-                <a href="/admin/products" class="collapse-item">Product List</a>
-                <a href="/admin/products/category" class="collapse-item">Product Category</a>
->>>>>>> 6c425bfe05a4c4ee82b08babc9a1f7200bf7f21b
+                <<<<<<< HEAD <a href="/admin/vendors" class="collapse-item">Product List</a>
+                    <a href="/admin/vendors" class="collapse-item">Product Catalog</a>
+                    <a href="/admin/vendors" class="collapse-item">Product Category</a>
+                    =======
+                    <a href="/admin/products" class="collapse-item">Product List</a>
+                    <a href="/admin/products/category" class="collapse-item">Product Category</a>
+                    >>>>>>> 6c425bfe05a4c4ee82b08babc9a1f7200bf7f21b
             </div>
         </div>
     </li>
