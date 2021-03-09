@@ -39,19 +39,32 @@
         <div class="form-group row">
             <label for="productImage" class="col-sm-2 col-form-label">Product Image</label>
             <div class="col-sm-10 d-flex justify-content-between">
-                <button src="#" alt="" class="img-add"></button>
-                <button src="#" alt="" class="img-add"></button>
-                <button src="#" alt="" class="img-add"></button>
-                <button src="#" alt="" class="img-add"></button>
-                <button src="#" alt="" class="img-add"></button>
+                <div class="custom-file img-add">
+                    <input type="file" class="custom-file-input h-100" id="validatedCustomFile" required>
+                </div>
+                <div class="custom-file img-add">
+                    <input type="file" class="custom-file-input h-100" id="validatedCustomFile" required>
+                </div>
+                <div class="custom-file img-add">
+                    <input type="file" class="custom-file-input h-100" id="validatedCustomFile" required>
+                </div>
+                <div class="custom-file img-add">
+                    <input type="file" class="custom-file-input h-100" id="validatedCustomFile" required>
+                </div>
+                <div class="custom-file img-add">
+                    <input type="file" class="custom-file-input h-100" id="validatedCustomFile" required>
+                </div>
             </div>
         </div>
         <div class="form-group row">
             <label for="productVideo" class="col-sm-2 col-form-label">Product Video</label>
             <div class="col-sm-10">
-                <button src="#" alt="" class="video-add"></button>
+                <div class="custom-file video-add">
+                    <input type="file" class="custom-file-input h-100" id="validatedCustomFile" required>
+                </div>
             </div>
         </div>
+
     </form>
     <div class="row">
         <div class="col d-flex justify-content-end">

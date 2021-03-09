@@ -231,3 +231,7 @@ body,
     width: 100%;
     min-height: 150px;
 }
+
+.custom-file-input{
+    cursor: pointer;
+}
