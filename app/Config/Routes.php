@@ -36,23 +36,14 @@ $routes->get('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
 
 
-// route for vendor
-$routes->group('/vendor', function ($routes) {
-	$routes->add('/', 'Vendor\Dashboard::index', ['filter' => 'role:Admin,Vendor']);
-	$routes->group('myvendor', function($routes){
-		$routes->add('/', 'Vendor\Myvendor::index');
-		$routes->add('service/(:num)', 'Vendor\Myvendor::service/$1');
-	});
-});
-
-
 $routes->group('admin', function ($routes) {
 	$routes->add('/', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
 	$routes->add('dashboard', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
 	// admin/users
 	$routes->group('users', function ($routes) {
 		$routes->add('/', 'Admin\User::index');
-		$routes->add('profile', 'Admin\User::profile');
+		$routes->add('profile/(:num)', 'Admin\User::profile/$1');
+		$routes->add('vendor/(:num)', 'Admin\User::vendor/$1');
 		// admin/users/roles
 		$routes->group('roles', function ($routes) {
 			$routes->add('/', 'Admin\UserRole::index');
@@ -61,10 +52,6 @@ $routes->group('admin', function ($routes) {
 			$routes->add('edit/(:num)', 'Admin\UserRole::edit/$1');
 			$routes->add('update/(:num)', 'Admin\UserRole::update/$1');
 			$routes->add('detail/(:num)', 'Admin\UserRole::detail/$1');
-		});
-		// admin/users/permissions
-		$routes->group('permissions', function ($routes) {
-			$routes->add('/', 'Admin\UserPermission::index');
 		});
 	});
 	// admin/vendors
@@ -92,6 +79,7 @@ $routes->group('admin', function ($routes) {
 			$routes->add('detail/(:num)', 'Admin\VendorLevel::detail/$1');
 		});
 	});
+
 	$routes->group('products', function ($routes) {
 		$routes->add('/', 'Admin\Product::index');
 		$routes->add('add', 'Admin\Product::add');
@@ -105,6 +93,17 @@ $routes->group('admin', function ($routes) {
 });
 
 
+
+
+
+// route for vendor
+$routes->group('/vendor', function ($routes) {
+	$routes->add('/', 'Vendor\Dashboard::index', ['filter' => 'role:Admin,Vendor']);
+	$routes->group('myvendor', function($routes){
+		$routes->add('/', 'Vendor\Myvendor::index');
+		$routes->add('service/(:num)', 'Vendor\Myvendor::service/$1');
+	});
+});
 
 
 $routes->delete('admin/users/roles/(:num)', 'Admin\UserRole::delete/$1');

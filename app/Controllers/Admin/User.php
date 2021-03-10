@@ -4,13 +4,16 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\UsersModel;
+use App\Models\VendorModel;
 
 class User extends BaseController
 {
     protected $usersModel;
+    protected $vendorModel;
     public function __construct()
     {
         $this->usersModel = new UsersModel();
+        $this->vendorModel = new VendorModel();
     }
 
     public function index()
@@ -22,33 +25,23 @@ class User extends BaseController
         return view('admin/user/index', $data);
     }
 
-
-    public function detail($id)
-    {
-        $data = [
-            'title'  => 'Detail User | RH Wedding Planner',
-            'user'  => $this->usersModel->getUser($id),
-        ];
-        // dd($data);
-        return view('admin/user/detail', $data);
-    }
-
-
-    public function vendoruser($id)
-    {
-        $data = [
-            'title'  => 'Detail User',
-            'user'  => $this->usersModel->getUser($id),
-        ];
-        // dd($data);
-        return view('vendor/myvendor/profile', $data);
-    }
-    
-    public function profile()
+    public function profile($id)
     {
         $data = [
             'title'  => 'Profile | RH Wedding Planner',
+            'user'  => $this->usersModel->getUser($id),
         ];
-        return view('admin/user/profile', $data);
+        // dd($data['user']);
+        return view('admin/user/profile/profile', $data);
+    }
+    public function vendor($id)
+    {
+        $data = [
+            'title'  => 'Profile | RH Wedding Planner',
+            'user'  => $this->usersModel->getUser($id),
+            'vendor'  => $this->vendorModel->getVendorByUser($id),
+        ];
+        // dd($data['vendor']);
+        return view('admin/user/profile/vendor', $data);
     }
 }

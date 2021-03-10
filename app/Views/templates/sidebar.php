@@ -37,7 +37,7 @@ if (logged_in()) {
             <div class="bg-light py-2 collapse-inner rounded">
                 <a href="/admin/users" class="collapse-item">User List</a>
                 <a href="/admin/users/roles" class="collapse-item">User Roles</a>
-                <a href="/admin/users/permissions" class="collapse-item">User Permissions</a>
+                <!-- <a href="/admin/users/permissions" class="collapse-item">User Permissions</a> -->
             </div>
         </div>
     </li>
@@ -78,7 +78,7 @@ if (logged_in()) {
         <div id="collapseShop" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-light py-2 collapse-inner rounded">
                 <a href="/vendor/myvendor/" class="collapse-item">Vendor Profile</a>
-                <a href="/vendor/myvendor/service/<?= $myInfo['vendor_id']; ?>" class="collapse-item">Vendor Service</a>
+                <a href="/vendor/myvendor/service/" class="collapse-item">Vendor Service</a>
                 <!-- <a href="/vendor/myvendor/" class="collapse-item">Vendor Rating</a> -->
                 <!-- <a href="/vendor/myvendor/" class="collapse-item">Vendor Decoration</a> -->
             </div>

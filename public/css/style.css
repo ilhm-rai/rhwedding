@@ -125,8 +125,8 @@ video {
 }
 
 .btn-gray {
-    background-color: #7E7E7E;
-    color: white;
+  background-color: #7e7e7e;
+  color: white;
 }
 
 .btn-outline-wild-watermelon:hover,
@@ -222,56 +222,56 @@ video {
   padding-left: 15px;
 }
 
-.badge-geyser{
-    background-color: #d7e2e5;
-    color: #8F85FE;
+.badge-geyser {
+  background-color: #d7e2e5;
+  color: #8f85fe;
 }
 
 .video-add,
 .img-add {
-    position: relative;
-    border: 1px solid #fa4566;
-    border-radius: 25px;
-    border-style: dashed;
-    padding: 5px;
-    width: 150px;
-    height: 168px;
+  position: relative;
+  border: 1px solid #fa4566;
+  border-radius: 25px;
+  border-style: dashed;
+  padding: 5px;
+  width: 150px;
+  height: 168px;
 }
 
 .video-add {
-    width: 100%;
-    min-height: 150px;
+  width: 100%;
+  min-height: 150px;
 }
 
-.img-add > input[type=file],
-.video-add > input[type=file]{
-    display: none;
+.img-add > input[type="file"],
+.video-add > input[type="file"] {
+  display: none;
 }
 
 .video-add label,
 .img-add label {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .object-fit {
-    width: 100%;
-    height: 100%;
-    border-radius: 25px;
-    object-fit: cover;
-    object-position: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  object-fit: cover;
+  object-position: center;
 }
 
-.custom-file-input{
-    cursor: pointer;
+.custom-file-input {
+  cursor: pointer;
 }

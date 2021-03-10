@@ -11,6 +11,10 @@ if (flashData) {
   });
 }
 
+$("#sidebarToggle").on("click", () => {
+  $(".no-toggled").removeClass("toggled");
+});
+
 $(".btn-delete").on("click", function (e) {
   e.preventDefault();
   Swal.fire({
