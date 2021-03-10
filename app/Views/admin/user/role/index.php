@@ -2,11 +2,11 @@
 
 <?= $this->section('content'); ?>
 <div class="container-fluid content-frame mb-5 shadow">
-    <!-- Page Heading -->
+     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="content-heading mb-0 text-gray-800">User Roles</h1>
+        <a href="/admin/users/roles/add" class="d-block d-sm-inline-block btn rounded-pill btn-wild-watermelon"><i class="fas fa-plus-square mr-1"></i> Add</a>
     </div>
-    <a href="/admin/users/roles/add" class="btn btn-wild-watermelon rounded-pill mb-3">Add New Role</a>
 
     <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
 

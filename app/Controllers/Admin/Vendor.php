@@ -4,14 +4,17 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\VendorModel;
+use App\Models\UsersModel;
 
 class Vendor extends BaseController
 {
 
     protected $vendorModel;
+    protected $usersModel;
     public function __construct()
     {
         $this->vendorModel = new VendorModel();
+        $this->usersModel = new UsersModel();
     }
     public function index()
     {

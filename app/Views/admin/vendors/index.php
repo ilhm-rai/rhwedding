@@ -14,6 +14,7 @@
                     <th>No</th>
                     <th width='100px'>Logo</th>
                     <th>Vendor Name</th>
+                    <th>Vendor Code</th>
                     <th>Service</th>
                     <th>Owner</th>
                     <th>Action</th>
@@ -24,6 +25,7 @@
                     <th>No</th>
                     <th>Logo</th>
                     <th>Vendor Name</th>
+                    <th>Vendor Code</th>
                     <th>Service</th>
                     <th>Owner</th>
                     <th>Action</th>
@@ -36,6 +38,7 @@
                     <td><?= $i++; ?></td>
                     <td><img src="/img/vendors/logo/<?= $vendor['vendor_logo']; ?>" alt="" class="w-100"></td>
                     <td><?= $vendor['vendor_name']; ?></td>
+                    <td><?= $vendor['vendor_code']; ?></td>
                     <td><?= $vendor['service_name']; ?></td>
                     <td><?= $vendor['owner']; ?></td>
                     <td class="text-center">
