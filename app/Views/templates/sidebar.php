@@ -61,7 +61,7 @@ if (logged_in()) {
         Vendor
     </div>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseProduct">
+        <a class="nav-link" href="/vendor">
             <div class="nav-icon">
                 <i class="fas fa-fw fa-home"></i>
             </div>
@@ -93,13 +93,8 @@ if (logged_in()) {
         </a>
         <div id="collapseProduct" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-light py-2 collapse-inner rounded">
-                <<<<<<< HEAD <a href="/admin/vendors" class="collapse-item">Product List</a>
-                    <a href="/admin/vendors" class="collapse-item">Product Catalog</a>
-                    <a href="/admin/vendors" class="collapse-item">Product Category</a>
-                    =======
-                    <a href="/admin/products" class="collapse-item">Product List</a>
-                    <a href="/admin/products/category" class="collapse-item">Product Category</a>
-                    >>>>>>> 6c425bfe05a4c4ee82b08babc9a1f7200bf7f21b
+                <a href="/admin/products" class="collapse-item">Product List</a>
+                <a href="/admin/products/category" class="collapse-item">Product Category</a>
             </div>
         </div>
     </li>
