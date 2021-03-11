@@ -2,12 +2,10 @@
 <?= $this->section('content'); ?>
 <div class="container-fluid content-frame mb-5">
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="content-heading mb-0 text-gray-800">User Vendor</h1>
+    <div class="d-sm-flex align-items-center justify-content-between mb-5">
+        <h1 class="content-heading mb-0 text-gray-800">Detail Vendor</h1>
     </div>
-    <div class="row">
-        
-        
+
             <div class="row mb-4 align-items-center">
                 <div class="col-2">
                     <img src="/img/vendors/logo/logo.png" alt="" class="img-profile" width="100px">
@@ -26,7 +24,7 @@
                         <input type="hidden" name="user_id" value="<?= $user['id']; ?>">
                         <div class="form-group">
                             <label for="owner" class="v-form-label">Owner</label>
-                            <input type="text" class="form-control rounded-pill" name="owner" id="owner" value="<?= $user['owner']; ?>" readonly>
+                            <input type="text" class="form-control rounded-pill" name="owner" id="owner" value="<?= $user['full_name']; ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="services" class="v-form-label">Services</label>
@@ -48,7 +46,5 @@
                     </form>
                 </div>
             </div>
-
-    </div>
 </div>
 <?= $this->endSection(); ?>

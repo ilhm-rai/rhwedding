@@ -43,16 +43,12 @@ class VendorModel extends Model
 
     public function getVendorBy($id)
     {
-        $query = "SELECT `v`.*, `s`.`name` as `service_name`, `up`.`full_name` as `owner` 
+        $query = "SELECT `v`.`id` AS `vendor_id` ,`v`.`vendor_name`, `v`.`vendor_logo`,`v`.`vendor_billboard`,`v`.`vendor_description`,`vl`.`name` AS `vendor_level` ,`v`.`active` AS `vendor_active`, `v`.`created_at` AS `vendor_create`
         FROM `vendors` AS `v`
-        JOIN `vendors_services` AS `vs`
-        ON `vs`.`vendor_id` = `v`.`id`
-        JOIN `services` AS `s`
-        ON `vs`.`service_id` = `s`.`id`
-        JOIN `users` AS `u`
+        LEFT JOIN `users` AS `u`
         ON `u`.`id` = `v`.`user_id`
-        JOIN `users_profile` AS `up`
-        ON `u`.id = `up`.`user_id`
+        JOIN `vendors_level` AS `vl`
+        ON `v`.`vendor_level_id` = `vl`.`id`
         WHERE `v`.`id` = $id
         ";
         return $this->db->query($query)->getRowArray();

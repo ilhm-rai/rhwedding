@@ -19,7 +19,6 @@ class UsersModel extends Model
     public function getUser($id = false)
     {
         if(!$id){
-            
             $query = "SELECT `u`.`id`,`u`.`username`,`u`.`email`,`u`.`active`,`ag`.`name` as `role_name`, `up`.`full_name`, `up`.`user_image`, `up`.`contact`, `up`.`address`, `up`.`city`, `up`.`province`, `up`.`postal_code`
             FROM `users` AS `u`
             JOIN `users_profile` AS `up`
@@ -42,6 +41,22 @@ class UsersModel extends Model
         WHERE `u`.`id` = $id
         ";
         }
+        return $this->db->query($query)->getRowArray();
+    }
+    public function getUserByVendor($id)
+    {
+        $query = "SELECT `u`.`id`,`u`.`username`,`u`.`email`,`u`.`active`,`ag`.`name` as `role_name`, `up`.`full_name`, `up`.`user_image`, `up`.`contact`, `up`.`address`, `up`.`city`, `up`.`province`, `up`.`postal_code`
+        FROM `users` AS `u`
+        JOIN `users_profile` AS `up`
+        ON `u`.id = `up`.`user_id`
+        JOIN `auth_groups_users` AS `agu`
+        ON `agu`.`user_id` = `u`.`id`
+        JOIN `auth_groups` AS `ag`
+        ON `ag`.`id` = `agu`.`group_id`
+        JOIN `vendors` AS`v`
+        ON `v`.`user_id` =`u`.`id`
+        WHERE `v`.`id` = $id
+        ";
         return $this->db->query($query)->getRowArray();
     }
     public function getUsersByRole($id)
