@@ -38,4 +38,17 @@ class ServiceModel extends Model
         ";
             return $this->db->query($query)->getResultArray();
     }
+ 
+    public function getServiceByUser($id)
+    {
+        $query = "SELECT `s`.*
+        FROM `services` AS `s`
+        LEFT JOIN `vendors_services` AS `vs`
+        ON `s`.`id` = `vs`.`service_id`
+        LEFT JOIN `vendors` AS `v`
+        ON `v`.`id` = `vs`.`vendor_id`
+        WHERE `v`.`user_id` = $id
+        ";
+        return $this->db->query($query)->getResultArray();
+    }
 }
