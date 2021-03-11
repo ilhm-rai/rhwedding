@@ -36,6 +36,7 @@ $routes->get('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
 
 
+// routes for admin
 $routes->group('admin', function ($routes) {
 	$routes->add('/', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
 	$routes->add('dashboard', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
@@ -80,7 +81,7 @@ $routes->group('admin', function ($routes) {
 			$routes->add('detail/(:num)', 'Admin\VendorLevel::detail/$1');
 		});
 	});
-
+	// admin/product
 	$routes->group('products', function ($routes) {
 		$routes->add('/', 'Admin\Product::index');
 		$routes->add('add', 'Admin\Product::add');
@@ -94,15 +95,12 @@ $routes->group('admin', function ($routes) {
 });
 
 
-
-
-
-// route for vendor
+// routes for vendor
 $routes->group('/vendor', function ($routes) {
 	$routes->add('/', 'Vendor\Dashboard::index', ['filter' => 'role:Admin,Vendor']);
 	$routes->group('myvendor', function($routes){
 		$routes->add('/', 'Vendor\Myvendor::index');
-		$routes->add('service/(:num)', 'Vendor\Myvendor::service/$1');
+		$routes->add('service', 'Vendor\Myvendor::service');
 	});
 });
 
