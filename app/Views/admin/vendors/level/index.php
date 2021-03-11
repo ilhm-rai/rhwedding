@@ -27,7 +27,7 @@
             <tfoot>
                 <tr>
                     <th>No</th>
-                    <th>Role</th>
+                    <th>Level</th>
                     <th>User Amount</th>
                     <th>Action</th>
                 </tr>
