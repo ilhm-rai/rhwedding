@@ -26,6 +26,19 @@ class VendorModel extends Model
         "; 
         return $this->db->query($query)->getResultArray();
     }
+    
+    public function getVendorBy($id)
+    {
+        $query = "SELECT `v`.`id` AS `vendor_id` ,`v`.`vendor_name`, `v`.`vendor_logo`,`v`.`vendor_billboard`,`v`.`vendor_description`,`vl`.`name` AS `vendor_level` ,`v`.`active` AS `vendor_active`, `v`.`created_at` AS `vendor_create`
+        FROM `vendors` AS `v`
+        LEFT JOIN `users` AS `u`
+        ON `u`.`id` = `v`.`user_id`
+        JOIN `vendors_level` AS `vl`
+        ON `v`.`vendor_level_id` = `vl`.`id`
+        WHERE `v`.`id` = $id
+        ";
+        return $this->db->query($query)->getRowArray();
+    }
 
     public function getVendorByUser($id)            
     {
@@ -40,22 +53,6 @@ class VendorModel extends Model
         return $this->db->query($query)->getRowArray();
     }
 
-
-    public function getVendorBy($id)
-    {
-        $query = "SELECT `v`.`id` AS `vendor_id` ,`v`.`vendor_name`, `v`.`vendor_logo`,`v`.`vendor_billboard`,`v`.`vendor_description`,`vl`.`name` AS `vendor_level` ,`v`.`active` AS `vendor_active`, `v`.`created_at` AS `vendor_create`
-        FROM `vendors` AS `v`
-        LEFT JOIN `users` AS `u`
-        ON `u`.`id` = `v`.`user_id`
-        JOIN `vendors_level` AS `vl`
-        ON `v`.`vendor_level_id` = `vl`.`id`
-        WHERE `v`.`id` = $id
-        ";
-        return $this->db->query($query)->getRowArray();
-    }
-
-
-
     public function getVendorsByService($id)
     {
         $query = "SELECT `s`.`name` as `service_name`,`v`.*
@@ -68,6 +65,8 @@ class VendorModel extends Model
         "; 
         return $this->db->query($query)->getResultArray();
     }
+
+    
     public function getVendorsByLevel($id)
     {
         $query = "SELECT `vl`.`name` as `level`,`v`.*

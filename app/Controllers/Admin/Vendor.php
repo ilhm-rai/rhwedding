@@ -26,17 +26,32 @@ class Vendor extends BaseController
         return view('admin/vendors/index', $data);
     }
 
-
     public function detail($id)
     {
         $data = [
-            'title'  => 'My Vendor',
+            'title'  => 'Detail Vendor | RH Wedding Planner',
             'vendor'  => $this->vendorModel->getVendorBy($id),
             'user'  => $this->usersModel->getUserByVendor($id),
         ];
         // dd($data);
         return view('admin/vendors/detail', $data);
     }
+    
+    public function edit($id)
+    {
+        $data = [
+            'title'  => 'Edit Vendor | RH Wedding Planner',
+            'vendor'  => $this->vendorModel->getVendorBy($id),
+            'user'  => $this->usersModel->getUserByVendor($id),
+        ];
+        // dd($data);
+        return view('admin/vendors/edit', $data);
+    }
+
+
+
+
+
 
     public function myVendor()
     {

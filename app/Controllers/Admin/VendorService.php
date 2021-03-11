@@ -26,6 +26,16 @@ class VendorService extends BaseController
         ];
         return view('admin/vendors/service/index', $data);
     }
+    public function detail($id)
+    {
+        $data = [
+            'title'  => 'Detail Service | RH Wedding Planner',
+            'service'  => $this->serviceModel->getWhere(['id' => $id])->getRowArray(),
+            'vendors'  => $this->vendorModel->getVendorsByService($id),
+        ];
+        // dd($data);
+        return view('admin/vendors/service/detail', $data);
+    }
 
     public function add()
     {
@@ -86,14 +96,5 @@ class VendorService extends BaseController
         return redirect()->to('/admin/vendors/services/detail/' . $id);
     }
 
-    public function detail($id)
-    {
-        $data = [
-            'title'  => 'Detail Service | RH Wedding Planner',
-            'service'  => $this->serviceModel->getWhere(['id' => $id])->getRowArray(),
-            'vendors'  => $this->vendorModel->getVendorsByService($id),
-        ];
-        // dd($data);
-        return view('admin/vendors/service/detail', $data);
-    }
+   
 }
