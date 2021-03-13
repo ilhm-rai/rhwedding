@@ -15,7 +15,7 @@
                     <th width='100px'>Logo</th>
                     <th>Vendor Name</th>
                     <th>Vendor Code</th>
-                    <th>Service</th>
+                    <th>Level</th>
                     <th>Owner</th>
                     <th>Action</th>
                 </tr>
@@ -26,7 +26,7 @@
                     <th>Logo</th>
                     <th>Vendor Name</th>
                     <th>Vendor Code</th>
-                    <th>Service</th>
+                    <th>Level</th>
                     <th>Owner</th>
                     <th>Action</th>
                 </tr>
@@ -39,7 +39,7 @@
                     <td><img src="/img/vendors/logo/<?= $vendor['vendor_logo']; ?>" alt="" class="w-100"></td>
                     <td><?= $vendor['vendor_name']; ?></td>
                     <td><?= $vendor['vendor_code']; ?></td>
-                    <td><?= $vendor['service_name']; ?></td>
+                    <td><?= $vendor['level_name']; ?></td>
                     <td><?= $vendor['owner']; ?></td>
                     <td class="text-center">
                         <a href="/admin/vendors/detail/<?= $vendor['id']; ?>" class="btn btn-success btn-sm rounded-pill small">Detail</a>

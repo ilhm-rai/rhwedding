@@ -13,15 +13,13 @@ class VendorModel extends Model
 
     public function getVendor()
     {
-            $query = "SELECT `v`.*, `s`.`name` as `service_name`, `up`.`full_name` as `owner` 
+            $query = "SELECT `v`.*, `vl`.`name` as `level_name`, `up`.`full_name` as `owner` 
             FROM `vendors` AS `v`
-            JOIN `vendors_services` AS `vs`
-            ON `vs`.`vendor_id` = `v`.`id`
-            JOIN `services` AS `s`
-            ON `vs`.`service_id` = `s`.`id`
-            JOIN `users` AS `u`
+            JOIN `vendors_level` AS `vl`
+            ON `v`.`vendor_level_id` = `vl`.`id`
+            LEFT JOIN `users` AS `u`
             ON `u`.`id` = `v`.`user_id`
-            JOIN `users_profile` AS `up`
+            LEFT JOIN `users_profile` AS `up`
             ON `u`.id = `up`.`user_id`
         "; 
         return $this->db->query($query)->getResultArray();
