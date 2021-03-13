@@ -43,6 +43,6 @@ class Myvendor extends BaseController
             'myservices' => $this->serviceModel->getServiceByUser(user()->id)
         ];
         // dd($data);
-        return view('vendors/myvendor/service', $data);
+        return view('vendors/myvendor/service/index', $data);
     }
 }

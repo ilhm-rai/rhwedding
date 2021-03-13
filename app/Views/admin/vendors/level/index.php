@@ -38,14 +38,14 @@
                         <td><?= $i++; ?></td>
                         <td><?= $l['name']; ?></td>
                         <td><?= $l['amount']; ?></td>
+                       
                         <td class="text-center">
-                            <a href="/admin/vendors/level/detail/<?= $l['id']; ?>" class="btn btn-success btn-sm rounded-pill small">Detail</a>
-                            <a href="/admin/vendors/level/edit/<?= $l['id']; ?>" class="btn btn-info btn-sm rounded-pill small">Edit</a>
-                            <!-- <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button> -->
+                            <a href="/admin/vendors/level/detail/<?= $l['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></a>
+                            <a href="/admin/vendors/level/edit/<?= $l['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></a>
                             <form action="/admin/vendors/level/<?= $l['id']; ?>" method="POST" class="d-inline form-delete">
                                 <?= csrf_field(); ?>
                                 <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="btn btn-danger btn-sm rounded-pill small btn-delete" >Delete</button>
+                                <button type="submit" class="btn btn-action btn-sm small mb-1 btn-delete"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
                             </form>
                         </td>
                     </tr>

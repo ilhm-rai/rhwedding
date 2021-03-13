@@ -12,7 +12,7 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th width='100px'>Logo</th>
+                    <th width='50px'>Logo</th>
                     <th>Vendor Name</th>
                     <th>Vendor Code</th>
                     <th>Level</th>
@@ -42,12 +42,12 @@
                     <td><?= $vendor['level_name']; ?></td>
                     <td><?= $vendor['owner']; ?></td>
                     <td class="text-center">
-                        <a href="/admin/vendors/detail/<?= $vendor['id']; ?>" class="btn btn-success btn-sm rounded-pill small">Detail</a>
-                        <a href="/admin/vendors/edit/<?= $vendor['id']; ?>" class="btn btn-info btn-sm rounded-pill small">Edit</a>
+                        <a href="/admin/vendors/detail/<?= $vendor['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></a>
+                        <a href="/admin/vendors/edit/<?= $vendor['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></a>
                         <form action="/admin/vendors/<?= $vendor['id']; ?>" method="POST" class="d-inline form-delete">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn btn-danger btn-sm rounded-pill small btn-delete" >Delete</button>
+                            <button type="submit" class="btn btn-action btn-sm small mb-1 btn-delete"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
                         </form>
                     </td>
                 </tr>
