@@ -36,19 +36,33 @@
                 </tr>
             </tfoot>
             <tbody>
+                <?php $i = 1; ?>
+                <?php foreach($services as $service): ?>
                 <tr>
-                    <td>1</td>
-                    <td>Wedding Organizer</td>
+                    <td><?= $i++; ?></td>
+                    <td><?= $service['name']; ?></td>
+                    <?php 
+                    $serve = false;
+                    foreach ($myservices as $ms) {
+                        if($service['id'] == $ms['id']){
+                            $serve = true;
+                        }
+                    }                    
+                    ?>
                     <td>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">&nbsp;</label>
+                            <input type="checkbox" class="custom-control-input" id="customCheck<?= $i; ?>" <?= ($serve==true)?'checked':''; ?>>
+                            <label class="custom-control-label" for="customCheck<?= $i; ?>">&nbsp;</label>
                         </div>
                     </td>
+
+
+
                     <td class="text-center">
                         <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
                     </td>
                 </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

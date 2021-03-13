@@ -2,12 +2,11 @@
 
 <?= $this->section('content'); ?>
 <div class="container-fluid content-frame mb-5 shadow">
-     <!-- Page Heading -->
+    <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="content-heading mb-0 text-gray-800">User Roles</h1>
-        <a href="/admin/users/roles/add" class="d-block d-sm-inline-block btn rounded-pill btn-wild-watermelon"><i class="fas fa-plus-square mr-1"></i> Add</a>
+        <h1 class="content-heading mb-0 text-gray-800">My Services</h1>
+        <a href="/admin/vendors/services/add" class="d-block d-sm-inline-block btn rounded-pill btn-wild-watermelon"><i class="fas fa-plus-square mr-1"></i> Add Service</a>
     </div>
-
     <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
 
     <?php if (session()->getFlashdata('message')) : ?>
@@ -20,8 +19,8 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Role</th>
-                    <th>User Amount</th>
+                    <th>Service</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -29,21 +28,23 @@
                 <tr>
                     <th>No</th>
                     <th>Role</th>
-                    <th>User Amount</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
                 <tbody>
                 <?php $i = 1; ?>
-                <?php foreach ($roles as $role) : ?>
+                <?php foreach ($services as $service) : ?>
                     <tr>
                         <td><?= $i++; ?></td>
-                        <td><?= $role['name']; ?></td>
-                        <td><?= $role['amount']; ?></td>
+                        <td><?= $service['name']; ?></td>
+                        <td> 
+                            <button type="button" class="btn btn-sm <?= ($service['active'] == 1) ? 'btn-success' : 'btn-warning'; ?> btn-sm small"><?= ($service['active'] == 1) ? 'Active' : 'Disable'; ?></button>
+                        </td>
                         <td class="text-center">
-                            <a href="/admin/users/roles/detail/<?= $role['id']; ?>" class="btn btn-success btn-sm rounded-pill small">Detail</a>
-                            <a href="/admin/users/roles/edit/<?= $role['id']; ?>" class="btn btn-info btn-sm rounded-pill small">Edit</a>
+                            <a href="/admin/vendors/services/detail/<?= $service['id']; ?>" class="btn btn-success btn-sm rounded-pill small">Detail</a>
+                            <a href="/admin/vendors/services/edit/<?= $service['id']; ?>" class="btn btn-info btn-sm rounded-pill small">Edit</a>
                             <!-- <button type="button" class="btn btn-danger btn-sm rounded-pill small">Delete</button> -->
-                            <form action="/admin/users/roles/<?= $role['id']; ?>" method="POST" class="d-inline form-delete">
+                            <form action="/admin/vendors/services/<?= $service['id']; ?>" method="POST" class="d-inline form-delete">
                                 <?= csrf_field(); ?>
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-danger btn-sm rounded-pill small btn-delete" >Delete</button>

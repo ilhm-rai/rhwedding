@@ -5,7 +5,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="content-heading mb-0 text-gray-800">Products</h1>
-        <a href="/admin/products/add" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill"><i class="fas fa-plus-square mr-1"></i> Add</a>
+        <a href="/vendors/products/add" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill"><i class="fas fa-plus-square mr-1"></i> Add New Product</a>
     </div>
     <div class="row mb-4">
         <div class="col">
@@ -37,12 +37,6 @@
             <thead class="th-no-border">
                 <tr>
                     <th>No</th>
-                    <th>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customControlInline">
-                            <label class="custom-control-label" for="customControlInline">&nbsp;</label>
-                        </div>
-                    </th>
                     <th width='100px'>Image</th>
                     <th>Product Name</th>
                     <th>Category</th>
@@ -54,12 +48,6 @@
             <tfoot>
                 <tr>
                     <th>No</th>
-                    <th>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customControlInline">
-                            <label class="custom-control-label" for="customControlInline">&nbsp;</label>
-                        </div>
-                    </th>
                     <th>Image</th>
                     <th>Product Name</th>
                     <th>Category</th>
@@ -71,12 +59,6 @@
             <tbody>
                 <tr>
                     <td>1</td>
-                    <td>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">&nbsp;</label>
-                        </div>
-                    </td>
                     <td><img src="<?= base_url('img/vendors/logo/example-1.png'); ?>" alt="" class="w-100"></td>
                     <td>ARTHAUS ASPEN</td>
                     <td>Photography</td>
@@ -93,12 +75,6 @@
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">&nbsp;</label>
-                        </div>
-                    </td>
                     <td><img src="<?= base_url('img/vendors/logo/example-2.png'); ?>" alt="" class="w-100"></td>
                     <td>Owl Creative</td>
                     <td>Decoration</td>
@@ -115,12 +91,6 @@
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">&nbsp;</label>
-                        </div>
-                    </td>
                     <td><img src="<?= base_url('img/vendors/logo/example-3.png'); ?>" alt="" class="w-100"></td>
                     <td>Isabel Giles</td>
                     <td>Hair&Makeup</td>
@@ -137,12 +107,6 @@
                 </tr>
                 <tr>
                     <td>4</td>
-                    <td>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">&nbsp;</label>
-                        </div>
-                    </td>
                     <td><img src="<?= base_url('img/vendors/logo/example-4.png'); ?>" alt="" class="w-100"></td>
                     <td>Monica Lin</td>
                     <td>Hair&Makeup</td>
@@ -158,12 +122,6 @@
                 </tr>
                 <tr>
                     <td>5</td>
-                    <td>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">&nbsp;</label>
-                        </div>
-                    </td>
                     <td><img src="<?= base_url('img/vendors/logo/logo2.png'); ?>" alt="sarovar" class="w-100"></td>
                     <td>SAROVAR</td>
                     <td>Venue</td>
@@ -180,12 +138,6 @@
                 </tr>
                 <tr>
                     <td>6</td>
-                    <td>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">&nbsp;</label>
-                        </div>
-                    </td>
                     <td><img src="<?= base_url('img/vendors/logo/logo1.png'); ?>" alt="grand-aston-bali" class="w-100"></td>
                     <td>GRAND ASTON BALI</td>
                     <td>Venue</td>

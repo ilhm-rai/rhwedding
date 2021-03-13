@@ -61,7 +61,7 @@ if (logged_in()) {
         Vendor
     </div>
     <li class="nav-item">
-        <a class="nav-link" href="/vendor">
+        <a class="nav-link" href="/vendors">
             <div class="nav-icon">
                 <i class="fas fa-fw fa-home"></i>
             </div>
@@ -77,8 +77,8 @@ if (logged_in()) {
         </a>
         <div id="collapseShop" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-light py-2 collapse-inner rounded">
-                <a href="/vendor/myvendor/" class="collapse-item">Vendor Profile</a>
-                <a href="/vendor/myvendor/service/" class="collapse-item">Vendor Service</a>
+                <a href="/vendors/myvendor/" class="collapse-item">Vendor Profile</a>
+                <a href="/vendors/myvendor/service/" class="collapse-item">Vendor Service</a>
                 <!-- <a href="/vendor/myvendor/" class="collapse-item">Vendor Rating</a> -->
                 <!-- <a href="/vendor/myvendor/" class="collapse-item">Vendor Decoration</a> -->
             </div>
@@ -93,8 +93,8 @@ if (logged_in()) {
         </a>
         <div id="collapseProduct" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
             <div class="bg-light py-2 collapse-inner rounded">
-                <a href="/admin/products" class="collapse-item">Product List</a>
-                <a href="/admin/products/category" class="collapse-item">Product Category</a>
+                <a href="/vendors/products" class="collapse-item">Product List</a>
+                <a href="/vendors/products/category" class="collapse-item">Product Category</a>
             </div>
         </div>
     </li>

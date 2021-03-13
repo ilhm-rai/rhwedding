@@ -47,25 +47,4 @@ class Vendor extends BaseController
         // dd($data);
         return view('admin/vendors/edit', $data);
     }
-
-
-
-
-
-
-    public function myVendor()
-    {
-        $data = [
-            'title'  => 'My Vendor | RH Wedding Planner',
-        ];
-        return view('admin/vendors/my/vendor', $data);
-    }
-
-    public function service()
-    {
-        $data = [
-            'title'  => 'My Service | RH Wedding Planner',
-        ];
-        return view('admin/vendors/my/service', $data);
-    }
 }

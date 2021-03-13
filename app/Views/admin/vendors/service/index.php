@@ -21,7 +21,6 @@
                     <th>No</th>
                     <th>Service</th>
                     <th>Vendor Amount</th>
-                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -30,7 +29,6 @@
                     <th>No</th>
                     <th>Role</th>
                     <th>User Amount</th>
-                    <th>Status</th>
                     <th>Action</th>
                 </tr>
                 <tbody>
@@ -40,9 +38,6 @@
                         <td><?= $i++; ?></td>
                         <td><?= $service['name']; ?></td>
                         <td><?= $service['amount']; ?></td>
-                        <td> 
-                            <button type="button" class="btn btn-sm <?= ($service['active'] == 1) ? 'btn-success' : 'btn-warning'; ?> btn-sm small"><?= ($service['active'] == 1) ? 'Active' : 'Disable'; ?></button>
-                        </td>
                         <td class="text-center">
                             <a href="/admin/vendors/services/detail/<?= $service['id']; ?>" class="btn btn-success btn-sm rounded-pill small">Detail</a>
                             <a href="/admin/vendors/services/edit/<?= $service['id']; ?>" class="btn btn-info btn-sm rounded-pill small">Edit</a>
