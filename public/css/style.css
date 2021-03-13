@@ -248,7 +248,7 @@ video {
   display: none;
 }
 
-.video-add label,
+.video-add > label,
 .img-add label {
   position: absolute;
   display: flex;
@@ -270,6 +270,12 @@ video {
   border-radius: 25px;
   object-fit: cover;
   object-position: center;
+}
+
+.video-add video {
+  background: url("/img/plus-icon.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .custom-file-input {
