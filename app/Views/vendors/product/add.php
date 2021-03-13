@@ -73,16 +73,18 @@
         </div>
         <div class="form-group row">
             <label for="productVideo" class="col-sm-2 col-form-label">Product Video</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10 position-relative">
                 <div class="video-add">
-                    <label for="file-input-4">
-                        <img src="/img/plus-icon.png" />
+                    <label for="file-video">
+                        <video class="object-fit" controls>
+                            <source src="/video/vendors/billboard/rhvideo.mp4" type="video/mp4">
+                        </video>
                     </label>
-                    <input id="file-input-4" type="file" />
+                    <input id="file-video" type="file" />
                 </div>
+                <label for="file-video" class="btn btn-sm btn-wild-watermelon ml-4 mt-4 position-absolute" style="top: 0"><span class="fa fa-video" title="Ubah video"></span> Ubah Video</a>
             </div>
         </div>
-
     </form>
     <div class="row">
         <div class="col d-flex justify-content-end">
