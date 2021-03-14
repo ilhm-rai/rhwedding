@@ -20,7 +20,7 @@ class User extends BaseController
     {
         $data = [
             'title'  => 'User List | RH Wedding Planner',
-            'users'  => $this->usersModel->getUser(),
+            'users'  => $this->usersModel->getUsers(),
         ];
         return view('admin/user/index', $data);
     }
@@ -29,7 +29,7 @@ class User extends BaseController
     {
         $data = [
             'title'  => 'Profile | RH Wedding Planner',
-            'user'  => $this->usersModel->getUser($id),
+            'user'  => $this->usersModel->getUserBy($id),
         ];
         // dd($data['user']);
         return view('admin/user/profile/profile', $data);
@@ -38,7 +38,7 @@ class User extends BaseController
     {
         $data = [
             'title'  => 'Profile | RH Wedding Planner',
-            'user'  => $this->usersModel->getUser($id),
+            'user'  => $this->usersModel->getUserBy($id),
             'vendor'  => $this->vendorModel->getVendorByUser($id),
         ];
         // dd($data['vendor']);

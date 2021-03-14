@@ -2,7 +2,7 @@
 if(logged_in()){
     $id = user()->id;
     $usersModel = Model('UsersModel');
-    $myInfo = $usersModel->getUser($id);
+    $myInfo = $usersModel->getUserBy($id);
 }
 ?>
 <nav class="navbar navbar-expand navbar-light topbar mb-4 static-to">

@@ -16,21 +16,23 @@ class UsersModel extends Model
         'status', 'status_message', 'active', 'force_pass_reset', 'permissions', 'deleted_at',
     ];
  
-    public function getUser($id = false)
+    public function getUsers()
     {
-        if(!$id){
-            $query = "SELECT `u`.`id`,`u`.`username`,`u`.`email`,`u`.`active`,`ag`.`name` as `role_name`, `up`.`full_name`, `up`.`user_image`, `up`.`contact`, `up`.`address`, `up`.`city`, `up`.`province`, `up`.`postal_code`
-            FROM `users` AS `u`
-            JOIN `users_profile` AS `up`
-            ON `u`.id = `up`.`user_id`
-            JOIN `auth_groups_users` AS `agu`
-            ON `agu`.`user_id` = `u`.`id`
-            JOIN `auth_groups` AS `ag`
-            ON `ag`.`id` = `agu`.`group_id`
-        ";
-        return $this->db->query($query)->getResultArray();
-        }else{
-            $query = "SELECT `u`.`id`,`u`.`username`,`u`.`email`,`u`.`active`,`ag`.`name` as `role_name`, `up`.`full_name`, `up`.`user_image`, `up`.`contact`, `up`.`address`, `up`.`city`, `up`.`province`, `up`.`postal_code`
+        $query = "SELECT `u`.`id`,`u`.`username`,`u`.`email`,`u`.`active`,`ag`.`name` as `role_name`, `up`.`full_name`, `up`.`user_image`, `up`.`contact`, `up`.`address`, `up`.`city`, `up`.`province`, `up`.`postal_code`
+        FROM `users` AS `u`
+        JOIN `users_profile` AS `up`
+        ON `u`.id = `up`.`user_id`
+        JOIN `auth_groups_users` AS `agu`
+        ON `agu`.`user_id` = `u`.`id`
+        JOIN `auth_groups` AS `ag`
+        ON `ag`.`id` = `agu`.`group_id`
+    ";
+    return $this->db->query($query)->getResultArray();
+    }
+    
+    public function getUserBy($id)
+    {
+        $query = "SELECT `u`.`id`,`u`.`username`,`u`.`email`,`u`.`active`,`ag`.`name` as `role_name`, `up`.`full_name`, `up`.`user_image`, `up`.`contact`, `up`.`address`, `up`.`city`, `up`.`province`, `up`.`postal_code`
         FROM `users` AS `u`
         JOIN `users_profile` AS `up`
         ON `u`.id = `up`.`user_id`
@@ -40,9 +42,9 @@ class UsersModel extends Model
         ON `ag`.`id` = `agu`.`group_id`
         WHERE `u`.`id` = $id
         ";
-        }
         return $this->db->query($query)->getRowArray();
     }
+    
     public function getUserByVendor($id)
     {
         $query = "SELECT `u`.`id`,`u`.`username`,`u`.`email`,`u`.`active`,`ag`.`name` as `role_name`, `up`.`full_name`, `up`.`user_image`, `up`.`contact`, `up`.`address`, `up`.`city`, `up`.`province`, `up`.`postal_code`

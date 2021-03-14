@@ -2,7 +2,7 @@
 if (logged_in()) {
     $id = user()->id;
     $usersModel = Model('UsersModel');
-    $myInfo = $usersModel->getUser($id);
+    $myInfo = $usersModel->getUserBy($id);
 }
 ?>
 <ul class="navbar-nav bg-white sidebar accordion" id="accordionSidebar">

@@ -24,14 +24,14 @@
                                             <?= csrf_field() ?>
                                             <?php if ($config->validFields === ['email']) : ?>
                                                 <div class="form-group">
-                                                    <input type="email" class="form-control form-control-user <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.email') ?>">
+                                                    <input type="email" class="form-control form-control-user <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.email') ?>" autofocus>
                                                     <div class="invalid-feedback">
                                                         <?= session('errors.login') ?>
                                                     </div>
                                                 </div>
                                             <?php else : ?>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control form-control-user <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.emailOrUsername') ?>">
+                                                    <input type="text" class="form-control form-control-user <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" name="login" placeholder="<?= lang('Auth.emailOrUsername') ?>" autofocus>
                                                     <div class="invalid-feedback">
                                                         <?= session('errors.login') ?>
                                                     </div>

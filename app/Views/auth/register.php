@@ -22,7 +22,7 @@
                                         <?= view('Myth\Auth\Views\_message_block') ?>
                                         <form action="<?= route_to('register') ?>" method="post" class="user">
                                             <div class="form-group">
-                                                <input type="email" class="form-control form-control-user <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" id="email" name="email" aria-describedby="emailHelp" placeholder="Email Address" value="<?= old('email') ?>">
+                                                <input type="email" class="form-control form-control-user <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" id="email" name="email" aria-describedby="emailHelp" placeholder="Email Address" value="<?= old('email') ?>" autofocus>
                                                 <div class="invalid-feedback">
                                                     <?= session('errors.email') ?>
                                                 </div>
