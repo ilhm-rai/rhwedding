@@ -103,6 +103,14 @@ $routes->group('/vendors', function ($routes) {
 	});
 });
 
+// Routes for user
+$routes->group('/user', function ($routes) {
+	$routes->group('profile', function ($routes) {
+		$routes->add('/(:num)', 'User::index/$1');
+		$routes->add('vendor/(:num)', 'User::vendor/$1');
+	});
+});
+
 
 $routes->delete('admin/users/roles/(:num)', 'Admin\UserRole::delete/$1');
 $routes->delete('admin/vendors/services/(:num)', 'Admin\VendorService::delete/$1');
