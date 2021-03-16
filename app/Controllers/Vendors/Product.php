@@ -28,4 +28,10 @@ class Product extends BaseController
         $data['title'] = 'Add New Product - RH Wedding';
         return view('vendors/product/add', $data);
     }
+
+    public function detail()
+    {
+        $data['title'] = '{Slug} - RH Wedding';
+        return view('vendors/product/detail', $data);
+    }
 }

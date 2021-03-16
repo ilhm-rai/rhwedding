@@ -87,16 +87,17 @@ $routes->group('admin', function ($routes) {
 $routes->group('/vendors', function ($routes) {
 	$routes->add('/', 'Vendors\Dashboard::index', ['filter' => 'role:Admin,Vendor']);
 	// vendors/myvendor
-	$routes->group('myvendor', function($routes){
+	$routes->group('myvendor', function ($routes) {
 		$routes->add('/', 'Vendors\MyVendor::index');
 		$routes->add('service', 'Vendors\MyVendor::service');
 	});
 	//vendors/products
-	$routes->group('products', function($routes){
+	$routes->group('products', function ($routes) {
 		$routes->add('/', 'Vendors\Product::index');
 		$routes->add('edit', 'Vendors\Product::edit');
 		$routes->add('add', 'Vendors\Product::add');
-		$routes->group('category', function($routes){
+		$routes->add('detail', 'Vendors\Product::detail');
+		$routes->group('category', function ($routes) {
 			$routes->add('/', 'Vendors\ProductCategory::index');
 		});
 	});
