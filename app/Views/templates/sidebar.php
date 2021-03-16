@@ -12,7 +12,7 @@ if (logged_in()) {
             <img src="<?= base_url('img/logo.png'); ?>" alt="RH Logo Wedding" width="50px">
         </div>
     </a>
-
+    <?php if($myInfo['role_name'] == 'Admin'): ?>
     <!-- Heading -->
     <div class="sidebar-heading">
         Admin
@@ -56,6 +56,7 @@ if (logged_in()) {
             </div>
         </div>
     </li>
+    <?php endif; ?>
     <!-- Heading -->
     <div class="sidebar-heading">
         Vendor
