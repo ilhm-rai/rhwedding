@@ -5,7 +5,7 @@
         <div class="col-sm-6 pl-0">
             <div class="row mb-3">
                 <div class="col-12 p-0">
-                    <img src="/img/products/product-1.jpg" alt="" class="img-main">
+                    <img src="/img/products/<?= $product['product_main_image']; ?>" alt="" class="img-main">
                 </div>
             </div>
             <div class="row img-second">
@@ -24,9 +24,9 @@
             </div>
         </div>
         <div class="col-sm-6 pr-0 pl-4">
-            <h2 class="product-name">Wedding Organizer Classic</h2>
+            <h2 class="product-name"><?= $product['product_name']; ?></h2>
             <p class="d-inline">
-                321 orders ᆞ
+                <?= $product['product_sold']; ?> orders ᆞ
             <div class="rating d-inline">
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
@@ -34,20 +34,18 @@
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star unrate"></span>
             </div>
-            (302 reviews)
+            (<?= $product['total_review']; ?> reviews)
             </p>
-            <h2 class="product-price">Rp. 4.000.000</h2>
+            <h2 class="product-price">Rp<?= $product['price']; ?></h2>
             <p class="product-desc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus non enim praesent elementum facilisis leo, vel
-
-                Spesification :
-
-                1.Lorem ipsum dolor
-                2.Lorem ipsum dolor sit amet,
-                3.Lorem ipsum dolor sit amet, consectetur
+                <?= $product['product_description']; ?>
             </p>
-            <a href="#" class="btn btn-info rounded-pill">Edit Product</a>
-            <a href="#" class="btn btn-danger rounded-pill">Delete Product</a>
+            <a href="/vendors/products/edit/<?= $product['id']; ?>" class="btn btn-info rounded-pill">Edit Product</a>
+            <form action="/vendors/products/<?= $product['id']; ?>" method="POST" class="d-inline form-delete">
+                <?= csrf_field(); ?>
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="btn btn-danger rounded-pill btn-delete"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete Product</span></span></button>
+            </form>
         </div>
     </div>
 </div>

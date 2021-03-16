@@ -11,12 +11,12 @@
         <div class="col">
             <div class="dropdown d-inline-block">
                 <button class="btn btn-outline-wild-watermelon rounded-pill btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Vendor Category
+                    Service Category
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                <?php foreach($services as $s) : ?>
+                    <a class="dropdown-item" href="#"><?= $s['name']; ?></a>
+                <?php endforeach; ?>
                 </div>
             </div>
             <div class="dropdown d-inline-block">
@@ -24,9 +24,9 @@
                     Product Category
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                <?php foreach($categories as $c) : ?>
+                    <a class="dropdown-item" href="#"><?= $c['name']; ?></a>
+                <?php endforeach; ?>
                 </div>
             </div>
             <button type="submit" class="btn btn-wild-watermelon rounded-pill btn-sm">Find</button>
@@ -39,7 +39,7 @@
                     <th>No</th>
                     <th width='100px'>Image</th>
                     <th>Product Name</th>
-                    <th>Category</th>
+                    <th>Service</th>
                     <th>Price</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -50,107 +50,33 @@
                     <th>No</th>
                     <th>Image</th>
                     <th>Product Name</th>
-                    <th>Category</th>
+                    <th>Service</th>
                     <th>Price</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
             </tfoot>
             <tbody>
+                <?php $i = 1; ?>
+                <?php foreach($products as $product): ?>
                 <tr>
-                    <td>1</td>
-                    <td><img src="<?= base_url('img/vendors/logo/example-1.png'); ?>" alt="" class="w-100"></td>
-                    <td>ARTHAUS ASPEN</td>
-                    <td>Photography</td>
-                    <td>Rp4.000.000,-</td>
-                    <td>
-                        <button type="button" class="btn btn-success btn-sm">Active</button>
-                    </td>
+                    <td><?= $i++ ?></td>
+                    <td><img src="/img/products/<?= $product['product_main_image']; ?>" alt="" class="w-100"></td>
+                    <td><?= $product['product_name']; ?></td>
+                    <td><?= $product['service']; ?></td>
+                    <td><?= $product['price']; ?></td>
+                    <td> <button type="button" class="btn <?= ($product['active'] == 1) ? 'btn-success' : 'btn-warning'; ?> btn-sm small"><?= ($product['active'] == 1) ? 'Active' : 'Disable'; ?></button></td>
                     <td class="text-center">
-
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></button>
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
-                    </td>
+                            <a href="/vendors/products/detail/<?= $product['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></a>
+                            <a href="/vendors/products/edit/<?= $product['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></a>
+                            <form action="/vendors/products/<?= $product['id']; ?>" method="POST" class="d-inline form-delete">
+                                <?= csrf_field(); ?>
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-action btn-sm small mb-1 btn-delete"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
+                            </form>
+                        </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td><img src="<?= base_url('img/vendors/logo/example-2.png'); ?>" alt="" class="w-100"></td>
-                    <td>Owl Creative</td>
-                    <td>Decoration</td>
-                    <td>Rp4.000.000,-</td>
-                    <td>
-                        <button type="button" class="btn btn-success btn-sm">Active</button>
-                    </td>
-                    <td class="text-center">
-
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></button>
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td><img src="<?= base_url('img/vendors/logo/example-3.png'); ?>" alt="" class="w-100"></td>
-                    <td>Isabel Giles</td>
-                    <td>Hair&Makeup</td>
-                    <td>Rp4.000.000,-</td>
-                    <td>
-                        <button type="button" class="btn btn-success btn-sm">Active</button>
-                    </td>
-                    <td class="text-center">
-
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></button>
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td><img src="<?= base_url('img/vendors/logo/example-4.png'); ?>" alt="" class="w-100"></td>
-                    <td>Monica Lin</td>
-                    <td>Hair&Makeup</td>
-                    <td>Rp4.000.000,-</td>
-                    <td>
-                        <button type="button" class="btn btn-success btn-sm">Active</button>
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></button>
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td><img src="<?= base_url('img/vendors/logo/logo2.png'); ?>" alt="sarovar" class="w-100"></td>
-                    <td>SAROVAR</td>
-                    <td>Venue</td>
-                    <td>Rp4.000.000,-</td>
-                    <td>
-                        <button type="button" class="btn btn-success btn-sm">Active</button>
-                    </td>
-                    <td class="text-center">
-
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></button>
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td><img src="<?= base_url('img/vendors/logo/logo1.png'); ?>" alt="grand-aston-bali" class="w-100"></td>
-                    <td>GRAND ASTON BALI</td>
-                    <td>Venue</td>
-                    <td>Rp4.000.000,-</td>
-                    <td>
-                        <button type="button" class="btn btn-success btn-sm">Active</button>
-                    </td>
-                    <td class="text-center">
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></button>
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></button>
-                        <button type="button" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
-                    </td>
-                </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
