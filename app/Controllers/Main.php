@@ -13,6 +13,15 @@ class Main extends BaseController
         return view('index', $data);
     }
 
+    public function searchresult()
+    {
+        $data = [
+            'title' => 'RH Wedding Planner'
+        ];
+
+        return view('main/search_result', $data);
+    }
+
     //--------------------------------------------------------------------
 
 }

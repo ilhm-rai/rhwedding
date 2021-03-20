@@ -53,7 +53,6 @@
                     <img src="/img/vendors/service/1.jpg" alt="" class="img-service">
                     <p class="service-name">Decoration</p>
                 </a>
-
             </div>
             <div class="col-2">
                 <a href="#" class="service">

@@ -245,7 +245,7 @@ if (logged_in()) {
             </li>
             <li class="nav-item no-arrow">
                 <div class="nav-link">
-                    <a class="btn btn-wild-watermelon rounded-pill" href="<?= base_url('registration'); ?>">Register</a>
+                    <a class="btn btn-wild-watermelon rounded-pill" href="<?= base_url('register'); ?>">Register</a>
                 </div>
             </li>
         <?php endif; ?>
