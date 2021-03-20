@@ -34,6 +34,15 @@
 
     </div>
     <!-- End of Content Wrapper -->
+    <?= $this->include('templates/footer_main'); ?>
+     <!-- Footer -->
+     
+    <!-- End of Footer -->
+
+
+
+
+
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
