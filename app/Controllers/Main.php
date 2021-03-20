@@ -22,6 +22,15 @@ class Main extends BaseController
         return view('main/search_result', $data);
     }
 
+    public function productdetail()
+    {
+        $data = [
+            'title' => 'RH Wedding Planner'
+        ];
+
+        return view('main/product_detail', $data);   
+    }
+
     //--------------------------------------------------------------------
 
 }

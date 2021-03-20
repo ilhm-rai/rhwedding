@@ -364,7 +364,7 @@ video {
   object-position: center;
   border-radius: 10px;
 }
-
+/* 
 .img-second div:first-child {
   padding-left: 0;
 }
@@ -376,7 +376,7 @@ video {
 
 .img-second div:last-child {
   padding-right: 0;
-}
+} */
 
 .product-name {
   color: #4b4b4b;
