@@ -1,11 +1,11 @@
-<?php 
-if(logged_in()){
+<?php
+if (logged_in()) {
     $id = user()->id;
     $usersModel = Model('UsersModel');
     $myInfo = $usersModel->getUserBy($id);
 }
 ?>
-<nav class="navbar navbar-expand navbar-light topbar mb-4 static-to">
+<nav class="navbar navbar-expand navbar-light topbar admin mb-4 static-to">
 
     <!-- Sidebar Toggle (Topbar) -->
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -13,12 +13,12 @@ if(logged_in()){
     </button>
 
     <!-- Topbar Search -->
-    <form class="d-none d-sm-inline-block form-inline ml-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+    <form class="d-none d-sm-inline-block form-inline ml-auto ml-md-3 my-2 my-md-0 mw-100 w-100 pr-5 navbar-search">
         <div class="input-group relative">
-            <input type="text" class="form-control border-0 rounded-pill pl-3" placeholder="Cari sesuatu..." aria-label="Search" aria-describedby="basic-addon2" style="height: 38px; border-color: none; z-index: 0; box-shadow: none;">
+            <input type="text" class="form-control search admin border-0 rounded-pill pl-3" placeholder="Cari sesuatu..." aria-label="Search" aria-describedby="basic-addon2">
             <button class="btn btn-wild-watermelon rounded-pill position-absolute border-white" type="button" style="right: 0;">
                 <i class="fas fa-search fa-sm"></i>
-                <p class="d-inline ml-1 small">Search</p>
+                <p class="d-inline ml-1">Search</p>
             </button>
         </div>
     </form>
@@ -100,30 +100,31 @@ if(logged_in()){
         <div class="topbar-divider d-none d-sm-block"></div>
 
         <!-- Nav Item - User Information -->
-        <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="mr-2 img-profile rounded-circle" src="/img/users/profile/<?= $myInfo['user_image']; ?>">
-                <span class="d-none d-lg-inline text-gray-600 small mr-2"><?= $myInfo['full_name']; ?></span>
-                <span class="fa fa-angle-down text-wild-watermelon"></span>
-            </a>
-            <!-- Dropdown - User Information -->
-            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="/user/profile/<?= user()->id; ?>">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Profile
+        <?php if (logged_in()) : ?>
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="mr-2 img-profile rounded-circle" src="/img/users/profile/<?= $myInfo['user_image']; ?>">
+                    <span class="d-none d-lg-inline text-gray-600 small mr-2"><?= $myInfo['full_name']; ?></span>
+                    <span class="fa fa-angle-down text-wild-watermelon"></span>
                 </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Settings
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Logout
-                </a>
-            </div>
-        </li>
-
+                <!-- Dropdown - User Information -->
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="/user/profile/<?= user()->id; ?>">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Profile
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Settings
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout
+                    </a>
+                </div>
+            </li>
+        <?php endif; ?>
     </ul>
 
 </nav>

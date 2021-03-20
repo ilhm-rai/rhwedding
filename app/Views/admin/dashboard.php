@@ -10,14 +10,14 @@
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card bg-gradient-main shadow-wild-watermelon border-0 h-100 py-2">
-            <div class="card-body text-white">
+        <div class="card shadow border-0 h-100 py-2">
+            <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col-auto mr-3">
                         <i class="fas fa-wallet fa-2x"></i>
                     </div>
                     <div class="col">
-                        <div class="text-xs font-weight-bold text-uppercase mb-1">
+                        <div class="text-xs text-wild-watermelon font-weight-bold text-uppercase mb-1">
                             My Wallet</div>
                         <div class="h5 mb-0 font-weight-bold">Rp103.000.000</div>
                     </div>
@@ -32,7 +32,7 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col-auto mr-3">
-                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        <i class="fas fa-dollar-sign fa-2x"></i>
                     </div>
                     <div class="col">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
@@ -50,7 +50,7 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col-auto mr-3">
-                        <i class="fas fa-calendar-alt fa-2x text-gray-300"></i>
+                        <i class="fas fa-calendar-alt fa-2x"></i>
                     </div>
                     <div class="col">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Events
@@ -73,7 +73,7 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col-auto mr-3">
-                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        <i class="fas fa-comments fa-2x"></i>
                     </div>
                     <div class="col">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
