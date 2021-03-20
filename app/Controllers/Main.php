@@ -31,6 +31,14 @@ class Main extends BaseController
         return view('main/product_detail', $data);   
     }
 
+    public function cart()
+    {
+        $data = [
+            'title' => 'RH Wedding Planner'
+        ];
+
+        return view('main/cart', $data);
+    }
     //--------------------------------------------------------------------
 
 }
