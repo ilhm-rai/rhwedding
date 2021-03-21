@@ -39,6 +39,16 @@ class Main extends BaseController
 
         return view('main/cart', $data);
     }
+
+    public function checkout()
+    {
+        $data = [
+            'title' => 'RH Wedding Planner'
+        ];
+
+        return view('main/checkout', $data);
+    }
+
     //--------------------------------------------------------------------
 
 }

@@ -266,6 +266,10 @@ video {
   background-color: #d7e2e5;
   color: #8f85fe;
 }
+.badge-neon {
+  background-color: #d6ffde;
+  color: #03ac0e;
+}
 
 .img-profile {
   object-fit: scale-down;
