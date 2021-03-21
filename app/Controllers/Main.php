@@ -58,6 +58,12 @@ class Main extends BaseController
         return view('main/vendor', $data);
     }
 
-    //--------------------------------------------------------------------
+    public function vendorProduct()
+    {
+        $data = [
+            'title' => 'RH Wedding Planner'
+        ];
 
+        return view('main/vendor_product', $data);
+    }
 }

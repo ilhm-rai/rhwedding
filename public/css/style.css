@@ -30,7 +30,7 @@ body,
 .btn-action,
 .sidebar .nav-link .nav-icon {
   /* background-color: rgba(228, 228, 229, 0.45); */
-  background-color: #e4e4e4;
+  background-color: #f3f3f3;
 }
 
 .btn-action {
@@ -145,7 +145,6 @@ video {
 
 .btn {
   font-weight: 500;
-  padding: 0.375rem 1rem;
 }
 
 .btn-outline-wild-watermelon {
@@ -510,7 +509,7 @@ a {
 }
 
 a:hover {
-  color: inherit;
+  color: #5a5c69;
   text-decoration: none;
 }
 
@@ -585,7 +584,7 @@ footer .btn-sosmed :hover {
 .vendor-nav .nav-link:hover,
 .vendor-nav .nav-link.active {
   position: relative;
-  color: #ff5876;
+  color: #FF5E7D;
   margin-bottom: 15px;
 }
 
@@ -598,7 +597,7 @@ footer .btn-sosmed :hover {
   top: 100%;
   transform: translate(-50%, -50%);
   text-align: center;
-  background: #ff5876;
+  background: #FF5E7D;
 
 }
 
@@ -610,10 +609,51 @@ footer .btn-sosmed :hover {
 .main.pagination .next,
 .main.pagination .previous {
   color: white !important;
-  background-color: #ff5876;
+  background-color: #FF5E7D;
 }
 
 .main.pagination .next.disabled,
 .main.pagination .previous.disabled {
   background-color: #C4C4C4;
+}
+
+.sidebar-filter {
+  border-radius: 20px;
+  padding: 20px;
+  background-color: white;
+}
+
+.filter-group {
+  padding-bottom: 25px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #F3F3F3;
+}
+
+.filter-group:last-child {
+  padding: 0;
+  margin-bottom: 0;
+  border: none;
+}
+
+.filter-group .filter-group-name {
+  font-weight: bold;
+  color: #FF5E7D;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.filter-group ul.list-filter-group {
+  list-style: none;
+  margin: 15px 0;
+  padding: 0;
+}
+
+.filter-group ul.list-filter-group li.list-filter-item {
+  color: #7E7E7E;
+  padding: 13px;
+}
+
+.sidebar-filter ul.list-filter-group li.list-filter-item.active {
+  background-color: #F3F3F3;
+  border-radius: 10px;
 }
