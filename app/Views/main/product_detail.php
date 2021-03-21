@@ -39,6 +39,21 @@
             (20 reviews)
             </p>
             <h2 class="product-price">Rp4.000.000</h2>
+            <p class="product-qty">Quantity</p>
+            <div class="input-group w-auto d-inline-flex">
+                <div class="input-group-prepend">
+                    <button class="input-group-text">-</button>
+                </div>
+                <input type="text" class="form-control text-center" id="qty" name="qty" value="1" style="max-width: 60px;">
+                <div class="input-group-append">
+                    <button class="input-group-text">+</button>
+                </div>
+            </div>
+            <p class="small mt-1">Minimal order 1</p>
+            <p class="product-note">Add Note</p>
+            <textarea class="form-control mb-4" id="productDescription" rows="4" style="border-radius: 15px;"></textarea>
+            <a class="btn btn-action rounded-pill"><span class="fa fa-shopping-cart"></span> Add to Cart</a>
+            <a class="btn btn-wild-watermelon rounded-pill">Buy Now</a>
         </div>
     </div>
 
@@ -52,7 +67,7 @@
                 <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> Platinum Vendor</span>
             </div>
             <div class="col-2">
-            <a href="/vendors/products/add" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill">Visit The Vendor</a>
+                <a href="/vendors/products/add" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill">Visit The Vendor</a>
             </div>
         </div>
     </div>

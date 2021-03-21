@@ -30,7 +30,7 @@ body,
 .btn-action,
 .sidebar .nav-link .nav-icon {
   /* background-color: rgba(228, 228, 229, 0.45); */
-  background-color: #f3f3f3;
+  background-color: #e4e4e4;
 }
 
 .btn-action {
@@ -396,6 +396,14 @@ video {
 
 .product-desc {
   white-space: pre-line;
+}
+
+.product-note,
+.product-qty {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .no-wrap {
