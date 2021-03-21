@@ -368,7 +368,7 @@ video {
   object-position: center;
   border-radius: 10px;
 }
-/* 
+/*
 .img-second div:first-child {
   padding-left: 0;
 }
@@ -543,4 +543,9 @@ footer .btn-sosmed :hover {
 
 .footer-menu a.menu:hover {
   color: #ff5876;
+}
+
+.custom-control-input:checked~.custom-control-label::before{
+  border-color: #ff5876;
+  background-color: #fa4566;
 }
