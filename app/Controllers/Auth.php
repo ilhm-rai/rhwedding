@@ -17,8 +17,10 @@ class Auth extends \Myth\Auth\Controllers\AuthController
 
         // Set a return URL if none is specified
         $_SESSION['redirect_url'] = session('redirect_url') ?? previous_url() ?? '/';
-
-        return view($this->config->views['login'], ['config' => $this->config, 'title' => 'Sign In']);
+        $data =[
+            'config' => $this->config, 
+            'title' => 'Sign In'];
+        return view('auth/login', $data);
     }
 
     public function register()

@@ -31,9 +31,18 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Main::index');
+// $routes->get('/', 'Main::index');
 $routes->get('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
+
+// Main Routes
+$routes->group('/', function ($routes) {
+	$routes->add('', 'Main::index');
+	$routes->add('searchresult', 'Main::searchresult');
+	$routes->add('productdetail', 'Main::productdetail');
+	$routes->add('cart', 'Main::cart');
+	$routes->add('checkout', 'Main::checkout');
+});
 
 
 // routes for admin
