@@ -39,6 +39,7 @@ $routes->get('/register', 'Auth::register');
 $routes->group('/', function ($routes) {
 	$routes->add('', 'Main::index');
 	$routes->add('searchresult', 'Main::searchresult');
+	$routes->add('vendor', 'Main::vendor');
 	$routes->add('productdetail', 'Main::productdetail');
 	$routes->add('cart', 'Main::cart');
 	$routes->add('checkout', 'Main::checkout');

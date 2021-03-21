@@ -28,7 +28,7 @@ class Main extends BaseController
             'title' => 'RH Wedding Planner'
         ];
 
-        return view('main/product_detail', $data);   
+        return view('main/product_detail', $data);
     }
 
     public function cart()
@@ -47,6 +47,15 @@ class Main extends BaseController
         ];
 
         return view('main/checkout', $data);
+    }
+
+    public function vendor()
+    {
+        $data = [
+            'title' => 'RH Wedding Planner'
+        ];
+
+        return view('main/vendor', $data);
     }
 
     //--------------------------------------------------------------------
