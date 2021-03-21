@@ -549,3 +549,8 @@ footer .btn-sosmed :hover {
   border-color: #ff5876;
   background-color: #fa4566;
 }
+
+.shop-summary .field{
+  font-weight: 600;
+  font-size: 18px;
+}
