@@ -607,13 +607,13 @@ footer .btn-sosmed :hover {
   height: 430px;
 }
 
-.pagination .next,
-.pagination .previous {
+.main.pagination .next,
+.main.pagination .previous {
   color: white !important;
   background-color: #ff5876;
 }
 
-.pagination .next.disable,
-.pagination .previous.disabled {
+.main.pagination .next.disabled,
+.main.pagination .previous.disabled {
   background-color: #C4C4C4;
 }

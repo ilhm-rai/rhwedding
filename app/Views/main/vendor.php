@@ -247,7 +247,7 @@
         </div>
         <div class="text-center">
             <nav aria-label="Page navigation example" class="d-inline-block">
-                <ul class="pagination">
+                <ul class="main pagination">
                     <li class="page-item">
                         <a class="page-link previous disabled" href="#" aria-label="Previous">
                             <span aria-hidden="true" class="fa fa-arrow-left"></span>
