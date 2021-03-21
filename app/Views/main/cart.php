@@ -3,7 +3,7 @@
 
 <?= $this->section('content'); ?>
 <div class="container-fluid">
-    <div class="content-frame mb-5 shadow">
+    <div class="content-frame mb-4 shadow">
         <div class="row content-frame pt-0 pb-0 pl-0">
             <div class="col-3">
                 <p class="font-weight-bold text-wild-watermelon m-0">Product Information</p>
@@ -23,7 +23,7 @@
         </div>
     </div>
     <!-- product per vendor -->
-    <div class="content-frame mb-5 shadow">
+    <div class="content-frame mb-4 shadow">
         <p class="font-weight-bold">RH Wedding Planner <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> Platinum Vendor</span></p>
         <!-- card product list -->
         <div class="content-frame mb-3 shadow p-0">
@@ -37,6 +37,15 @@
                             <h5 class="card-title">Davinci Photografi</h5>
                             <p class="main-product-price">Rp. 4.000.000</p>
                             <p class="main-product-location">Tasikmalaya</p>
+                            <div class="input-group w-auto d-inline-flex">
+                                <div class="input-group-prepend">
+                                    <button class="input-group-text">-</button>
+                                </div>
+                                <input type="text" class="form-control text-center" id="qty" name="qty" value="1" style="max-width: 60px;">
+                                <div class="input-group-append">
+                                    <button class="input-group-text">+</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-4">
                             <p class="main-product-location mb-0">Date and Time</p>
@@ -72,6 +81,15 @@
                             <h5 class="card-title">Davinci Photografi</h5>
                             <p class="main-product-price">Rp. 4.000.000</p>
                             <p class="main-product-location">Tasikmalaya</p>
+                            <div class="input-group w-auto d-inline-flex">
+                                <div class="input-group-prepend">
+                                    <button class="input-group-text">-</button>
+                                </div>
+                                <input type="text" class="form-control text-center" id="qty" name="qty" value="1" style="max-width: 60px;">
+                                <div class="input-group-append">
+                                    <button class="input-group-text">+</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-4">
                             <p class="main-product-location mb-0">Date and Time</p>
@@ -99,7 +117,7 @@
 
     </div>
     <!-- product per vendor -->
-    <div class="content-frame mb-5 shadow">
+    <div class="content-frame mb-4 shadow">
         <p class="font-weight-bold">RH Wedding Planner <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> Platinum Vendor</span></p>
         <!-- card product list -->
         <div class="content-frame mb-3 shadow p-0">
@@ -113,6 +131,15 @@
                             <h5 class="card-title">Davinci Photografi</h5>
                             <p class="main-product-price">Rp. 4.000.000</p>
                             <p class="main-product-location">Tasikmalaya</p>
+                            <div class="input-group w-auto d-inline-flex">
+                                <div class="input-group-prepend">
+                                    <button class="input-group-text">-</button>
+                                </div>
+                                <input type="text" class="form-control text-center" id="qty" name="qty" value="1" style="max-width: 60px;">
+                                <div class="input-group-append">
+                                    <button class="input-group-text">+</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-4">
                             <p class="main-product-location mb-0">Date and Time</p>
@@ -148,6 +175,15 @@
                             <h5 class="card-title">Davinci Photografi</h5>
                             <p class="main-product-price">Rp. 4.000.000</p>
                             <p class="main-product-location">Tasikmalaya</p>
+                            <div class="input-group w-auto d-inline-flex">
+                                <div class="input-group-prepend">
+                                    <button class="input-group-text">-</button>
+                                </div>
+                                <input type="text" class="form-control text-center" id="qty" name="qty" value="1" style="max-width: 60px;">
+                                <div class="input-group-append">
+                                    <button class="input-group-text">+</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-4">
                             <p class="main-product-location mb-0">Date and Time</p>
@@ -171,20 +207,12 @@
                 </div>
             </div>
         </div>
-
-
+    </div>
+    <div class="row justify-content-end mb-5">
+        <div class="col-4 text-right">
+            <a href="#" class="btn btn-wild-watermelon">Checkout</a>
+        </div>
     </div>
 </div>
 
-<?= $this->endSection(); ?>
-
-<?= $this->section('script'); ?>
-<script>
-    const swiper = new Swiper('.swiper-container', {
-        autoplay: {
-            delay: 4000,
-        },
-        loop: true,
-    });
-</script>
 <?= $this->endSection(); ?>
