@@ -180,6 +180,7 @@ class Product extends BaseController
         $data = [
             'title'  => 'Products - RH Wedding',
             'product'  => $this->productModel->getProductBy($id),
+            'productImg' => $this->productsImagesModel->getWhere(['product_id' => $id])->getResultArray()
         ];
         // dd($data);
         return view('vendors/product/detail', $data);

@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class ProductsImagesModel extends Model
 {
     protected $table = 'products_images';
-    protected $allowedFields = ['product_id', 'images'];
+    protected $allowedFields = ['product_id', 'image'];
     protected $db;
 
     public function __construct()
