@@ -71,7 +71,7 @@
                     <td><img src="/img/products/main-img/<?= $product['product_main_image']; ?>" alt="" class="w-100"></td>
                     <td><?= $product['product_name']; ?></td>
                     <td><?= $product['service']; ?></td>
-                    <td><?= $product['price']; ?></td>
+                    <td>Rp<?= number_format($product['price'],0,',','.'); ?>,-</td>
                     <td> <button type="button" class="btn <?= ($product['active'] == 1) ? 'btn-success' : 'btn-warning'; ?> btn-sm small"><?= ($product['active'] == 1) ? 'Active' : 'Disable'; ?></button></td>
                     <td class="text-center">
                             <a href="/vendors/products/detail/<?= $product['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></a>

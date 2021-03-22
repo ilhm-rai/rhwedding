@@ -86,18 +86,12 @@ if (logged_in()) {
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduct" aria-expanded="true" aria-controls="collapseUser">
+        <a class="nav-link" href="/vendors/products">
             <div class="nav-icon">
-                <i class="fas fa-fw fa-store"></i>
+                <i class="fas fa-fw fa-box-open"></i>
             </div>
-            <span>Products</span>
+            <span>Product</span>
         </a>
-        <div id="collapseProduct" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
-            <div class="bg-light py-2 collapse-inner rounded">
-                <a href="/vendors/products" class="collapse-item">Product List</a>
-                <a href="/vendors/products/category" class="collapse-item">Product Category</a>
-            </div>
-        </div>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/">

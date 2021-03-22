@@ -162,18 +162,10 @@ class Product extends BaseController
         }
         
         
-        session()->setFlashdata('message', 'Role has been successfully added');
+        session()->setFlashdata('message', 'Product has been successfully added');
         return redirect()->to('/vendors/products'); 
     }
 
-
-    public function edit()
-    {
-        $data['title'] = 'Edit Products - RH Wedding';
-        return view('vendors/product/edit', $data);
-    }
-
-   
 
     public function detail($id)
     {
@@ -184,5 +176,25 @@ class Product extends BaseController
         ];
         // dd($data);
         return view('vendors/product/detail', $data);
+    }
+
+    public function edit()
+    {
+        $data['title'] = 'Edit Products - RH Wedding';
+        return view('vendors/product/edit', $data);
+    }
+
+    public function delete($id)
+    {
+        $product =  $this->productModel->getProductBy($id);
+        $productImages =  $this->productsImagesModel->getWhere(['product_id' => $id])->getResultArray();
+        unlink('img/products/main-img/' . $product['product_main_image']);
+        foreach ($productImages as $img) {
+            unlink('img/products/other/' . $img['image']);
+        }
+        $this->productModel->delete($id);
+
+         session()->setFlashdata('message', 'Product has been successfully deleted');
+         return redirect()->to('/vendors/products');
     }
 }

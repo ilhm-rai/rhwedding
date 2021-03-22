@@ -127,6 +127,8 @@ $routes->group('/user', function ($routes) {
 $routes->delete('admin/users/roles/(:num)', 'Admin\UserRole::delete/$1');
 $routes->delete('admin/vendors/services/(:num)', 'Admin\VendorService::delete/$1');
 $routes->delete('admin/vendors/level/(:num)', 'Admin\VendorLevel::delete/$1');
+
+$routes->delete('vendors/products/(:num)', 'Vendors\Product::delete/$1');
 $routes->delete('users/profile', 'User::profile');
 
 
