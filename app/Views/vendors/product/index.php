@@ -7,6 +7,13 @@
         <h1 class="content-heading mb-0 text-gray-800">Products</h1>
         <a href="/vendors/products/add" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill"><i class="fas fa-plus-square mr-1"></i> Add New Product</a>
     </div>
+    <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
+
+    <?php if (session()->getFlashdata('message')) : ?>
+        <div class="alert alert-success" role="alert">
+            <?= session()->getFlashdata('message'); ?>
+        </div>
+    <?php endif; ?>
     <div class="row mb-4">
         <div class="col">
             <div class="dropdown d-inline-block">
@@ -61,7 +68,7 @@
                 <?php foreach($products as $product): ?>
                 <tr>
                     <td><?= $i++ ?></td>
-                    <td><img src="/img/products/<?= $product['product_main_image']; ?>" alt="" class="w-100"></td>
+                    <td><img src="/img/products/main-img/<?= $product['product_main_image']; ?>" alt="" class="w-100"></td>
                     <td><?= $product['product_name']; ?></td>
                     <td><?= $product['service']; ?></td>
                     <td><?= $product['price']; ?></td>

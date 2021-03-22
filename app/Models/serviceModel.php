@@ -41,7 +41,7 @@ class ServiceModel extends Model
  
     public function getServiceByUser($id)
     {
-        $query = "SELECT `s`.*
+        $query = "SELECT `s`.*, `vs`.id AS `id_service`
         FROM `services` AS `s`
         LEFT JOIN `vendors_services` AS `vs`
         ON `s`.`id` = `vs`.`service_id`

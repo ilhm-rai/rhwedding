@@ -553,16 +553,15 @@ footer .btn-sosmed :hover {
   color: #ff5876;
 }
 
-.custom-control-input:checked~.custom-control-label::before{
+.custom-control-input:checked ~ .custom-control-label::before {
   border-color: #ff5876;
   background-color: #fa4566;
 }
 
-.shop-summary .field{
+.shop-summary .field {
   font-weight: 600;
   font-size: 18px;
 }
-
 
 .vendor-profile {
   position: relative;
@@ -571,12 +570,12 @@ footer .btn-sosmed :hover {
   margin-bottom: 150px;
 }
 
-.vendor-profile .cover{
+.vendor-profile .cover {
   width: 100%;
   height: 100%;
 }
 
-.vendor-profile .container-fluid{
+.vendor-profile .container-fluid {
   position: absolute;
   bottom: -150px;
 }
@@ -584,7 +583,7 @@ footer .btn-sosmed :hover {
 .vendor-nav .nav-link:hover,
 .vendor-nav .nav-link.active {
   position: relative;
-  color: #FF5E7D;
+  color: #ff5e7d;
   margin-bottom: 15px;
 }
 
@@ -597,8 +596,7 @@ footer .btn-sosmed :hover {
   top: 100%;
   transform: translate(-50%, -50%);
   text-align: center;
-  background: #FF5E7D;
-
+  background: #ff5e7d;
 }
 
 .vendor-video {
@@ -609,12 +607,12 @@ footer .btn-sosmed :hover {
 .main.pagination .next,
 .main.pagination .previous {
   color: white !important;
-  background-color: #FF5E7D;
+  background-color: #ff5e7d;
 }
 
 .main.pagination .next.disabled,
 .main.pagination .previous.disabled {
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
 }
 
 .sidebar-filter {
@@ -626,7 +624,7 @@ footer .btn-sosmed :hover {
 .filter-group {
   padding-bottom: 25px;
   margin-bottom: 20px;
-  border-bottom: 1px solid #F3F3F3;
+  border-bottom: 1px solid #f3f3f3;
 }
 
 .filter-group:last-child {
@@ -637,7 +635,7 @@ footer .btn-sosmed :hover {
 
 .filter-group .filter-group-name {
   font-weight: bold;
-  color: #FF5E7D;
+  color: #ff5e7d;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -649,11 +647,11 @@ footer .btn-sosmed :hover {
 }
 
 .filter-group ul.list-filter-group li.list-filter-item {
-  color: #7E7E7E;
+  color: #7e7e7e;
   padding: 13px;
 }
 
 .sidebar-filter ul.list-filter-group li.list-filter-item.active {
-  background-color: #F3F3F3;
+  background-color: #f3f3f3;
   border-radius: 10px;
 }

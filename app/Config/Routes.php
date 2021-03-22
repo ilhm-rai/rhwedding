@@ -105,8 +105,9 @@ $routes->group('/vendors', function ($routes) {
 	//vendors/products
 	$routes->group('products', function ($routes) {
 		$routes->add('/', 'Vendors\Product::index');
-		$routes->add('edit', 'Vendors\Product::edit');
 		$routes->add('add', 'Vendors\Product::add');
+		$routes->add('save', 'Vendors\Product::save');
+		$routes->add('edit', 'Vendors\Product::edit');
 		$routes->add('detail/(:num)', 'Vendors\Product::detail/$1');
 		$routes->group('category', function ($routes) {
 			$routes->add('/', 'Vendors\ProductCategory::index');
