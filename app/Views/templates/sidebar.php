@@ -12,50 +12,50 @@ if (logged_in()) {
             <img src="<?= base_url('img/logo.png'); ?>" alt="RH Logo Wedding" width="50px">
         </div>
     </a>
-    <?php if($myInfo['role_name'] == 'Admin'): ?>
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Admin
-    </div>
+    <?php if ($myInfo['role_name'] == 'Admin') : ?>
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Admin
+        </div>
 
-    <li class="nav-item">
-        <a class="nav-link active" href="/admin">
-            <div class="nav-icon">
-                <i class="fas fa-fw fa-home"></i>
+        <li class="nav-item">
+            <a class="nav-link active" href="/admin">
+                <div class="nav-icon">
+                    <i class="fas fa-fw fa-home"></i>
+                </div>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
+                <div class="nav-icon">
+                    <i class="fas fa-fw fa-user"></i>
+                </div>
+                <span>Users</span>
+            </a>
+            <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
+                <div class="bg-light py-2 collapse-inner rounded">
+                    <a href="/admin/users" class="collapse-item">User List</a>
+                    <a href="/admin/users/roles" class="collapse-item">User Roles</a>
+                    <!-- <a href="/admin/users/permissions" class="collapse-item">User Permissions</a> -->
+                </div>
             </div>
-            <span>Dashboard</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
-            <div class="nav-icon">
-                <i class="fas fa-fw fa-user"></i>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVendor" aria-expanded="true" aria-controls="collapseUser">
+                <div class="nav-icon">
+                    <i class="fas fa-fw fa-store"></i>
+                </div>
+                <span>Vendors</span>
+            </a>
+            <div id="collapseVendor" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
+                <div class="bg-light py-2 collapse-inner rounded">
+                    <a href="/admin/vendors" class="collapse-item">Vendor List</a>
+                    <a href="/admin/vendors/services" class="collapse-item">Vendor Services</a>
+                    <a href="/admin/vendors/level" class="collapse-item">Vendor Level</a>
+                </div>
             </div>
-            <span>Users</span>
-        </a>
-        <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
-            <div class="bg-light py-2 collapse-inner rounded">
-                <a href="/admin/users" class="collapse-item">User List</a>
-                <a href="/admin/users/roles" class="collapse-item">User Roles</a>
-                <!-- <a href="/admin/users/permissions" class="collapse-item">User Permissions</a> -->
-            </div>
-        </div>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVendor" aria-expanded="true" aria-controls="collapseUser">
-            <div class="nav-icon">
-                <i class="fas fa-fw fa-store"></i>
-            </div>
-            <span>Vendors</span>
-        </a>
-        <div id="collapseVendor" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
-            <div class="bg-light py-2 collapse-inner rounded">
-                <a href="/admin/vendors" class="collapse-item">Vendor List</a>
-                <a href="/admin/vendors/services" class="collapse-item">Vendor Services</a>
-                <a href="/admin/vendors/level" class="collapse-item">Vendor Level</a>
-            </div>
-        </div>
-    </li>
+        </li>
     <?php endif; ?>
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -70,20 +70,12 @@ if (logged_in()) {
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseShop" aria-expanded="true" aria-controls="collapseUser">
+        <a class="nav-link" href="/vendors/myvendor">
             <div class="nav-icon">
                 <i class="fas fa-fw fa-store"></i>
             </div>
             <span>My Vendor</span>
         </a>
-        <div id="collapseShop" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
-            <div class="bg-light py-2 collapse-inner rounded">
-                <a href="/vendors/myvendor/" class="collapse-item">Vendor Profile</a>
-                <a href="/vendors/myvendor/service/" class="collapse-item">Vendor Service</a>
-                <!-- <a href="/vendor/myvendor/" class="collapse-item">Vendor Rating</a> -->
-                <!-- <a href="/vendor/myvendor/" class="collapse-item">Vendor Decoration</a> -->
-            </div>
-        </div>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/vendors/products">
