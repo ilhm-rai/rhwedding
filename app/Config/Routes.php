@@ -100,7 +100,11 @@ $routes->group('/vendors', function ($routes) {
 	// vendors/myvendor
 	$routes->group('myvendor', function ($routes) {
 		$routes->add('/', 'Vendors\MyVendor::index');
-		$routes->add('service', 'Vendors\MyVendor::service');
+		$routes->group('service', function ($routes) {
+			$routes->add('/', 'Vendors\MyVendor::service');
+			$routes->add('add', 'Vendors\MyVendor::addservice');
+		});
+		
 	});
 	//vendors/products
 	$routes->group('products', function ($routes) {
@@ -130,17 +134,6 @@ $routes->delete('admin/vendors/level/(:num)', 'Admin\VendorLevel::delete/$1');
 
 $routes->delete('vendors/products/(:num)', 'Vendors\Product::delete/$1');
 $routes->delete('users/profile', 'User::profile');
-
-
-
-
-
-
-
-
-
-
-
 
 $routes->group('admin/vendors/services', function ($routes) {
 	$routes->add('', 'Admin\VendorService::show');

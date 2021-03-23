@@ -54,7 +54,7 @@
             <div class="col-10 row justify-content-between">
                 <!-- main image -->
                 <div class="col-12">
-                    <div class="img-add">
+                    <div class="img-add w-100">
                         <label for="main-img">
                             <img src="/img/plus-icon.png" class="main-preview" />
                         </label>

@@ -7,6 +7,14 @@
         <h1 class="content-heading mb-0 text-gray-800">My Service</h1>
         <a href="#" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill"><i class="fas fa-plus-square mr-1"></i> Add</a>
     </div>
+
+    <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
+
+<?php if (session()->getFlashdata('message')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('message'); ?>
+    </div>
+<?php endif; ?>
     <div class="table-responsive">
         <table class="table table-bordered td-align-middle" id="dataProducts" width="100%" cellspacing="0">
             <thead class="th-no-border">
@@ -51,7 +59,7 @@
                     ?>
                     <td>
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck<?= $i; ?>" <?= ($serve==true)?'checked':''; ?>>
+                            <input type="checkbox" data-id="<?= ($serve==true)?$ms['id']:''; ?>" data-vendor="<?= $vendor['vendor_id']; ?>" data-service="<?= $service['id']; ?>" class="custom-control-input serviceCheckbox" id="customCheck<?= $i; ?>" <?= ($serve==true)?'checked':''; ?>>
                             <label class="custom-control-label" for="customCheck<?= $i; ?>">&nbsp;</label>
                         </div>
                     </td>
@@ -72,5 +80,28 @@
     $(document).ready(function() {
         $('#dataProducts').DataTable();
     });
+    
+
+
+    // checkbox service
+    $(".serviceCheckbox").on("click", function () {
+        const vendorId = $(this).data("vendor");
+        const serviceId = $(this).data("service");
+        console.log(vendorId, serviceId);
+        $.ajax({
+            url: "<?= base_url('/vendors/myvendor/service/add')?>",
+            type: 'post',
+            data : {
+                vendorId: vendorId,
+                serviceId: serviceId
+            },
+            success: function() {
+				console.log('ok');
+                document.location.href = "<?= base_url('/vendors/myvendor/service/'); ?>";
+			}
+        })
+    });
+
+
 </script>
 <?= $this->endSection(); ?>
