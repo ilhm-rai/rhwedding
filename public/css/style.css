@@ -231,6 +231,16 @@ video {
   background-image: linear-gradient(to right, #ff5876, #ff9384);
 }
 
+.password-wrapper {
+  position: relative;
+}
+
+.visible {
+  position: absolute;
+  top: 1em;
+  right: 1.5em;
+}
+
 .bg-login-image {
   background: url("../img/bg-login-image.jpg");
 }

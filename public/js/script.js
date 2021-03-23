@@ -33,7 +33,7 @@ visible.forEach((e) => {
   e.addEventListener("click", () => {
     e.classList.toggle("fa-eye");
     e.classList.toggle("fa-eye-slash");
-    let password = e.previousElementSibling;
+    let password = e.nextElementSibling;
     if (password.getAttribute("type") == "password") {
       password.setAttribute("type", "text");
     } else {

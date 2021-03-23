@@ -37,9 +37,11 @@
                                             </div>
                                             <div class="form-group row">
                                                 <div class="col-sm-6 mb-2">
+                                                    <i class="visible fas fa-eye-slash"></i>
                                                     <input type="password" class="form-control form-control-user <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" name="password" id="password" placeholder="Password" autocomplete="off">
                                                 </div>
                                                 <div class="col-sm-6 mb-2">
+                                                    <i class="visible fas fa-eye-slash"></i>
                                                     <input type="password" class="form-control form-control-user <?php if (session('errors.pass_confirm')) : ?>is-invalid<?php endif ?>" name="pass_confirm" id="pass_confirm" placeholder="Repeat Password" autocomplete="off">
                                                 </div>
                                             </div>

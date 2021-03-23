@@ -38,7 +38,8 @@
                                                 </div>
                                             <?php endif; ?>
 
-                                            <div class="form-group">
+                                            <div class="form-group password-wrapper">
+                                                <i class="visible fas fa-eye-slash"></i>
                                                 <input type="password" class="form-control form-control-user <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" name="password" id="exampleInputPassword" placeholder="Password">
                                                 <div class="invalid-feedback">
                                                     <?= session('errors.password') ?>
