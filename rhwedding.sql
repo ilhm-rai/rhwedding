@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Mar 2021 pada 11.40
+-- Waktu pembuatan: 23 Mar 2021 pada 12.33
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -72,8 +72,7 @@ CREATE TABLE `auth_groups` (
 INSERT INTO `auth_groups` (`id`, `name`, `description`, `active`) VALUES
 (1, 'Admin', 'Administrator', 1),
 (2, 'Vendor', 'vendor partners', 1),
-(3, 'User', 'Regular user', 1),
-(4, 'Cashier', 'RH Wedding Planner Cashier', 1);
+(3, 'User', 'Regular user', 1);
 
 -- --------------------------------------------------------
 
@@ -161,7 +160,33 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (32, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-04 01:20:21', 1),
 (33, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-04 01:30:46', 1),
 (34, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-04 01:48:03', 1),
-(35, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-04 04:10:38', 1);
+(35, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-04 04:10:38', 1),
+(36, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-04 06:31:29', 1),
+(37, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-04 10:44:49', 1),
+(38, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-05 09:54:14', 1),
+(39, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-06 01:05:43', 1),
+(40, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-06 22:04:06', 1),
+(41, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-06 22:25:13', 1),
+(42, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-08 02:04:41', 1),
+(43, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-10 08:39:23', 1),
+(44, '::1', 'muhamadarsaludin71@gmail.com', NULL, '2021-03-11 01:32:14', 0),
+(45, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-11 01:32:32', 1),
+(46, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-11 07:03:25', 1),
+(47, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-13 00:23:29', 1),
+(48, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-13 10:47:34', 1),
+(49, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-13 22:19:23', 1),
+(50, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-14 01:09:37', 1),
+(51, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-15 09:36:32', 1),
+(52, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-16 09:09:50', 1),
+(53, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-16 10:48:31', 1),
+(54, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-16 10:55:05', 1),
+(55, '::1', 'muhamadarsal71@gmail.com', 12, '2021-03-16 10:56:27', 1),
+(56, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-20 10:06:14', 1),
+(57, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-21 22:25:45', 1),
+(58, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-22 06:12:27', 1),
+(59, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-22 23:01:44', 1),
+(60, '::1', 'muhamadarsaludin71@gmail.com', NULL, '2021-03-23 02:33:10', 0),
+(61, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-23 02:33:23', 1);
 
 -- --------------------------------------------------------
 
@@ -228,6 +253,13 @@ CREATE TABLE `category` (
   `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `category`
+--
+
+INSERT INTO `category` (`id`, `vendor_id`, `name`, `description`) VALUES
+(1, 4, 'The Day', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -274,17 +306,26 @@ CREATE TABLE `products` (
   `product_service_id` int(11) UNSIGNED NOT NULL,
   `product_code` varchar(20) NOT NULL,
   `product_name` varchar(255) NOT NULL,
-  `product_slug` varchar(255) NOT NULL,
+  `product_slug` varchar(255) DEFAULT NULL,
   `product_main_image` varchar(255) NOT NULL,
   `product_video` varchar(255) DEFAULT NULL,
   `product_description` text DEFAULT NULL,
-  `product_sold` int(11) NOT NULL,
-  `price` int(11) DEFAULT NULL,
-  `total_review` int(11) NOT NULL,
-  `active` int(1) NOT NULL,
+  `product_sold` int(11) DEFAULT NULL,
+  `price` int(11) NOT NULL,
+  `stock` int(11) NOT NULL,
+  `total_review` int(11) DEFAULT NULL,
+  `active` int(1) NOT NULL DEFAULT 1,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `products`
+--
+
+INSERT INTO `products` (`id`, `vendor_id`, `product_service_id`, `product_code`, `product_name`, `product_slug`, `product_main_image`, `product_video`, `product_description`, `product_sold`, `price`, `stock`, `total_review`, `active`, `created_at`, `updated_at`) VALUES
+(11, 4, 5, 'PRD4202103003', 'Gaun Monalisa', NULL, '1.jpg', NULL, '<p><span style=\"color: #555555; font-family: \'Proxima Nova\', Helvetica, arial, sans-serif; font-size: 14px; letter-spacing: 0.2px; white-space: pre-wrap; background-color: #ffffff;\">Pre-order 2minggu</span></p>', NULL, 3000000, 10, NULL, 1, '2021-03-22 08:18:50', '2021-03-22 08:18:50'),
+(13, 4, 6, 'PRD4202103002', 'Rh Prewedding Paket 1', NULL, '7.jpg', NULL, '<p>1. Photograper + Crew</p>\r\n<p>2. Free properti</p>', NULL, 2000000, 20, NULL, 1, '2021-03-22 12:05:05', '2021-03-22 12:05:05');
 
 -- --------------------------------------------------------
 
@@ -305,9 +346,24 @@ CREATE TABLE `products_category` (
 --
 
 CREATE TABLE `products_images` (
+  `id` int(11) NOT NULL,
   `product_id` int(11) UNSIGNED NOT NULL,
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `products_images`
+--
+
+INSERT INTO `products_images` (`id`, `product_id`, `image`) VALUES
+(15, 11, '3.jpg'),
+(16, 11, '2.jpg'),
+(17, 11, '9.jpg'),
+(18, 11, '12.jpg'),
+(23, 13, 'product-2.jpg'),
+(24, 13, 'product-3.jpg'),
+(25, 13, '6.jpg'),
+(26, 13, 'product-5.jpg');
 
 -- --------------------------------------------------------
 
@@ -344,8 +400,48 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `name`, `active`, `description`) VALUES
-(1, 'Venue', 1, NULL),
-(4, 'Decoration', 1, '');
+(1, 'Venue', 1, ''),
+(4, 'Decoration', 1, ''),
+(6, 'Catering', 1, NULL),
+(8, 'Dress & Attire', 1, NULL),
+(9, 'Photograpy', 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `transaction`
+--
+
+CREATE TABLE `transaction` (
+  `id` int(11) NOT NULL,
+  `transaction_code` varchar(20) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `total_pay` int(11) NOT NULL,
+  `transaction_date` datetime DEFAULT NULL,
+  `transaction_exp_date` datetime DEFAULT NULL,
+  `payment_method` int(11) DEFAULT NULL,
+  `payment_date` datetime DEFAULT NULL,
+  `payment_status` int(11) DEFAULT NULL,
+  `crated_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `transaction_detail`
+--
+
+CREATE TABLE `transaction_detail` (
+  `id` int(11) NOT NULL,
+  `transaction_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `note` text DEFAULT NULL,
+  `cash` int(11) DEFAULT NULL,
+  `qty` int(11) NOT NULL,
+  `sub_total_payment` int(11) NOT NULL,
+  `confirm` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -404,7 +500,7 @@ CREATE TABLE `users_profile` (
 --
 
 INSERT INTO `users_profile` (`id`, `user_id`, `full_name`, `user_image`, `contact`, `address`, `city`, `province`, `postal_code`) VALUES
-(1, 5, 'Muhamad Arsaludin', 'default.svg', NULL, NULL, NULL, NULL, NULL),
+(1, 5, 'Muhamad Arsaludin', 'default.svg', '081292040869', 'Jl. Intan Permata IX No. 24 kota Tasikmalaya Jawa Barat', 'Tasikmalaya', 'Jawa Barat', '46153'),
 (4, 12, 'arsal71', 'default.svg', NULL, NULL, NULL, NULL, NULL),
 (5, 4, 'rizkymhs', 'default.svg', NULL, NULL, NULL, NULL, NULL),
 (6, 1, 'rizkyardi', 'default.svg', NULL, NULL, NULL, NULL, NULL);
@@ -420,7 +516,7 @@ CREATE TABLE `vendors` (
   `user_id` int(11) UNSIGNED NOT NULL,
   `vendor_code` varchar(20) NOT NULL,
   `vendor_name` varchar(255) NOT NULL,
-  `vendor_logo` varchar(255) NOT NULL DEFAULT 'default.svg',
+  `vendor_logo` varchar(255) NOT NULL DEFAULT 'default.png',
   `vendor_billboard` varchar(255) NOT NULL DEFAULT 'default.png',
   `vendor_level_id` int(11) UNSIGNED NOT NULL DEFAULT 1,
   `vendor_description` text DEFAULT NULL,
@@ -436,7 +532,7 @@ CREATE TABLE `vendors` (
 INSERT INTO `vendors` (`id`, `user_id`, `vendor_code`, `vendor_name`, `vendor_logo`, `vendor_billboard`, `vendor_level_id`, `vendor_description`, `active`, `created_at`, `updated_at`) VALUES
 (2, 1, 'VND_0220210001', 'Grand Aston Bali', 'logo1.png', 'default.png', 4, NULL, 1, '2021-02-24 14:48:01', '2021-02-24 14:48:01'),
 (3, 4, 'VND_0220210002', 'Sarovar', 'logo2.png', 'default.png', 1, NULL, 1, '2021-02-24 14:50:28', '2021-02-24 14:50:28'),
-(4, 5, 'VND_0220210001', 'RH', 'default.svg', 'rhvideo.mp4', 4, 'Official vendor from RH Wedding Planner', 1, '2021-03-03 19:45:09', '2021-03-03 19:45:09');
+(4, 5, 'VND_0220210003', 'RH Wedding Planner', 'logo.png', 'rhvideo.mp4', 4, 'Official vendor from RH Wedding Planner', 1, '2021-03-03 19:45:09', '2021-03-03 19:45:09');
 
 -- --------------------------------------------------------
 
@@ -458,7 +554,7 @@ INSERT INTO `vendors_level` (`id`, `name`, `description`) VALUES
 (1, 'Classic', NULL),
 (2, 'Silver', NULL),
 (3, 'Gold', ''),
-(4, 'Platinum', NULL);
+(4, 'Platinum', '');
 
 -- --------------------------------------------------------
 
@@ -478,7 +574,12 @@ CREATE TABLE `vendors_services` (
 
 INSERT INTO `vendors_services` (`id`, `vendor_id`, `service_id`) VALUES
 (1, 2, 1),
-(2, 3, 1);
+(2, 3, 1),
+(3, 4, 1),
+(4, 4, 4),
+(5, 4, 8),
+(6, 4, 9),
+(22, 4, 6);
 
 --
 -- Indexes for dumped tables
@@ -578,6 +679,7 @@ ALTER TABLE `products_category`
 -- Indeks untuk tabel `products_images`
 --
 ALTER TABLE `products_images`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `product_id` (`product_id`);
 
 --
@@ -594,6 +696,22 @@ ALTER TABLE `products_review`
 --
 ALTER TABLE `services`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `transaction`
+--
+ALTER TABLE `transaction`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `transaction_code` (`transaction_code`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indeks untuk tabel `transaction_detail`
+--
+ALTER TABLE `transaction_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `transaction_id` (`transaction_id`),
+  ADD UNIQUE KEY `product_id` (`product_id`);
 
 --
 -- Indeks untuk tabel `users`
@@ -646,13 +764,13 @@ ALTER TABLE `auth_activation_attempts`
 -- AUTO_INCREMENT untuk tabel `auth_groups`
 --
 ALTER TABLE `auth_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
@@ -676,7 +794,7 @@ ALTER TABLE `auth_tokens`
 -- AUTO_INCREMENT untuk tabel `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -688,25 +806,43 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `products_category`
 --
 ALTER TABLE `products_category`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `products_images`
+--
+ALTER TABLE `products_images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT untuk tabel `products_review`
 --
 ALTER TABLE `products_review`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT untuk tabel `transaction`
+--
+ALTER TABLE `transaction`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `transaction_detail`
+--
+ALTER TABLE `transaction_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
@@ -736,7 +872,7 @@ ALTER TABLE `vendors_level`
 -- AUTO_INCREMENT untuk tabel `vendors_services`
 --
 ALTER TABLE `vendors_services`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -770,12 +906,6 @@ ALTER TABLE `auth_users_permissions`
   ADD CONSTRAINT `auth_users_permissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `category`
---
-ALTER TABLE `category`
-  ADD CONSTRAINT `category_ibfk_2` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`id`) ON UPDATE CASCADE;
-
---
 -- Ketidakleluasaan untuk tabel `products`
 --
 ALTER TABLE `products`
@@ -783,24 +913,17 @@ ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`product_service_id`) REFERENCES `vendors_services` (`id`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `products_category`
---
-ALTER TABLE `products_category`
-  ADD CONSTRAINT `products_category_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `products_category_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON UPDATE CASCADE;
-
---
 -- Ketidakleluasaan untuk tabel `products_images`
 --
 ALTER TABLE `products_images`
-  ADD CONSTRAINT `products_images_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `products_images_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `products_review`
 --
 ALTER TABLE `products_review`
-  ADD CONSTRAINT `products_review_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `products_review_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `products_review_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `products_review_ibfk_3` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `users_profile`
