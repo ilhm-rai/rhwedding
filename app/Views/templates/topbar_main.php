@@ -210,7 +210,7 @@ if (logged_in()) {
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in p-3" aria-labelledby="vendorDropdown">                    
                     <img src="/img/vendors/logo/<?= $myVendor['vendor_logo']; ?>" alt="" class="w-25">
                     <a class="text-small text-center mb-0"><?= $myVendor['vendor_name']; ?></a>
-                    <hr>
+                    <div class="dropdown-divider"></div>
                     <?php if($myInfo['role_name'] == 'Admin'): ?>
                     <a class="dropdown-item" href="/admin">
                     <button class="btn btn-sm btn-wild-watermelon">Dashboard Admin</button>
@@ -246,10 +246,6 @@ if (logged_in()) {
                     <a class="dropdown-item" href="/user/profile/<?= user()->id; ?>">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Profile
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Settings
                     </a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
