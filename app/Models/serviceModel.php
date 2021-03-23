@@ -14,7 +14,7 @@ class ServiceModel extends Model
     {
         $this->db = \Config\Database::connect();
     }
-    
+
     // User Role
     public function getServices()
     {
@@ -25,8 +25,8 @@ class ServiceModel extends Model
             GROUP BY `s`.`id`
             ORDER BY `s`.`id` ASC
         ";
-            return $this->db->query($query)->getResultArray();
-    }    
+        return $this->db->query($query)->getResultArray();
+    }
 
     public function getServiceByVendorId($id)
     {
@@ -36,9 +36,9 @@ class ServiceModel extends Model
             ON `s`.`id` = `vs`. `service_id`
             WHERE `vs`.`vendor_id` = $id
         ";
-            return $this->db->query($query)->getResultArray();
+        return $this->db->query($query)->getResultArray();
     }
- 
+
     public function getServiceByUser($id)
     {
         $query = "SELECT `s`.*, `vs`.id AS `id_service`

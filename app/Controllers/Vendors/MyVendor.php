@@ -3,6 +3,7 @@
 namespace App\Controllers\Vendors;
 
 use App\Controllers\BaseController;
+use App\Models\ProductModel;
 use App\Models\UsersModel;
 use App\Models\VendorModel;
 use App\Models\ServiceModel;
@@ -14,14 +15,16 @@ class Myvendor extends BaseController
 {
 
     protected $usersModel;
-    protected $vendorModel;  
+    protected $vendorModel;
     protected $serviceModel;
+    protected $productModel;
     protected $vendorsServicesModel;
 
 
     public function __construct()
     {
         $this->usersModel = new UsersModel();
+        $this->productModel = new ProductModel();
         $this->vendorModel = new VendorModel();
         $this->serviceModel = new ServiceModel();
         $this->vendorsServicesModel = new VendorsServicesModel();
@@ -29,18 +32,20 @@ class Myvendor extends BaseController
 
     public function index()
     {
-          $data = [
+        $dataVendor = $this->vendorModel->getVendorByUser(user()->id);
+        $data = [
             'title'  => 'My Vendor',
-            'user'  => $this->usersModel->getUser(user()->id),
-            'vendor'  => $this->vendorModel->getVendorByUser(user()->id),
+            'user'  => $this->usersModel->getUserBy(user()->id),
+            'vendor'  => $dataVendor,
+            'myServices' => $this->serviceModel->getServiceByVendorId($dataVendor['vendor_id'])
             // 'user'  => $this->usersModel->getUserBy($id),
         ];
         // dd($data);
         return view('vendors/myvendor/profile', $data);
-    } 
+    }
     public function service()
     {
-        $data= [
+        $data = [
             'title' => 'Service',
             'services' =>  $this->serviceModel->getServices(),
             'myservices' => $this->serviceModel->getServiceByUser(user()->id),
@@ -53,15 +58,19 @@ class Myvendor extends BaseController
 
     public function addservice()
     {
-		$data = [
-			'vendor_id'=> $this->request->getVar('vendorId'),
-			'service_id'=> $this->request->getVar('serviceId')
-		];
+        $data = [
+            'vendor_id' => $this->request->getVar('vendorId'),
+            'service_id' => $this->request->getVar('serviceId')
+        ];
         $result = $this->vendorsServicesModel->getWhere($data)->getRowArray();
         if ($result) {
-            $this->vendorsServicesModel->delete($data);
+            if ($this->productModel->getWhere(['product_service_id' => $result['id']])->getRowArray()) {
+                return session()->setFlashdata('message', 'Service yang digunakan product tidak dapat dihapus.');
+            }
+
+            $this->vendorsServicesModel->delete($result['id']);
             session()->setFlashdata('message', 'Service has been successfully deleted');
-		}else{
+        } else {
             $this->vendorsServicesModel->save($data);
             session()->setFlashdata('message', 'Service has been successfully added');
         }

@@ -13,7 +13,7 @@ class VendorModel extends Model
 
     public function getVendor()
     {
-            $query = "SELECT `v`.*, `vl`.`name` as `level_name`, `up`.`full_name` as `owner` 
+        $query = "SELECT `v`.*, `vl`.`name` as `level_name`, `up`.`full_name` as `owner`
             FROM `vendors` AS `v`
             JOIN `vendors_level` AS `vl`
             ON `v`.`vendor_level_id` = `vl`.`id`
@@ -21,10 +21,10 @@ class VendorModel extends Model
             ON `u`.`id` = `v`.`user_id`
             LEFT JOIN `users_profile` AS `up`
             ON `u`.id = `up`.`user_id`
-        "; 
+        ";
         return $this->db->query($query)->getResultArray();
     }
-    
+
     public function getVendorBy($id)
     {
         $query = "SELECT `v`.`id` AS `vendor_id` ,`v`.`vendor_name`, `v`.`vendor_logo`,`v`.`vendor_billboard`,`v`.`vendor_description`,`vl`.`name` AS `vendor_level` ,`v`.`active` AS `vendor_active`, `v`.`created_at` AS `vendor_create`
@@ -38,7 +38,7 @@ class VendorModel extends Model
         return $this->db->query($query)->getRowArray();
     }
 
-    public function getVendorByUser($id)            
+    public function getVendorByUser($id)
     {
         $query = "SELECT `v`.`id` AS `vendor_id` ,`v`.`vendor_name`, `v`.`vendor_logo`,`v`.`vendor_billboard`,`v`.`vendor_description`,`vl`.`name` AS `vendor_level` ,`v`.`active` AS `vendor_active`, `v`.`created_at` AS `vendor_create`
         FROM `vendors` AS `v`
@@ -60,11 +60,11 @@ class VendorModel extends Model
             JOIN `vendors` AS `v`
             ON `vs`.`vendor_id` = `v`.`id`
             WHERE `s`.`id` = $id
-        "; 
+        ";
         return $this->db->query($query)->getResultArray();
     }
 
-    
+
     public function getVendorsByLevel($id)
     {
         $query = "SELECT `vl`.`name` as `level`,`v`.*
@@ -72,8 +72,7 @@ class VendorModel extends Model
             JOIN `vendors` AS `v`
             ON `vl`.`id` = `v`.`vendor_level_id`
             WHERE `vl`.`id` = $id
-        "; 
+        ";
         return $this->db->query($query)->getResultArray();
     }
-
 }
