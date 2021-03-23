@@ -7,7 +7,7 @@ if (logged_in()) {
 ?>
 <ul class="navbar-nav bg-white sidebar accordion" id="accordionSidebar">
 
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin/dashboard'); ?>">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div class="sidebar-brand-icon">
             <img src="<?= base_url('img/logo.png'); ?>" alt="RH Logo Wedding" width="50px">
         </div>

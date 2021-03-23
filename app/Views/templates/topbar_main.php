@@ -2,7 +2,10 @@
 if (logged_in()) {
     $id = user()->id;
     $usersModel = Model('UsersModel');
+    $vendorModel = Model('vendorModel');
     $myInfo = $usersModel->getUserBy($id);
+    $myVendor = $vendorModel->getVendorByUser($id);
+    // dd($myInfo);
 }
 ?>
 <nav class="navbar main navbar-expand navbar-light topbar static-to">
@@ -193,26 +196,44 @@ if (logged_in()) {
         <?php if (logged_in()) : ?>
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="vendorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="mr-2 img-profile rounded-circle" src="/img/vendors/logo/logo.png">
-                    <span class="d-none d-lg-inline text-gray-600 small mr-2">RH Wedding Planner</span>
+                    <?php if($myVendor): ?>
+                    <img class="mr-2 img-profile rounded-circle" src="/img/vendors/logo/<?= $myVendor['vendor_logo']; ?>">
+                    <span class="d-none d-lg-inline text-gray-600 small mr-2"><?= $myVendor['vendor_name']; ?></span>
+                    <?php else : ?>
+                    <img class="mr-2 img-profile rounded-circle" src="/img/vendors/logo/default.png">
+                    <span class="d-none d-lg-inline text-gray-600 small mr-2">Vendor</span>
+                    <?php endif; ?>
                     <span class="fa fa-angle-down text-wild-watermelon"></span>
                 </a>
+                <?php if($myVendor) :?>
                 <!-- Dropdown - User Information -->
-                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="vendorDropdown">
-                    <a class="dropdown-item" href="/user/profile/<?= user()->id; ?>">
-                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Profile
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in p-3" aria-labelledby="vendorDropdown">                    
+                    <img src="/img/vendors/logo/<?= $myVendor['vendor_logo']; ?>" alt="" class="w-25">
+                    <a class="text-small text-center mb-0"><?= $myVendor['vendor_name']; ?></a>
+                    <hr>
+                    <?php if($myInfo['role_name'] == 'Admin'): ?>
+                    <a class="dropdown-item" href="/admin">
+                    <button class="btn btn-sm btn-wild-watermelon">Dashboard Admin</button>
                     </a>
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Settings
+                    <?php else: ?>
+                    <a class="dropdown-item" href="/vendors">
+                    <button class="btn btn-sm btn-wild-watermelon">Dashboard Vendor</button>
                     </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Logout
-                    </a>
+                    <?php endif; ?>
+                    <div class="col-12 text-center">
+                        <a href="#" class="text-small text-center text-wild-watermelon mb-0">Upgrade my vendor</a>
+                    </div>
                 </div>
+                <?php else : ?>
+                <!-- Dropdown - User Information -->
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in p-3" aria-labelledby="vendorDropdown">
+                    <p class="text-small text-center font-weight-bold">You don't have a vendor</p>
+                    <a class="dropdown-item" href="/user/profile/<?= user()->id; ?>">
+                    <button class="btn btn-sm btn-wild-watermelon">Become a vendor</button>
+                    </a>
+                    <a class="text-small text-center text-wild-watermelon mb-0">Learn more at vendor center</a>
+                </div>
+                <?php endif ?>
             </li>
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
