@@ -2,7 +2,7 @@
 
 <?= $this->section('content'); ?>
 
-<video playsinline autoplay loop class="mb-4">
+<video playsinline controls loop class="mb-4">
   <source src="/img/vendors/billboard/rhvideo.mp4" type="video/mp4">
 </video>
 <!-- Content Row -->
