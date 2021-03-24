@@ -23,37 +23,16 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="content-heading mb-0">Service</h1>
         </div>
+        <!-- pang swipper keun wkwk -->
         <div class="row">
+        <?php foreach($services as $service): ?>
             <div class="col-2">
                 <a href="#" class="service">
                     <img src="/img/vendors/service/1.jpg" alt="" class="img-service">
-                    <p class="service-name">Venue</p>
+                    <p class="service-name"><?= $service['name']; ?></p>
                 </a>
             </div>
-            <div class="col-2">
-                <a href="#" class="service">
-                    <img src="/img/vendors/service/1.jpg" alt="" class="img-service">
-                    <p class="service-name">Prewedding</p>
-                </a>
-            </div>
-            <div class="col-2">
-                <a href="#" class="service">
-                    <img src="/img/vendors/service/1.jpg" alt="" class="img-service">
-                    <p class="service-name">Photografi</p>
-                </a>
-            </div>
-            <div class="col-2">
-                <a href="#" class="service">
-                    <img src="/img/vendors/service/1.jpg" alt="" class="img-service">
-                    <p class="service-name">MakeUp</p>
-                </a>
-            </div>
-            <div class="col-2">
-                <a href="#" class="service">
-                    <img src="/img/vendors/service/1.jpg" alt="" class="img-service">
-                    <p class="service-name">Decoration</p>
-                </a>
-            </div>
+        <?php endforeach; ?>
             <div class="col-2">
                 <a href="#" class="service">
                     <div class="img-service service">
@@ -64,17 +43,20 @@
             </div>
         </div>
     </div>
+    <?php foreach($servicesByProduct as $service): ?>
     <div class="content-frame bg-none">
-        <h1 class="main-product-title">Photografi</h1>
-        <p class="product-desc">Abadikan momen terbaikmu!</p>
+        <h1 class="main-product-title"><?= $service['name']; ?></h1>
+        <p class="product-desc"><?= $service['description']; ?></p>
         <div class="row">
+        <?php foreach($products as $product): ?>
+            <?php if($service['id']==$product['service_id']): ?>
             <div class="col-3">
-                <a href="">
+                <a href="/product/<?= $product['product_code']; ?>">
                     <div class="card card-product">
-                        <img src="/img/products/6.jpg" class="card-img-top" alt="...">
+                        <img src="/img/products/main-img/<?= $product['product_main_image']; ?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Davinci Photografi</h5>
-                            <p class="main-product-price">Rp. 4.000.000</p>
+                            <h5 class="card-title"><?= $product['product_name']; ?></h5>
+                            <p class="main-product-price">Rp<?= number_format($product['price'],0,',','.'); ?>,-</p>
                             <div class="rating">
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
@@ -87,243 +69,11 @@
                     </div>
                 </a>
             </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/7.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/8.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/9.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
         </div>
     </div>
-
-    <div class="content-frame bg-none">
-        <h1 class="main-product-title">Venue</h1>
-        <p class="product-desc">Abadikan momen terbaikmu!</p>
-        <div class="row">
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/2.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/3.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/4.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/5.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/10.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/11.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/12.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="content-frame bg-none">
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="content-heading mb-0">Blog For You</h1>
-            <a href="/vendors/products/add" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill"> Read More</a>
-        </div>
-        <div class="row">
-            <div class="col-8">
-                <div class="card card-blog">
-                    <img src="/img/products/6.jpg" class="card-img-top main-img-blog" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Title Blog</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum esse voluptate quos mollitia! Vitae quis dolore illo suscipit illum eum nisi maxime ipsam nesciunt est officiis, earum molestiae praesentium.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card card-blog">
-                            <img src="/img/products/6.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Title Blog</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum esse voluptate quos mollitia! Vitae quis dolore illo suscipit illum eum nisi maxime ipsam nesciunt est officiis, earum molestiae praesentium.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card card-blog">
-                            <img src="/img/products/6.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Title Blog</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum esse voluptate quos mollitia! Vitae quis dolore illo suscipit illum eum nisi maxime ipsam nesciunt est officiis, earum molestiae praesentium.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php endforeach; ?>
 </div>
 
 <?= $this->endSection(); ?>

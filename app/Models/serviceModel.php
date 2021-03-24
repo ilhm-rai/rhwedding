@@ -27,6 +27,14 @@ class ServiceModel extends Model
         ";
         return $this->db->query($query)->getResultArray();
     }
+    public function getServicesLimit($limit)
+    {
+        $query = "SELECT `s`.*
+            FROM `services` AS `s`
+            LIMIT $limit
+        ";
+        return $this->db->query($query)->getResultArray();
+    }
 
     public function getServiceByVendorId($id)
     {
@@ -50,5 +58,17 @@ class ServiceModel extends Model
         WHERE `v`.`user_id` = $id
         ";
         return $this->db->query($query)->getResultArray();
+    }
+    public function getServicesByProduct()
+    {
+        $query = "SELECT `s`.*
+            FROM `services` AS `s`
+            JOIN `vendors_services` AS `vs` 
+            ON `s`.`id` = `vs`.`service_id`
+            JOIN `products` AS `p` 
+            ON `vs`.`id` = `p`.`product_service_id`
+            GROUP BY `s`.`id`
+        ";
+         return $this->db->query($query)->getResultArray();
     }
 }

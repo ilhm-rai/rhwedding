@@ -1,14 +1,28 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\ServiceModel;
+use App\Models\ProductModel;
 
 class Main extends BaseController
 {
+    protected $serviceModel;
+    protected $productModel;
+
+    public function __construct()
+    {
+        $this->serviceModel = new ServiceModel();
+        $this->productModel = new ProductModel();
+    }
     public function index()
     {
         $data = [
-            'title' => 'RH Wedding Planner'
+            'title' => 'RH Wedding Planner',
+            'services' => $this->serviceModel->getServicesLimit(7),
+            'servicesByProduct' => $this->serviceModel->getServicesByProduct(),
+            'products' => $this->productModel->getProductsByService()
         ];
+        // dd($data);
 
         return view('index', $data);
     }

@@ -87,4 +87,16 @@ class ProductModel extends Model
         $code_prod = "PRD" . $vendor_id . $date . $limit;  //format kode
         return $code_prod;
     }
+
+    public function getProductsByService()
+    {
+        $query = "SELECT `p`.`product_code`, `p`.`product_name`, `p`.`product_main_image`, `p`.`price`, `s`.`name` as `service_name`, `s`.`id` as `service_id` 
+        FROM `products` as `p` 
+        INNER JOIN `vendors_services` AS `vs` 
+        ON `p`.`product_service_id` = `vs`.`id`
+        INNER JOIN `services` AS`s` 
+        ON `vs`.`service_id` = `s`.`id`
+    ";
+    return $this->db->query($query)->getResultArray();
+    }
 }
