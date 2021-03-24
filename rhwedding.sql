@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Mar 2021 pada 04.38
--- Versi server: 10.4.14-MariaDB
--- Versi PHP: 7.4.11
+-- Generation Time: Mar 24, 2021 at 03:02 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,13 +20,16 @@ SET time_zone = "+00:00";
 --
 -- Database: `rhwedding`
 --
+CREATE DATABASE IF NOT EXISTS `rhwedding` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `rhwedding`;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth_activation_attempts`
+-- Table structure for table `auth_activation_attempts`
 --
 
+DROP TABLE IF EXISTS `auth_activation_attempts`;
 CREATE TABLE `auth_activation_attempts` (
   `id` int(11) UNSIGNED NOT NULL,
   `ip_address` varchar(255) NOT NULL,
@@ -36,7 +39,7 @@ CREATE TABLE `auth_activation_attempts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `auth_activation_attempts`
+-- Dumping data for table `auth_activation_attempts`
 --
 
 INSERT INTO `auth_activation_attempts` (`id`, `ip_address`, `user_agent`, `token`, `created_at`) VALUES
@@ -55,9 +58,10 @@ INSERT INTO `auth_activation_attempts` (`id`, `ip_address`, `user_agent`, `token
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth_groups`
+-- Table structure for table `auth_groups`
 --
 
+DROP TABLE IF EXISTS `auth_groups`;
 CREATE TABLE `auth_groups` (
   `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -66,7 +70,7 @@ CREATE TABLE `auth_groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `auth_groups`
+-- Dumping data for table `auth_groups`
 --
 
 INSERT INTO `auth_groups` (`id`, `name`, `description`, `active`) VALUES
@@ -77,9 +81,10 @@ INSERT INTO `auth_groups` (`id`, `name`, `description`, `active`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth_groups_permissions`
+-- Table structure for table `auth_groups_permissions`
 --
 
+DROP TABLE IF EXISTS `auth_groups_permissions`;
 CREATE TABLE `auth_groups_permissions` (
   `group_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `permission_id` int(11) UNSIGNED NOT NULL DEFAULT 0
@@ -88,16 +93,17 @@ CREATE TABLE `auth_groups_permissions` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth_groups_users`
+-- Table structure for table `auth_groups_users`
 --
 
+DROP TABLE IF EXISTS `auth_groups_users`;
 CREATE TABLE `auth_groups_users` (
   `group_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `user_id` int(11) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `auth_groups_users`
+-- Dumping data for table `auth_groups_users`
 --
 
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
@@ -109,9 +115,10 @@ INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth_logins`
+-- Table structure for table `auth_logins`
 --
 
+DROP TABLE IF EXISTS `auth_logins`;
 CREATE TABLE `auth_logins` (
   `id` int(11) UNSIGNED NOT NULL,
   `ip_address` varchar(255) DEFAULT NULL,
@@ -122,7 +129,7 @@ CREATE TABLE `auth_logins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `auth_logins`
+-- Dumping data for table `auth_logins`
 --
 
 INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `success`) VALUES
@@ -190,14 +197,17 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (62, '::1', 'arsal', NULL, '2021-03-23 09:37:13', 0),
 (63, '::1', 'muhamadarsaludin71@gmail.com', NULL, '2021-03-23 09:39:57', 0),
 (64, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-23 09:49:32', 1),
-(65, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-23 22:30:35', 1);
+(65, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-23 22:30:35', 1),
+(66, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-23 23:48:56', 1),
+(67, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-24 05:39:03', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth_permissions`
+-- Table structure for table `auth_permissions`
 --
 
+DROP TABLE IF EXISTS `auth_permissions`;
 CREATE TABLE `auth_permissions` (
   `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -207,9 +217,10 @@ CREATE TABLE `auth_permissions` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth_reset_attempts`
+-- Table structure for table `auth_reset_attempts`
 --
 
+DROP TABLE IF EXISTS `auth_reset_attempts`;
 CREATE TABLE `auth_reset_attempts` (
   `id` int(11) UNSIGNED NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -222,9 +233,10 @@ CREATE TABLE `auth_reset_attempts` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth_tokens`
+-- Table structure for table `auth_tokens`
 --
 
+DROP TABLE IF EXISTS `auth_tokens`;
 CREATE TABLE `auth_tokens` (
   `id` int(11) UNSIGNED NOT NULL,
   `selector` varchar(255) NOT NULL,
@@ -236,9 +248,10 @@ CREATE TABLE `auth_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `auth_users_permissions`
+-- Table structure for table `auth_users_permissions`
 --
 
+DROP TABLE IF EXISTS `auth_users_permissions`;
 CREATE TABLE `auth_users_permissions` (
   `user_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `permission_id` int(11) UNSIGNED NOT NULL DEFAULT 0
@@ -247,9 +260,10 @@ CREATE TABLE `auth_users_permissions` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `cart`
+-- Table structure for table `cart`
 --
 
+DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
@@ -260,9 +274,10 @@ CREATE TABLE `cart` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `cart_detail`
+-- Table structure for table `cart_detail`
 --
 
+DROP TABLE IF EXISTS `cart_detail`;
 CREATE TABLE `cart_detail` (
   `id` int(11) NOT NULL,
   `cart_id` int(11) NOT NULL,
@@ -272,9 +287,10 @@ CREATE TABLE `cart_detail` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `category`
+-- Table structure for table `category`
 --
 
+DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `id` int(11) UNSIGNED NOT NULL,
   `vendor_id` int(11) UNSIGNED NOT NULL,
@@ -283,7 +299,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `vendor_id`, `name`, `description`) VALUES
@@ -292,9 +308,10 @@ INSERT INTO `category` (`id`, `vendor_id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
+DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `version` varchar(255) NOT NULL,
@@ -306,7 +323,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
@@ -326,9 +343,10 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `products`
+-- Table structure for table `products`
 --
 
+DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` int(11) UNSIGNED NOT NULL,
   `vendor_id` int(11) UNSIGNED NOT NULL,
@@ -349,19 +367,26 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `vendor_id`, `product_service_id`, `product_code`, `product_name`, `product_slug`, `product_main_image`, `product_video`, `product_description`, `product_sold`, `price`, `stock`, `total_review`, `active`, `created_at`, `updated_at`) VALUES
 (11, 4, 5, 'PRD4202103003', 'Gaun Monalisa', NULL, '1.jpg', NULL, '<p><span style=\"color: #555555; font-family: \'Proxima Nova\', Helvetica, arial, sans-serif; font-size: 14px; letter-spacing: 0.2px; white-space: pre-wrap; background-color: #ffffff;\">Pre-order 2minggu</span></p>', NULL, 3000000, 10, NULL, 1, '2021-03-22 08:18:50', '2021-03-22 08:18:50'),
-(13, 4, 6, 'PRD4202103002', 'Rh Prewedding Paket 1', NULL, '7.jpg', NULL, '<p>1. Photograper + Crew</p>\r\n<p>2. Free properti</p>', NULL, 2000000, 20, NULL, 1, '2021-03-22 12:05:05', '2021-03-22 12:05:05');
+(14, 4, 5, 'PRD4202103004', 'Gaun Pesta ', NULL, '5376ac4139a84090db673da7e246956e.jpg_720x720q80.jpg_.jpg', NULL, '<p>Gaun elegant</p>', NULL, 650700, 1, NULL, 1, '2021-03-24 06:33:47', '2021-03-24 06:33:47'),
+(15, 4, 5, 'PRD4202103005', 'Tuxedo', NULL, 'shintarotuxx2-Sk1Hc4BtU.jpg', NULL, '<p><span style=\"color: #555555; font-family: \'Proxima Nova\', Helvetica, arial, sans-serif; font-size: 14px; letter-spacing: 0.2px; white-space: pre-wrap;\">- Free consultation with our team - 1 Set bespoke suits (jacket and trouser) - 1 Tailor shirt (customized) - 1 pocket square</span></p>', NULL, 6705000, 1, NULL, 1, '2021-03-24 06:36:35', '2021-03-24 06:36:35'),
+(16, 4, 5, 'PRD4202103006', 'Business Suit, Double Breasted', NULL, 'cf171dac-6804-45a9-b213-bbcea2c0931b-1-S1KHKNHtL.jpg', NULL, '<p><span style=\"color: #555555; font-family: \'Proxima Nova\', Helvetica, arial, sans-serif; font-size: 14px; letter-spacing: 0.2px; white-space: pre-wrap; background-color: #ffffff;\">- Free consultation with our team - 1 Set bespoke suits (jacket and trouser) - 1 Tailor shirt (customized) - 1 pocket square</span></p>', NULL, 6937500, 1, NULL, 1, '2021-03-24 06:38:42', '2021-03-24 06:38:42'),
+(17, 4, 6, 'PRD4202103007', 'GoFotoVideo', NULL, 'gofotovideo.png', NULL, '<p><span style=\"color: #555555; font-family: \'Proxima Nova\', times, arial, serif; font-size: 14px; text-align: center; white-space: pre-wrap; background-color: #ffffff;\">Paket Corona 2020 IDR 6,5 jt Khusus Pemberkatan / Akad Nikah 1 Photographer 1 Videographer 5-15 Minutes Full HD Video 1 Album All Photos (Semua Photo Sudah Diedit via Adobe Lightroom, no fresh fram camera photos like others) Flexible Time</span></p>', NULL, 6500000, 1, NULL, 1, '2021-03-24 06:41:53', '2021-03-24 06:41:53'),
+(18, 4, 6, 'PRD4202103008', 'Alissha Bride', NULL, 'alissha-bride.jpg', NULL, '<div class=\"pl-title f-p-14\" style=\"outline: none; margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 14px; line-height: calc(0.9em + 4px); font-family: \'Proxima Nova\', arial; vertical-align: baseline; letter-spacing: 0.05em; color: #555555; text-align: center; background-color: #ffffff;\">[BEST BUDGET] AMBER (FULL BRIDAL PACKAGE)</div>\r\n<div class=\"pl-price f-u-14 reg\" style=\"outline: none; margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 14px; line-height: inherit; font-family: \'Proxima Nova\', times, arial, serif; vertical-align: baseline; color: #555555; text-align: center; background-color: #ffffff;\"><span class=\"price\" style=\"outline: none; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: bold; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; color: #eba1a1;\">IDR&nbsp;18.000.000&nbsp;</span>/&nbsp;package</div>\r\n<div class=\"pl-description\" style=\"outline: none; margin: 0px; padding: 20px 0px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 14px; line-height: inherit; font-family: \'Proxima Nova\', times, arial, serif; vertical-align: baseline; white-space: pre-wrap; color: #555555; text-align: center; background-color: #ffffff;\">Things that you got in Amber packages are: 1 \"Gold\" Class Wedding Gown (rented with accessories) + 1 \"Gold\" Class Wedding Gown* 1 Complete Groom\'s Suit (rented) Make-up &amp; Hair-do/Hijab for Wedding at Alissha - 1x Make-up &amp; Hair-do/Hijab for Bride and Groom - 1x Test Make-up for Bride at Pre-wedding - 1x Retouch for Bride at Alissha - 2 Make-ups &amp; Hair-dos/Hijab for Mother Pre-wedding Photoshoot - Full Day Unlimited Photoshoot - All File Photos - Indoor &amp; Outdoor (price w/o outdoor photosite permit) - Include pre-wed make-up - Include 2 gowns &amp; 1 suit for pre-wed photoshoot - Total of 20 edited photos - 1 album 20 x 25 - 1 canvas + photoframe 40 x 50 Serena / Baby Benz Wedding Car 3 Layers Wedding Cake Photos &amp; Videos Facilities - On the spot filming - Photographer + Videographer - 1 album</div>', NULL, 3300000, 1, NULL, 1, '2021-03-24 06:49:01', '2021-03-24 06:49:01'),
+(19, 4, 6, 'PRD4202103009', 'Monchichi', NULL, 'monchichi.jpg', NULL, '<div class=\"pl-title f-p-14\" style=\"outline: none; margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 14px; line-height: calc(0.9em + 4px); font-family: \'Proxima Nova\', arial; vertical-align: baseline; letter-spacing: 0.05em; color: #555555; text-align: center; background-color: #ffffff;\">Full Service Package (Prewedding-Wedding) - Photo&amp;Video</div>\r\n<div class=\"pl-price f-u-14 reg\" style=\"outline: none; margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 14px; line-height: inherit; font-family: \'Proxima Nova\', times, arial, serif; vertical-align: baseline; color: #555555; text-align: center; background-color: #ffffff;\"><span class=\"price\" style=\"outline: none; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: bold; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline; color: #eba1a1;\">IDR&nbsp;50.000.000&nbsp;</span>/&nbsp;Package</div>\r\n<div class=\"pl-description\" style=\"outline: none; margin: 0px; padding: 20px 0px 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 14px; line-height: inherit; font-family: \'Proxima Nova\', times, arial, serif; vertical-align: baseline; white-space: pre-wrap; color: #555555; text-align: center; background-color: #ffffff;\">Full Service , it\'s the most Favourite Package from us that our client take and make a deal :) Prewedding: - Photographer -Videographer - MUA &amp; Touch Up - 1 Album Exclusive (22 Pages) - 2 Canvas 60x90cm -Prewedding Clip - All File Copy</div>', NULL, 50000000, 1, NULL, 1, '2021-03-24 06:50:35', '2021-03-24 06:50:35'),
+(20, 4, 6, 'PRD4202103010', 'Wedding Factory', NULL, 'wedding-factory.png', NULL, 'Silver Wedding Package\r\nIDR 8.800.000 / package\r\n- Full Day Documentation (No Hour Limitation) 2 Crew for Photo + 1 Crew for Video Cinematic\r\n- Full Video 1-2 Hours Duration\r\n- Cinematic Video for Instagram\r\n- Free All Raw Files\r\n- 25 Edit Photos\r\n- Free Canvas 60x40 Include Frame\r\n- Free 1 Album 20x30 [ 20 Pages ] Hard Cover', NULL, 8800000, 1, NULL, 1, '2021-03-24 08:00:26', '2021-03-24 08:00:26');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `products_category`
+-- Table structure for table `products_category`
 --
 
+DROP TABLE IF EXISTS `products_category`;
 CREATE TABLE `products_category` (
   `id` int(11) UNSIGNED NOT NULL,
   `product_id` int(11) UNSIGNED NOT NULL,
@@ -371,9 +396,10 @@ CREATE TABLE `products_category` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `products_images`
+-- Table structure for table `products_images`
 --
 
+DROP TABLE IF EXISTS `products_images`;
 CREATE TABLE `products_images` (
   `id` int(11) NOT NULL,
   `product_id` int(11) UNSIGNED NOT NULL,
@@ -381,25 +407,22 @@ CREATE TABLE `products_images` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `products_images`
+-- Dumping data for table `products_images`
 --
 
 INSERT INTO `products_images` (`id`, `product_id`, `image`) VALUES
 (15, 11, '3.jpg'),
 (16, 11, '2.jpg'),
 (17, 11, '9.jpg'),
-(18, 11, '12.jpg'),
-(23, 13, 'product-2.jpg'),
-(24, 13, 'product-3.jpg'),
-(25, 13, '6.jpg'),
-(26, 13, 'product-5.jpg');
+(18, 11, '12.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `products_review`
+-- Table structure for table `products_review`
 --
 
+DROP TABLE IF EXISTS `products_review`;
 CREATE TABLE `products_review` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
@@ -414,9 +437,10 @@ CREATE TABLE `products_review` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `services`
+-- Table structure for table `services`
 --
 
+DROP TABLE IF EXISTS `services`;
 CREATE TABLE `services` (
   `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -425,7 +449,7 @@ CREATE TABLE `services` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `services`
+-- Dumping data for table `services`
 --
 
 INSERT INTO `services` (`id`, `name`, `active`, `description`) VALUES
@@ -438,9 +462,10 @@ INSERT INTO `services` (`id`, `name`, `active`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaction`
+-- Table structure for table `transaction`
 --
 
+DROP TABLE IF EXISTS `transaction`;
 CREATE TABLE `transaction` (
   `id` int(11) NOT NULL,
   `transaction_code` varchar(20) NOT NULL,
@@ -459,9 +484,10 @@ CREATE TABLE `transaction` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `transaction_detail`
+-- Table structure for table `transaction_detail`
 --
 
+DROP TABLE IF EXISTS `transaction_detail`;
 CREATE TABLE `transaction_detail` (
   `id` int(11) NOT NULL,
   `transaction_id` int(11) NOT NULL,
@@ -476,9 +502,10 @@ CREATE TABLE `transaction_detail` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -498,7 +525,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -510,9 +537,10 @@ INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `reset_hash`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users_profile`
+-- Table structure for table `users_profile`
 --
 
+DROP TABLE IF EXISTS `users_profile`;
 CREATE TABLE `users_profile` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
@@ -526,7 +554,7 @@ CREATE TABLE `users_profile` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `users_profile`
+-- Dumping data for table `users_profile`
 --
 
 INSERT INTO `users_profile` (`id`, `user_id`, `full_name`, `user_image`, `contact`, `address`, `city`, `province`, `postal_code`) VALUES
@@ -538,9 +566,10 @@ INSERT INTO `users_profile` (`id`, `user_id`, `full_name`, `user_image`, `contac
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `vendors`
+-- Table structure for table `vendors`
 --
 
+DROP TABLE IF EXISTS `vendors`;
 CREATE TABLE `vendors` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
@@ -556,7 +585,7 @@ CREATE TABLE `vendors` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `vendors`
+-- Dumping data for table `vendors`
 --
 
 INSERT INTO `vendors` (`id`, `user_id`, `vendor_code`, `vendor_name`, `vendor_logo`, `vendor_billboard`, `vendor_level_id`, `vendor_description`, `active`, `created_at`, `updated_at`) VALUES
@@ -567,9 +596,10 @@ INSERT INTO `vendors` (`id`, `user_id`, `vendor_code`, `vendor_name`, `vendor_lo
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `vendors_level`
+-- Table structure for table `vendors_level`
 --
 
+DROP TABLE IF EXISTS `vendors_level`;
 CREATE TABLE `vendors_level` (
   `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -577,7 +607,7 @@ CREATE TABLE `vendors_level` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `vendors_level`
+-- Dumping data for table `vendors_level`
 --
 
 INSERT INTO `vendors_level` (`id`, `name`, `description`) VALUES
@@ -589,9 +619,10 @@ INSERT INTO `vendors_level` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `vendors_services`
+-- Table structure for table `vendors_services`
 --
 
+DROP TABLE IF EXISTS `vendors_services`;
 CREATE TABLE `vendors_services` (
   `id` int(11) UNSIGNED NOT NULL,
   `vendor_id` int(11) UNSIGNED NOT NULL,
@@ -599,7 +630,7 @@ CREATE TABLE `vendors_services` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `vendors_services`
+-- Dumping data for table `vendors_services`
 --
 
 INSERT INTO `vendors_services` (`id`, `vendor_id`, `service_id`) VALUES
@@ -616,33 +647,33 @@ INSERT INTO `vendors_services` (`id`, `vendor_id`, `service_id`) VALUES
 --
 
 --
--- Indeks untuk tabel `auth_activation_attempts`
+-- Indexes for table `auth_activation_attempts`
 --
 ALTER TABLE `auth_activation_attempts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `auth_groups`
+-- Indexes for table `auth_groups`
 --
 ALTER TABLE `auth_groups`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `auth_groups_permissions`
+-- Indexes for table `auth_groups_permissions`
 --
 ALTER TABLE `auth_groups_permissions`
   ADD KEY `auth_groups_permissions_permission_id_foreign` (`permission_id`),
   ADD KEY `group_id_permission_id` (`group_id`,`permission_id`);
 
 --
--- Indeks untuk tabel `auth_groups_users`
+-- Indexes for table `auth_groups_users`
 --
 ALTER TABLE `auth_groups_users`
   ADD KEY `auth_groups_users_user_id_foreign` (`user_id`),
   ADD KEY `group_id_user_id` (`group_id`,`user_id`);
 
 --
--- Indeks untuk tabel `auth_logins`
+-- Indexes for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
   ADD PRIMARY KEY (`id`),
@@ -650,19 +681,19 @@ ALTER TABLE `auth_logins`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `auth_permissions`
+-- Indexes for table `auth_permissions`
 --
 ALTER TABLE `auth_permissions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `auth_reset_attempts`
+-- Indexes for table `auth_reset_attempts`
 --
 ALTER TABLE `auth_reset_attempts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `auth_tokens`
+-- Indexes for table `auth_tokens`
 --
 ALTER TABLE `auth_tokens`
   ADD PRIMARY KEY (`id`),
@@ -670,21 +701,21 @@ ALTER TABLE `auth_tokens`
   ADD KEY `selector` (`selector`);
 
 --
--- Indeks untuk tabel `auth_users_permissions`
+-- Indexes for table `auth_users_permissions`
 --
 ALTER TABLE `auth_users_permissions`
   ADD KEY `auth_users_permissions_permission_id_foreign` (`permission_id`),
   ADD KEY `user_id_permission_id` (`user_id`,`permission_id`);
 
 --
--- Indeks untuk tabel `cart`
+-- Indexes for table `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `cart_detail`
+-- Indexes for table `cart_detail`
 --
 ALTER TABLE `cart_detail`
   ADD PRIMARY KEY (`id`),
@@ -692,20 +723,20 @@ ALTER TABLE `cart_detail`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indeks untuk tabel `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`),
   ADD KEY `vendor_id` (`vendor_id`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
@@ -713,7 +744,7 @@ ALTER TABLE `products`
   ADD KEY `product_service_id` (`product_service_id`);
 
 --
--- Indeks untuk tabel `products_category`
+-- Indexes for table `products_category`
 --
 ALTER TABLE `products_category`
   ADD PRIMARY KEY (`id`),
@@ -721,14 +752,14 @@ ALTER TABLE `products_category`
   ADD KEY `category_id` (`category_id`);
 
 --
--- Indeks untuk tabel `products_images`
+-- Indexes for table `products_images`
 --
 ALTER TABLE `products_images`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indeks untuk tabel `products_review`
+-- Indexes for table `products_review`
 --
 ALTER TABLE `products_review`
   ADD PRIMARY KEY (`id`),
@@ -737,13 +768,13 @@ ALTER TABLE `products_review`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indeks untuk tabel `services`
+-- Indexes for table `services`
 --
 ALTER TABLE `services`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `transaction`
+-- Indexes for table `transaction`
 --
 ALTER TABLE `transaction`
   ADD PRIMARY KEY (`id`),
@@ -751,7 +782,7 @@ ALTER TABLE `transaction`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `transaction_detail`
+-- Indexes for table `transaction_detail`
 --
 ALTER TABLE `transaction_detail`
   ADD PRIMARY KEY (`id`),
@@ -759,7 +790,7 @@ ALTER TABLE `transaction_detail`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -767,14 +798,14 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indeks untuk tabel `users_profile`
+-- Indexes for table `users_profile`
 --
 ALTER TABLE `users_profile`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `vendors`
+-- Indexes for table `vendors`
 --
 ALTER TABLE `vendors`
   ADD PRIMARY KEY (`id`),
@@ -782,13 +813,13 @@ ALTER TABLE `vendors`
   ADD KEY `vendor_level_id` (`vendor_level_id`);
 
 --
--- Indeks untuk tabel `vendors_level`
+-- Indexes for table `vendors_level`
 --
 ALTER TABLE `vendors_level`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `vendors_services`
+-- Indexes for table `vendors_services`
 --
 ALTER TABLE `vendors_services`
   ADD PRIMARY KEY (`id`),
@@ -796,227 +827,227 @@ ALTER TABLE `vendors_services`
   ADD KEY `service_id` (`service_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `auth_activation_attempts`
+-- AUTO_INCREMENT for table `auth_activation_attempts`
 --
 ALTER TABLE `auth_activation_attempts`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `auth_groups`
+-- AUTO_INCREMENT for table `auth_groups`
 --
 ALTER TABLE `auth_groups`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `auth_logins`
+-- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
--- AUTO_INCREMENT untuk tabel `auth_permissions`
+-- AUTO_INCREMENT for table `auth_permissions`
 --
 ALTER TABLE `auth_permissions`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `auth_reset_attempts`
+-- AUTO_INCREMENT for table `auth_reset_attempts`
 --
 ALTER TABLE `auth_reset_attempts`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `auth_tokens`
+-- AUTO_INCREMENT for table `auth_tokens`
 --
 ALTER TABLE `auth_tokens`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `cart`
+-- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `cart_detail`
+-- AUTO_INCREMENT for table `cart_detail`
 --
 ALTER TABLE `cart_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT untuk tabel `products_category`
+-- AUTO_INCREMENT for table `products_category`
 --
 ALTER TABLE `products_category`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `products_images`
+-- AUTO_INCREMENT for table `products_images`
 --
 ALTER TABLE `products_images`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT untuk tabel `products_review`
+-- AUTO_INCREMENT for table `products_review`
 --
 ALTER TABLE `products_review`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `services`
+-- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `transaction`
+-- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `transaction_detail`
+-- AUTO_INCREMENT for table `transaction_detail`
 --
 ALTER TABLE `transaction_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `users_profile`
+-- AUTO_INCREMENT for table `users_profile`
 --
 ALTER TABLE `users_profile`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `vendors`
+-- AUTO_INCREMENT for table `vendors`
 --
 ALTER TABLE `vendors`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `vendors_level`
+-- AUTO_INCREMENT for table `vendors_level`
 --
 ALTER TABLE `vendors_level`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `vendors_services`
+-- AUTO_INCREMENT for table `vendors_services`
 --
 ALTER TABLE `vendors_services`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `auth_groups_permissions`
+-- Constraints for table `auth_groups_permissions`
 --
 ALTER TABLE `auth_groups_permissions`
   ADD CONSTRAINT `auth_groups_permissions_group_id_foreign` FOREIGN KEY (`group_id`) REFERENCES `auth_groups` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `auth_groups_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `auth_permissions` (`id`) ON DELETE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `auth_groups_users`
+-- Constraints for table `auth_groups_users`
 --
 ALTER TABLE `auth_groups_users`
   ADD CONSTRAINT `auth_groups_users_group_id_foreign` FOREIGN KEY (`group_id`) REFERENCES `auth_groups` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `auth_groups_users_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `auth_tokens`
+-- Constraints for table `auth_tokens`
 --
 ALTER TABLE `auth_tokens`
   ADD CONSTRAINT `auth_tokens_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `auth_users_permissions`
+-- Constraints for table `auth_users_permissions`
 --
 ALTER TABLE `auth_users_permissions`
   ADD CONSTRAINT `auth_users_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `auth_permissions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `auth_users_permissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `cart`
+-- Constraints for table `cart`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `cart_detail`
+-- Constraints for table `cart_detail`
 --
 ALTER TABLE `cart_detail`
   ADD CONSTRAINT `cart_detail_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `cart_detail_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `products`
+-- Constraints for table `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`product_service_id`) REFERENCES `vendors_services` (`id`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `products_images`
+-- Constraints for table `products_images`
 --
 ALTER TABLE `products_images`
   ADD CONSTRAINT `products_images_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `products_review`
+-- Constraints for table `products_review`
 --
 ALTER TABLE `products_review`
   ADD CONSTRAINT `products_review_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `products_review_ibfk_3` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `transaction_detail`
+-- Constraints for table `transaction_detail`
 --
 ALTER TABLE `transaction_detail`
   ADD CONSTRAINT `transaction_detail_ibfk_1` FOREIGN KEY (`transaction_id`) REFERENCES `transaction` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `transaction_detail_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `users_profile`
+-- Constraints for table `users_profile`
 --
 ALTER TABLE `users_profile`
   ADD CONSTRAINT `users_profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `vendors`
+-- Constraints for table `vendors`
 --
 ALTER TABLE `vendors`
   ADD CONSTRAINT `vendors_ibfk_1` FOREIGN KEY (`vendor_level_id`) REFERENCES `vendors_level` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `vendors_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `vendors_services`
+-- Constraints for table `vendors_services`
 --
 ALTER TABLE `vendors_services`
   ADD CONSTRAINT `vendors_services_ibfk_1` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`) ON UPDATE CASCADE,
