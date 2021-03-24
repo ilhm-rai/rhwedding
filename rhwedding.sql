@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Mar 2021 pada 12.33
+-- Waktu pembuatan: 24 Mar 2021 pada 04.38
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -186,7 +186,11 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (58, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-22 06:12:27', 1),
 (59, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-22 23:01:44', 1),
 (60, '::1', 'muhamadarsaludin71@gmail.com', NULL, '2021-03-23 02:33:10', 0),
-(61, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-23 02:33:23', 1);
+(61, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-23 02:33:23', 1),
+(62, '::1', 'arsal', NULL, '2021-03-23 09:37:13', 0),
+(63, '::1', 'muhamadarsaludin71@gmail.com', NULL, '2021-03-23 09:39:57', 0),
+(64, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-23 09:49:32', 1),
+(65, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-23 22:30:35', 1);
 
 -- --------------------------------------------------------
 
@@ -239,6 +243,31 @@ CREATE TABLE `auth_users_permissions` (
   `user_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `permission_id` int(11) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `cart_detail`
+--
+
+CREATE TABLE `cart_detail` (
+  `id` int(11) NOT NULL,
+  `cart_id` int(11) NOT NULL,
+  `product_id` int(11) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -423,7 +452,8 @@ CREATE TABLE `transaction` (
   `payment_date` datetime DEFAULT NULL,
   `payment_status` int(11) DEFAULT NULL,
   `crated_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  `event_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -435,7 +465,7 @@ CREATE TABLE `transaction` (
 CREATE TABLE `transaction_detail` (
   `id` int(11) NOT NULL,
   `transaction_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
+  `product_id` int(11) UNSIGNED NOT NULL,
   `note` text DEFAULT NULL,
   `cash` int(11) DEFAULT NULL,
   `qty` int(11) NOT NULL,
@@ -647,6 +677,21 @@ ALTER TABLE `auth_users_permissions`
   ADD KEY `user_id_permission_id` (`user_id`,`permission_id`);
 
 --
+-- Indeks untuk tabel `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indeks untuk tabel `cart_detail`
+--
+ALTER TABLE `cart_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cart_id` (`cart_id`),
+  ADD KEY `product_id` (`product_id`);
+
+--
 -- Indeks untuk tabel `category`
 --
 ALTER TABLE `category`
@@ -710,8 +755,8 @@ ALTER TABLE `transaction`
 --
 ALTER TABLE `transaction_detail`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `transaction_id` (`transaction_id`),
-  ADD UNIQUE KEY `product_id` (`product_id`);
+  ADD KEY `transaction_id` (`transaction_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indeks untuk tabel `users`
@@ -770,7 +815,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
@@ -789,6 +834,18 @@ ALTER TABLE `auth_reset_attempts`
 --
 ALTER TABLE `auth_tokens`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `cart_detail`
+--
+ALTER TABLE `cart_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `category`
@@ -906,6 +963,19 @@ ALTER TABLE `auth_users_permissions`
   ADD CONSTRAINT `auth_users_permissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
+-- Ketidakleluasaan untuk tabel `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `cart_detail`
+--
+ALTER TABLE `cart_detail`
+  ADD CONSTRAINT `cart_detail_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `cart_detail_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Ketidakleluasaan untuk tabel `products`
 --
 ALTER TABLE `products`
@@ -924,6 +994,13 @@ ALTER TABLE `products_images`
 ALTER TABLE `products_review`
   ADD CONSTRAINT `products_review_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `products_review_ibfk_3` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `transaction_detail`
+--
+ALTER TABLE `transaction_detail`
+  ADD CONSTRAINT `transaction_detail_ibfk_1` FOREIGN KEY (`transaction_id`) REFERENCES `transaction` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transaction_detail_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `users_profile`
