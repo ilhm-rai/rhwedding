@@ -39,9 +39,9 @@ $routes->get('/register', 'Auth::register');
 $routes->group('/', function ($routes) {
 	$routes->add('', 'Main::index');
 	$routes->add('searchresult', 'Main::searchresult');
-	$routes->add('vendor', 'Main::vendor');
+	$routes->add('vendor/(:any)', 'Main::vendor/$1');
 	$routes->add('vendor/products', 'Main::vendorProduct');
-	$routes->add('productdetail', 'Main::productdetail');
+	$routes->add('product/(:any)', 'Main::productdetail/$1');
 	$routes->add('cart', 'Main::cart');
 	$routes->add('checkout', 'Main::checkout');
 });
@@ -126,6 +126,7 @@ $routes->group('/user', function ($routes) {
 		$routes->add('vendor/(:num)', 'User::vendor/$1');
 	});
 });
+
 
 
 $routes->delete('admin/users/roles/(:num)', 'Admin\UserRole::delete/$1');

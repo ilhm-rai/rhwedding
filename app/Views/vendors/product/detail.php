@@ -20,9 +20,9 @@
                     <?php foreach($productImg as $img): ?>
                     <div class="swiper-slide"><img src="/img/products/other/<?= $img['image']; ?>" alt="" class=""></div>
                     <?php endforeach; ?>
-                    </div>
                 </div>
             </div>
+        </div>
         <div class="col-sm-6 pl-4">
             <h2 class="product-name"><?= $product['product_name']; ?></h2>
             <p class="d-inline">

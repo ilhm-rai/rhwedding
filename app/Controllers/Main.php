@@ -3,16 +3,22 @@
 namespace App\Controllers;
 use App\Models\ServiceModel;
 use App\Models\ProductModel;
+use App\Models\ProductsImagesModel;
+use App\Models\VendorModel;
 
 class Main extends BaseController
 {
     protected $serviceModel;
     protected $productModel;
+    protected $productsImagesModel;
+    protected $vendorModel;
 
     public function __construct()
     {
         $this->serviceModel = new ServiceModel();
         $this->productModel = new ProductModel();
+        $this->productsImagesModel = new ProductsImagesModel();
+        $this->vendorModel = new VendorModel();
     }
     public function index()
     {
@@ -30,18 +36,22 @@ class Main extends BaseController
     public function searchresult()
     {
         $data = [
-            'title' => 'RH Wedding Planner'
+            'title' => 'RH Wedding Planner',
         ];
 
         return view('main/search_result', $data);
     }
 
-    public function productdetail()
+    public function productdetail($code)
     {
         $data = [
-            'title' => 'RH Wedding Planner'
+            'title' => 'RH Wedding Planner',
+            'product' => $this->productModel->getProductByCode($code),
+            'productImg' => $this->productsImagesModel->getImagesByProductCode($code)
         ];
-
+        $vendorId = $data['product']['vendor_id'];
+        $data['vendor'] = $this->vendorModel->getVendorBy($vendorId);
+        // dd($data);
         return view('main/product_detail', $data);
     }
 
@@ -63,7 +73,7 @@ class Main extends BaseController
         return view('main/checkout', $data);
     }
 
-    public function vendor()
+    public function vendor($id)
     {
         $data = [
             'title' => 'RH Wedding Planner'

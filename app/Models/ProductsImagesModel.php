@@ -14,5 +14,16 @@ class ProductsImagesModel extends Model
     {
         $this->db = \Config\Database::connect();
     }
+
+    public function getImagesByProductCode($code)
+    {
+        $query = "SELECT `pi`.*
+        FROM `products_images` AS `pi`
+        JOIN `products` AS `p`
+        ON `p`.`id` = `pi`.`product_id`
+        WHERE `p`.`product_code` = '$code'
+    ";
+        return $this->db->query($query)->getResultArray();
+    }
       
 }
