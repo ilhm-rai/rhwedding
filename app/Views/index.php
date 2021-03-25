@@ -77,6 +77,49 @@
             </div>
         </div>
     <?php endforeach; ?>
+
+    <!-- blog -->
+    <div class="content-frame bg-none">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="content-heading mb-0">Blog For You</h1>
+            <a href="/vendors/products/add" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill"> Read More</a>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="card card-blog">
+                    <img src="/img/products/6.jpg" class="card-img-top main-img-blog" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Title Blog</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum esse voluptate quos mollitia! Vitae quis dolore illo suscipit illum eum nisi maxime ipsam nesciunt est officiis, earum molestiae praesentium.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-blog">
+                            <img src="/img/products/6.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Title Blog</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum esse voluptate quos mollitia! Vitae quis dolore illo suscipit illum eum nisi maxime ipsam nesciunt est officiis, earum molestiae praesentium.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-blog">
+                            <img src="/img/products/6.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Title Blog</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum esse voluptate quos mollitia! Vitae quis dolore illo suscipit illum eum nisi maxime ipsam nesciunt est officiis, earum molestiae praesentium.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <?= $this->endSection(); ?>
