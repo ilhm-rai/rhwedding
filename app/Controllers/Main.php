@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\ServiceModel;
 use App\Models\ProductModel;
 use App\Models\ProductsImagesModel;
@@ -24,7 +25,7 @@ class Main extends BaseController
     {
         $data = [
             'title' => 'RH Wedding Planner',
-            'services' => $this->serviceModel->getServicesLimit(7),
+            'services' => $this->serviceModel->getServices(),
             'servicesByProduct' => $this->serviceModel->getServicesByProduct(),
             'products' => $this->productModel->getProductsByService()
         ];

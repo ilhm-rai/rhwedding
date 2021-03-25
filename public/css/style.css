@@ -502,8 +502,9 @@ a.img-service:hover {
   width: 100%;
   height: 175px;
   border-radius: 20px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  background-color: white;
 }
 .card-blog .card-title,
 .card-product .card-title {
