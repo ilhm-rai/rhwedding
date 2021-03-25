@@ -1,3 +1,76 @@
+// search sugestion vendor/product
+
+// event ketika keyword di tulis
+$("#keyword").on("keyup", function () {
+  var keyword = $(this).val();
+  console.log(keyword);
+  const suggWrapper = document.querySelector(".search-suggestion");
+  if (keyword) {
+    suggWrapper.classList.remove("d-none");
+    cari(keyword);
+    $("body").on("click", () => {
+      suggWrapper.classList.add("d-none");
+    });
+  } else {
+    suggWrapper.classList.add("d-none");
+  }
+});
+
+function cari(keyword) {
+  // var html = "";
+  $.ajax({
+    type: "get",
+    data: keyword,
+    url: "/search",
+    success: function (res) {
+      // console.log(JSON.parse(res));
+      let result = JSON.parse(res);
+      let vendors = result["vendors"];
+      let products = result["products"];
+      let listVendor = "";
+      let listProduct = "";
+      vendors.forEach((vendor) => {
+        listVendor += `
+        <a href="/vendor/${vendor["id"]}" class="list-group-item list-group-item-action">
+          <div class="row align-items-center">
+              <div class="col-2">
+                  <img class="w-100 img-profile rounded-circle" src="/img/vendors/logo/${vendor["vendor_logo"]}">
+              </div>
+              <div class="col-10">
+                  <p class="d-none d-lg-inline small ">${vendor["vendor_name"]}</p>  
+              </div>
+          </div>
+      </a>
+        `;
+      });
+
+      products.forEach((product) => {
+        listProduct += `
+        <a href="/product/${product["product_code"]}" class="list-group-item list-group-item-action">
+            <div class="row align-items-center">
+                <div class="col-2">
+                    <img class="w-100 img-profile rounded-circle" src="/img/products/main-img/${product["product_main_image"]}">
+                </div>
+                <div class="col-10">
+                    <p class="d-none d-lg-inline small ">${product["product_name"]}</p>  
+                </div>
+            </div>
+        </a>
+        `;
+      });
+      // tambahkan hr
+      listVendor += "<hr>";
+      listProduct += "<hr>";
+
+      const suggVendor = document.querySelector(".suggestVendor");
+      const suggProduct = document.querySelector(".suggestProduct");
+      suggVendor.innerHTML = listVendor;
+      suggProduct.innerHTML = listProduct;
+      console.log(suggVendor);
+    },
+  });
+}
+
 $navbar = $(".navbar.main");
 $(window).scroll(function (e) {
   if ($(document).scrollTop() > 0) {
@@ -75,54 +148,3 @@ $(".btn-delete").on("click", function (e) {
     }
   });
 });
-
-// search engine
-// getting all required elements
-const searchWrapper = document.querySelector(".search-input");
-const suggWrapper = document.querySelector(".search-suggestion");
-const inputBox = searchWrapper.querySelector("input");
-const suggBox = document.querySelector(".suggestion-keyword");
-// if user press any key and release
-
-inputBox.onkeyup = (e) => {
-  // suggestions
-  let userData = e.target.value; //user entered data
-  let emptyArray = [];
-  if (userData) {
-    emptyArray = suggestions.filter((data) => {
-      return data.toLowerCase().startsWith(userData.toLowerCase());
-    });
-    emptyArray = emptyArray.map((data) => {
-      return (data = `<a href="#" class="list-group-item list-group-item-action">${data}</a>`);
-    });
-    // console.log(emptyArray);
-    suggWrapper.classList.remove("d-none");
-    showSuggestions(emptyArray);
-    let allList = suggBox.querySelectorAll(`a`);
-    allList.forEach((list) => {
-      list.setAttribute("onclick", "select(this)");
-    });
-  } else {
-    suggWrapper.classList.add("d-none");
-  }
-};
-
-function select(element) {
-  let selectUserData = element.textContent;
-  console.log(selectUserData);
-  // isi search sesuai suggestion yang dipilih user
-  inputBox.value = selectUserData;
-  // tutup suggestion
-  suggWrapper.classList.add("d-none");
-}
-
-function showSuggestions(list) {
-  let listData;
-  if (!list.length) {
-    userValue = inputBox.value;
-    listData = `<a href="#" class="list-group-item list-group-item-action">${userValue}</a>`;
-  } else {
-    listData = list.join("");
-  }
-  suggBox.innerHTML = listData;
-}

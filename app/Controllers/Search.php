@@ -22,6 +22,12 @@ class Search extends BaseController
     }
     public function index()
     {
-        // dd($this->request->getVar('keyword'));
+        $keyword = $this->request->getVar('keyword');
+        $data = [
+            'vendors' => $this->vendorModel->getVendorsSuggest($keyword),
+            'products' => $this->productModel->getProductsSuggest($keyword),
+        ];
+
+        echo json_encode($data);
     }
 }

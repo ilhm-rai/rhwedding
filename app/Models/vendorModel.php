@@ -75,4 +75,21 @@ class VendorModel extends Model
         ";
         return $this->db->query($query)->getResultArray();
     }
+
+    // suggest search
+    public function getVendorsSuggest($keyword)
+    {
+        $query = "SELECT `v`.*, `vl`.`name` as `level_name`, `up`.`full_name` as `owner`
+            FROM `vendors` AS `v`
+            JOIN `vendors_level` AS `vl`
+            ON `v`.`vendor_level_id` = `vl`.`id`
+            LEFT JOIN `users` AS `u`
+            ON `u`.`id` = `v`.`user_id`
+            LEFT JOIN `users_profile` AS `up`
+            ON `u`.id = `up`.`user_id`
+            WHERE `v`.`vendor_name` LIKE '%$keyword%'
+            LIMIT 2
+        ";
+        return $this->db->query($query)->getResultArray();        
+    }
 }
