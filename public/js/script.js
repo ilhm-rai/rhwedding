@@ -75,3 +75,54 @@ $(".btn-delete").on("click", function (e) {
     }
   });
 });
+
+// search engine
+// getting all required elements
+const searchWrapper = document.querySelector(".search-input");
+const suggWrapper = document.querySelector(".search-suggestion");
+const inputBox = searchWrapper.querySelector("input");
+const suggBox = document.querySelector(".suggestion-keyword");
+// if user press any key and release
+
+inputBox.onkeyup = (e) => {
+  // suggestions
+  let userData = e.target.value; //user entered data
+  let emptyArray = [];
+  if (userData) {
+    emptyArray = suggestions.filter((data) => {
+      return data.toLowerCase().startsWith(userData.toLowerCase());
+    });
+    emptyArray = emptyArray.map((data) => {
+      return (data = `<a href="#" class="list-group-item list-group-item-action">${data}</a>`);
+    });
+    // console.log(emptyArray);
+    suggWrapper.classList.remove("d-none");
+    showSuggestions(emptyArray);
+    let allList = suggBox.querySelectorAll(`a`);
+    allList.forEach((list) => {
+      list.setAttribute("onclick", "select(this)");
+    });
+  } else {
+    suggWrapper.classList.add("d-none");
+  }
+};
+
+function select(element) {
+  let selectUserData = element.textContent;
+  console.log(selectUserData);
+  // isi search sesuai suggestion yang dipilih user
+  inputBox.value = selectUserData;
+  // tutup suggestion
+  suggWrapper.classList.add("d-none");
+}
+
+function showSuggestions(list) {
+  let listData;
+  if (!list.length) {
+    userValue = inputBox.value;
+    listData = `<a href="#" class="list-group-item list-group-item-action">${userValue}</a>`;
+  } else {
+    listData = list.join("");
+  }
+  suggBox.innerHTML = listData;
+}

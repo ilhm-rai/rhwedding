@@ -100,6 +100,18 @@ body,
   box-shadow: none;
   background-color: #f3f3f3;
 }
+.search-wrapper {
+  position: relative;
+}
+
+.search-suggestion {
+  position: absolute;
+  left: 0;
+  right: 5%;
+  z-index: -1;
+  background-color: #fff;
+  border-radius: 20px;
+}
 
 .topbar.admin .search {
   background-color: white;

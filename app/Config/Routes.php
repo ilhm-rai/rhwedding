@@ -44,6 +44,10 @@ $routes->group('/', function ($routes) {
 	$routes->add('product/(:any)', 'Main::productdetail/$1');
 	$routes->add('cart', 'Main::cart');
 	$routes->add('checkout', 'Main::checkout');
+	// search
+	$routes->group('search', function ($routes) {
+		$routes->add('', 'Search::index');
+	});
 });
 
 
