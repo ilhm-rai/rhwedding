@@ -35,6 +35,12 @@ $routes->setAutoRoute(true);
 $routes->get('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
 
+// search
+$routes->group('search', function ($routes) {
+	$routes->add('', 'Search::index');
+	$routes->add('result', 'Search::result');
+});
+
 // routes for admin
 $routes->group('admin', function ($routes) {
 	$routes->add('/', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
@@ -138,11 +144,6 @@ $routes->group('/', function ($routes) {
 	$routes->add('(:any)', 'Main::productDetail/$1');
 	$routes->add('cart', 'Main::cart');
 	$routes->add('checkout', 'Main::checkout');
-	// search
-	$routes->group('search', function ($routes) {
-		$routes->add('', 'Search::index');
-		$routes->add('result', 'Search::result');
-	});
 });
 
 /**
