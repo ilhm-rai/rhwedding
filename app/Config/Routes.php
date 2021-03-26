@@ -35,22 +35,6 @@ $routes->setAutoRoute(true);
 $routes->get('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
 
-// Main Routes
-$routes->group('/', function ($routes) {
-	$routes->add('', 'Main::index');
-	$routes->add('vendor/(:any)', 'Main::vendor/$1');
-	$routes->add('vendor/products', 'Main::vendorProduct');
-	$routes->add('(:any)', 'Main::productdetail/$1');
-	$routes->add('cart', 'Main::cart');
-	$routes->add('checkout', 'Main::checkout');
-	// search
-	$routes->group('search', function ($routes) {
-		$routes->add('', 'Search::index');
-		$routes->add('result', 'Search::result');
-	});
-});
-
-
 // routes for admin
 $routes->group('admin', function ($routes) {
 	$routes->add('/', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
@@ -97,7 +81,6 @@ $routes->group('admin', function ($routes) {
 	// $routes->add('permissions', 'Admin\User::userPermission');
 });
 
-
 // routes for vendor
 $routes->group('/vendors', function ($routes) {
 	$routes->add('/', 'Vendors\Dashboard::index', ['filter' => 'role:Admin,Vendor']);
@@ -108,7 +91,6 @@ $routes->group('/vendors', function ($routes) {
 			$routes->add('/', 'Vendors\MyVendor::service');
 			$routes->add('add', 'Vendors\MyVendor::addservice');
 		});
-		
 	});
 	//vendors/products
 	$routes->group('products', function ($routes) {
@@ -146,6 +128,21 @@ $routes->group('admin/vendors/services', function ($routes) {
 
 $routes->group('admin/products/categories', function ($routes) {
 	$routes->add('', 'Admin\ProductCategory::show');
+});
+
+// Main Routes
+$routes->group('/', function ($routes) {
+	$routes->add('', 'Main::index');
+	$routes->add('vendor/(:any)', 'Main::vendor/$1');
+	$routes->add('vendor/products', 'Main::vendorProduct');
+	$routes->add('(:any)', 'Main::productDetail/$1');
+	$routes->add('cart', 'Main::cart');
+	$routes->add('checkout', 'Main::checkout');
+	// search
+	$routes->group('search', function ($routes) {
+		$routes->add('', 'Search::index');
+		$routes->add('result', 'Search::result');
+	});
 });
 
 /**

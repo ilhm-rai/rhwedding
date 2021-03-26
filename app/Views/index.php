@@ -54,7 +54,7 @@
                 <?php foreach ($products as $product) : ?>
                     <?php if ($service['id'] == $product['service_id']) : ?>
                         <div class="col-3">
-                            <a href="/product/<?= $product['product_code']; ?>">
+                            <a href="/<?= $product['slug']; ?>">
                                 <div class="card card-product">
                                     <img src="/img/products/main-img/<?= $product['product_main_image']; ?>" class="card-img-top" alt="...">
                                     <div class="card-body">

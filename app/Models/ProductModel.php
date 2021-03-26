@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class ProductModel extends Model
 {
     protected $table = 'products';
-    protected $allowedFields = ['vendor_id', 'product_service_id', 'product_code','slug' ,'product_name', 'product_main_image', 'product_description', 'price', 'stock'];
+    protected $allowedFields = ['vendor_id', 'product_service_id', 'slug', 'product_name', 'product_main_image', 'product_description', 'price', 'stock'];
     protected $useTimestamps = true;
     protected $db;
 
@@ -66,21 +66,6 @@ class ProductModel extends Model
     ";
         return $this->db->query($query)->getRowArray();
     }
-    public function getProductByCode($code)
-    {
-        $query = "SELECT `p`.*, `s`.`name` as `service`
-        FROM `products` AS `p`
-        JOIN `vendors` AS `v`
-        ON `p`.`vendor_id` = `v`.`id`
-        JOIN `vendors_services` AS `vs`
-        ON `p`.`product_service_id` = `vs`.`id`
-        JOIN `services` AS `s`
-        ON `vs`.`service_id` = `s`.`id`
-        WHERE `p`.`product_code` = '$code'
-    ";
-        return $this->db->query($query)->getRowArray();
-    }
-
 
     // make product code
     public function createProductCode($vendor_id)
@@ -104,7 +89,7 @@ class ProductModel extends Model
 
     public function getProductsByService()
     {
-        $query = "SELECT `p`.`product_code`, `p`.`product_name`, `p`.`product_main_image`, `p`.`price`, `s`.`name` as `service_name`, `s`.`id` as `service_id`
+        $query = "SELECT `p`.`product_name`, `p`.`product_main_image`, `p`.`price`, `p`.`slug`, `s`.`name` as `service_name`, `s`.`id` as `service_id`
         FROM `products` as `p`
         INNER JOIN `vendors_services` AS `vs`
         ON `p`.`product_service_id` = `vs`.`id`
@@ -123,7 +108,7 @@ class ProductModel extends Model
     ";
         return $this->db->query($query)->getResultArray();
     }
-    
+
     public function getProductsByKeyword($keyword)
     {
         $query = "SELECT product_name, product_main_image

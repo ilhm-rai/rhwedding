@@ -34,23 +34,22 @@ class Main extends BaseController
         return view('index', $data);
     }
 
-    
-    public function productdetail($slug)
+
+    public function productDetail($slug)
     {
-        $product =$this->productModel->getProductBySlug($slug);
-        if($product){
+        $product = $this->productModel->getProductBySlug($slug);
+        if ($product) {
             $data = [
                 'title' => 'RH Wedding Planner',
-                'product' =>$product,
+                'product' => $product,
                 'productImg' => $this->productsImagesModel->getImagesByProduct($product['id'])
             ];
             $vendorId = $data['product']['vendor_id'];
             $data['vendor'] = $this->vendorModel->getVendorBy($vendorId);
             // dd($data);
             return view('main/product_detail', $data);
-        }else{
+        } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
-
         }
     }
 

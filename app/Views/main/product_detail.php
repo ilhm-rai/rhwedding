@@ -80,7 +80,9 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-2">
             <h1 class="content-heading mb-0 text-gray-800 mb-4">Product Description</h1>
         </div>
-        <?= $product['product_description']; ?>
+        <p class="text-wrap">
+            <?= $product['product_description']; ?>
+        </p>
     </div>
     <!-- Review -->
     <div class="content-frame mb-5 shadow">
