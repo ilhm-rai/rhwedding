@@ -13,9 +13,9 @@ if (logged_in()) {
     <a class="navbar-brand" href="<?= base_url('/'); ?>"><img src="<?= base_url('/img/logo.png'); ?>" alt="RH Wedding Planner"></a>
 
     <!-- Topbar Search -->
-    <form class="search-wrapper d-none d-sm-inline-block form-inline ml-auto ml-md-3 my-2 my-md-0 mw-100 w-100 pr-4 navbar-search">
+    <form action="/search/result" method="POST" class="search-wrapper d-none d-sm-inline-block form-inline ml-auto ml-md-3 my-2 my-md-0 mw-100 w-100 pr-4 navbar-search">
         <div class="input-group relative search-input">
-            <input type="text" id="keyword" class="form-control search border-0 rounded-pill pl-3" placeholder="Cari sesuatu..." aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
+            <input type="text" id="keyword" name="keyword" class="form-control search border-0 rounded-pill pl-3" placeholder="Cari sesuatu..." aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
             <button class="btn btn-gradient-main rounded-pill position-absolute border-white" type="button" style="right: 0;">
                 <i class="fas fa-search fa-sm"></i>
                 <p class="d-inline ml-1">Search</p>

@@ -109,4 +109,13 @@ class ProductModel extends Model
     ";
         return $this->db->query($query)->getResultArray();
     }
+    
+    public function getProductsByKeyword($keyword)
+    {
+        $query = "SELECT product_name, product_main_image
+        FROM `products` AS `p`
+        WHERE `product_name` LIKE '$keyword%'
+    ";
+        return $this->db->query($query)->getResultArray();
+    }
 }
