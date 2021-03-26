@@ -40,7 +40,6 @@ $routes->group('/', function ($routes) {
 	$routes->add('', 'Main::index');
 	$routes->add('vendor/(:any)', 'Main::vendor/$1');
 	$routes->add('vendor/products', 'Main::vendorProduct');
-	$routes->add('(:any)', 'Main::productdetail/$1');
 	$routes->add('cart', 'Main::cart');
 	$routes->add('checkout', 'Main::checkout');
 	// search
@@ -48,6 +47,8 @@ $routes->group('/', function ($routes) {
 		$routes->add('', 'Search::index');
 		$routes->add('result', 'Search::result');
 	});
+	// product by slug
+	$routes->add('(:any)', 'Main::productdetail/$1');
 });
 
 
