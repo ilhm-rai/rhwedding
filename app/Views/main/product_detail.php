@@ -3,25 +3,25 @@
 
 <?= $this->section('content'); ?>
 <div class="container-fluid">
-<!-- product preview -->
+    <!-- product preview -->
     <div class="row mb-5">
         <div class="col-6 pl-0">
             <div class="swiper-container main gallery-top">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"><img src="/img/products/main-img/<?= $product['product_main_image']; ?>" alt="" class="img-main"></div>
-                    <?php foreach($productImg as $img): ?>
+                    <?php foreach ($productImg as $img) : ?>
                         <div class="swiper-slide"><img src="/img/products/other/<?= $img['image']; ?>" alt="" class="img-main"></div>
                     <?php endforeach; ?>
-                    </div>
-                    <!-- Add Arrows -->
-                    <div class="swiper-button-next swiper-button-white"></div>
-                    <div class="swiper-button-prev swiper-button-white"></div>
                 </div>
-                <div class="swiper-container gallery-thumbs">
-                    <div class="img-second swiper-wrapper">
+                <!-- Add Arrows -->
+                <div class="swiper-button-next swiper-button-white"></div>
+                <div class="swiper-button-prev swiper-button-white"></div>
+            </div>
+            <div class="swiper-container gallery-thumbs">
+                <div class="img-second swiper-wrapper">
                     <div class="swiper-slide"><img src="/img/products/main-img/<?= $product['product_main_image']; ?>" alt="" class=""></div>
-                    <?php foreach($productImg as $img): ?>
-                    <div class="swiper-slide"><img src="/img/products/other/<?= $img['image']; ?>" alt="" class=""></div>
+                    <?php foreach ($productImg as $img) : ?>
+                        <div class="swiper-slide"><img src="/img/products/other/<?= $img['image']; ?>" alt="" class=""></div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -40,7 +40,7 @@
             </div>
             (<?= $product['total_review']; ?> reviews)
             </p>
-            <h2 class="product-price">Rp<?= number_format($product['price'],0,',','.'); ?>,-</h2>
+            <h2 class="product-price">Rp<?= number_format($product['price'], 0, ',', '.'); ?>,-</h2>
             <p class="product-qty">Quantity</p>
             <div class="input-group w-auto d-inline-flex">
                 <div class="input-group-prepend">
@@ -60,7 +60,7 @@
             </div>
         </div>
     </div>
-<!-- vendor -->
+    <!-- vendor -->
     <div class="content-frame mb-5 shadow">
         <div class="row mb-4 align-items-center">
             <div class="col-2">
@@ -129,25 +129,25 @@
     //     loop: true,
     // });
     var galleryThumbs = new Swiper('.gallery-thumbs', {
-      spaceBetween: 10,
-      slidesPerView: 4,
-      loop: true,
-      freeMode: true,
-      loopedSlides: 5, //looped slides should be the same
-      watchSlidesVisibility: true,
-      watchSlidesProgress: true,
+        spaceBetween: 10,
+        slidesPerView: 4,
+        loop: true,
+        freeMode: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
     });
+
     var galleryTop = new Swiper('.gallery-top', {
-      spaceBetween: 10,
-      loop: true,
-      loopedSlides: 5, //looped slides should be the same
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      thumbs: {
-        swiper: galleryThumbs,
-      },
+        spaceBetween: 10,
+        loop: true,
+        loopedSlides: 5, //looped slides should be the same
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        thumbs: {
+            swiper: galleryThumbs,
+        },
     });
 </script>
 <?= $this->endSection(); ?>

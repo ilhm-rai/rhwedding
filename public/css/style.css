@@ -712,7 +712,7 @@ footer .btn-sosmed :hover {
 }
 
 .gallery-thumbs {
-  height: 100%;
+  height: auto;
   box-sizing: border-box;
   padding: 10px 0;
 }
