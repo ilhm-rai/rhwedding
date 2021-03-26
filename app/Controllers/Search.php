@@ -35,4 +35,19 @@ class Search extends BaseController
         // var_dump($data);
         // var_dump($keyword);
     }
+
+    public function result()
+    {
+        $keyword = $this->request->getVar('keyword');
+        $data = [
+            'title' => 'RH Wedding Planner',
+            'vendors' => $this->vendorModel->getVendorsByKeyword($keyword),
+            'products' => $this->productModel->getProductsByKeyword($keyword),
+            'keyword' => $keyword
+        ];
+
+        // dd($data);
+        return view('main/search_result', $data);
+    }
+
 }

@@ -86,4 +86,14 @@ class VendorModel extends Model
         ";
         return $this->db->query($query)->getResultArray();
     }
+
+    public function getVendorsByKeyword($keyword)
+    {
+        $query = "SELECT vendor_name, vendor_logo
+        FROM `vendors` AS `v`
+        WHERE `vendor_name` LIKE '$keyword%'
+
+    ";
+    return $this->db->query($query)->getResultArray();
+    }
 }

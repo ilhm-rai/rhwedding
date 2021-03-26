@@ -38,15 +38,15 @@ $routes->get('/register', 'Auth::register');
 // Main Routes
 $routes->group('/', function ($routes) {
 	$routes->add('', 'Main::index');
-	$routes->add('searchresult', 'Main::searchresult');
 	$routes->add('vendor/(:any)', 'Main::vendor/$1');
 	$routes->add('vendor/products', 'Main::vendorProduct');
-	$routes->add('product/(:any)', 'Main::productdetail/$1');
+	$routes->add('(:any)', 'Main::productdetail/$1');
 	$routes->add('cart', 'Main::cart');
 	$routes->add('checkout', 'Main::checkout');
 	// search
 	$routes->group('search', function ($routes) {
 		$routes->add('', 'Search::index');
+		$routes->add('result', 'Search::result');
 	});
 });
 
