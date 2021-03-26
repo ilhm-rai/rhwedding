@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\ServiceModel;
 use App\Models\ProductModel;
 use App\Models\ProductsImagesModel;
@@ -20,6 +21,7 @@ class Search extends BaseController
         $this->productsImagesModel = new ProductsImagesModel();
         $this->vendorModel = new VendorModel();
     }
+
     public function index()
     {
         $keyword = $this->request->getVar('keyword');
@@ -28,6 +30,9 @@ class Search extends BaseController
             'products' => $this->productModel->getProductsSuggest($keyword),
         ];
 
-        echo json_encode($data);
+        // echo "<script>console.log({$data})</script>";
+        return json_encode($data);
+        // var_dump($data);
+        // var_dump($keyword);
     }
 }

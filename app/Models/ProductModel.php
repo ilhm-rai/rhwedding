@@ -90,27 +90,21 @@ class ProductModel extends Model
 
     public function getProductsByService()
     {
-        $query = "SELECT `p`.`product_code`, `p`.`product_name`, `p`.`product_main_image`, `p`.`price`, `s`.`name` as `service_name`, `s`.`id` as `service_id` 
-        FROM `products` as `p` 
-        INNER JOIN `vendors_services` AS `vs` 
+        $query = "SELECT `p`.`product_code`, `p`.`product_name`, `p`.`product_main_image`, `p`.`price`, `s`.`name` as `service_name`, `s`.`id` as `service_id`
+        FROM `products` as `p`
+        INNER JOIN `vendors_services` AS `vs`
         ON `p`.`product_service_id` = `vs`.`id`
-        INNER JOIN `services` AS`s` 
+        INNER JOIN `services` AS`s`
         ON `vs`.`service_id` = `s`.`id`
     ";
-    return $this->db->query($query)->getResultArray();
+        return $this->db->query($query)->getResultArray();
     }
 
     public function getProductsSuggest($keyword)
     {
-        $query = "SELECT `p`.*, `s`.`name` as `service`
+        $query = "SELECT product_name, product_main_image
         FROM `products` AS `p`
-        JOIN `vendors` AS `v`
-        ON `p`.`vendor_id` = `v`.`id`
-        JOIN `vendors_services` AS `vs`
-        ON `p`.`product_service_id` = `vs`.`id`
-        JOIN `services` AS `s`
-        ON `vs`.`service_id` = `s`.`id`
-        WHERE `p`.`product_name` LIKE '%$keyword%'
+        WHERE `product_name` LIKE '$keyword%'
         LIMIT 2
     ";
         return $this->db->query($query)->getResultArray();

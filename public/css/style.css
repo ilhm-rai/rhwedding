@@ -113,6 +113,14 @@ body,
   border-radius: 20px;
 }
 
+.img-product-suggestion {
+  width: 50px;
+  height: 50px;
+  padding: 2px;
+  object-fit: fill;
+  object-position: center;
+}
+
 .topbar.admin .search {
   background-color: white;
 }
@@ -502,7 +510,7 @@ a.img-service:hover {
   width: 100%;
   height: 175px;
   border-radius: 20px;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   background-color: white;
 }
