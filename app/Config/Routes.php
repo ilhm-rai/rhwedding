@@ -40,7 +40,7 @@ $routes->group('/', function ($routes) {
 	$routes->add('', 'Main::index');
 	$routes->add('vendor/(:any)', 'Main::vendor/$1');
 	$routes->add('vendor/products', 'Main::vendorProduct');
-	$routes->add('product/(:any)', 'Main::productdetail/$1');
+	$routes->add('(:any)', 'Main::productdetail/$1');
 	$routes->add('cart', 'Main::cart');
 	$routes->add('checkout', 'Main::checkout');
 	// search

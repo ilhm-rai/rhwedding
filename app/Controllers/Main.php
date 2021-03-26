@@ -35,17 +35,23 @@ class Main extends BaseController
     }
 
     
-    public function productdetail($code)
+    public function productdetail($slug)
     {
-        $data = [
-            'title' => 'RH Wedding Planner',
-            'product' => $this->productModel->getProductByCode($code),
-            'productImg' => $this->productsImagesModel->getImagesByProductCode($code)
-        ];
-        $vendorId = $data['product']['vendor_id'];
-        $data['vendor'] = $this->vendorModel->getVendorBy($vendorId);
-        // dd($data);
-        return view('main/product_detail', $data);
+        $product =$this->productModel->getProductBySlug($slug);
+        if($product){
+            $data = [
+                'title' => 'RH Wedding Planner',
+                'product' =>$product,
+                'productImg' => $this->productsImagesModel->getImagesByProduct($product['id'])
+            ];
+            $vendorId = $data['product']['vendor_id'];
+            $data['vendor'] = $this->vendorModel->getVendorBy($vendorId);
+            // dd($data);
+            return view('main/product_detail', $data);
+        }else{
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+
+        }
     }
 
     public function cart()

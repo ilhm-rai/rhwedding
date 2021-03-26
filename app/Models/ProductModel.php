@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class ProductModel extends Model
 {
     protected $table = 'products';
-    protected $allowedFields = ['vendor_id', 'product_service_id', 'product_code', 'product_name', 'product_main_image', 'product_description', 'price', 'stock'];
+    protected $allowedFields = ['vendor_id', 'product_service_id', 'product_code','slug' ,'product_name', 'product_main_image', 'product_description', 'price', 'stock'];
     protected $useTimestamps = true;
     protected $db;
 
@@ -49,6 +49,20 @@ class ProductModel extends Model
         JOIN `services` AS `s`
         ON `vs`.`service_id` = `s`.`id`
         WHERE `p`.`id` = $id
+    ";
+        return $this->db->query($query)->getRowArray();
+    }
+    public function getProductBySlug($slug)
+    {
+        $query = "SELECT `p`.*, `s`.`name` as `service`
+        FROM `products` AS `p`
+        JOIN `vendors` AS `v`
+        ON `p`.`vendor_id` = `v`.`id`
+        JOIN `vendors_services` AS `vs`
+        ON `p`.`product_service_id` = `vs`.`id`
+        JOIN `services` AS `s`
+        ON `vs`.`service_id` = `s`.`id`
+        WHERE `p`.`slug` = '$slug'
     ";
         return $this->db->query($query)->getRowArray();
     }

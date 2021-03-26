@@ -28,6 +28,7 @@ class Product extends BaseController
         $this->categoryModel = new CategoryModel();
         $this->productModel = new ProductModel();
         $this->productsImagesModel = new ProductsImagesModel();
+        helper('text');
     }
 
     public function index()
@@ -111,10 +112,13 @@ class Product extends BaseController
           $mainImg->move('img/products/main-img');
           $mainImgName = $mainImg->getName();
           $productCode =$this->productModel->createProductCode($this->request->getVar('vendor-id'));
+          $productName = $this->request->getVar('product-name');
+          $slug = url_title($productName, '-') . '.P-' . random_string('numeric');
           $this->productModel->save([
               'product_code' => $productCode,
               'vendor_id' => $this->request->getVar('vendor-id'),
-              'product_name' => $this->request->getVar('product-name'),
+              'product_name' => $productName,
+              'slug' => $slug,
               'product_service_id' => $this->request->getvar('service'),
               'product_main_image' => $mainImgName,
               'product_description' => $this->request->getvar('product-description'),
