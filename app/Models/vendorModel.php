@@ -40,7 +40,7 @@ class VendorModel extends Model
 
     public function getVendorByUser($id)
     {
-        $query = "SELECT `v`.`id` AS `vendor_id` ,`v`.`vendor_name`, `v`.`vendor_logo`,`v`.`vendor_billboard`,`v`.`vendor_description`,`vl`.`name` AS `vendor_level` ,`v`.`active` AS `vendor_active`, `v`.`created_at` AS `vendor_create`
+        $query = "SELECT `v`.`id` AS `vendor_id` ,`v`.`vendor_name`, `v`.`vendor_logo`,`v`.`vendor_cover` ,`v`.`vendor_billboard`,`v`.`vendor_description`,`vl`.`name` AS `vendor_level` ,`v`.`active` AS `vendor_active`, `v`.`created_at` AS `vendor_create`
         FROM `vendors` AS `v`
         LEFT JOIN `users` AS `u`
         ON `u`.`id` = `v`.`user_id`

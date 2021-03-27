@@ -74,8 +74,8 @@
                     <td>Rp<?= number_format($product['price'],0,',','.'); ?>,-</td>
                     <td> <button type="button" class="btn <?= ($product['active'] == 1) ? 'btn-success' : 'btn-warning'; ?> btn-sm small"><?= ($product['active'] == 1) ? 'Active' : 'Disable'; ?></button></td>
                     <td class="text-center">
-                            <a href="/vendors/products/detail/<?= $product['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></a>
-                            <a href="/vendors/products/edit/<?= $product['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></a>
+                            <a href="/vendors/products/detail/<?= $product['slug']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></a>
+                            <a href="/vendors/products/edit/<?= $product['slug']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></a>
                             <form action="/vendors/products/<?= $product['id']; ?>" method="POST" class="d-inline form-delete">
                                 <?= csrf_field(); ?>
                                 <input type="hidden" name="_method" value="DELETE">
