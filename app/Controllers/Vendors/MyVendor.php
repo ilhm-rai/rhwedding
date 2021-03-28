@@ -43,6 +43,22 @@ class Myvendor extends BaseController
         // dd($data);
         return view('vendors/myvendor/profile', $data);
     }
+
+    public function edit()
+    {
+        $dataVendor = $this->vendorModel->getVendorByUser(user()->id);
+        $data = [
+            'title'  => 'My Vendor',
+            'user'  => $this->usersModel->getUserBy(user()->id),
+            'vendor'  => $dataVendor,
+            'validation' => \Config\Services::validation(),  
+        ];
+        return view('vendors/myvendor/edit', $data);
+    }
+
+
+
+
     public function service()
     {
         $data = [

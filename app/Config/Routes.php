@@ -92,6 +92,7 @@ $routes->group('/vendors', function ($routes) {
 	// vendors/myvendor
 	$routes->group('myvendor', function ($routes) {
 		$routes->add('/', 'Vendors\MyVendor::index');
+		$routes->add('edit', 'Vendors\MyVendor::edit');
 		$routes->group('service', function ($routes) {
 			$routes->add('/', 'Vendors\MyVendor::service');
 			$routes->add('add', 'Vendors\MyVendor::addservice');
@@ -102,8 +103,9 @@ $routes->group('/vendors', function ($routes) {
 		$routes->add('/', 'Vendors\Product::index');
 		$routes->add('add', 'Vendors\Product::add');
 		$routes->add('save', 'Vendors\Product::save');
-		$routes->add('edit', 'Vendors\Product::edit');
-		$routes->add('detail/(:num)', 'Vendors\Product::detail/$1');
+		$routes->add('edit/(:any)', 'Vendors\Product::edit/$1');
+		$routes->add('update/(:any)', 'Vendors\Product::update/$1');
+		$routes->add('detail/(:any)', 'Vendors\Product::detail/$1');
 		$routes->group('category', function ($routes) {
 			$routes->add('/', 'Vendors\ProductCategory::index');
 		});

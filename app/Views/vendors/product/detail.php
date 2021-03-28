@@ -1,6 +1,13 @@
 <?= $this->extend('templates/admin'); ?>
 <?= $this->section('content'); ?>
 <div class="container-fluid mb-5"> 
+<div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
+
+<?php if (session()->getFlashdata('message')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('message'); ?>
+    </div>
+<?php endif; ?>
 <div class="row">
         <div class="col-6 pl-0">
             <div class="swiper-container main gallery-top">

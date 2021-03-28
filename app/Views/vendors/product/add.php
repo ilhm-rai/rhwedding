@@ -34,7 +34,7 @@
         <div class="form-group row">
             <label for="price" class="col-sm-2 col-form-label">Price <sup class="text-wild-watermelon">*</sup></label>
             <div class="col-sm-10">
-                <input type="number" class="form-control rounded-pill  <?= ($validation->hasError('price') ? 'is-invalid' : ''); ?>" name="price" id="price">
+                <input type="number" class="form-control rounded-pill  <?= ($validation->hasError('price') ? 'is-invalid' : ''); ?>" name="price" id="price" value="<?= old('price');?>">
                 <div class="invalid-feedback">
                     <?= $validation->getError('price'); ?>
                 </div>
@@ -120,23 +120,9 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="productVideo" class="col-sm-2 col-form-label">Product Video</label>
-            <div class="col-sm-10 position-relative">
-                <div class="video-add">
-                    <label for="file-video">
-                        <video class="object-fit" controls>
-                            <source src="/video/vendors/billboard/rhvideo.mp4" type="video/mp4">
-                        </video>
-                    </label>
-                    <input id="file-video" type="file" />
-                </div>
-                <label for="file-video" class="btn btn-sm btn-wild-watermelon ml-4 mt-4 position-absolute" style="top: 0"><span class="fa fa-video" title="Ubah video"></span> Ubah Video</a>
-            </div>
-        </div>
-        <div class="form-group row">
             <label for="product-description" class="col-sm-2 col-form-label">Product Description <sup class="text-wild-watermelon">*</sup></label>
             <div class="col-sm-10">
-                <textarea class="form-control <?= ($validation->hasError('product-description') ? 'is-invalid' : ''); ?>" name="product-description"  id="product-description" rows="4" style="border-radius: 15px;"></textarea>
+                <textarea class="form-control tiny-textarea <?= ($validation->hasError('product-description') ? 'is-invalid' : ''); ?>" name="product-description"  id="product-description" rows="4" style="border-radius: 15px;"></textarea>
                 <div class="invalid-feedback text-center">
                     <?= $validation->getError('product-description'); ?>
                 </div>

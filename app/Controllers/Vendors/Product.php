@@ -61,7 +61,6 @@ class Product extends BaseController
             'service' => 'required',
             'product-description' => 'required',
             'price' => 'required',
-            'stock' => 'required',
             'main-img' => [
                 'rules'  => 'uploaded[main-img]|max_size[main-img,5024]|ext_in[main-img,png,jpg,jpeg,svg,gif]',
                 'errors' => [
@@ -123,11 +122,10 @@ class Product extends BaseController
               'product_main_image' => $mainImgName,
               'product_description' => $this->request->getvar('product-description'),
               'price' => $this->request->getvar('price'),
-              'stock' => $this->request->getvar('stock'),
           ]);
 
         //   save product images
-        $product = $this->productModel->getProductByCode($productCode);
+        $product = $this->productModel->getProductBySlug($slug);
         if (!$image1->getError() == 4) {
             // pindahkan file 
             $image1->move('img/products/other');
@@ -171,21 +169,164 @@ class Product extends BaseController
     }
 
 
-    public function detail($id)
+    public function detail($slug)
     {
+        $product = $this->productModel->getProductBySlug($slug);
         $data = [
             'title'  => 'Products - RH Wedding',
-            'product'  => $this->productModel->getProductBy($id),
-            'productImg' => $this->productsImagesModel->getWhere(['product_id' => $id])->getResultArray()
+            'product'  => $product,
+            'productImg' => $this->productsImagesModel->getWhere(['product_id' => $product['id']])->getResultArray(),
         ];
         // dd($data);
         return view('vendors/product/detail', $data);
     }
 
-    public function edit()
+    public function edit($slug)
     {
-        $data['title'] = 'Edit Products - RH Wedding';
+        $product = $this->productModel->getProductBySlug($slug);
+
+        $data = [
+            'title'  => 'Edit Products - RH Wedding',
+            'product'  => $product,
+            'services' => $this->serviceModel->getServiceByUser(user()->id),
+            'productImg' => $this->productsImagesModel->getWhere(['product_id' => $product['id']])->getResultArray(),
+            'validation' => \Config\Services::validation(),  
+        ];
+        // dd($data);
         return view('vendors/product/edit', $data);
+    }
+
+    public function update($slug)
+    {
+        if (!$this->validate([
+            'product-name' => 'required',
+            'service' => 'required',
+            'product-description' => 'required',
+            'price' => 'required',
+            'main-img' => [
+                'rules'  => 'max_size[main-img,5024]|ext_in[main-img,png,jpg,jpeg,svg,gif]',
+                'errors' => [
+                    'ext_in' => "Extension must Image",
+
+                ]
+                ]
+        ])) {
+            return redirect()->to('/vendors/products/edit/'. $slug)->withInput();
+        }
+        // lolos validasi
+        // Upload cover
+          $mainImg = $this->request->getFile('main-img');
+          $image1 = $this->request->getFile('image1');
+          $image2 = $this->request->getFile('image2');
+          $image3 = $this->request->getFile('image3');
+          $image4 = $this->request->getFile('image4');
+          
+
+        if ($mainImg->getError() == 4) {
+            $mainImgName = $this->request->getVar('old-main-image');
+        } else {   
+            // pindahkan file 
+            $mainImg->move('img/products/main-img');
+            $mainImgName = $mainImg->getName();
+            // hapus file lama
+            $oldMainImg = $this->request->getVar('old-main-image');
+            unlink('img/products/main-img/' . $oldMainImg);
+
+        }
+
+        $productName = $this->request->getVar('product-name');
+        $oldProduct = $this->productModel->getProductBySlug($this->request->getVar('old-slug'));
+        if($productName != $oldProduct['product_name']){
+            $slug = url_title($productName, '-') . '.P-' . random_string('numeric');
+        }else{
+            $slug = $this->request->getVar('old-slug');
+        }
+          $this->productModel->save([
+              'id' => $this->request->getVar('product-id'),
+              'product_name' => $productName,
+              'slug' => $slug,
+              'product_service_id' => $this->request->getvar('service'),
+              'product_main_image' => $mainImgName,
+              'product_description' => $this->request->getvar('product-description'),
+              'price' => $this->request->getvar('price'),
+          ]);   
+
+          $oldIdImg1 = $this->request->getVar('old-image1-id');
+          $oldIdImg2 = $this->request->getVar('old-image2-id');
+          $oldIdImg3 = $this->request->getVar('old-image3-id');
+          $oldIdImg4 = $this->request->getVar('old-image4-id');
+
+        $product = $this->productModel->getProductBySlug($slug);
+        if (!$image1->getError() == 4) {   
+            $image1->move('img/products/other');
+            $image1Name = $image1->getName();
+            if($oldIdImg1 == ''){
+                $this->productsImagesModel->save([
+                    'product_id' => $product['id'],
+                    'image' => $image1Name
+                ]);
+            }else{
+                $this->productsImagesModel->save([
+                    'id' => $oldIdImg1,
+                    'image' => $image1Name
+                ]);
+                $oldImg1 = $this->request->getVar('old-image1'); 
+                unlink('img/products/other/' . $oldImg1);
+            }
+        }
+        if (!$image2->getError() == 4) {   
+            $image2->move('img/products/other');
+            $image2Name = $image2->getName();
+            if($oldIdImg2 == ''){
+                $this->productsImagesModel->save([
+                    'product_id' => $product['id'],
+                    'image' => $image2Name
+                ]);
+            }else{
+                $this->productsImagesModel->save([
+                    'id' => $oldIdImg2,
+                    'image' => $image2Name
+                ]);
+                $oldImg2 = $this->request->getVar('old-image2'); 
+                unlink('img/products/other/' . $oldImg2);
+            }
+        }
+        if (!$image3->getError() == 4) {   
+            $image3->move('img/products/other');
+            $image3Name = $image3->getName();
+            if($oldIdImg3 == ''){
+                $this->productsImagesModel->save([
+                    'product_id' => $product['id'],
+                    'image' => $image3Name
+                ]);
+            }else{
+                $this->productsImagesModel->save([
+                    'id' => $oldIdImg3,
+                    'image' => $image3Name
+                ]);
+                $oldImg3 = $this->request->getVar('old-image3'); 
+                unlink('img/products/other/' . $oldImg3);
+            }
+        }
+        if (!$image4->getError() == 4) {   
+            $image4->move('img/products/other');
+            $image4Name = $image4->getName();
+            if($oldIdImg4 == ''){
+                $this->productsImagesModel->save([
+                    'product_id' => $product['id'],
+                    'image' => $image4Name
+                ]);
+            }else{
+                $this->productsImagesModel->save([
+                    'id' => $oldIdImg4,
+                    'image' => $image4Name
+                ]);
+                $oldImg4 = $this->request->getVar('old-image4'); 
+                unlink('img/products/other/' . $oldImg4);
+            }
+        }
+        session()->setFlashdata('message', 'Product has been successfully edited');
+        return redirect()->to('/vendors/products/detail/'. $slug); 
     }
 
     public function delete($id)
