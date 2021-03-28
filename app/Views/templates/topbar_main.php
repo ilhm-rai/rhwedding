@@ -1,11 +1,17 @@
 <?php
+
+use CodeIgniter\Model;
+
 if (logged_in()) {
     $id = user()->id;
     $usersModel = Model('UsersModel');
     $vendorModel = Model('vendorModel');
+    $cartModel = Model('CartModel');
     $myInfo = $usersModel->getUserBy($id);
     $myVendor = $vendorModel->getVendorByUser($id);
-    // dd($myInfo);
+    $cart = $cartModel->getUserCart();
+    $cartItems = $cartModel->getItemInUserCart($cart['id']);
+    $cartItemsLimit = $cartModel->getItemInUserCart($cart['id'], 5);
 }
 ?>
 <nav class="navbar main navbar-expand navbar-light topbar static-to">
@@ -108,49 +114,31 @@ if (logged_in()) {
         </li>
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="nav-icon">
+                <div class="nav-icon position-relative">
                     <i class="fas fa-shopping-cart fa-fw"></i>
+                    <!-- Counter - Alerts -->
+                    <span class="badge badge-danger badge-counter rounded-circle js-count-cart-item <?= (!$cartItems) ? 'd-none' : '' ?>"><?= ($cartItems) ? count($cartItems) : ''; ?></span>
                 </div>
             </a>
             <!-- Dropdown - Alerts -->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
-                    Alerts Center
+                    New Items Added
                 </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                        <div class="icon-circle bg-primary">
-                            <i class="fas fa-file-alt text-white"></i>
+                <?php foreach ($cartItemsLimit as $cartItem) : ?>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="mr-3">
+                            <div class="dropdown-list-image">
+                                <img class="rounded-circle object-fit" src="<?= base_url('/img/products/main-img/' . $cartItem['product_main_image']); ?>" alt="">
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="small text-gray-500">December 12, 2019</div>
-                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                    </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                        <div class="icon-circle bg-success">
-                            <i class="fas fa-donate text-white"></i>
+                        <div>
+                            <span class="font-weight-bold"><?= $cartItem['product_name']; ?></span>
+                            <div class="small text-gray-500">Rp<?= number_format($cartItem['price'], 0, ',', '.'); ?></div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="small text-gray-500">December 7, 2019</div>
-                        $290.29 has been deposited into your account!
-                    </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                        <div class="icon-circle bg-warning">
-                            <i class="fas fa-exclamation-triangle text-white"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="small text-gray-500">December 2, 2019</div>
-                        Spending Alert: We've noticed unusually high spending for your account.
-                    </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                    </a>
+                <?php endforeach; ?>
+                <a class="dropdown-item text-center small text-gray-500" href="/cart">Show All Items</a>
             </div>
         </li>
         <li class="nav-item dropdown no-arrow">

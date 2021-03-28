@@ -135,14 +135,17 @@ $routes->group('admin/products/categories', function ($routes) {
 	$routes->add('', 'Admin\ProductCategory::show');
 });
 
+// Cart Routes
+$routes->post('cart/add_item_to_cart', 'CartController::addItemToCart');
+
 // Main Routes
 $routes->group('/', function ($routes) {
 	$routes->add('', 'Main::index');
 	$routes->add('vendor/(:any)', 'Main::vendor/$1');
 	$routes->add('vendor/products', 'Main::vendorProduct');
-	$routes->add('(:any)', 'Main::productDetail/$1');
 	$routes->add('cart', 'Main::cart');
 	$routes->add('checkout', 'Main::checkout');
+	$routes->add('(:any)', 'Main::productDetail/$1');
 });
 
 /**

@@ -55,7 +55,7 @@
             <p class="product-note">Add Note</p>
             <textarea class="form-control" id="productDescription" rows="4" style="border-radius: 15px;"></textarea>
             <div class="mt-4">
-                <a class="btn btn-action rounded-pill"><span class="fa fa-shopping-cart"></span> Add to Cart</a>
+                <a class="btn btn-action rounded-pill js-add-to-cart"><span class="fa fa-shopping-cart"></span> Add to Cart</a>
                 <a class="btn btn-wild-watermelon rounded-pill">Buy Now</a>
             </div>
         </div>
@@ -151,5 +151,21 @@
             swiper: galleryThumbs,
         },
     });
+
+    $('.js-add-to-cart').on('click', function() {
+        $.ajax({
+            url: "<?= base_url('cart/add_item_to_cart'); ?>",
+            type: 'POST',
+            data: {
+                'user_id': "<?= user()->id; ?>",
+                'product_id': "<?= $product['id'] ?>"
+            },
+            success: function(data) {
+                console.log(data);
+                $('.js-count-cart-item').removeClass('d-none');
+                $('.js-count-cart-item').html(data);
+            }
+        })
+    })
 </script>
 <?= $this->endSection(); ?>
