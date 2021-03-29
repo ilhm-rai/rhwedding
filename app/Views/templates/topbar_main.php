@@ -12,6 +12,9 @@ if (logged_in()) {
     $cart = $cartModel->getUserCart();
     $cartItems = $cartModel->getItemInUserCart($cart['id']);
     $cartItemsLimit = $cartModel->getItemInUserCart($cart['id'], 5);
+}else{
+    $cartItems = false;
+    $cartItemsLimit = [];
 }
 ?>
 <nav class="navbar main navbar-expand navbar-light topbar static-to">

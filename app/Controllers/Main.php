@@ -44,11 +44,17 @@ class Main extends BaseController
     {
         $product = $this->productModel->getProductBySlug($slug);
         if ($product) {
+            if(logged_in()){
+                $userCart =$this->CartModel->getUserCart(user()->id);
+            }else{
+                $userCart =false;
+            }
+
             $data = [
                 'title' => 'RH Wedding Planner',
                 'product' => $product,
                 'productImg' => $this->productsImagesModel->getImagesByProduct($product['id']),
-                'userCart' => $this->CartModel->getUserCart(user()->id)
+                'userCart' => $userCart
             ];
             $vendorId = $data['product']['vendor_id'];
             $data['vendor'] = $this->vendorModel->getVendorBy($vendorId);
@@ -93,5 +99,11 @@ class Main extends BaseController
         ];
 
         return view('main/vendor_product', $data);
+    }
+
+    public function mustlogin()
+    {
+        session()->setFlashdata('message', 'You must login first!');
+        return redirect()->to('/login'); 
     }
 }

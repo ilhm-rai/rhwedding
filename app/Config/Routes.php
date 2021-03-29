@@ -146,6 +146,7 @@ $routes->group('/', function ($routes) {
 	$routes->add('vendor/(:any)', 'Main::vendor/$1');
 	$routes->add('vendor/products', 'Main::vendorProduct');
 	$routes->add('cart', 'Main::cart');
+	$routes->add('mustlogin', 'Main::mustlogin');
 	$routes->add('checkout', 'Main::checkout');
 	$routes->add('(:any)', 'Main::productDetail/$1');
 });
