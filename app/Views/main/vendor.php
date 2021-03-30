@@ -2,7 +2,7 @@
 
 <?= $this->section('banner'); ?>
 <div class="vendor-profile">
-    <img src="/img/vendors/cover/1.jpg" alt="" class="cover">
+    <img src="/img/vendors/banners/1.jpg" alt="" class="cover">
     <div class="container-fluid">
         <div class="content-frame mb-5 shadow">
             <div class="row mb-4 align-items-center">

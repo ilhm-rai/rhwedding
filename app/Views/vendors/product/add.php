@@ -41,15 +41,6 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="stock" class="col-sm-2 col-form-label">Stock <sup class="text-wild-watermelon">*</sup></label>
-            <div class="col-sm-10">
-                <input type="number" class="form-control rounded-pill <?= ($validation->hasError('stock') ? 'is-invalid' : ''); ?>" name="stock" id="stock">
-                <div class="invalid-feedback">
-                    <?= $validation->getError('stock'); ?>
-                </div>
-            </div>
-        </div>
-        <div class="form-group row">
             <label for="productImage" class="col-2 col-form-label">Product Image</label>
             <div class="col-10 row justify-content-between">
                 <!-- main image -->

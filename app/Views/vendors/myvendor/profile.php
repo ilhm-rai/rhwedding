@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col">
             <div class="mb-3">
-            <img src="/img/vendors/cover/1.jpg" alt="" class="w-100 rounded mb-4">
+            <img src="/img/vendors/banners/1.jpg" alt="" class="w-100 rounded mb-4">
             <div class="content-frame shadow">
                 <div class="row align-items-center">
                     <div class="col-2">
