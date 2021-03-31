@@ -12,7 +12,7 @@ if (logged_in()) {
     $cart = $cartModel->getUserCart();
     $cartItems = $cartModel->getItemInUserCart($cart['id']);
     $cartItemsLimit = $cartModel->getItemInUserCart($cart['id'], 5);
-}else{
+} else {
     $cartItems = false;
     $cartItemsLimit = [];
 }
@@ -128,19 +128,9 @@ if (logged_in()) {
                 <h6 class="dropdown-header">
                     New Items Added
                 </h6>
-                <?php foreach ($cartItemsLimit as $cartItem) : ?>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="dropdown-list-image">
-                                <img class="rounded-circle object-fit" src="<?= base_url('/img/products/main-img/' . $cartItem['product_main_image']); ?>" alt="">
-                            </div>
-                        </div>
-                        <div>
-                            <span class="font-weight-bold"><?= $cartItem['product_name']; ?></span>
-                            <div class="small text-gray-500">Rp<?= number_format($cartItem['price'], 0, ',', '.'); ?></div>
-                        </div>
-                    </a>
-                <?php endforeach; ?>
+                <div class="js-item-cart">
+                    <!-- Item in Cart -->
+                </div>
                 <a class="dropdown-item text-center small text-gray-500" href="/cart">Show All Items</a>
             </div>
         </li>

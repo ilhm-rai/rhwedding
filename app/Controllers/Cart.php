@@ -27,7 +27,6 @@ class Cart extends BaseController
     public function addItemToCart()
     {
         $productId = $this->request->getVar('product_id');
-        $userId = $this->request->getVar('user_id');
         $cart = $this->getUserCart();
 
         if (!$cart) {
@@ -42,11 +41,11 @@ class Cart extends BaseController
             'product_id' => $productId
         ];
 
-        if ($this->getItemInUserCart($cartId)) {
+        if (!$this->isItemInCart($productId)) {
             $this->CartModel->addItemToCart($data);
         }
 
-        $cartItem = $this->getItemInUserCart($cartId);
+        $cartItem = $this->getItemInUserCart();
 
         return json_encode(count($cartItem));
     }
@@ -56,13 +55,39 @@ class Cart extends BaseController
         return $this->CartModel->getUserCart();
     }
 
-    protected function getItemInUserCart($cart_id)
+    protected function getUserCartId()
     {
-        $itemInCart = $this->CartModel->getItemInUserCart($cart_id);
+        $cart = $this->getUserCart();
+        return $cart['id'];
+    }
+
+    protected function getItemInUserCart()
+    {
+        $itemInCart = $this->CartModel->getItemInUserCart($this->getUserCartId());
         if ($itemInCart) {
             return $itemInCart;
         }
 
-        return true;
+        return [];
+    }
+
+    protected function getItemInUserCartLimit()
+    {
+        $itemInCart = $this->CartModel->getItemInUserCart($this->getUserCartId(), 5);
+        if ($itemInCart) {
+            return $itemInCart;
+        }
+
+        return [];
+    }
+
+    public function getJsonItemInUserCart()
+    {
+        return json_encode($this->getItemInUserCartLimit(), JSON_PRETTY_PRINT);
+    }
+
+    protected function isItemInCart($productId)
+    {
+        return $this->CartModel->isItemInCart($this->getUserCartId(), $productId);
     }
 }

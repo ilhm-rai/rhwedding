@@ -41,4 +41,15 @@ class CartModel extends Model
         $query =  $this->builder->getWhere(['cart_id' => $cart_id], $limit);
         return $query->getResultArray();
     }
+
+    public function isItemInCart($cart_id, $product_id)
+    {
+        $this->builder = $this->db->table('cart_detail as cd');
+        $query = $this->builder->getWhere(['cart_id' => $cart_id, 'product_id' => $product_id]);
+        if ($query->getResultArray()) {
+            return true;
+        }
+
+        return false;
+    }
 }
