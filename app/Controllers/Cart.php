@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\CartModel;
 
-class CartController extends BaseController
+class Cart extends BaseController
 {
     /**
      * Instance of the main Request object.
