@@ -24,9 +24,9 @@
                 <div class="col-12">
                     <div class="img-add w-100">
                         <label for="cover-img">
-                            <img src="/img/vendors/cover/<?= $vendor['vendor_cover']; ?>" class="main-preview object-fit"/>
+                            <img src="/img/vendors/banners/<?= $vendor['vendor_banner']; ?>" class="main-preview object-fit"/>
                         </label>
-                        <input id="cover-img" name="cover-img" type="file" class="" value="<?= $vendor['vendor_cover']; ?>" onchange="previewImg('cover-img','main-preview')"/>
+                        <input id="cover-img" name="cover-img" type="file" class="" value="<?= $vendor['vendor_banner']; ?>" onchange="previewImg('cover-img','main-preview')"/>
                         <div class="invalid-feedback text-center">
                             
                         </div>

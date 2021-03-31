@@ -57,7 +57,7 @@ class Product extends BaseController
     public function save()
     {
         if (!$this->validate([
-            'product-name' => 'required',
+            'product-name' => 'required|is_unique[products.product_name]',
             'service' => 'required',
             'product-description' => 'required',
             'price' => 'required',
@@ -198,8 +198,16 @@ class Product extends BaseController
 
     public function update($slug)
     {
+        $product = $this->productModel->getProductBy($this->request->getVar('product-id'));
+        $productName = $this->request->getVar('product-name');
+        if($product['product_name'] == $productName){
+            $rulesProductName = 'required';
+        }else{
+            $rulesProductName = 'required|is_unique[products.product_name]';
+        }
+
         if (!$this->validate([
-            'product-name' => 'required',
+            'product-name' => $rulesProductName,
             'service' => 'required',
             'product-description' => 'required',
             'price' => 'required',
@@ -234,7 +242,7 @@ class Product extends BaseController
 
         }
 
-        $productName = $this->request->getVar('product-name');
+        
         $oldProduct = $this->productModel->getProductBySlug($this->request->getVar('old-slug'));
         if($productName != $oldProduct['product_name']){
             $slug = url_title($productName, '-') . '.P-' . random_string('numeric');

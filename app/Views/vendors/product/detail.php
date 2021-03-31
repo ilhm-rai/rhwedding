@@ -10,7 +10,7 @@
 <?php endif; ?>
 <div class="row">
         <div class="col-6 pl-0">
-            <div class="swiper-container main gallery-top">
+            <div class="swiper-container gallery-top main">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"><img src="/img/products/main-img/<?= $product['product_main_image']; ?>" alt="" class="img-main"></div>
                     <?php foreach($productImg as $img): ?>
@@ -22,7 +22,7 @@
                     <div class="swiper-button-prev swiper-button-white"></div>
                 </div>
                 <div class="swiper-container gallery-thumbs">
-                    <div class="img-second swiper-wrapper">
+                    <div class="swiper-wrapper img-second">
                     <div class="swiper-slide"><img src="/img/products/main-img/<?= $product['product_main_image']; ?>" alt="" class=""></div>
                     <?php foreach($productImg as $img): ?>
                     <div class="swiper-slide"><img src="/img/products/other/<?= $img['image']; ?>" alt="" class=""></div>

@@ -55,7 +55,7 @@
             <p class="product-note">Add Note</p>
             <textarea class="form-control" id="productDescription" rows="4" style="border-radius: 15px;"></textarea>
             <div class="mt-4">
-                <a class="btn btn-action rounded-pill js-add-to-cart"><span class="fa fa-shopping-cart"></span> Add to Cart</a>
+                <a class="btn btn-action rounded-pill js-add-to-cart" data-userid="<?= (logged_in())?user()->id:'false'; ?>" data-productid="<?= $product['id']; ?>"><span class="fa fa-shopping-cart"></span> Add to Cart</a>
                 <a class="btn btn-wild-watermelon rounded-pill">Buy Now</a>
             </div>
         </div>
@@ -153,12 +153,17 @@
     });
 
     $('.js-add-to-cart').on('click', function() {
+        const userId = $(this).data('userid');
+        const productId = $(this).data('productid');
+        if(userId == false){
+            window.location.replace('/mustlogin');
+        }else{
         $.ajax({
             url: "<?= base_url('cart/add_item_to_cart'); ?>",
             type: 'POST',
             data: {
-                'user_id': "<?= user()->id; ?>",
-                'product_id': "<?= $product['id'] ?>"
+                'user_id': userId,
+                'product_id': productId
             },
             success: function(data) {
                 console.log(data);
@@ -166,6 +171,8 @@
                 $('.js-count-cart-item').html(data);
             }
         })
+        }
+
     })
 </script>
 <?= $this->endSection(); ?>

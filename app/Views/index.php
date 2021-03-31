@@ -87,7 +87,7 @@
         <div class="row">
             <div class="col-8">
                 <div class="card card-blog">
-                    <img src="/img/products/6.jpg" class="card-img-top main-img-blog" alt="...">
+                    <img src="/img/blogs/6.jpg" class="card-img-top main-img-blog" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Title Blog</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum esse voluptate quos mollitia! Vitae quis dolore illo suscipit illum eum nisi maxime ipsam nesciunt est officiis, earum molestiae praesentium.</p>
@@ -98,10 +98,10 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-blog">
-                            <img src="/img/products/6.jpg" class="card-img-top" alt="...">
+                            <img src="/img/blogs/6.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Title Blog</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum esse voluptate quos mollitia! Vitae quis dolore illo suscipit illum eum nisi maxime ipsam nesciunt est officiis, earum molestiae praesentium.</p>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde inventore ducimus eaque magni! Porro, impedit!</p>
                             </div>
                         </div>
                     </div>
@@ -109,10 +109,10 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-blog">
-                            <img src="/img/products/6.jpg" class="card-img-top" alt="...">
+                            <img src="/img/blogs/6.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Title Blog</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum esse voluptate quos mollitia! Vitae quis dolore illo suscipit illum eum nisi maxime ipsam nesciunt est officiis, earum molestiae praesentium.</p>
+                                <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam minima, neque voluptate distinctio voluptatibus temporibus.</p>
                             </div>
                         </div>
                     </div>
