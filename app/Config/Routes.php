@@ -138,7 +138,7 @@ $routes->group('admin/products/categories', function ($routes) {
 });
 
 // Cart Routes
-$routes->post('cart/add_item_to_cart', 'CartController::addItemToCart');
+$routes->post('cart/add_item_to_cart', 'Cart::addItemToCart');
 
 // Main Routes
 $routes->group('/', function ($routes) {
