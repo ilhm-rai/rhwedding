@@ -459,6 +459,10 @@ video {
   object-position: center;
 }
 
+.img-rounded {
+  border-radius: 20px;
+}
+
 .service {
   text-align: center;
   color: #808090;

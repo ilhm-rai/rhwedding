@@ -19,7 +19,7 @@ if (logged_in()) {
         </div>
 
         <li class="nav-item">
-            <a class="nav-link active" href="/admin">
+            <a class="nav-link <?= ($active == 'dashboard admin')?'active':''; ?>" href="/admin">
                 <div class="nav-icon">
                     <i class="fas fa-fw fa-home"></i>
                 </div>
@@ -27,7 +27,7 @@ if (logged_in()) {
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
+            <a class="nav-link collapsed <?= ($active == 'users')?'active':''; ?>" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
                 <div class="nav-icon">
                     <i class="fas fa-fw fa-user"></i>
                 </div>
@@ -42,7 +42,7 @@ if (logged_in()) {
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVendor" aria-expanded="true" aria-controls="collapseUser">
+            <a class="nav-link collapsed <?= ($active == 'vendors')?'active':''; ?>" href="#" data-toggle="collapse" data-target="#collapseVendor" aria-expanded="true" aria-controls="collapseUser">
                 <div class="nav-icon">
                     <i class="fas fa-fw fa-store"></i>
                 </div>
@@ -62,7 +62,7 @@ if (logged_in()) {
         Vendor
     </div>
     <li class="nav-item">
-        <a class="nav-link" href="/vendors">
+        <a class="nav-link <?= ($active == 'dashboard vendor')?'active':''; ?>" href="/vendors">
             <div class="nav-icon">
                 <i class="fas fa-fw fa-home"></i>
             </div>
@@ -70,7 +70,7 @@ if (logged_in()) {
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/vendors/myvendor">
+        <a class="nav-link <?= ($active == 'vendor')?'active':''; ?>" href="/vendors/myvendor">
             <div class="nav-icon">
                 <i class="fas fa-fw fa-store"></i>
             </div>
@@ -78,7 +78,7 @@ if (logged_in()) {
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/vendors/products">
+        <a class="nav-link php <?= ($active == 'product')?'active':''; ?>" href="/vendors/products">
             <div class="nav-icon">
                 <i class="fas fa-fw fa-box-open"></i>
             </div>

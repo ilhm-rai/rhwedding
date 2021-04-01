@@ -26,16 +26,6 @@
                 <?php endforeach; ?>
                 </div>
             </div>
-            <div class="dropdown d-inline-block">
-                <button class="btn btn-outline-wild-watermelon rounded-pill btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Product Category
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <?php foreach($categories as $c) : ?>
-                    <a class="dropdown-item" href="#"><?= $c['name']; ?></a>
-                <?php endforeach; ?>
-                </div>
-            </div>
             <button type="submit" class="btn btn-wild-watermelon rounded-pill btn-sm">Find</button>
         </div>
     </div>

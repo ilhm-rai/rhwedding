@@ -21,6 +21,7 @@ class UserRole extends BaseController
     {
         $data = [
             'title'  => 'User Roles | RH Wedding Planner',
+            'active' => 'users',
             'roles'  => $this->roleModel->getRoles()
         ];
         return view('admin/user/role/index', $data);

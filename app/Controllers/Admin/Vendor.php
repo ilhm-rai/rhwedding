@@ -20,6 +20,7 @@ class Vendor extends BaseController
     {
         $data = [
             'title'  => 'Vendor List | RH Wedding Planner',
+            'active' => 'vendors',
             'vendors'  => $this->vendorModel->getVendor(),
         ];
         // dd($data);
@@ -30,6 +31,7 @@ class Vendor extends BaseController
     {
         $data = [
             'title'  => 'Detail Vendor | RH Wedding Planner',
+            'active' => 'vendors',
             'vendor'  => $this->vendorModel->getVendorBy($id),
             'user'  => $this->usersModel->getUserByVendor($id),
         ];
@@ -41,6 +43,7 @@ class Vendor extends BaseController
     {
         $data = [
             'title'  => 'Edit Vendor | RH Wedding Planner',
+            'active' => 'vendors',
             'vendor'  => $this->vendorModel->getVendorBy($id),
             'user'  => $this->usersModel->getUserByVendor($id),
         ];

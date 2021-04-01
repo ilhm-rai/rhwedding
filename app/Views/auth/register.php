@@ -17,7 +17,9 @@
                                 <div class="col px-5">
                                     <div class="px-5">
                                         <div class="text-center">
-                                            <img src="/img/logo.png" alt="RH Wedding Logo" class="mb-4" width="80px">
+                                            <a href="/">
+                                                <img src="/img/logo.png" alt="RH Wedding Logo" class="mb-4" width="80px">
+                                            </a>
                                         </div>
                                         <?= view('Myth\Auth\Views\_message_block') ?>
                                         <form action="<?= route_to('register') ?>" method="post" class="user">
