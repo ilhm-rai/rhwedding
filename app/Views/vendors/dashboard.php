@@ -1,7 +1,13 @@
 <?= $this->extend('templates/admin'); ?>
 
 <?= $this->section('content'); ?>
+<div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
 
+<?php if (session()->getFlashdata('message')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('message'); ?>
+    </div>
+<?php endif; ?>
 <video playsinline controls loop class="mb-4">
   <source src="/img/vendors/billboard/rhvideo.mp4" type="video/mp4">
 </video>

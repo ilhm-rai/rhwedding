@@ -221,7 +221,7 @@ if (logged_in()) {
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in p-3" aria-labelledby="vendorDropdown">
                         <p class="text-small text-center font-weight-bold">You don't have a vendor</p>
-                        <a class="dropdown-item" href="/user/profile/<?= user()->id; ?>">
+                        <a class="dropdown-item" href="/vendor/register">
                             <button class="btn btn-sm btn-wild-watermelon">Become a vendor</button>
                         </a>
                         <a class="text-small text-center text-wild-watermelon mb-0">Learn more at vendor center</a>

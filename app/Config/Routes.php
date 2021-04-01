@@ -34,6 +34,8 @@ $routes->setAutoRoute(true);
 // $routes->get('/', 'Main::index');
 $routes->get('/login', 'Auth::login');
 $routes->get('/register', 'Auth::register');
+// Main Routes
+
 
 $routes->group('search', function ($routes) {
 	$routes->add('', 'Search::index');
@@ -120,7 +122,17 @@ $routes->group('/user', function ($routes) {
 	});
 });
 
-
+$routes->group('/', function ($routes) {
+	$routes->add('', 'Main::index');
+	$routes->add('addvendor', 'Main::addVendor');
+	$routes->add('vendor/register', 'Main::vendorRegister');
+	$routes->add('vendor/products', 'Main::vendorProduct');
+	$routes->add('vendor/(:any)', 'Main::vendor/$1');
+	$routes->add('cart', 'Main::cart');
+	$routes->add('mustlogin', 'Main::mustlogin');
+	$routes->add('checkout', 'Main::checkout');
+	$routes->add('(:any)', 'Main::productDetail/$1');
+});
 
 $routes->delete('admin/users/roles/(:num)', 'Admin\UserRole::delete/$1');
 $routes->delete('admin/vendors/services/(:num)', 'Admin\VendorService::delete/$1');
@@ -141,16 +153,7 @@ $routes->group('admin/products/categories', function ($routes) {
 $routes->get('cart/get_item_in_user_cart', 'Cart::getJsonItemInUserCart');
 $routes->post('cart/add_item_to_cart', 'Cart::addItemToCart');
 
-// Main Routes
-$routes->group('/', function ($routes) {
-	$routes->add('', 'Main::index');
-	$routes->add('vendor/(:any)', 'Main::vendor/$1');
-	$routes->add('vendor/products', 'Main::vendorProduct');
-	$routes->add('cart', 'Main::cart');
-	$routes->add('mustlogin', 'Main::mustlogin');
-	$routes->add('checkout', 'Main::checkout');
-	$routes->add('(:any)', 'Main::productDetail/$1');
-});
+
 
 /**
  * --------------------------------------------------------------------
