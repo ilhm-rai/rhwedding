@@ -35,6 +35,7 @@ class Myvendor extends BaseController
         $dataVendor = $this->vendorModel->getVendorByUser(user()->id);
         $data = [
             'title'  => 'My Vendor',
+            'active' => 'vendor',
             'user'  => $this->usersModel->getUserBy(user()->id),
             'vendor'  => $dataVendor,
             'myServices' => $this->serviceModel->getServiceByVendorId($dataVendor['vendor_id'])
@@ -49,6 +50,7 @@ class Myvendor extends BaseController
         $dataVendor = $this->vendorModel->getVendorByUser(user()->id);
         $data = [
             'title'  => 'My Vendor',
+            'active' => 'vendor',
             'user'  => $this->usersModel->getUserBy(user()->id),
             'vendor'  => $dataVendor,
             'validation' => \Config\Services::validation(),  
@@ -63,6 +65,7 @@ class Myvendor extends BaseController
     {
         $data = [
             'title' => 'Service',
+            'active' => 'vendor',
             'services' =>  $this->serviceModel->getServices(),
             'myservices' => $this->serviceModel->getServiceByUser(user()->id),
             'vendor'  => $this->vendorModel->getVendorByUser(user()->id),

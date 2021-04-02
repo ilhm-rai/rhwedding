@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Mar 2021 pada 02.54
+-- Waktu pembuatan: 01 Apr 2021 pada 15.22
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -103,8 +103,8 @@ CREATE TABLE `auth_groups_users` (
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (1, 1),
 (1, 5),
-(3, 4),
-(3, 12);
+(2, 12),
+(3, 4);
 
 -- --------------------------------------------------------
 
@@ -213,7 +213,11 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (85, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-29 11:51:47', 1),
 (86, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-29 12:26:06', 1),
 (87, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-29 12:29:13', 1),
-(88, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-29 18:49:32', 1);
+(88, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-03-29 18:49:32', 1),
+(89, '::1', 'muhamadarsal71@gmail.com', 12, '2021-03-31 22:33:42', 1),
+(90, '::1', 'muhamadarsal71@gmail.com', 12, '2021-04-01 01:11:13', 1),
+(91, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-01 04:42:16', 1),
+(92, '::1', 'muhamadarsal71@gmail.com', 12, '2021-04-01 07:52:04', 1);
 
 -- --------------------------------------------------------
 
@@ -285,7 +289,10 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 5, '2021-03-29 15:43:14', '2021-03-29 15:43:14');
+(1, 5, '2021-03-29 15:43:14', '2021-03-29 15:43:14'),
+(2, 12, '2021-04-01 13:08:23', '2021-04-01 13:08:23'),
+(3, 4, '2021-04-01 13:08:23', '2021-04-01 13:08:23'),
+(4, 1, '2021-04-01 13:09:24', '2021-04-01 13:09:24');
 
 -- --------------------------------------------------------
 
@@ -588,12 +595,18 @@ CREATE TABLE `vendors` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
   `vendor_code` varchar(20) NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `vendor_name` varchar(255) NOT NULL,
   `vendor_logo` varchar(255) NOT NULL DEFAULT 'default.png',
   `vendor_banner` varchar(255) DEFAULT NULL,
   `vendor_billboard` varchar(255) NOT NULL DEFAULT 'default.png',
   `vendor_level_id` int(11) UNSIGNED NOT NULL DEFAULT 1,
   `vendor_description` text DEFAULT NULL,
+  `contact_vendor` varchar(15) DEFAULT NULL,
+  `vendor_address` varchar(255) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `province` varchar(50) DEFAULT NULL,
+  `postal_code` varchar(10) DEFAULT NULL,
   `active` int(1) NOT NULL DEFAULT 1,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -603,10 +616,11 @@ CREATE TABLE `vendors` (
 -- Dumping data untuk tabel `vendors`
 --
 
-INSERT INTO `vendors` (`id`, `user_id`, `vendor_code`, `vendor_name`, `vendor_logo`, `vendor_banner`, `vendor_billboard`, `vendor_level_id`, `vendor_description`, `active`, `created_at`, `updated_at`) VALUES
-(2, 1, 'VND_0220210001', 'Grand Aston Bali', 'logo1.png', NULL, 'default.png', 4, NULL, 1, '2021-02-24 14:48:01', '2021-02-24 14:48:01'),
-(3, 4, 'VND_0220210002', 'Sarovar', 'logo2.png', NULL, 'default.png', 1, NULL, 1, '2021-02-24 14:50:28', '2021-02-24 14:50:28'),
-(4, 5, 'VND_0220210003', 'RH Wedding Planner', 'logo.png', '1.jpg', 'rhvideo.mp4', 4, 'Official vendor from RH Wedding Planner', 1, '2021-03-03 19:45:09', '2021-03-03 19:45:09');
+INSERT INTO `vendors` (`id`, `user_id`, `vendor_code`, `slug`, `vendor_name`, `vendor_logo`, `vendor_banner`, `vendor_billboard`, `vendor_level_id`, `vendor_description`, `contact_vendor`, `vendor_address`, `city`, `province`, `postal_code`, `active`, `created_at`, `updated_at`) VALUES
+(2, 1, 'VND_0220210001', '', 'Grand Aston Bali', 'logo1.png', NULL, 'default.png', 4, NULL, '', '', '', '', '', 1, '2021-02-24 14:48:01', '2021-02-24 14:48:01'),
+(3, 4, 'VND_0220210002', '', 'Sarovar', 'logo2.png', NULL, 'default.png', 1, NULL, '', '', '', '', '', 1, '2021-02-24 14:50:28', '2021-02-24 14:50:28'),
+(4, 5, 'VND_0220210003', '', 'RH Wedding Planner', 'logo.png', '1.jpg', 'rhvideo.mp4', 4, 'Official vendor from RH Wedding Planner', '', '', '', '', '', 1, '2021-03-03 19:45:09', '2021-03-03 19:45:09'),
+(8, 12, 'VND202104005', 'Fatmalia.V-40739562', 'Fatmalia', 'default.png', NULL, 'default.png', 1, NULL, '08129038938', NULL, 'Tasikmalaya', 'Jawa Barat', '46153', 1, '2021-04-01 08:16:36', '2021-04-01 08:16:36');
 
 -- --------------------------------------------------------
 
@@ -859,7 +873,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
@@ -883,7 +897,7 @@ ALTER TABLE `auth_tokens`
 -- AUTO_INCREMENT untuk tabel `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `cart_detail`
@@ -907,7 +921,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT untuk tabel `products_category`
@@ -961,7 +975,7 @@ ALTER TABLE `users_profile`
 -- AUTO_INCREMENT untuk tabel `vendors`
 --
 ALTER TABLE `vendors`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `vendors_level`

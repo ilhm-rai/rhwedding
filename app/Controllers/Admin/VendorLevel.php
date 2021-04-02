@@ -22,6 +22,7 @@ class VendorLevel extends BaseController
     {
         $data = [
             'title'  => 'Vendor level | RH Wedding Planner',
+            'active' => 'vendors',
             'level'  => $this->levelModel->getLevel()
         ];
         return view('admin/vendors/level/index', $data);
@@ -31,6 +32,7 @@ class VendorLevel extends BaseController
     {
         $data = [
             'title'  => 'Add Vendor Level | RH Wedding Planner',
+            'active' => 'vendors',
             'validation' => \Config\Services::validation(),
         ];
         return view('admin/vendors/level/add', $data);   
@@ -64,6 +66,7 @@ class VendorLevel extends BaseController
     {
         $data = [
             'title'  => 'Edit Level | RH Wedding Planner',
+            'active' => 'vendors',
             'validation' => \Config\Services::validation(),
             'level'  => $this->levelModel->getWhere(['id' => $id])->getRowArray(),
         ];
@@ -90,6 +93,7 @@ class VendorLevel extends BaseController
     {
         $data = [
             'title'  => 'Detail Level | RH Wedding Planner',
+            'active' => 'vendors',
             'level'  => $this->levelModel->getWhere(['id' => $id])->getRowArray(),
             'vendors'  => $this->vendorModel->getVendorsByLevel($id),
         ];

@@ -20,6 +20,7 @@ class User extends BaseController
     {
         $data = [
             'title'  => 'User List | RH Wedding Planner',
+            'active' => 'users',
             'users'  => $this->usersModel->getUsers(),
         ];
         return view('admin/user/index', $data);
@@ -29,6 +30,7 @@ class User extends BaseController
     {
         $data = [
             'title'  => 'Profile | RH Wedding Planner',
+            'active' => 'users',
             'user'  => $this->usersModel->getUserBy($id),
         ];
         // dd($data['user']);
@@ -38,6 +40,7 @@ class User extends BaseController
     {
         $data = [
             'title'  => 'Profile | RH Wedding Planner',
+            'active' => 'users',
             'user'  => $this->usersModel->getUserBy($id),
             'vendor'  => $this->vendorModel->getVendorByUser($id),
         ];

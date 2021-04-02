@@ -7,6 +7,7 @@ use CodeIgniter\Model;
 class VendorModel extends Model
 {
     protected $table = 'vendors';
+    protected $allowedFields = ['user_id','vendor_code','slug','vendor_name','vendor_logo','vendor_banner','vendor_billboard','vendor_level_id','vendor_description','contact_vendor','vendor_address','city','province','postal_code','active'];
     protected $useTimestamps = true;
     protected $db;
 
@@ -95,5 +96,26 @@ class VendorModel extends Model
 
     ";
     return $this->db->query($query)->getResultArray();
+    }
+
+
+    // make vendor code
+    public function createVendorCode()
+    {
+        $query = "SELECT RIGHT(`vendors`.`id`,1) AS `id`
+                FROM `vendors`
+                ORDER BY `id` DESC
+                LIMIT 1
+        ";
+        $result = $this->db->query($query)->getRowArray();
+        // dd($result);
+        if ($result > 0) {
+            $uniq = $result['id']  + 1;
+        }
+
+        $date = date('Ym');
+        $limit = str_pad($uniq, 3, "0", STR_PAD_LEFT);
+        $code_vend = "VND" . $date . $limit;  //format kode
+        return $code_vend;
     }
 }

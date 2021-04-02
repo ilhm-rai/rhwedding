@@ -7,6 +7,7 @@ use App\Models\ServiceModel;
 use App\Models\ProductModel;
 use App\Models\ProductsImagesModel;
 use App\Models\VendorModel;
+use App\Models\LevelModel;
 
 class Main extends BaseController
 {
@@ -14,8 +15,8 @@ class Main extends BaseController
     protected $productModel;
     protected $productsImagesModel;
     protected $vendorModel;
-
-    protected $CartModel;
+    protected $levelModel;
+    protected $cartModel;
 
     public function __construct()
     {
@@ -23,7 +24,9 @@ class Main extends BaseController
         $this->productModel = new ProductModel();
         $this->productsImagesModel = new ProductsImagesModel();
         $this->vendorModel = new VendorModel();
-        $this->CartModel = new CartModel();
+        $this->cartModel = new CartModel();
+        $this->levelModel = new LevelModel();
+        helper('text');
     }
 
     public function index()
@@ -106,5 +109,57 @@ class Main extends BaseController
     {
         session()->setFlashdata('message', 'You must login first!');
         return redirect()->to('/login');
+    }
+
+    public function vendorRegister()
+    {
+        $data = [
+            'title' => 'Vendor Register',
+            'user_id' => user()->id,
+            'validation' => \Config\Services::validation(),
+        ];
+        return view('main/vendor_register', $data);
+    }
+
+    public function addVendor()
+    {
+        if (!$this->validate([
+            'vendor_name' => 'required|is_unique[vendors.vendor_name]',
+            'contact_vendor' => 'required',
+            'province' => 'required',
+            'city' => 'required',
+            'postal_code' => 'required',
+
+        ])) {
+            return redirect()->to('/vendor/register')->withInput();
+        }
+        $user_id = $this->request->getVar('user_id');
+        $vendorCode = $this->vendorModel->createVendorCode();
+        $vendorName = $this->request->getVar('vendor_name');
+        $slug = url_title($vendorName, '-') . '.V-' . random_string('numeric');
+        $level = $this->levelModel->getWhere(['name' => 'Classic'])->getRowArray();
+        $this->vendorModel->save([
+            'user_id' => $user_id,
+            'vendor_code' => $vendorCode,
+            'vendor_name' => $vendorName,
+            'slug' => $slug,
+            'vendor_level_id' => $level['id'],
+            'contact_vendor' => $this->request->getVar('contact_vendor'),
+            'city' => $this->request->getVar('city'),
+            'province' => $this->request->getVar('province'),
+            'postal_code' => $this->request->getVar('postal_code'),
+            'active' => 1,
+        ]);
+        $db = \Config\Database::connect();
+        $tableGroup = $db->table('auth_groups');
+        $role = $tableGroup->getWhere(['name' => 'Vendor'])->getRowArray();
+
+        $tableGroupUser = $db->table('auth_groups_users');
+        $tableGroupUser->set('group_id', $role['id']);
+        $tableGroupUser->where('user_id', $user_id);
+        $tableGroupUser->update();
+
+        session()->setFlashdata('message', 'vendor has been successfully created');
+        return redirect()->to('/vendors');
     }
 }

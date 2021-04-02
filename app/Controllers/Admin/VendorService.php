@@ -22,6 +22,7 @@ class VendorService extends BaseController
     {
         $data = [
             'title'  => 'Vendor Services | RH Wedding Planner',
+            'active' => 'vendors',
             'services'  => $this->serviceModel->getServices()
         ];
         return view('admin/vendors/service/index', $data);
@@ -30,6 +31,7 @@ class VendorService extends BaseController
     {
         $data = [
             'title'  => 'Detail Service | RH Wedding Planner',
+            'active' => 'vendors',
             'service'  => $this->serviceModel->getWhere(['id' => $id])->getRowArray(),
             'vendors'  => $this->vendorModel->getVendorsByService($id),
         ];
@@ -41,6 +43,7 @@ class VendorService extends BaseController
     {
         $data = [
             'title'  => 'Add Vendor Service | RH Wedding Planner',
+            'active' => 'vendors',
             'validation' => \Config\Services::validation(),
         ];
         return view('admin/vendors/service/add', $data);   
@@ -74,6 +77,7 @@ class VendorService extends BaseController
     {
         $data = [
             'title'  => 'Edit Services | RH Wedding Planner',
+            'active' => 'vendors',
             'validation' => \Config\Services::validation(),
             'service'  => $this->serviceModel->getWhere(['id' => $id])->getRowArray(),
         ];

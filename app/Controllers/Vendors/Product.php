@@ -6,7 +6,6 @@ use App\Controllers\BaseController;
 use App\Models\VendorModel;
 use App\Models\UsersModel;
 use App\Models\ServiceModel;
-use App\Models\CategoryModel;
 use App\Models\ProductModel;
 use App\Models\ProductsImagesModel;
 
@@ -16,7 +15,6 @@ class Product extends BaseController
     protected $usersModel;
     protected $vendorModel;  
     protected $serviceModel;
-    protected $categoryModel;
     protected $productModel;
     protected $productsImagesModel;
 
@@ -25,7 +23,6 @@ class Product extends BaseController
         $this->usersModel = new UsersModel();
         $this->vendorModel = new VendorModel();
         $this->serviceModel = new ServiceModel();
-        $this->categoryModel = new CategoryModel();
         $this->productModel = new ProductModel();
         $this->productsImagesModel = new ProductsImagesModel();
         helper('text');
@@ -35,9 +32,9 @@ class Product extends BaseController
     {
         $data = [
             'title'  => 'Products - RH Wedding',
+            'active' => 'product',
             'products'  => $this->productModel->getProductsByUser(user()->id),
             'services' => $this->serviceModel->getServices(),
-            'categories' => $this->categoryModel->getCategories(),
         ];
         // dd($data);
         return view('vendors/product/index', $data);
@@ -47,6 +44,7 @@ class Product extends BaseController
     {
         $data = [
             'title' =>'Add New Product - RH Wedding',
+            'active' => 'product',
             'services' => $this->serviceModel->getServiceByUser(user()->id),
             'vendor'  => $this->vendorModel->getVendorByUser(user()->id),
             'validation' => \Config\Services::validation(),  
@@ -174,6 +172,7 @@ class Product extends BaseController
         $product = $this->productModel->getProductBySlug($slug);
         $data = [
             'title'  => 'Products - RH Wedding',
+            'active' => 'product',
             'product'  => $product,
             'productImg' => $this->productsImagesModel->getWhere(['product_id' => $product['id']])->getResultArray(),
         ];
@@ -187,6 +186,7 @@ class Product extends BaseController
 
         $data = [
             'title'  => 'Edit Products - RH Wedding',
+            'active' => 'product',
             'product'  => $product,
             'services' => $this->serviceModel->getServiceByUser(user()->id),
             'productImg' => $this->productsImagesModel->getWhere(['product_id' => $product['id']])->getResultArray(),

@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class ProductModel extends Model
 {
     protected $table = 'products';
-    protected $allowedFields = ['vendor_id', 'product_service_id', 'slug', 'product_name', 'product_main_image', 'product_description', 'price'];
+    protected $allowedFields = ['vendor_id', 'product_service_id', 'product_code' , 'slug', 'product_name', 'product_main_image', 'product_description', 'price'];
     protected $useTimestamps = true;
     protected $db;
 
