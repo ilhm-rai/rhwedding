@@ -17,7 +17,6 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('content'); ?>
-
 <div class="container-fluid">
     <div class="content-frame mb-5 shadow clearfix" style="clear: both; overflow: hidden;">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">

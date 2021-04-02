@@ -23,191 +23,52 @@
         </div>
     </div>
     <!-- product per vendor -->
-    <div class="content-frame mb-4 shadow">
-        <p class="font-weight-bold">RH Wedding Planner <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> Platinum Vendor</span></p>
-        <!-- card product list -->
-        <div class="content-frame mb-3 shadow p-0">
-            <div class="card card-product">
-                <div class="row align-items-center">
-                    <div class="col-3">
-                        <img src="/img/products/6.jpg" class="card-img-top" alt="...">
-                    </div>
-                    <div class="card-body col-6 row">
-                        <div class="col-5">
-                            <h5 class="card-title">Davinci Photografi</h5>
-                            <p class="main-product-price">Rp. 4.000.000</p>
-                            <p class="main-product-location">Tasikmalaya</p>
-                            <div class="input-group w-auto d-inline-flex">
-                                <div class="input-group-prepend">
-                                    <button class="input-group-text">-</button>
+    <?php foreach ($itemsByVendor as $vendors_name => $items) : ?>
+        <div class="content-frame mb-4 shadow">
+            <p class="font-weight-bold"><?= $vendors_name; ?> <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> Platinum Vendor</span></p>
+            <!-- card product list -->
+            <?php foreach ($items as $item) : ?>
+                <div class="content-frame mb-3 shadow p-0">
+                    <div class="card card-product">
+                        <div class="row align-items-center">
+                            <div class="col-3">
+                                <img src="/img/products/main-img/<?= $item['product_main_image']; ?>" class="card-img-top" alt="...">
+                            </div>
+                            <div class="card-body col-6 row">
+                                <div class="col-8">
+                                    <h5 class="card-title"><?= $item['product_name']; ?></h5>
+                                    <p class="main-product-price">Rp<?= number_format($item['price'], 0, ',', '.'); ?></p>
+                                    <p class="main-product-location">Tasikmalaya</p>
+                                    <div class="input-group w-auto d-inline-flex">
+                                        <div class="input-group-prepend">
+                                            <button class="input-group-text">-</button>
+                                        </div>
+                                        <input type="text" class="form-control text-center" id="qty" name="qty" value="1" style="max-width: 60px;">
+                                        <div class="input-group-append">
+                                            <button class="input-group-text">+</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <input type="text" class="form-control text-center" id="qty" name="qty" value="1" style="max-width: 60px;">
-                                <div class="input-group-append">
-                                    <button class="input-group-text">+</button>
+                                <div class="col-4">
+                                    <p class="main-product-location mb-0">Service</p>
+                                    <p class="main-product-price"><?= $item['service_name']; ?></p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4">
-                            <p class="main-product-location mb-0">Date and Time</p>
-                            <p class="main-product-price">14 Juni 2023</p>
-                            <p class="main-product-location mb-0">08.00 WIB</p>
-                        </div>
-                        <div class="col-3">
-                            <p class="main-product-location mb-0">Service</p>
-                            <p class="main-product-price">Attire & Dress</p>
-                        </div>
-                    </div>
-                    <div class="col-1">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customControlInline">
-                            <label class="custom-control-label" for="customControlInline">&nbsp;</label>
-                        </div>
-                    </div>
-                    <div class="col-2 text-center">
-                        <a href="#" class="btn rounded-pill btn-action"><i class="fas fa-trash mr-1"></i> Delete</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- card product list -->
-        <div class="content-frame mb-3 shadow p-0">
-            <div class="card card-product">
-                <div class="row align-items-center">
-                    <div class="col-3">
-                        <img src="/img/products/6.jpg" class="card-img-top" alt="...">
-                    </div>
-                    <div class="card-body col-6 row">
-                        <div class="col-5">
-                            <h5 class="card-title">Davinci Photografi</h5>
-                            <p class="main-product-price">Rp. 4.000.000</p>
-                            <p class="main-product-location">Tasikmalaya</p>
-                            <div class="input-group w-auto d-inline-flex">
-                                <div class="input-group-prepend">
-                                    <button class="input-group-text">-</button>
-                                </div>
-                                <input type="text" class="form-control text-center" id="qty" name="qty" value="1" style="max-width: 60px;">
-                                <div class="input-group-append">
-                                    <button class="input-group-text">+</button>
+                            <div class="col-1">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customControlInline">
+                                    <label class="custom-control-label" for="customControlInline">&nbsp;</label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-4">
-                            <p class="main-product-location mb-0">Date and Time</p>
-                            <p class="main-product-price">14 Juni 2023</p>
-                            <p class="main-product-location mb-0">08.00 WIB</p>
-                        </div>
-                        <div class="col-3">
-                            <p class="main-product-location mb-0">Service</p>
-                            <p class="main-product-price">Attire & Dress</p>
-                        </div>
-                    </div>
-                    <div class="col-1">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customControlInline">
-                            <label class="custom-control-label" for="customControlInline">&nbsp;</label>
-                        </div>
-                    </div>
-                    <div class="col-2 text-center">
-                        <a href="#" class="btn rounded-pill btn-action"><i class="fas fa-trash mr-1"></i> Delete</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-    <!-- product per vendor -->
-    <div class="content-frame mb-4 shadow">
-        <p class="font-weight-bold">RH Wedding Planner <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> Platinum Vendor</span></p>
-        <!-- card product list -->
-        <div class="content-frame mb-3 shadow p-0">
-            <div class="card card-product">
-                <div class="row align-items-center">
-                    <div class="col-3">
-                        <img src="/img/products/6.jpg" class="card-img-top" alt="...">
-                    </div>
-                    <div class="card-body col-6 row">
-                        <div class="col-5">
-                            <h5 class="card-title">Davinci Photografi</h5>
-                            <p class="main-product-price">Rp. 4.000.000</p>
-                            <p class="main-product-location">Tasikmalaya</p>
-                            <div class="input-group w-auto d-inline-flex">
-                                <div class="input-group-prepend">
-                                    <button class="input-group-text">-</button>
-                                </div>
-                                <input type="text" class="form-control text-center" id="qty" name="qty" value="1" style="max-width: 60px;">
-                                <div class="input-group-append">
-                                    <button class="input-group-text">+</button>
-                                </div>
+                            <div class="col-2 text-center">
+                                <a href="#" class="btn rounded-pill btn-action"><i class="fas fa-trash mr-1"></i> Delete</a>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <p class="main-product-location mb-0">Date and Time</p>
-                            <p class="main-product-price">14 Juni 2023</p>
-                            <p class="main-product-location mb-0">08.00 WIB</p>
-                        </div>
-                        <div class="col-3">
-                            <p class="main-product-location mb-0">Service</p>
-                            <p class="main-product-price">Attire & Dress</p>
-                        </div>
-                    </div>
-                    <div class="col-1">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customControlInline">
-                            <label class="custom-control-label" for="customControlInline">&nbsp;</label>
-                        </div>
-                    </div>
-                    <div class="col-2 text-center">
-                        <a href="#" class="btn rounded-pill btn-action"><i class="fas fa-trash mr-1"></i> Delete</a>
                     </div>
                 </div>
-            </div>
+            <?php endforeach; ?>
         </div>
-        <!-- card product list -->
-        <div class="content-frame mb-3 shadow p-0">
-            <div class="card card-product">
-                <div class="row align-items-center">
-                    <div class="col-3">
-                        <img src="/img/products/6.jpg" class="card-img-top" alt="...">
-                    </div>
-                    <div class="card-body col-6 row">
-                        <div class="col-5">
-                            <h5 class="card-title">Davinci Photografi</h5>
-                            <p class="main-product-price">Rp. 4.000.000</p>
-                            <p class="main-product-location">Tasikmalaya</p>
-                            <div class="input-group w-auto d-inline-flex">
-                                <div class="input-group-prepend">
-                                    <button class="input-group-text">-</button>
-                                </div>
-                                <input type="text" class="form-control text-center" id="qty" name="qty" value="1" style="max-width: 60px;">
-                                <div class="input-group-append">
-                                    <button class="input-group-text">+</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <p class="main-product-location mb-0">Date and Time</p>
-                            <p class="main-product-price">14 Juni 2023</p>
-                            <p class="main-product-location mb-0">08.00 WIB</p>
-                        </div>
-                        <div class="col-3">
-                            <p class="main-product-location mb-0">Service</p>
-                            <p class="main-product-price">Attire & Dress</p>
-                        </div>
-                    </div>
-                    <div class="col-1">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customControlInline">
-                            <label class="custom-control-label" for="customControlInline">&nbsp;</label>
-                        </div>
-                    </div>
-                    <div class="col-2 text-center">
-                        <a href="#" class="btn rounded-pill btn-action"><i class="fas fa-trash mr-1"></i> Delete</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php endforeach; ?>
     <div class="row justify-content-end mb-5">
         <div class="col-4 text-right">
             <a href="#" class="btn btn-wild-watermelon">Checkout</a>

@@ -55,15 +55,9 @@ class Cart extends BaseController
         return $this->CartModel->getUserCart();
     }
 
-    protected function getUserCartId()
-    {
-        $cart = $this->getUserCart();
-        return $cart['id'];
-    }
-
     protected function getItemInUserCart()
     {
-        $itemInCart = $this->CartModel->getItemInUserCart($this->getUserCartId());
+        $itemInCart = $this->CartModel->getItemInUserCart();
         if ($itemInCart) {
             return $itemInCart;
         }
@@ -73,7 +67,7 @@ class Cart extends BaseController
 
     protected function getItemInUserCartLimit()
     {
-        $itemInCart = $this->CartModel->getItemInUserCart($this->getUserCartId(), 5);
+        $itemInCart = $this->CartModel->getItemInUserCart(5);
         if ($itemInCart) {
             return $itemInCart;
         }
@@ -88,6 +82,11 @@ class Cart extends BaseController
 
     protected function isItemInCart($productId)
     {
-        return $this->CartModel->isItemInCart($this->getUserCartId(), $productId);
+        return $this->CartModel->isItemInCart($productId);
+    }
+
+    public function getItemGroupByVendor()
+    {
+        return $this->CartModel->getItemGroupByVendor();
     }
 }

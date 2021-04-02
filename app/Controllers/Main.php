@@ -44,10 +44,10 @@ class Main extends BaseController
     {
         $product = $this->productModel->getProductBySlug($slug);
         if ($product) {
-            if(logged_in()){
-                $userCart =$this->CartModel->getUserCart(user()->id);
-            }else{
-                $userCart =false;
+            if (logged_in()) {
+                $userCart = $this->CartModel->getUserCart(user()->id);
+            } else {
+                $userCart = false;
             }
 
             $data = [
@@ -68,7 +68,8 @@ class Main extends BaseController
     public function cart()
     {
         $data = [
-            'title' => 'RH Wedding Planner'
+            'title' => 'RH Wedding Planner',
+            'itemsByVendor' => $this->CartModel->getItemGroupByVendor()
         ];
 
         return view('main/cart', $data);
@@ -104,6 +105,6 @@ class Main extends BaseController
     public function mustlogin()
     {
         session()->setFlashdata('message', 'You must login first!');
-        return redirect()->to('/login'); 
+        return redirect()->to('/login');
     }
 }
