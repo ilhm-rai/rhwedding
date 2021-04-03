@@ -10,11 +10,10 @@ if (logged_in()) {
     $myInfo = $usersModel->getUserBy($id);
     $myVendor = $vendorModel->getVendorByUser($id);
     $cart = $cartModel->getUserCart();
-    $cartItems = $cartModel->getItemInUserCart($cart['id']);
-    $cartItemsLimit = $cartModel->getItemInUserCart($cart['id'], 5);
+    $cartItems = $cartModel->getItemInUserCart();
+    $cartItemsLimit = $cartModel->getItemInUserCartLimit(5);
 } else {
-    $cartItems = false;
-    $cartItemsLimit = [];
+    $cartItems = [];
 }
 ?>
 <nav class="navbar main navbar-expand navbar-light topbar static-to">

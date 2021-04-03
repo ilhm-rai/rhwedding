@@ -37,7 +37,6 @@ class Main extends BaseController
             'servicesByProduct' => $this->serviceModel->getServicesByProduct(),
             'products' => $this->productModel->getProductsByService()
         ];
-        // dd($data);
 
         return view('index', $data);
     }
@@ -72,7 +71,7 @@ class Main extends BaseController
     {
         $data = [
             'title' => 'RH Wedding Planner',
-            'itemsByVendor' => $this->CartModel->getItemGroupByVendor()
+            'itemsByVendor' => $this->cartModel->getItemGroupByVendor()
         ];
 
         return view('main/cart', $data);
