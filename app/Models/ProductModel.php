@@ -91,10 +91,8 @@ class ProductModel extends Model
     {
         $query = "SELECT `p`.`product_name`, `p`.`product_main_image`, `p`.`price`, `p`.`slug`, `s`.`name` as `service_name`, `s`.`id` as `service_id`
         FROM `products` as `p`
-        INNER JOIN `vendors_services` AS `vs`
-        ON `p`.`product_service_id` = `vs`.`id`
-        INNER JOIN `services` AS`s`
-        ON `vs`.`service_id` = `s`.`id`
+        INNER JOIN `services` AS `s`
+        ON `p`.`product_service_id` = `s`.`id`
     ";
         return $this->db->query($query)->getResultArray();
     }

@@ -63,12 +63,10 @@ class ServiceModel extends Model
     {
         $query = "SELECT `s`.*
             FROM `services` AS `s`
-            JOIN `vendors_services` AS `vs` 
-            ON `s`.`id` = `vs`.`service_id`
-            JOIN `products` AS `p` 
-            ON `vs`.`id` = `p`.`product_service_id`
+            JOIN `products` AS `p`
+            ON `s`.`id` = `p`.`product_service_id`
             GROUP BY `s`.`id`
         ";
-         return $this->db->query($query)->getResultArray();
+        return $this->db->query($query)->getResultArray();
     }
 }
