@@ -67,7 +67,7 @@ class Cart extends BaseController
 
     protected function getItemInUserCartLimit()
     {
-        $itemInCart = $this->CartModel->getItemInUserCart(5);
+        $itemInCart = $this->CartModel->getItemInUserCartLimit(5);
         if ($itemInCart) {
             return $itemInCart;
         }

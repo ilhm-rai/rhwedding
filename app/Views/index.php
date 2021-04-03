@@ -45,6 +45,7 @@
             </div>
         </div>
     </div>
+
     <?php foreach ($servicesByProduct as $service) : ?>
         <div class="content-frame bg-none">
             <h1 class="main-product-title"><?= $service['name']; ?></h1>
