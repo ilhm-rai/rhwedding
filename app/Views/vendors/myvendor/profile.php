@@ -31,7 +31,7 @@
                     <label for="services" class="v-form-label">Services</label>
                     <div class="service-group d-block ml-3">
                         <?php foreach ($myServices as $service) : ?>
-                            <span class="badge badge-geyser p-2"><?= $service['name']; ?></span>
+                            <span class="badge badge-geyser p-2"><?= $service['service_name']; ?></span>
                         <?php endforeach; ?>
                         <a href="<?= base_url('vendors/myvendor/service'); ?>" class="badge badge-geyser p-2"><span class="fa fa-plus"></span></a>
                     </div>

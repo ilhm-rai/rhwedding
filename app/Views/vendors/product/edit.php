@@ -28,13 +28,13 @@
                 <select class="custom-select rounded-pill <?= ($validation->hasError('service') ? 'is-invalid' : ''); ?>" name="service" id="service">
                 <?php foreach ($services as $service):?>
                     <?php if($service['id_service'] == $product['product_service_id']): ?>
-                        <option selected value="<?= $service['id_service']; ?>" ><?= $service['name']; ?></option>
+                        <option selected value="<?= $service['id_service']; ?>" ><?= $service['service_name']; ?></option>
                     <?php endif; ?>
                 <?php endforeach; ?>
                     <!-- <option selected >Select service</option> -->
                     <?php foreach($services as $service) : ?>
                     <?php if($service['id_service'] != $product['product_service_id']): ?>
-                    <option value="<?= $service['id_service']; ?>"><?= $service['name']; ?></option>
+                    <option value="<?= $service['id_service']; ?>"><?= $service['service_name']; ?></option>
                     <?php endif; ?>
                     <?php endforeach; ?>
                 </select>

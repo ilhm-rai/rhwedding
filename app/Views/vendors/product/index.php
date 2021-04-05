@@ -22,7 +22,7 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <?php foreach($services as $s) : ?>
-                    <a class="dropdown-item" href="#"><?= $s['name']; ?></a>
+                    <a class="dropdown-item" href="#"><?= $s['service_name']; ?></a>
                 <?php endforeach; ?>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     <td><?= $i++ ?></td>
                     <td><img src="/img/products/main-img/<?= $product['product_main_image']; ?>" alt="" class="w-100"></td>
                     <td><?= $product['product_name']; ?></td>
-                    <td><?= $product['service']; ?></td>
+                    <td><?= $product['service_name']; ?></td>
                     <td>Rp<?= number_format($product['price'],0,',','.'); ?>,-</td>
                     <td> <button type="button" class="btn <?= ($product['active'] == 1) ? 'btn-success' : 'btn-warning'; ?> btn-sm small"><?= ($product['active'] == 1) ? 'Active' : 'Disable'; ?></button></td>
                     <td class="text-center">

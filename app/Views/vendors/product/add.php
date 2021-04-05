@@ -23,7 +23,7 @@
                 <select class="custom-select rounded-pill <?= ($validation->hasError('service') ? 'is-invalid' : ''); ?>" name="service" id="service">
                     <option selected >Select service</option>
                     <?php foreach($services as $s) : ?>
-                    <option value="<?= $s['id_service']; ?>"><?= $s['name']; ?></option>
+                    <option value="<?= $s['id_service']; ?>"><?= $s['service_name']; ?></option>
                     <?php endforeach; ?>
                 </select>
                 <div class="invalid-feedback">

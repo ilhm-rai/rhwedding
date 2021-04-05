@@ -89,7 +89,7 @@ $routes->group('admin', function ($routes) {
 });
 
 // routes for vendor
-$routes->group('/vendors', function ($routes) {
+$routes->group('vendors', function ($routes) {
 	$routes->add('/', 'Vendors\Dashboard::index', ['filter' => 'role:Admin,Vendor']);
 	// vendors/myvendor
 	$routes->group('myvendor', function ($routes) {
@@ -113,6 +113,11 @@ $routes->group('/vendors', function ($routes) {
 		});
 	});
 });
+
+$routes->group('transaction', function ($routes) {
+	$routes->add('/', 'Transaction\Order::index');
+});
+
 
 // Routes for user
 $routes->group('/user', function ($routes) {

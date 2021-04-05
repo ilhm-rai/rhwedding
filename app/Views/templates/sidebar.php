@@ -101,7 +101,7 @@ if (logged_in()) {
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="/">
+        <a class="nav-link <?= ($active == 'order')?'active':''; ?>" href="/transaction">
             <div class="nav-icon">
                 <i class="fas fa-fw fa-shopping-cart"></i>
             </div>
