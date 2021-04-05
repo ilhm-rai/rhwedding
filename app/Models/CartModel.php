@@ -37,12 +37,12 @@ class CartModel extends Model
     {
         $cart_id = $this->getUserCart('id');
         $this->builder = $this->db->table('cart_detail as cd');
-        $this->builder->select('*, s.name as service_name');
-        $this->builder->join('products as p', 'cd.product_id = p.id');
-        $this->builder->join('vendors as v', 'p.vendor_id = v.id');
-        $this->builder->join('services as s', 'p.product_service_id = s.id');
+        $this->builder->select('cd.id as cart_detail_id, p.id as product_id, v.id as vendor_id, p.product_name, p.price, v.vendor_name, s.service_name, p.product_main_image, cd.process_into_transaction');
+        $this->builder->join('products as p', 'p.id = cd.product_id');
+        $this->builder->join('vendors as v', 'v.id = p.vendor_id');
+        $this->builder->join('services as s', 's.id = p.product_service_id');
         $this->builder->orderBy('cd.created_at', 'DESC');
-        $query =  $this->builder->getWhere(['cart_id' => $cart_id, $where]);
+        $query =  $this->builder->getWhere(['cart_id' => $cart_id]);
         return $query->getResultArray();
     }
 
@@ -50,10 +50,9 @@ class CartModel extends Model
     {
         $cart_id = $this->getUserCart('id');
         $this->builder = $this->db->table('cart_detail as cd');
-        $this->builder->select('*, s.name as service_name');
-        $this->builder->join('products as p', 'cd.product_id = p.id');
-        $this->builder->join('vendors as v', 'p.vendor_id = v.id');
-        $this->builder->join('services as s', 'p.product_service_id = s.id');
+        $this->builder->join('products as p', 'p.id = cd.product_id');
+        $this->builder->join('vendors as v', 'v.id = p.vendor_id');
+        $this->builder->join('services as s', 's.id = p.product_service_id');
         $this->builder->orderBy('cd.created_at', 'DESC');
         $query =  $this->builder->getWhere([], $limit);
         return $query->getResultArray();
@@ -77,7 +76,7 @@ class CartModel extends Model
         $cart = $this->getUserCart('id');
 
         $this->builder = $this->db->table('cart_detail as cd');
-        $this->builder->select('v.vendor_name');
+        $this->builder->select('v.vendor_name, vendor_id');
         $this->builder->join('products as p', 'cd.product_id = p.id');
         $this->builder->join('vendors as v', 'p.vendor_id = v.id');
         $this->builder->groupBy('v.vendor_name');
@@ -91,9 +90,14 @@ class CartModel extends Model
         $vendors = $this->getVendorInCart();
 
         foreach ($vendors as $vendor) {
-            $data[$vendor['vendor_name']] = $this->getItemInUserCart("'vendor_name' => $vendor[vendor_name]");
+            $data[] = $this->getItemInUserCart();
         }
 
         return $data;
+    }
+
+    public function deleteItemInCart($product_id)
+    {
+        # code...
     }
 }

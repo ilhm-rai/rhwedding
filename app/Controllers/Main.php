@@ -71,7 +71,7 @@ class Main extends BaseController
     {
         $data = [
             'title' => 'RH Wedding Planner',
-            'itemsByVendor' => $this->CartModel->getItemGroupByVendor()
+            'itemsByVendor' => $this->cartModel->getItemGroupByVendor()
         ];
 
         return view('main/cart', $data);

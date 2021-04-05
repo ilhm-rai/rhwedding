@@ -13,8 +13,8 @@
             </div>
             <div class="col-1">
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customControlInline">
-                    <label class="custom-control-label" for="customControlInline">&nbsp;</label>
+                    <input type="checkbox" class="custom-control-input" id="select-all">
+                    <label class="custom-control-label" for="select-all">&nbsp;</label>
                 </div>
             </div>
             <div class="col-2">
@@ -23,9 +23,9 @@
         </div>
     </div>
     <!-- product per vendor -->
-    <?php foreach ($itemsByVendor as $vendors_name => $items) : ?>
+    <?php foreach ($itemsByVendor as $items) : ?>
         <div class="content-frame mb-4 shadow">
-            <p class="font-weight-bold"><?= $vendors_name; ?> <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> Platinum Vendor</span></p>
+            <p class="font-weight-bold"><?= $items[0]['vendor_name']; ?> <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> Platinum Vendor</span></p>
             <!-- card product list -->
             <?php foreach ($items as $item) : ?>
                 <div class="content-frame mb-3 shadow p-0">
@@ -56,12 +56,12 @@
                             </div>
                             <div class="col-1">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customControlInline">
-                                    <label class="custom-control-label" for="customControlInline">&nbsp;</label>
+                                    <input type="checkbox" class="custom-control-input" id="item-<?= $item['product_id']; ?>" <?= ($item['process_into_transaction'] ? 'checked' : '') ?>>
+                                    <label class="custom-control-label" for="item-<?= $item['product_id']; ?>">&nbsp;</label>
                                 </div>
                             </div>
                             <div class="col-2 text-center">
-                                <a href="#" class="btn rounded-pill btn-action"><i class="fas fa-trash mr-1"></i> Delete</a>
+                                <a href="#" data-item-id="<?= $item['product_id']; ?>" class="btn rounded-pill btn-action js-delete-item"><i class="fas fa-trash mr-1"></i> Delete</a>
                             </div>
                         </div>
                     </div>
