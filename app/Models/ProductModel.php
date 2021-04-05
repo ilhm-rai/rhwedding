@@ -7,14 +7,14 @@ use CodeIgniter\Model;
 class ProductModel extends Model
 {
     protected $table = 'products';
-    protected $allowedFields = ['vendor_id', 'product_service_id', 'product_code' , 'slug', 'product_name', 'product_main_image', 'product_description', 'price'];
+    protected $allowedFields = ['vendor_id', 'product_service_id', 'product_code', 'slug', 'product_name', 'product_main_image', 'product_description', 'price'];
     protected $useTimestamps = true;
     protected $db;
 
 
     public function getProducts()
     {
-        $query = "SELECT `p`.*, `s`.`name` as `service`
+        $query = "SELECT `p`.*
             FROM `products` AS `p`
             JOIN `vendors` AS `v`
             ON `p`.`vendor_id` = `v`.`id`
@@ -26,7 +26,7 @@ class ProductModel extends Model
 
     public function getProductsByUser($id)
     {
-        $query = "SELECT `p`.*, `s`.`name` as `service`
+        $query = "SELECT `p`.*
         FROM `products` AS `p`
         JOIN `vendors` AS `v`
         ON `p`.`vendor_id` = `v`.`id`
@@ -40,7 +40,7 @@ class ProductModel extends Model
     }
     public function getProductBy($id)
     {
-        $query = "SELECT `p`.*, `s`.`name` as `service`
+        $query = "SELECT `p`.*
         FROM `products` AS `p`
         JOIN `vendors` AS `v`
         ON `p`.`vendor_id` = `v`.`id`
@@ -54,7 +54,7 @@ class ProductModel extends Model
     }
     public function getProductBySlug($slug)
     {
-        $query = "SELECT `p`.*, `s`.`name` as `service`
+        $query = "SELECT `p`.*
         FROM `products` AS `p`
         JOIN `vendors` AS `v`
         ON `p`.`vendor_id` = `v`.`id`
@@ -89,7 +89,7 @@ class ProductModel extends Model
 
     public function getProductsByService()
     {
-        $query = "SELECT `p`.`product_name`, `p`.`product_main_image`, `p`.`price`, `p`.`slug`, `s`.`name` as `service_name`, `s`.`id` as `service_id`
+        $query = "SELECT `p`.`product_name`, `p`.`product_main_image`, `p`.`price`, `p`.`slug`, `s`.`service_name`, `s`.`id` as `service_id`
         FROM `products` as `p`
         INNER JOIN `services` AS `s`
         ON `p`.`product_service_id` = `s`.`id`

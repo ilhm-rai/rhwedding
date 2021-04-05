@@ -11,6 +11,12 @@ use App\Models\LevelModel;
 
 class Main extends BaseController
 {
+    /**
+     * Instance of the main Request object.
+     *
+     * @var HTTP\IncomingRequest
+     */
+    protected $request;
     protected $serviceModel;
     protected $productModel;
     protected $productsImagesModel;

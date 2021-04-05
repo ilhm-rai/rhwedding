@@ -28,7 +28,7 @@
                     <div class="swiper-slide d-flex">
                         <a href="#" class="service">
                             <img src="/img/vendors/service/1.jpg" alt="" class="img-service">
-                            <p class="service-name"><?= $service['name']; ?></p>
+                            <p class="service-name"><?= $service['service_name']; ?></p>
                         </a>
                     </div>
                 <?php endforeach; ?>
@@ -48,7 +48,7 @@
 
     <?php foreach ($servicesByProduct as $service) : ?>
         <div class="content-frame bg-none">
-            <h1 class="main-product-title"><?= $service['name']; ?></h1>
+            <h1 class="main-product-title"><?= $service['service_name']; ?></h1>
             <p class="product-desc"><?= $service['description']; ?></p>
             <div class="row">
                 <?php foreach ($products as $product) : ?>

@@ -42,7 +42,7 @@ class CartModel extends Model
         $this->builder->join('vendors as v', 'v.id = p.vendor_id');
         $this->builder->join('services as s', 's.id = p.product_service_id');
         $this->builder->orderBy('cd.created_at', 'DESC');
-        $query =  $this->builder->getWhere(['cart_id' => $cart_id]);
+        $query =  $this->builder->getWhere(['cart_id' => $cart_id, $where]);
         return $query->getResultArray();
     }
 
@@ -90,7 +90,7 @@ class CartModel extends Model
         $vendors = $this->getVendorInCart();
 
         foreach ($vendors as $vendor) {
-            $data[] = $this->getItemInUserCart();
+            $data[] = $this->getItemInUserCart("vendor_id => $vendor[vendor_id]");
         }
 
         return $data;
