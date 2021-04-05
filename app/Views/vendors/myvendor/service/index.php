@@ -35,7 +35,7 @@
                 <?php foreach ($services as $service) : ?>
                     <tr>
                         <td><?= $i++; ?></td>
-                        <td><?= $service['name']; ?></td>
+                        <td><?= $service['service_name']; ?></td>
                         <?php
                         $serve = false;
                         foreach ($myservices as $ms) {

@@ -26,7 +26,7 @@ class ProductModel extends Model
 
     public function getProductsByUser($id)
     {
-        $query = "SELECT `p`.*
+        $query = "SELECT `p`.*, `s`.`service_name`
         FROM `products` AS `p`
         JOIN `vendors` AS `v`
         ON `p`.`vendor_id` = `v`.`id`
