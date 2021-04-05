@@ -25,7 +25,38 @@ class TransactionModel extends Model
         ON `td`.`product_id` = `p`.`id`
         JOIN `vendors` AS `v`
         ON `p`.`vendor_id` = `v`.`id`
-        WHERE `v`.`user_id` = 5
+        WHERE `v`.`user_id` = $id
+        ";
+        return $this->db->query($query)->getResultArray();
+    }
+    public function getTransBy($code)
+    {
+        $query = "SELECT `t`.*, COUNT(`td`.`id`) AS amount, SUM(`td`.`sub_total_payment`) AS `payment`
+        FROM `transaction` AS `t`
+        JOIN `transaction_detail` AS `td`
+        ON `t`.`id` = `td`.`transaction_id`
+        JOIN `products` As `p`
+        ON `td`.`product_id` = `p`.`id`
+        JOIN `vendors` AS `v`
+        ON `p`.`vendor_id` = `v`.`id`
+        WHERE `t`.`transaction_code` = '$code'
+        ";
+        return $this->db->query($query)->getRowArray();
+    }
+    public function getTransDetailBy($userId, $code)
+    {
+        $query = "SELECT `p`.`product_name`,`p`.`product_main_image`,`s`.`service_name` ,`td`.`note`,`td`.`sub_total_payment`,`td`.`confirm`
+        FROM `transaction` AS `t`
+        JOIN `transaction_detail` AS `td`
+        ON `t`.`id` = `td`.`transaction_id`
+        JOIN `products` As `p`
+        ON `td`.`product_id` = `p`.`id`
+        JOIN `vendors` AS `v`
+        ON `p`.`vendor_id` = `v`.`id`
+        JOIN `services` AS `s`
+        ON `p`.`product_service_id` = `s`.id
+        WHERE `v`.`user_id` = $userId
+        AND `t`.`transaction_code` = '$code'
         ";
         return $this->db->query($query)->getResultArray();
     }

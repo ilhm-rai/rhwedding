@@ -116,6 +116,7 @@ $routes->group('vendors', function ($routes) {
 
 $routes->group('transaction', function ($routes) {
 	$routes->add('/', 'Transaction\Order::index');
+	$routes->add('confirm/(:any)', 'Transaction\Order::confirm/$1');
 });
 
 

@@ -43,7 +43,7 @@ class Main extends BaseController
             'servicesByProduct' => $this->serviceModel->getServicesByProduct(),
             'products' => $this->productModel->getProductsByService()
         ];
-
+        // dd($data);
         return view('index', $data);
     }
 
