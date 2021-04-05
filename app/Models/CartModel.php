@@ -98,6 +98,9 @@ class CartModel extends Model
 
     public function deleteItemInCart($product_id)
     {
-        # code...
+        $cart_id = $this->getUserCart('id');
+
+        $this->builder = $this->db->table('cart_detail');
+        return $this->builder->delete(['cart_id' => $cart_id, 'product_id' => $product_id]);
     }
 }

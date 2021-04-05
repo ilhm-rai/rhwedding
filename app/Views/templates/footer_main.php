@@ -54,41 +54,7 @@
 <?= $this->section('script'); ?>
 <script>
     $(document).ready(function() {
-        getItemInUserCart();
+        getItemInUserCartLimit();
     });
-
-    function getItemInUserCart() {
-        $.ajax({
-            url: "<?= base_url('cart/get_item_in_user_cart'); ?>",
-            type: 'GET',
-            success: function(data) {
-                var html = "";
-                var items = JSON.parse(data);
-
-                items.forEach(item => {
-                    html += `
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="mr-3">
-                                <div class="dropdown-list-image">
-                                    <img class="rounded-circle object-fit" src="<?= base_url('/img/products/main-img'); ?>/${item['product_main_image']}" alt="${item['product_name']}">
-                                </div>
-                            </div>
-                            <div>
-                                <span class="font-weight-bold">${item['product_name']}</span>
-                                <div class="small text-gray-500">
-                                ${( parseInt( item['price'] ) ).toLocaleString( 'id-ID', {
-                    style: 'currency',
-                    currency: 'IDR'
-                } )}
-                                </div>
-                            </div>
-                        </a>
-                    `;
-                });
-
-                $('.js-item-cart').html(html);
-            }
-        });
-    }
 </script>
 <?= $this->endSection(); ?>

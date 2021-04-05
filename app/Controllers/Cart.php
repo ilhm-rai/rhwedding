@@ -24,9 +24,8 @@ class Cart extends BaseController
         $this->CartModel->addUserCart();
     }
 
-    public function addItemToCart()
+    public function addItemToCart($productId)
     {
-        $productId = $this->request->getVar('product_id');
         $cart = $this->getUserCart();
 
         if (!$cart) {
@@ -77,7 +76,12 @@ class Cart extends BaseController
 
     public function getJsonItemInUserCart()
     {
-        return json_encode($this->getItemInUserCartLimit(), JSON_PRETTY_PRINT);
+        return json_encode($this->getItemInUserCart(), JSON_PRETTY_PRINT);
+    }
+
+    public function getJsonItemGroupByVendor()
+    {
+        return json_encode($this->getItemGroupByVendor(), JSON_PRETTY_PRINT);
     }
 
     protected function isItemInCart($productId)
@@ -88,5 +92,10 @@ class Cart extends BaseController
     public function getItemGroupByVendor()
     {
         return $this->CartModel->getItemGroupByVendor();
+    }
+
+    public function deleteItemInCart($productId)
+    {
+        return $this->CartModel->deleteItemInCart($productId);
     }
 }

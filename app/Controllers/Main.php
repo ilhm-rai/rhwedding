@@ -53,7 +53,7 @@ class Main extends BaseController
         $product = $this->productModel->getProductBySlug($slug);
         if ($product) {
             if (logged_in()) {
-                $userCart = $this->CartModel->getUserCart(user()->id);
+                $userCart = $this->cartModel->getUserCart();
             } else {
                 $userCart = false;
             }

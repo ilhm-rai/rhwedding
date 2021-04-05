@@ -158,24 +158,8 @@
         if (userId == false) {
             window.location.replace('/mustlogin');
         } else {
-            $.ajax({
-                url: "<?= base_url('cart/add_item_to_cart'); ?>",
-                type: 'POST',
-                data: {
-                    'user_id': userId,
-                    'product_id': productId
-                },
-                success: function(data) {
-                    console.log(data);
-                    if (data) {
-                        $('.js-count-cart-item').removeClass('d-none');
-                        $('.js-count-cart-item').html(data);
-                        getItemInUserCart();
-                    }
-                }
-            })
+            addToCart(productId);
         }
-
     })
 </script>
 <?= $this->endSection(); ?>

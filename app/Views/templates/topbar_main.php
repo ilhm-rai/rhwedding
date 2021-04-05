@@ -9,11 +9,6 @@ if (logged_in()) {
     $cartModel = Model('CartModel');
     $myInfo = $usersModel->getUserBy($id);
     $myVendor = $vendorModel->getVendorByUser($id);
-    $cart = $cartModel->getUserCart();
-    $cartItems = $cartModel->getItemInUserCart();
-    $cartItemsLimit = $cartModel->getItemInUserCartLimit(5);
-} else {
-    $cartItems = [];
 }
 ?>
 <nav class="navbar main navbar-expand navbar-light topbar static-to">
@@ -118,8 +113,9 @@ if (logged_in()) {
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="nav-icon position-relative">
                     <i class="fas fa-shopping-cart fa-fw"></i>
-                    <!-- Counter - Alerts -->
-                    <span class="badge badge-danger badge-counter rounded-circle js-count-cart-item <?= (!$cartItems) ? 'd-none' : '' ?>"><?= ($cartItems) ? count($cartItems) : ''; ?></span>
+                    <span class="badge badge-danger badge-counter rounded-circle d-none js-count-cart-item">
+                        <!-- Counter - Items -->
+                    </span>
                 </div>
             </a>
             <!-- Dropdown - Alerts -->

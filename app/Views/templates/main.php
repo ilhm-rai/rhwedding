@@ -35,8 +35,8 @@
     </div>
     <!-- End of Content Wrapper -->
     <?= $this->include('templates/footer_main'); ?>
-     <!-- Footer -->
-     
+    <!-- Footer -->
+
     <!-- End of Footer -->
 
 
@@ -68,6 +68,7 @@
         </div>
     </div>
     <?= $this->include('templates/_script.php'); ?>
+    <script src="/js/cart.js"></script>
     <?= $this->renderSection('script'); ?>
 </body>
 
