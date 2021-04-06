@@ -36,7 +36,6 @@ class Product extends BaseController
             'products'  => $this->productModel->getProductsByUser(user()->id),
             'services' => $this->serviceModel->getServices(),
         ];
-        // dd($data);
         return view('vendors/product/index', $data);
     }
 
@@ -49,6 +48,7 @@ class Product extends BaseController
             'vendor'  => $this->vendorModel->getVendorByUser(user()->id),
             'validation' => \Config\Services::validation(),  
         ];
+        // dd($data);
         return view('vendors/product/add', $data);
     }
 

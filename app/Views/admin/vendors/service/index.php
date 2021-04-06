@@ -36,7 +36,7 @@
                 <?php foreach ($services as $service) : ?>
                     <tr>
                         <td><?= $i++; ?></td>
-                        <td><?= $service['name']; ?></td>
+                        <td><?= $service['service_name']; ?></td>
                         <td><?= $service['amount']; ?></td>
                         <td class="text-center">
                             <a href="/admin/vendors/services/detail/<?= $service['id']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></a>
