@@ -36,7 +36,7 @@
                         <td><?= $t['transaction_code']; ?></td>
                         <td><?= $t['payment']; ?></td>
                         <td><?= $t['amount']; ?></td>
-                        <td><?= $t['event_date']; ?></td>
+                        <td><?= date("d-m-Y", strtotime($t['event_date'])); ?></td>
                         <td class="text-center">
                             <a href="/transaction/confirm/<?= $t['transaction_code']; ?>" class="btn btn-success btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Confirm Transaction</span></a>
                         </td>

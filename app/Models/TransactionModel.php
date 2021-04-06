@@ -31,7 +31,7 @@ class TransactionModel extends Model
     }
     public function getTransBy($code)
     {
-        $query = "SELECT `t`.*, COUNT(`td`.`id`) AS amount, SUM(`td`.`sub_total_payment`) AS `payment`
+        $query = "SELECT `t`.*, `up`.`full_name` AS `customer` , COUNT(`td`.`id`) AS amount, SUM(`td`.`sub_total_payment`) AS `payment`
         FROM `transaction` AS `t`
         JOIN `transaction_detail` AS `td`
         ON `t`.`id` = `td`.`transaction_id`
@@ -39,6 +39,10 @@ class TransactionModel extends Model
         ON `td`.`product_id` = `p`.`id`
         JOIN `vendors` AS `v`
         ON `p`.`vendor_id` = `v`.`id`
+        JOIN `users` AS `u`
+        ON `t`. `user_id` = `u`. `id`
+        JOIN `users_profile` AS `up`
+        ON `up`.`user_id` = `u`.`id`
         WHERE `t`.`transaction_code` = '$code'
         ";
         return $this->db->query($query)->getRowArray();
