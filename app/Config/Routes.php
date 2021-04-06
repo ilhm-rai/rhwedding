@@ -158,6 +158,7 @@ $routes->group('admin/products/categories', function ($routes) {
 $routes->get('cart/item/get', 'Cart::getJsonItemInUserCart');
 $routes->get('cart/item/get/grup_by_vendor', 'Cart::getJsonItemGroupByVendor');
 $routes->delete('cart/item/delete/(:num)', 'Cart::deleteItemInCart/$1');
+$routes->post('cart/item/(:any)/process_into_transaction/(:num)', 'Cart::updateProcessItemIntoTransaction/$1/$2');
 $routes->post('cart/item/add/(:num)', 'Cart::addItemToCart/$1');
 
 

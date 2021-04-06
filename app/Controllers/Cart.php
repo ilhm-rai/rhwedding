@@ -98,4 +98,9 @@ class Cart extends BaseController
     {
         return $this->CartModel->deleteItemInCart($productId);
     }
+
+    public function updateProcessItemIntoTransaction($productId, $processIntoTransaction)
+    {
+        $this->CartModel->updateProcessItemIntoTransaction($productId, $processIntoTransaction);
+    }
 }
