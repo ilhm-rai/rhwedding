@@ -41,7 +41,7 @@ function getItemInUserCartLimit() {
 
 function getItemInUserCart() {
     $.ajax( {
-        url: "/cart/item/get/grup_by_vendor",
+        url: "/cart/item/get/group_by_vendor",
         type: 'GET',
         success: function ( data ) {
             var html = "";
@@ -163,5 +163,77 @@ function processItemIntoTransaction( productId, processIntoTransaction ) {
     $.ajax( {
         type: 'POST',
         url: `/cart/item/${productId}/process_into_transaction/${processIntoTransaction}`
+    } );
+}
+
+function getCheckoutItem() {
+    $.ajax( {
+        url: "/cart/item/get/group_by_vendor/checkout",
+        type: 'GET',
+        success: function ( data ) {
+            console.log( data );
+            var html = "";
+            var arrayItems = JSON.parse( data );
+            var subTotal = 0;
+
+            html += `
+                <div class="content-frame mb-4 shadow">
+            `;
+
+            if ( arrayItems.length > 0 ) {
+                arrayItems.forEach( function ( items, index ) {
+                    html += `
+                        <p class="font-weight-bold">${items[index]['vendor_name']} <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> Platinum Vendor</span></p>
+                        <!-- card product list -->
+                    `;
+
+                    items.forEach( item => {
+                        subTotal += parseInt( item['price'] );
+                        html += `
+                            <div class="content-frame mb-3 shadow p-0">
+                                <div class="card card-product">
+                                    <div class="row align-items-center">
+                                        <div class="col-3">
+                                            <img src="/img/products/main-img/${item['product_main_image']}" class="card-img-top" alt="...">
+                                        </div>
+                                        <div class="card-body col-9 row">
+                                            <div class="col-6">
+                                                <h5 class="card-title">${item['product_name']}</h5>
+                                                <p class="main-product-price">
+                                                ${( parseInt( item['price'] ) ).toLocaleString( 'id-ID', { style: 'currency', currency: 'IDR' } )}
+                                                </p>
+                                                <p class="main-product-location">Tasikmalaya</p>
+                                                <div class="input-group w-auto d-inline-flex">
+                                                    <div class="input-group-prepend">
+                                                        <button class="input-group-text">-</button>
+                                                    </div>
+                                                    <input type="text" class="form-control text-center" id="qty" name="qty" value="1" style="max-width: 60px;">
+                                                    <div class="input-group-append">
+                                                        <button class="input-group-text">+</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <p class="main-product-location mb-0">Service</p>
+                                                <p class="main-product-price">${item['service_name']}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    } );
+
+                    html += `</div>`;
+                } );
+            } else {
+                html += '<div class="col-12 text-center"><p>Cart is empty.</p></div>';
+            }
+
+            $( '.js-item-checkout' ).html( html );
+            var total = subTotal + 10000;
+            $( '.js-subtotal' ).html( subTotal.toLocaleString( 'id-ID', { style: 'currency', currency: 'IDR' } ) );
+            $( '.js-total' ).html( total.toLocaleString( 'id-ID', { style: 'currency', currency: 'IDR' } ) );
+        }
     } );
 }

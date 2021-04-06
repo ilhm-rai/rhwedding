@@ -8,6 +8,7 @@ use App\Models\ProductModel;
 use App\Models\ProductsImagesModel;
 use App\Models\VendorModel;
 use App\Models\LevelModel;
+use App\Models\UsersModel;
 
 class Main extends BaseController
 {
@@ -23,6 +24,7 @@ class Main extends BaseController
     protected $vendorModel;
     protected $levelModel;
     protected $cartModel;
+    protected $userModel;
 
     public function __construct()
     {
@@ -32,6 +34,8 @@ class Main extends BaseController
         $this->vendorModel = new VendorModel();
         $this->cartModel = new CartModel();
         $this->levelModel = new LevelModel();
+        $this->userModel = new UsersModel();
+
         helper('text');
     }
 
@@ -86,7 +90,8 @@ class Main extends BaseController
     public function checkout()
     {
         $data = [
-            'title' => 'RH Wedding Planner'
+            'title' => 'RH Wedding Planner',
+            'user' => $this->userModel->getUserBy(user_id())
         ];
 
         return view('main/checkout', $data);

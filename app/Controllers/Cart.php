@@ -79,9 +79,9 @@ class Cart extends BaseController
         return json_encode($this->getItemInUserCart(), JSON_PRETTY_PRINT);
     }
 
-    public function getJsonItemGroupByVendor()
+    public function getJsonItemGroupByVendor($itemCanProcess = false)
     {
-        return json_encode($this->getItemGroupByVendor(), JSON_PRETTY_PRINT);
+        return json_encode($this->getItemGroupByVendor($itemCanProcess), JSON_PRETTY_PRINT);
     }
 
     protected function isItemInCart($productId)
@@ -89,9 +89,9 @@ class Cart extends BaseController
         return $this->CartModel->isItemInCart($productId);
     }
 
-    public function getItemGroupByVendor()
+    public function getItemGroupByVendor($itemCanProcess)
     {
-        return $this->CartModel->getItemGroupByVendor();
+        return $this->CartModel->getItemGroupByVendor($itemCanProcess);
     }
 
     public function deleteItemInCart($productId)
