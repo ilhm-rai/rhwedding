@@ -158,11 +158,13 @@ $routes->group('admin/products/categories', function ($routes) {
 
 // Cart Routes
 $routes->get('cart/item/get', 'Cart::getJsonItemInUserCart');
-$routes->get('cart/item/get/grup_by_vendor', 'Cart::getJsonItemGroupByVendor');
+$routes->get('cart/item/get/group_by_vendor', 'Cart::getJsonItemGroupByVendor');
+$routes->get('cart/item/get/group_by_vendor/checkout', 'Cart::getJsonItemGroupByVendor/true');
 $routes->delete('cart/item/delete/(:num)', 'Cart::deleteItemInCart/$1');
+$routes->post('cart/item/(:any)/process_into_transaction/(:num)', 'Cart::updateProcessItemIntoTransaction/$1/$2');
 $routes->post('cart/item/add/(:num)', 'Cart::addItemToCart/$1');
 
-
+// Checkout Routes
 
 /**
  * --------------------------------------------------------------------

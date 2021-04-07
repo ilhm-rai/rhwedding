@@ -28,7 +28,7 @@
     </div>
     <div class="row justify-content-end mb-5">
         <div class="col-4 text-right">
-            <a href="#" class="btn btn-wild-watermelon">Checkout</a>
+            <a href="<?= base_url('checkout'); ?>" class="btn btn-wild-watermelon">Checkout</a>
         </div>
     </div>
 </div>
