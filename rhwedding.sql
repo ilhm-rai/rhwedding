@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Apr 2021 pada 15.34
+-- Waktu pembuatan: 07 Apr 2021 pada 12.17
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -221,7 +221,8 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (93, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-03 04:54:50', 1),
 (94, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-04 22:40:38', 1),
 (95, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-05 05:09:26', 1),
-(96, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-06 01:05:24', 1);
+(96, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-06 01:05:24', 1),
+(97, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-06 23:29:15', 1);
 
 -- --------------------------------------------------------
 
@@ -317,8 +318,8 @@ INSERT INTO `cart_detail` (`id`, `cart_id`, `product_id`, `process_into_transact
 (7, 1, 31, 0, '2021-03-31 22:12:03'),
 (8, 1, 37, 0, '2021-03-31 22:12:31'),
 (9, 1, 34, 0, '2021-03-31 22:12:56'),
-(10, 1, 33, 0, '2021-03-31 22:13:21'),
-(11, 1, 32, 0, '2021-04-03 15:23:37');
+(10, 1, 33, 1, '2021-03-31 22:13:21'),
+(11, 1, 32, 1, '2021-04-03 15:23:37');
 
 -- --------------------------------------------------------
 
@@ -543,9 +544,9 @@ CREATE TABLE `transaction_detail` (
 --
 
 INSERT INTO `transaction_detail` (`id`, `transaction_id`, `product_id`, `note`, `charge`, `qty`, `sub_total_payment`, `confirm`, `reason_reject`) VALUES
-(1, 1, 28, NULL, NULL, 1, 4000000, 1, NULL),
-(2, 1, 29, NULL, NULL, 1, 3000000, 1, NULL),
-(3, 1, 30, 'Ini catatan pembelian', NULL, 1, 2000000, NULL, NULL);
+(1, 1, 28, NULL, NULL, 1, 4000000, 0, NULL),
+(2, 1, 29, NULL, NULL, 1, 3000000, 0, NULL),
+(3, 1, 30, 'Ini catatan pembelian', NULL, 1, 2000000, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -889,7 +890,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
