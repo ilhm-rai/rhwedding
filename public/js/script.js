@@ -173,3 +173,24 @@ $(".btn-delete").on("click", function (e) {
     }
   });
 });
+
+// confirm transaction
+let btnConfirm = document.querySelectorAll(".btn-accept");
+btnConfirm.forEach((e) => {
+  e.addEventListener("click", () => {
+    const dataId = $(e).data("detailid");
+    const transCode = $(e).data("trans");
+    $.ajax({
+      type: "post",
+      data: { dataId: dataId },
+      url: "/transaction/accept",
+      success: function (res) {
+        result = JSON.parse(res);
+        $(`.status-${result["id"]}`).html(`<i class="fas fa-check"></i> Accepted`);
+        $(`.status-${result["id"]}`).addClass("text-success");
+        $(`.status-${result["id"]}`).removeClass("text-warning");
+        $(`.status-${result["id"]}`).removeClass("text-danger");
+      },
+    });
+  });
+});

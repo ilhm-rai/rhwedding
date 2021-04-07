@@ -17,7 +17,7 @@ class TransactionModel extends Model
 
     public function getTransByUser($id)
     {
-        $query = "SELECT `t`.*, COUNT(`td`.`id`) AS amount, SUM(`td`.`sub_total_payment`) AS `payment`
+        $query = "SELECT `t`.*, COUNT(`td`.`id`) AS amount, SUM(IF(`td`.`confirm` != 0 OR IFNULL(`td`.`confirm`,`td`.`sub_total_payment`),`td`.`sub_total_payment`,0)) AS `payment`
         FROM `transaction` AS `t`
         JOIN `transaction_detail` AS `td`
         ON `t`.`id` = `td`.`transaction_id`
@@ -49,7 +49,7 @@ class TransactionModel extends Model
     }
     public function getTransDetailBy($userId, $code)
     {
-        $query = "SELECT `p`.`product_name`,`p`.`product_main_image`,`s`.`service_name` ,`td`.`note`,`td`.`sub_total_payment`,`td`.`confirm`
+        $query = "SELECT `p`.`product_name`,`p`.`product_main_image`,`s`.`service_name` ,`td`.`id`,`td`.`note`,`td`.`sub_total_payment`,`td`.`confirm`
         FROM `transaction` AS `t`
         JOIN `transaction_detail` AS `td`
         ON `t`.`id` = `td`.`transaction_id`

@@ -34,7 +34,7 @@
                     <tr>
                         <td><?= $i++; ?></td>
                         <td><?= $t['transaction_code']; ?></td>
-                        <td><?= $t['payment']; ?></td>
+                        <td>Rp<?= number_format($t['payment'],0,',','.'); ?>,-</td>
                         <td><?= $t['amount']; ?></td>
                         <td><?= date("d-m-Y", strtotime($t['event_date'])); ?></td>
                         <td class="text-center">

@@ -24,6 +24,8 @@
                 <span class="text-small"><?= $trans['event_address']; ?></span>
             </div>
         </div>
+        
+ 
         <!-- list detail transaksi -->
         <div class="table-responsive mb-4">
             <table class="table table-bordered td-align-middle" id="dataProducts" width="100%" cellspacing="0">
@@ -48,10 +50,11 @@
                         <td><?= $item['product_name']; ?></td>
                         <td><?= $item['service_name']; ?></td>
                         <td>Rp<?= number_format($item['sub_total_payment'],0,',','.'); ?>,-</td>
-                        <td><p class="text-warning">Need Confirm</p></td>
+                        <td><p class="text-warning status-<?= $item['id']; ?>">Need Confirm</p></td>
                         <td class="text-center">
-                                <a href="/vendors/products/detail/" class="btn btn-success btn-sm small mb-1"><i class="fas fa-check"></i></a>
-                                <a href="/vendors/products/detail/" class="btn btn-danger btn-sm small mb-1"><i class="fas fa-times px-1"></i></a>
+                                <button data-detailid="<?= $item['id']; ?>" data-trans="<?= $trans['transaction_code']; ?>" class="btn btn-action btn-sm small mb-1">Decline</button>
+                                <button data-detailid="<?= $item['id']; ?>" data-trans="<?= $trans['transaction_code']; ?>" class="btn btn-success btn-accept btn-sm small mb-1">Accept</button>
+                                
                             </td>
                     </tr>
                     <?php endforeach; ?>
@@ -63,11 +66,12 @@
                 <h5 class="font-weight-bold mb-4 text-wild-watermelon">Order Sumary</h5>
                 <div class="row">
                     <div class="col">
-                        <p class="font-weight-bold">Sub Total :</p>
+                        <p class="font-weight-bold">Amount received :</p>
                     </div>
                     <div class="col">
-                    <h4 class="font-weight-bold text-wild-watermelon">Rp8.000,000,-</h4>
+                    <h4 class="font-weight-bold text-wild-watermelon total" data-total="0">Rp0,-</h4>
                     </div>
+                    <!-- <a href="#" class="btn btn-wild-watermelon"></a> -->
                 </div>
             </div>
         </div>

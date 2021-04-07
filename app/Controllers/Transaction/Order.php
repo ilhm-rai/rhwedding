@@ -4,14 +4,17 @@ namespace App\Controllers\Transaction;
 
 use App\Controllers\BaseController;
 use App\Models\TransactionModel;
+use App\Models\TransDetailModel;
 
 class Order extends BaseController
 {
 
     protected $transactionModel;
+    protected $transDetailModel;
     public function __construct()
     {
         $this->transactionModel = new TransactionModel();
+        $this->transDetailModel = new TransDetailModel();
     }
 
     public function index()
@@ -35,5 +38,17 @@ class Order extends BaseController
         ];
         // dd($data);
         return view('transaction/order/confirm', $data);
+    }
+
+    public function accept()
+    {
+        $id = $this->request->getVar('dataId');
+        
+        $this->transDetailModel->save([
+            'id' => $id,
+            'confirm' => 1,
+        ]);
+        $detail = $this->transDetailModel->getWhere(['id' => $id])->getRowArray();
+        return json_encode($detail);
     }
 }
