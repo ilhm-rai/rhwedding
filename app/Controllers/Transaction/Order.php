@@ -51,4 +51,16 @@ class Order extends BaseController
         $detail = $this->transDetailModel->getWhere(['id' => $id])->getRowArray();
         return json_encode($detail);
     }
+
+    public function reject()
+    {
+        $id = $this->request->getVar('dataId');
+        
+        $this->transDetailModel->save([
+            'id' => $id,
+            'confirm' => 0,
+        ]);
+        $detail = $this->transDetailModel->getWhere(['id' => $id])->getRowArray();
+        return json_encode($detail);
+    }
 }

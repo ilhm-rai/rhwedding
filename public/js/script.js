@@ -174,23 +174,50 @@ $(".btn-delete").on("click", function (e) {
   });
 });
 
-// confirm transaction
+// accept transaction
 let btnConfirm = document.querySelectorAll(".btn-accept");
 btnConfirm.forEach((e) => {
   e.addEventListener("click", () => {
     const dataId = $(e).data("detailid");
-    const transCode = $(e).data("trans");
-    $.ajax({
-      type: "post",
-      data: { dataId: dataId },
-      url: "/transaction/accept",
-      success: function (res) {
-        result = JSON.parse(res);
-        $(`.status-${result["id"]}`).html(`<i class="fas fa-check"></i> Accepted`);
-        $(`.status-${result["id"]}`).addClass("text-success");
-        $(`.status-${result["id"]}`).removeClass("text-warning");
-        $(`.status-${result["id"]}`).removeClass("text-danger");
-      },
-    });
+    const confirm = $(e).data("confirm");
+    if (confirm != 1) {
+      $.ajax({
+        type: "post",
+        data: { dataId: dataId },
+        url: "/transaction/accept",
+        success: function (res) {
+          result = JSON.parse(res);
+          console.log(result);
+          $(`.status-${result["id"]}`).html(`Accepted <i class="fas fa-check"></i>`);
+          $(`.status-${result["id"]}`).addClass("text-success");
+          $(`.status-${result["id"]}`).removeClass("text-warning");
+          $(`.status-${result["id"]}`).removeClass("text-danger");
+        },
+      });
+    }
+  });
+});
+
+// Reject transaction
+let btnReject = document.querySelectorAll(".btn-reject");
+btnReject.forEach((e) => {
+  e.addEventListener("click", () => {
+    const dataId = $(e).data("detailid");
+    const confirm = $(e).data("confirm");
+    if (confirm != 0) {
+      $.ajax({
+        type: "post",
+        data: { dataId: dataId },
+        url: "/transaction/reject",
+        success: function (res) {
+          result = JSON.parse(res);
+          console.log(result);
+          $(`.status-${result["id"]}`).html(`Rejected <i class="fas fa-times"></i>`);
+          $(`.status-${result["id"]}`).addClass("text-danger");
+          $(`.status-${result["id"]}`).removeClass("text-warning");
+          $(`.status-${result["id"]}`).removeClass("text-success");
+        },
+      });
+    }
   });
 });

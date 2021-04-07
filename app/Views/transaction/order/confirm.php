@@ -50,10 +50,22 @@
                         <td><?= $item['product_name']; ?></td>
                         <td><?= $item['service_name']; ?></td>
                         <td>Rp<?= number_format($item['sub_total_payment'],0,',','.'); ?>,-</td>
-                        <td><p class="text-warning status-<?= $item['id']; ?>">Need Confirm</p></td>
+                        <?php 
+                            if($item['confirm'] == 1){
+                                $color = 'text-success';
+                                $text = 'Accepted <i class="fas fa-check"></i>';
+                            }else if($item['confirm'] == null){ 
+                                $color = 'text-warning';
+                                $text = 'Need Confirm <i class="fas fa-exclamation"></i>';
+                            }else{
+                                $color = 'text-danger';
+                                $text = 'Rejected <i class="fas fa-times"></i>';
+                            }
+                        ?>
+                        <td><p class="<?= $color; ?> status-<?= $item['id']; ?> "><?= $text; ?></p></td>
                         <td class="text-center">
-                                <button data-detailid="<?= $item['id']; ?>" data-trans="<?= $trans['transaction_code']; ?>" class="btn btn-action btn-sm small mb-1">Decline</button>
-                                <button data-detailid="<?= $item['id']; ?>" data-trans="<?= $trans['transaction_code']; ?>" class="btn btn-success btn-accept btn-sm small mb-1">Accept</button>
+                                <button data-detailid="<?= $item['id']; ?>" data-confirm="<?= $item['confirm']; ?>" class="btn btn-action btn-reject btn-sm small mb-1">Decline</button>
+                                <button data-detailid="<?= $item['id']; ?>" data-confirm="<?= $item['confirm']; ?>" class="btn btn-success btn-accept btn-sm small mb-1">Accept</button>
                                 
                             </td>
                     </tr>
@@ -69,7 +81,8 @@
                         <p class="font-weight-bold">Amount received :</p>
                     </div>
                     <div class="col">
-                    <h4 class="font-weight-bold text-wild-watermelon total" data-total="0">Rp0,-</h4>
+                    <input type="hidden" name="total" id='total' value='0'>
+                    <h4 class="font-weight-bold text-wild-watermelon total-screen">Rp0,-</h4>
                     </div>
                     <!-- <a href="#" class="btn btn-wild-watermelon"></a> -->
                 </div>
