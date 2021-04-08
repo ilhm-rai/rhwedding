@@ -32,6 +32,7 @@ function cari(keyword) {
       let products,
         vendors = Array();
       result = JSON.parse(res);
+      console.log(result);
       vendors = result["vendors"];
       products = result["products"];
       let listVendor = "";
@@ -43,7 +44,7 @@ function cari(keyword) {
       }
       vendors.forEach((vendor) => {
         listVendor += `
-        <a href="/vendor/${vendor["id"]}" class="list-group-item list-group-item-action">
+        <a href="/vendor/${vendor["slug"]}" class="list-group-item list-group-item-action">
           <div class="row align-items-center">
               <div class="col-2">
                   <img class="img-product-suggestion rounded-circle" src="/img/vendors/logo/${vendor["vendor_logo"]}">
@@ -62,7 +63,7 @@ function cari(keyword) {
       }
       products.forEach((product) => {
         listProduct += `
-        <a href="/product/${product["product_code"]}" class="list-group-item list-group-item-action">
+        <a href="/${product["slug"]}" class="list-group-item list-group-item-action">
             <div class="row align-items-center">
                 <div class="col-2">
                     <img class="img-product-suggestion rounded-circle" src="/img/products/main-img/${product["product_main_image"]}">

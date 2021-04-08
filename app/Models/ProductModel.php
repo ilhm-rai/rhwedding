@@ -23,7 +23,18 @@ class ProductModel extends Model
         ";
         return $this->db->query($query)->getResultArray();
     }
-
+    public function getProductsByVendor($id)
+    {
+        $query = "SELECT `p`.*, `s`.`service_name`
+        FROM `products` AS `p`
+        JOIN `vendors` AS `v`
+        ON `p`.`vendor_id` = `v`.`id`
+        JOIN `services` AS `s`
+        ON `p`.`product_service_id` = `s`.`id`
+        WHERE `v`.`id` = '$id'
+    ";
+        return $this->db->query($query)->getResultArray();
+    }
     public function getProductsByUser($id)
     {
         $query = "SELECT `p`.*, `s`.`service_name`
@@ -95,7 +106,7 @@ class ProductModel extends Model
 
     public function getProductsSuggest($keyword)
     {
-        $query = "SELECT product_name, product_main_image
+        $query = "SELECT product_name, product_main_image, slug
         FROM `products` AS `p`
         WHERE `product_name` LIKE '$keyword%'
         LIMIT 2
@@ -105,7 +116,7 @@ class ProductModel extends Model
 
     public function getProductsByKeyword($keyword)
     {
-        $query = "SELECT product_name, product_main_image
+        $query = "SELECT product_name, product_main_image, slug
         FROM `products` AS `p`
         WHERE `product_name` LIKE '$keyword%'
     ";

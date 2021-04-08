@@ -97,12 +97,14 @@ class Main extends BaseController
         return view('main/checkout', $data);
     }
 
-    public function vendor($id)
+    public function vendor($slug)
     {
         $data = [
-            'title' => 'RH Wedding Planner'
+            'vendor' => $this->vendorModel->getVendorBySlug($slug),  
         ];
-
+        $data['title'] = $data['vendor']['vendor_name'];
+        $data['products'] = $this->productModel->getProductsByVendor($data['vendor']['id']);
+        // dd($data);
         return view('main/vendor', $data);
     }
 
