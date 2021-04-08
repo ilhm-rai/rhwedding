@@ -24,7 +24,13 @@
                 <span class="text-small"><?= $trans['event_address']; ?></span>
             </div>
         </div>
-        
+        <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
+
+        <?php if (session()->getFlashdata('message')) : ?>
+            <div class="alert alert-success" role="alert">
+                <?= session()->getFlashdata('message'); ?>
+            </div>
+        <?php endif; ?>
  
         <!-- list detail transaksi -->
         <div class="table-responsive mb-4">
@@ -64,10 +70,15 @@
                         ?>
                         <td><p class="<?= $color; ?> status-<?= $item['id']; ?> "><?= $text; ?></p></td>
                         <td class="text-center">
-                                <button data-detailid="<?= $item['id']; ?>" data-confirm="<?= $item['confirm']; ?>" class="btn btn-action btn-reject btn-sm small mb-1">Decline</button>
-                                <button data-detailid="<?= $item['id']; ?>" data-confirm="<?= $item['confirm']; ?>" class="btn btn-success btn-accept btn-sm small mb-1">Accept</button>
-                                
-                            </td>
+                            <form action="/transaction/reject/<?= $item['id']; ?>" method="post" class="d-inline">
+                                <input type="hidden" name="code" value='<?= $trans['transaction_code']; ?>'>
+                                <button type='submit' class="btn btn-action btn-reject btn-sm small mb-1">Decline</button>
+                            </form>
+                            <form action="/transaction/accept/<?= $item['id']; ?>" class="d-inline">
+                                <input type="hidden" name="code" value='<?= $trans['transaction_code']; ?>'>
+                                <button type='submit' class="btn btn-success btn-accept btn-sm small mb-1">Accept</button>
+                            </form>    
+                        </td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -82,9 +93,9 @@
                     </div>
                     <div class="col">
                     <input type="hidden" name="total" id='total' value='0'>
-                    <h4 class="font-weight-bold text-wild-watermelon total-screen">Rp0,-</h4>
+                    <h4 class="font-weight-bold text-wild-watermelon total-screen">Rp<?= number_format($trans['payment'],0,',','.'); ?>,-</h4>
                     </div>
-                    <!-- <a href="#" class="btn btn-wild-watermelon"></a> -->
+                    
                 </div>
             </div>
         </div>

@@ -40,27 +40,26 @@ class Order extends BaseController
         return view('transaction/order/confirm', $data);
     }
 
-    public function accept()
-    {
-        $id = $this->request->getVar('dataId');
-        
+    public function accept($id)
+    {        
+        $code = $this->request->getVar('code');
         $this->transDetailModel->save([
             'id' => $id,
             'confirm' => 1,
         ]);
-        $detail = $this->transDetailModel->getWhere(['id' => $id])->getRowArray();
-        return json_encode($detail);
+        session()->setFlashdata('message', 'Transaction has been successfully Accepted');
+        return redirect()->to('/transaction/confirm/' . $code);
+
     }
 
-    public function reject()
-    {
-        $id = $this->request->getVar('dataId');
-        
+    public function reject($id)
+    {        
+        $code = $this->request->getVar('code');
         $this->transDetailModel->save([
             'id' => $id,
             'confirm' => 0,
         ]);
-        $detail = $this->transDetailModel->getWhere(['id' => $id])->getRowArray();
-        return json_encode($detail);
+        session()->setFlashdata('message', 'Transaction has been successfully Rejected');
+        return redirect()->to('/transaction/confirm/' . $code);
     }
 }
