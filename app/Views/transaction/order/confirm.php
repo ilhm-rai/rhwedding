@@ -76,6 +76,7 @@
                             
                             <form action="/transaction/accept/<?= $item['id']; ?>" class="d-inline">
                                 <input type="hidden" name="code" value='<?= $trans['transaction_code']; ?>'>
+                                <input type="hidden" name="user-id" value='<?= $trans['user_id']; ?>'>
                                 <button type='submit' class="btn btn-success btn-accept btn-sm small mb-1">Accept</button>
                             </form>    
                         </td>
@@ -113,10 +114,11 @@ Are you sure you will reject this transaction? </h5>
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form action="" method="POST" class="">
+			<form action="/transaction/reject" method="POST" class="">
 				<div class="modal-body">
-					<input type="hidden" name="detailId" id='detailId'>
+					<input type="hidden" name="detail-id" id='detail-id'>
 					<input type="hidden" name="code" value='<?= $trans['transaction_code']; ?>'>
+					<input type="hidden" name="user-id" value='<?= $trans['user_id']; ?>'>
 					<!-- modal content -->
 					<div class="form-group">
                         <textarea class="form-control" placeholder='Reason' name='reason' id="reason" rows="3" style="border-radius: 20px;"></textarea>
@@ -126,8 +128,8 @@ Are you sure you will reject this transaction? </h5>
                     </div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Add</button>
+					<button type="button" class="btn btn-action" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-wild-watermelon">Add</button>
 				</div>
 			</form>
 		</div>

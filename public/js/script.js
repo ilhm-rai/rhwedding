@@ -179,7 +179,8 @@ $(".btn-delete").on("click", function (e) {
 let btnReject = document.querySelectorAll(".btn-reject");
 btnReject.forEach((e) => {
   e.addEventListener("click", () => {
-    let id = e.$(this).data("id");
+    let id = $(e).data("id");
     console.log(id);
+    $("#detail-id").val(id);
   });
 });
