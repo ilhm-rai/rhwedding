@@ -21,14 +21,23 @@
             <label for="service" class="col-sm-2 col-form-label">Vendor Service <sup class="text-wild-watermelon">*</sup></label>
             <div class="col-sm-10">
                 <select class="custom-select rounded-pill <?= ($validation->hasError('service') ? 'is-invalid' : ''); ?>" name="service" id="service">
+                <?php if(count($services) < 1): ?>
+                    <option selected>Please add service first</option>
+                <?php else : ?>
                     <option selected >Select service</option>
-                    <?php foreach($services as $s) : ?>
-                    <option value="<?= $s['id']; ?>"><?= $s['service_name']; ?></option>
-                    <?php endforeach; ?>
+                <?php endif; ?>
+                        <?php foreach($services as $s) : ?>
+                        <option value="<?= $s['id']; ?>"><?= $s['service_name']; ?></option>
+                        <?php endforeach; ?>
                 </select>
                 <div class="invalid-feedback">
                     <?= $validation->getError('service'); ?>
                 </div>
+                <?php if(count($services) < 1): ?>
+                <div class="row">
+                <a href="<?= base_url('vendors/myvendor/service'); ?>" class="badge badge-geyser p-2 ml-auto mt-2 mr-4"><span class="fa fa-plus"></span> Add Service</a>
+                </div>
+                <?php endif; ?>
             </div>
         </div>
         <div class="form-group row">
