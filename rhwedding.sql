@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Apr 2021 pada 12.17
+-- Waktu pembuatan: 08 Apr 2021 pada 09.49
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -103,8 +103,8 @@ CREATE TABLE `auth_groups_users` (
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (1, 1),
 (1, 5),
-(3, 4),
-(3, 12);
+(2, 12),
+(3, 4);
 
 -- --------------------------------------------------------
 
@@ -222,7 +222,14 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (94, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-04 22:40:38', 1),
 (95, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-05 05:09:26', 1),
 (96, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-06 01:05:24', 1),
-(97, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-06 23:29:15', 1);
+(97, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-06 23:29:15', 1),
+(98, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-07 22:19:35', 1),
+(99, '::1', 'muhamadarsal71@gmail.com', 12, '2021-04-08 01:11:50', 1),
+(100, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-08 01:37:31', 1),
+(101, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-08 01:42:36', 1),
+(102, '::1', 'muhamadarsal71@gmail.com', 12, '2021-04-08 01:55:25', 1),
+(103, '::1', 'muhamadarsaludin71@gmail.com', NULL, '2021-04-08 02:00:58', 0),
+(104, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-08 02:01:13', 1);
 
 -- --------------------------------------------------------
 
@@ -315,11 +322,12 @@ CREATE TABLE `cart_detail` (
 --
 
 INSERT INTO `cart_detail` (`id`, `cart_id`, `product_id`, `process_into_transaction`, `created_at`) VALUES
-(7, 1, 31, 0, '2021-03-31 22:12:03'),
-(8, 1, 37, 0, '2021-03-31 22:12:31'),
-(9, 1, 34, 0, '2021-03-31 22:12:56'),
+(7, 1, 31, 1, '2021-03-31 22:12:03'),
+(8, 1, 37, 1, '2021-03-31 22:12:31'),
+(9, 1, 34, 1, '2021-03-31 22:12:56'),
 (10, 1, 33, 1, '2021-03-31 22:13:21'),
-(11, 1, 32, 1, '2021-04-03 15:23:37');
+(11, 1, 32, 1, '2021-04-03 15:23:37'),
+(12, 1, 40, 1, '2021-04-08 14:01:53');
 
 -- --------------------------------------------------------
 
@@ -412,7 +420,8 @@ INSERT INTO `products` (`id`, `vendor_id`, `product_service_id`, `product_code`,
 (32, 4, 9, '', 'Prewedding Paket Classic', 'Prewedding-Paket-Classic.P-03468597', '8.jpg', NULL, '<p>Paket termasuk :</p>\r\n<p>1. 2 Orang Crew</p>\r\n<p>2. 1x Technical Meeting</p>\r\n<p>3. Free Hard Coppy Foto Pilihan Ukuran 16RP + Frame</p>', NULL, 1500000, 0, NULL, 1, '2021-03-29 19:31:09', '2021-03-29 19:31:09'),
 (33, 4, 9, '', 'Photograpy Pernikahan By RH', 'Photograpy-Pernikahan-By-RH.P-30597261', 'product-3.jpg', NULL, '<p>Paket Termasuk:</p>\r\n<p>1. 2 Orang Crew</p>\r\n<p>2. 1x Technical Meeting</p>\r\n<p>3. Foto OTS untuk souvenir</p>\r\n<p>4. Album foto</p>\r\n<p>5. Free hard copy foto ukuran 16RP + Frame</p>\r\n<p>&nbsp;</p>', NULL, 5500000, 0, NULL, 1, '2021-03-29 19:35:43', '2021-03-29 19:36:36'),
 (34, 4, 9, '', 'Alissha Bride Photo', 'Alissha-Bride-Photo.P-89032476', 'alissha-bride.jpg', NULL, '<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #7e7e7e; font-family: Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\'; font-size: 16px;\">Paket Termasuk:</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #7e7e7e; font-family: Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\'; font-size: 16px;\">1. 2 Orang Crew</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #7e7e7e; font-family: Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\'; font-size: 16px;\">2. 1x Technical Meeting</p>\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 1rem; color: #7e7e7e; font-family: Nunito, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\'; font-size: 16px;\">3. Album foto</p>', NULL, 2000000, 0, NULL, 1, '2021-03-29 19:39:17', '2021-03-29 19:39:17'),
-(37, 4, 8, '', 'Gaun Pesta', 'Gaun-Pesta.P-94670813', '5376ac4139a84090db673da7e246956e.jpg_720x720q80.jpg_.jpg', NULL, '<p>Keterangan :</p>\r\n<p>1. Pre Order H-20</p>\r\n<p>2. Pengukurang Badan&nbsp;</p>\r\n<p>3. Free cover gaun&nbsp;</p>\r\n<p>&nbsp;</p>', NULL, 4000000, 0, NULL, 1, '2021-03-29 19:49:52', '2021-03-29 19:49:52');
+(37, 4, 8, '', 'Gaun Pesta', 'Gaun-Pesta.P-94670813', '5376ac4139a84090db673da7e246956e.jpg_720x720q80.jpg_.jpg', NULL, '<p>Keterangan :</p>\r\n<p>1. Pre Order H-20</p>\r\n<p>2. Pengukurang Badan&nbsp;</p>\r\n<p>3. Free cover gaun&nbsp;</p>\r\n<p>&nbsp;</p>', NULL, 4000000, 0, NULL, 1, '2021-03-29 19:49:52', '2021-03-29 19:49:52'),
+(40, 6, 4, 'PRD6202104010', 'test', 'test.P-18935604', 'sven-brandsma-GZ5cKOgeIB0-unsplash.jpg', NULL, '<p>fafdfafsadfsd</p>', NULL, 1000000, 0, NULL, 1, '2021-04-08 02:00:17', '2021-04-08 02:00:17');
 
 -- --------------------------------------------------------
 
@@ -449,7 +458,8 @@ INSERT INTO `products_images` (`id`, `product_id`, `image`) VALUES
 (31, 29, '3.jpg'),
 (32, 29, '8_1.jpg'),
 (33, 33, 'product-5.jpg'),
-(34, 37, '1.jpg');
+(34, 37, '1.jpg'),
+(35, 40, 'christopher-jolly-GqbU78bdJFM-unsplash.jpg');
 
 -- --------------------------------------------------------
 
@@ -544,9 +554,9 @@ CREATE TABLE `transaction_detail` (
 --
 
 INSERT INTO `transaction_detail` (`id`, `transaction_id`, `product_id`, `note`, `charge`, `qty`, `sub_total_payment`, `confirm`, `reason_reject`) VALUES
-(1, 1, 28, NULL, NULL, 1, 4000000, 0, NULL),
+(1, 1, 28, NULL, NULL, 1, 4000000, 1, NULL),
 (2, 1, 29, NULL, NULL, 1, 3000000, 0, NULL),
-(3, 1, 30, 'Ini catatan pembelian', NULL, 1, 2000000, 0, NULL);
+(3, 1, 30, 'Ini catatan pembelian', NULL, 1, 2000000, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -619,6 +629,7 @@ INSERT INTO `users_profile` (`id`, `user_id`, `full_name`, `user_image`, `contac
 CREATE TABLE `vendors` (
   `id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) UNSIGNED NOT NULL,
+  `slug` int(11) NOT NULL,
   `vendor_code` varchar(20) NOT NULL,
   `vendor_name` varchar(255) NOT NULL,
   `vendor_logo` varchar(255) NOT NULL DEFAULT 'default.png',
@@ -627,6 +638,11 @@ CREATE TABLE `vendors` (
   `vendor_level_id` int(11) UNSIGNED NOT NULL DEFAULT 1,
   `vendor_description` text DEFAULT NULL,
   `active` int(1) NOT NULL DEFAULT 1,
+  `contact_vendor` varchar(12) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `province` varchar(50) DEFAULT NULL,
+  `postal_code` varchar(10) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -635,10 +651,11 @@ CREATE TABLE `vendors` (
 -- Dumping data untuk tabel `vendors`
 --
 
-INSERT INTO `vendors` (`id`, `user_id`, `vendor_code`, `vendor_name`, `vendor_logo`, `vendor_banner`, `vendor_billboard`, `vendor_level_id`, `vendor_description`, `active`, `created_at`, `updated_at`) VALUES
-(2, 1, 'VND_0220210001', 'Grand Aston Bali', 'logo1.png', NULL, 'default.png', 4, NULL, 1, '2021-02-24 14:48:01', '2021-02-24 14:48:01'),
-(3, 4, 'VND_0220210002', 'Sarovar', 'logo2.png', NULL, 'default.png', 1, NULL, 1, '2021-02-24 14:50:28', '2021-02-24 14:50:28'),
-(4, 5, 'VND_0220210003', 'RH Wedding Planner', 'logo.png', '1.jpg', 'rhvideo.mp4', 4, 'Official vendor from RH Wedding Planner', 1, '2021-03-03 19:45:09', '2021-03-03 19:45:09');
+INSERT INTO `vendors` (`id`, `user_id`, `slug`, `vendor_code`, `vendor_name`, `vendor_logo`, `vendor_banner`, `vendor_billboard`, `vendor_level_id`, `vendor_description`, `active`, `contact_vendor`, `address`, `city`, `province`, `postal_code`, `created_at`, `updated_at`) VALUES
+(2, 1, 0, 'VND_0220210001', 'Grand Aston Bali', 'logo1.png', NULL, 'default.png', 4, NULL, 1, '', NULL, NULL, NULL, NULL, '2021-02-24 14:48:01', '2021-02-24 14:48:01'),
+(3, 4, 0, 'VND_0220210002', 'Sarovar', 'logo2.png', NULL, 'default.png', 1, NULL, 1, '', NULL, NULL, NULL, NULL, '2021-02-24 14:50:28', '2021-02-24 14:50:28'),
+(4, 5, 0, 'VND_0220210003', 'RH Wedding Planner', 'logo.png', '1.jpg', 'rhvideo.mp4', 4, 'Official vendor from RH Wedding Planner', 1, '', NULL, NULL, NULL, NULL, '2021-03-03 19:45:09', '2021-03-03 19:45:09'),
+(6, 12, 0, 'VND202104005', 'RH Wedding Planner', 'default.png', NULL, 'default.png', 1, NULL, 1, '08129038938', NULL, 'Tasikmalaya', 'Jawa Barat', '46153', '2021-04-08 01:56:13', '2021-04-08 01:56:13');
 
 -- --------------------------------------------------------
 
@@ -684,7 +701,9 @@ INSERT INTO `vendors_services` (`id`, `vendor_id`, `service_id`) VALUES
 (3, 4, 1),
 (4, 4, 4),
 (5, 4, 8),
-(6, 4, 9);
+(6, 4, 9),
+(23, 6, 4),
+(24, 6, 1);
 
 --
 -- Indexes for dumped tables
@@ -890,7 +909,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
@@ -920,7 +939,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT untuk tabel `cart_detail`
 --
 ALTER TABLE `cart_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `category`
@@ -938,7 +957,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT untuk tabel `products_category`
@@ -950,7 +969,7 @@ ALTER TABLE `products_category`
 -- AUTO_INCREMENT untuk tabel `products_images`
 --
 ALTER TABLE `products_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT untuk tabel `products_review`
@@ -992,7 +1011,7 @@ ALTER TABLE `users_profile`
 -- AUTO_INCREMENT untuk tabel `vendors`
 --
 ALTER TABLE `vendors`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `vendors_level`
@@ -1004,7 +1023,7 @@ ALTER TABLE `vendors_level`
 -- AUTO_INCREMENT untuk tabel `vendors_services`
 --
 ALTER TABLE `vendors_services`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
