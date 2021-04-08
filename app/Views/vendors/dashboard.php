@@ -8,9 +8,17 @@
         <?= session()->getFlashdata('message'); ?>
     </div>
 <?php endif; ?>
-<video playsinline controls loop class="mb-4">
-  <source src="/img/vendors/billboard/rhvideo.mp4" type="video/mp4">
-</video>
+<div class="swiper-container mb-4">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide pl-2 pr-2">
+            <img class="img-fluid img-rounded" src="/img/banners/1.jpg">
+        </div>
+        <div class="swiper-slide pl-2 pr-2">
+        <img src="<?= base_url('img/jumbotron-admin.jpg'); ?>" class="img-fluid img-rounded" alt="Jumbotron image">
+        </div>
+    </div>
+</div>
+
 <!-- Content Row -->
 <div class="row">
 
@@ -98,4 +106,20 @@
         <h1 class="content-heading mb-0 text-gray-800">Transaction</h1>
     </div>
 </div>
+<?= $this->endSection(); ?>
+
+<?= $this->section('script'); ?>
+<script>
+    const swiper = new Swiper('.swiper-container', {
+        autoplay: {
+            delay: 4000,
+        },
+        loop: true,
+    });
+
+    const swiperService = new Swiper('.swiper-container-service', {
+        slidesPerView: 6,
+        spaceBetween: 25,
+    });
+</script>
 <?= $this->endSection(); ?>

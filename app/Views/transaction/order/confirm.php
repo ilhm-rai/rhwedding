@@ -70,10 +70,10 @@
                         ?>
                         <td><p class="<?= $color; ?> status-<?= $item['id']; ?> "><?= $text; ?></p></td>
                         <td class="text-center">
-                            <form action="/transaction/reject/<?= $item['id']; ?>" method="post" class="d-inline">
-                                <input type="hidden" name="code" value='<?= $trans['transaction_code']; ?>'>
-                                <button type='submit' class="btn btn-action btn-reject btn-sm small mb-1">Decline</button>
-                            </form>
+                            
+                            
+                            <button type='button' class="btn btn-action btn-reject btn-sm small mb-1" data-id='<?= $item['id']; ?>' data-toggle="modal" data-target="#rejectModal">Decline</button>
+                            
                             <form action="/transaction/accept/<?= $item['id']; ?>" class="d-inline">
                                 <input type="hidden" name="code" value='<?= $trans['transaction_code']; ?>'>
                                 <button type='submit' class="btn btn-success btn-accept btn-sm small mb-1">Accept</button>
@@ -101,7 +101,40 @@
         </div>
     </div>
 
-   
+    
+<!-- Modal -->
+<div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="rejectModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-center text-dark" id="rejectModalLabel">
+Are you sure you will reject this transaction? </h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="" method="POST" class="">
+				<div class="modal-body">
+					<input type="hidden" name="detailId" id='detailId'>
+					<input type="hidden" name="code" value='<?= $trans['transaction_code']; ?>'>
+					<!-- modal content -->
+					<div class="form-group">
+                        <textarea class="form-control" placeholder='Reason' name='reason' id="reason" rows="3" style="border-radius: 20px;"></textarea>
+                        <div class="invalid-feedback">
+                            
+                        </div>
+                    </div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Add</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
 </div>
 <?= $this->endSection(); ?>
 

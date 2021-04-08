@@ -174,3 +174,12 @@ $(".btn-delete").on("click", function (e) {
     }
   });
 });
+
+// btn reject order
+let btnReject = document.querySelectorAll(".btn-reject");
+btnReject.forEach((e) => {
+  e.addEventListener("click", () => {
+    let id = e.$(this).data("id");
+    console.log(id);
+  });
+});
