@@ -36,22 +36,6 @@
                                                     <?= $validation->getError('contact_vendor'); ?>
                                                 </div>
                                             </div>
-                                            <!-- service -->
-                                            <div class="form-group">
-                                                <div class="service-group d-block ml-3">
-                                                    
-                                                        <span class="badge badge-geyser p-2">service</span>
-                                                    
-                                                    <a href="" class="badge badge-geyser p-2"><span class="fa fa-plus"></span> Add Service</a>
-                                                </div>
-                                            </div>
-                                            <!-- province -->
-                                            <div class="form-group">
-                                                <input class="form-control form-control-user <?= ($validation->hasError('province') ? 'is-invalid' : ''); ?>" id="province" name="province" placeholder="Province" value="<?= old('province'); ?>" autofocus>
-                                                <div class="invalid-feedback">
-                                                    <?= $validation->getError('province'); ?>
-                                                </div>
-                                            </div>
                                             <!-- city -->
                                             <div class="form-group">
                                                 <input class="form-control form-control-user <?= ($validation->hasError('city') ? 'is-invalid' : ''); ?>" id="city" name="city" placeholder="City" value="<?= old('city'); ?>" autofocus>
@@ -59,11 +43,10 @@
                                                     <?= $validation->getError('city'); ?>
                                                 </div>
                                             </div>
-                                            <!-- postal code -->
                                             <div class="form-group">
-                                                <input class="form-control form-control-user <?= ($validation->hasError('postal_code') ? 'is-invalid' : ''); ?>" id="postal_code" name="postal_code" placeholder="Postal Code" value="<?= old('postal_code'); ?>" autofocus>
+                                                <textarea class="form-control" placeholder='Vendor address' name='address' id="address" rows="5" style="border-radius: 20px;"><?= old('address'); ?></textarea>
                                                 <div class="invalid-feedback">
-                                                    <?= $validation->getError('postal_code'); ?>
+                                                    <?= $validation->getError('address'); ?>
                                                 </div>
                                             </div>
                                             <div class="row">

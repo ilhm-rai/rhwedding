@@ -136,9 +136,8 @@ class Main extends BaseController
         if (!$this->validate([
             'vendor_name' => 'required|is_unique[vendors.vendor_name]',
             'contact_vendor' => 'required',
-            'province' => 'required',
             'city' => 'required',
-            'postal_code' => 'required',
+            'address' => 'required',
 
         ])) {
             return redirect()->to('/vendor/register')->withInput();
@@ -156,8 +155,7 @@ class Main extends BaseController
             'vendor_level_id' => $level['id'],
             'contact_vendor' => $this->request->getVar('contact_vendor'),
             'city' => $this->request->getVar('city'),
-            'province' => $this->request->getVar('province'),
-            'postal_code' => $this->request->getVar('postal_code'),
+            'address' => $this->request->getVar('address'),
             'active' => 1,
         ]);
         $db = \Config\Database::connect();
