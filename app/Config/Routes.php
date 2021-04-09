@@ -168,7 +168,7 @@ $routes->post('cart/item/add/(:num)', 'Cart::addItemToCart/$1');
 // Notification Routes
 $routes->get('notification/item/get', 'notification::getJsonItemInUserNotification');
 // Checkout Routes
-
+$routes->post('checkout/order', 'Transaction\Order::insertTransaction');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

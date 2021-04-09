@@ -147,12 +147,28 @@ function deleteItem(productId) {
   });
 }
 
+<<<<<<< HEAD
+function getCheckoutItem() {
+    $.ajax( {
+        url: "/cart/item/get/group_by_vendor/checkout",
+        type: 'GET',
+        success: function ( data ) {
+            console.log( data );
+            var html = "";
+            var arrayItems = JSON.parse( data );
+            var total = 0;
+
+            html += `
+                <div class="content-frame mb-4 shadow">
+            `;
+=======
 function processItemIntoTransaction(productId, processIntoTransaction) {
   $.ajax({
     type: "POST",
     url: `/cart/item/${productId}/process_into_transaction/${processIntoTransaction}`,
   });
 }
+>>>>>>> 4672cc2a8a37adda505c822fbb3134bf70c570d7
 
 function getCheckoutItem() {
   $.ajax({
@@ -172,9 +188,15 @@ function getCheckoutItem() {
                         <!-- card product list -->
                     `;
 
+<<<<<<< HEAD
+                    items.forEach( item => {
+                        total += parseInt( item['price'] );
+                        html += `
+=======
           items.forEach((item) => {
             subTotal += parseInt(item["price"]);
             html += `
+>>>>>>> 4672cc2a8a37adda505c822fbb3134bf70c570d7
                             <div class="content-frame mb-3 shadow p-0">
                                 <div class="card card-product">
                                     <div class="row align-items-center">
@@ -198,6 +220,21 @@ function getCheckoutItem() {
                                 </div>
                             </div>
                         `;
+<<<<<<< HEAD
+                    } );
+
+                    html += `</div>`;
+                } );
+            } else {
+                html += '<div class="col-12 text-center"><p>Cart is empty.</p></div>';
+            }
+
+            $( '.js-item-checkout' ).html( html );
+            $( '.js-total' ).html( total.toLocaleString( 'id-ID', { style: 'currency', currency: 'IDR' } ) );
+        }
+    } );
+}
+=======
           });
 
           html += `</div>`;
@@ -213,3 +250,4 @@ function getCheckoutItem() {
     },
   });
 }
+>>>>>>> 4672cc2a8a37adda505c822fbb3134bf70c570d7
