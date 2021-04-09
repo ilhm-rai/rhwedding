@@ -2,4 +2,5 @@
 <link rel="stylesheet" href="<?= base_url('css/sb-admin-2.min.css'); ?>">
 <!-- <link rel="stylesheet" href="<?= base_url('css/swiper-bundle.min.css'); ?>"> -->
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<link rel="stylesheet" href="<?= base_url('css/bootstrap-datetimepicker.css'); ?>">
 <link rel="stylesheet" href="<?= base_url('css/style.css'); ?>">
