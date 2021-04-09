@@ -55,6 +55,7 @@
 <script>
     $(document).ready(function() {
         getItemInUserCartLimit();
+        getItemInUserNotificationLimit();
     });
 </script>
 <?= $this->endSection(); ?>

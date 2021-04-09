@@ -8,4 +8,5 @@ class NotificationModel extends Model
 {
     protected $table = 'notification';
     protected $allowedFields = ['user_id','message','link'];
+
 }

@@ -69,6 +69,7 @@
     </div>
     <?= $this->include('templates/_script.php'); ?>
     <script src="/js/cart.js"></script>
+    <script src="/js/notification.js"></script>
     <?= $this->renderSection('script'); ?>
 </body>
 

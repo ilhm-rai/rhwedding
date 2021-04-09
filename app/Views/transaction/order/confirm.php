@@ -55,7 +55,7 @@
                         <td><img src="/img/products/main-img/<?= $item['product_main_image']; ?>" alt="" class="w-100"></td>
                         <td><?= $item['product_name']; ?></td>
                         <td><?= $item['service_name']; ?></td>
-                        <td>Rp<?= number_format($item['sub_total_payment'],0,',','.'); ?>,-</td>
+                        <td>Rp<?= number_format($item['price'],0,',','.'); ?>,-</td>
                         <?php 
                             if($item['confirm'] == 1){
                                 $color = 'text-success';
@@ -94,7 +94,7 @@
                     </div>
                     <div class="col">
                     <input type="hidden" name="total" id='total' value='0'>
-                    <h4 class="font-weight-bold text-wild-watermelon total-screen">Rp<?= number_format($trans['payment'],0,',','.'); ?>,-</h4>
+                    <h4 class="font-weight-bold text-wild-watermelon total-screen">Rp<?= number_format($trans['subtotal'],0,',','.'); ?>,-</h4>
                     </div>
                     
                 </div>

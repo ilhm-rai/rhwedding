@@ -165,6 +165,8 @@ $routes->delete('cart/item/delete/(:num)', 'Cart::deleteItemInCart/$1');
 $routes->post('cart/item/(:any)/process_into_transaction/(:num)', 'Cart::updateProcessItemIntoTransaction/$1/$2');
 $routes->post('cart/item/add/(:num)', 'Cart::addItemToCart/$1');
 
+// Notification Routes
+$routes->get('notification/item/get', 'notification::getJsonItemInUserNotification');
 // Checkout Routes
 
 /**
