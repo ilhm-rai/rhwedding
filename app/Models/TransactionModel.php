@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class TransactionModel extends Model
 {
     protected $table = 'transaction';
-    protected $allowedFields = ['transaction_code', 'user_id ', 'total_pay','transaction_date','transaction_exp_date','payment_method','payment_date','payment_status','event_date'];
+    protected $allowedFields = ['transaction_code', 'user_id ', 'total_pay', 'transaction_date', 'transaction_exp_date', 'payment_method', 'payment_date', 'payment_status', 'event_date'];
     protected $db;
 
     public function __construct()
@@ -63,5 +63,26 @@ class TransactionModel extends Model
         AND `t`.`transaction_code` = '$code'
         ";
         return $this->db->query($query)->getResultArray();
+    }
+
+    public function insertTransaction(array $data)
+    {
+        $this->builder = $this->db->table('transaction');
+        $this->builder->insert($data);
+    }
+
+    public function insertTransactionDetail(array $items)
+    {
+        $this->builder = $this->db->table('transaction_detail');
+        return $this->builder->insertBatch($items);
+    }
+
+    public function getIdTransactionByCode($transactionCode)
+    {
+        $this->builder = $this->db->table('transaction');
+        $this->builder->select('id');
+        $query = $this->builder->getWhere(['transaction_code' => $transactionCode]);
+        $row = $query->getRowArray();
+        return $row['id'];
     }
 }

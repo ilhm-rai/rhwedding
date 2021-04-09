@@ -166,7 +166,7 @@ $routes->post('cart/item/(:any)/process_into_transaction/(:num)', 'Cart::updateP
 $routes->post('cart/item/add/(:num)', 'Cart::addItemToCart/$1');
 
 // Checkout Routes
-
+$routes->post('checkout/order', 'Transaction\Order::insertTransaction');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

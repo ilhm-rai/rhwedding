@@ -174,7 +174,7 @@ function getCheckoutItem() {
             console.log( data );
             var html = "";
             var arrayItems = JSON.parse( data );
-            var subTotal = 0;
+            var total = 0;
 
             html += `
                 <div class="content-frame mb-4 shadow">
@@ -188,7 +188,7 @@ function getCheckoutItem() {
                     `;
 
                     items.forEach( item => {
-                        subTotal += parseInt( item['price'] );
+                        total += parseInt( item['price'] );
                         html += `
                             <div class="content-frame mb-3 shadow p-0">
                                 <div class="card card-product">
@@ -231,8 +231,6 @@ function getCheckoutItem() {
             }
 
             $( '.js-item-checkout' ).html( html );
-            var total = subTotal + 10000;
-            $( '.js-subtotal' ).html( subTotal.toLocaleString( 'id-ID', { style: 'currency', currency: 'IDR' } ) );
             $( '.js-total' ).html( total.toLocaleString( 'id-ID', { style: 'currency', currency: 'IDR' } ) );
         }
     } );

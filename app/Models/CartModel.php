@@ -37,7 +37,7 @@ class CartModel extends Model
     {
         $cart_id = $this->getUserCart('id');
         $this->builder = $this->db->table('cart_detail as cd');
-        $this->builder->select('cd.id as cart_detail_id, p.id as product_id, v.id as vendor_id, p.product_name, p.price, p.product_main_image, p.slug, v.vendor_name, s.service_name, cd.process_into_transaction');
+        $this->builder->select('cd.id as cart_detail_id, p.id as product_id, v.id as vendor_id, p.product_name, p.price, p.product_main_image, p.slug, v.vendor_name, v.vendor_address, s.service_name, cd.process_into_transaction');
         $this->builder->join('products as p', 'p.id = cd.product_id');
         $this->builder->join('vendors as v', 'v.id = p.vendor_id');
         $this->builder->join('services as s', 's.id = p.product_service_id');
@@ -47,6 +47,17 @@ class CartModel extends Model
 
         $query =  $this->builder->getWhere($where);
         return $query->getResultArray();
+    }
+
+    public function getInvoice()
+    {
+        $cart_id = $this->getUserCart('id');
+        $this->builder = $this->db->table('cart_detail as cd');
+        $this->builder->selectSum('p.price');
+        $this->builder->join('products as p', 'p.id = cd.product_id');
+        $query = $this->builder->getWhere(['cart_id' => $cart_id, 'process_into_transaction' => 1]);
+        $row = $query->getRow();
+        return $row->price;
     }
 
     public function getItemInUserCartLimit($limit)
@@ -118,5 +129,12 @@ class CartModel extends Model
 
         $this->builder = $this->db->table('cart_detail');
         return $this->builder->update(['process_into_transaction' => $process_into_transaction], ['product_id' => $product_id, 'cart_id' => $cart_id]);
+    }
+
+    public function deleteItemAfterTransaction()
+    {
+        $cart_id = $this->getUserCart('id');
+        $this->builder = $this->db->table('cart_detail');
+        $this->builder->delete(['process_into_transaction' => 1, 'cart_id' => $cart_id]);
     }
 }

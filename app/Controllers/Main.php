@@ -91,7 +91,8 @@ class Main extends BaseController
     {
         $data = [
             'title' => 'RH Wedding Planner',
-            'user' => $this->userModel->getUserBy(user_id())
+            'user' => $this->userModel->getUserBy(user_id()),
+            'items' => $this->cartModel->getItemInUserCart(['process_into_transaction' => 1])
         ];
 
         return view('main/checkout', $data);
