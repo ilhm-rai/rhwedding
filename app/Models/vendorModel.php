@@ -28,13 +28,26 @@ class VendorModel extends Model
 
     public function getVendorBy($id)
     {
-        $query = "SELECT `v`.`id` AS `vendor_id` ,`v`.`vendor_name`, `v`.`vendor_logo`,`v`.`vendor_billboard`,`v`.`vendor_description`,`vl`.`name` AS `vendor_level` ,`v`.`active` AS `vendor_active`, `v`.`created_at` AS `vendor_create`
+        $query = "SELECT `v`.`id` AS `vendor_id` ,`v`.`vendor_name`, `v`.`vendor_logo`,`v`.`vendor_billboard`,`v`.`vendor_description`,`vl`.`name` AS `vendor_level` ,`v`.`active` AS `vendor_active`, `v`.`created_at` AS `vendor_create`, `v`.`slug`
         FROM `vendors` AS `v`
         LEFT JOIN `users` AS `u`
         ON `u`.`id` = `v`.`user_id`
         JOIN `vendors_level` AS `vl`
         ON `v`.`vendor_level_id` = `vl`.`id`
         WHERE `v`.`id` = $id
+        ";
+        return $this->db->query($query)->getRowArray();
+    }
+
+    public function getVendorBySlug($slug)
+    {
+        $query = "SELECT `v`.*, `vl`.`name` AS 'level'
+        FROM `vendors` AS `v`
+        LEFT JOIN `users` AS `u`
+        ON `u`.`id` = `v`.`user_id`
+        JOIN `vendors_level` AS `vl`
+        ON `v`.`vendor_level_id` = `vl`.`id`
+        WHERE `v`.`slug` = '$slug'
         ";
         return $this->db->query($query)->getRowArray();
     }
@@ -80,7 +93,7 @@ class VendorModel extends Model
     // suggest search
     public function getVendorsSuggest($keyword)
     {
-        $query = "SELECT vendor_name, vendor_logo
+        $query = "SELECT vendor_name, vendor_logo, slug
             FROM `vendors` AS `v`
             WHERE `vendor_name` LIKE '$keyword%'
             LIMIT 2
@@ -90,7 +103,7 @@ class VendorModel extends Model
 
     public function getVendorsByKeyword($keyword)
     {
-        $query = "SELECT vendor_name, vendor_logo
+        $query = "SELECT vendor_name, vendor_logo, slug
         FROM `vendors` AS `v`
         WHERE `vendor_name` LIKE '$keyword%'
 

@@ -32,6 +32,7 @@ function cari(keyword) {
       let products,
         vendors = Array();
       result = JSON.parse(res);
+      console.log(result);
       vendors = result["vendors"];
       products = result["products"];
       let listVendor = "";
@@ -43,7 +44,7 @@ function cari(keyword) {
       }
       vendors.forEach((vendor) => {
         listVendor += `
-        <a href="/vendor/${vendor["id"]}" class="list-group-item list-group-item-action">
+        <a href="/vendor/${vendor["slug"]}" class="list-group-item list-group-item-action">
           <div class="row align-items-center">
               <div class="col-2">
                   <img class="img-product-suggestion rounded-circle" src="/img/vendors/logo/${vendor["vendor_logo"]}">
@@ -62,7 +63,7 @@ function cari(keyword) {
       }
       products.forEach((product) => {
         listProduct += `
-        <a href="/product/${product["product_code"]}" class="list-group-item list-group-item-action">
+        <a href="/${product["slug"]}" class="list-group-item list-group-item-action">
             <div class="row align-items-center">
                 <div class="col-2">
                     <img class="img-product-suggestion rounded-circle" src="/img/products/main-img/${product["product_main_image"]}">
@@ -174,50 +175,12 @@ $(".btn-delete").on("click", function (e) {
   });
 });
 
-// accept transaction
-let btnConfirm = document.querySelectorAll(".btn-accept");
-btnConfirm.forEach((e) => {
-  e.addEventListener("click", () => {
-    const dataId = $(e).data("detailid");
-    const confirm = $(e).data("confirm");
-    if (confirm != 1) {
-      $.ajax({
-        type: "post",
-        data: { dataId: dataId },
-        url: "/transaction/accept",
-        success: function (res) {
-          result = JSON.parse(res);
-          console.log(result);
-          $(`.status-${result["id"]}`).html(`Accepted <i class="fas fa-check"></i>`);
-          $(`.status-${result["id"]}`).addClass("text-success");
-          $(`.status-${result["id"]}`).removeClass("text-warning");
-          $(`.status-${result["id"]}`).removeClass("text-danger");
-        },
-      });
-    }
-  });
-});
-
-// Reject transaction
+// btn reject order
 let btnReject = document.querySelectorAll(".btn-reject");
 btnReject.forEach((e) => {
   e.addEventListener("click", () => {
-    const dataId = $(e).data("detailid");
-    const confirm = $(e).data("confirm");
-    if (confirm != 0) {
-      $.ajax({
-        type: "post",
-        data: { dataId: dataId },
-        url: "/transaction/reject",
-        success: function (res) {
-          result = JSON.parse(res);
-          console.log(result);
-          $(`.status-${result["id"]}`).html(`Rejected <i class="fas fa-times"></i>`);
-          $(`.status-${result["id"]}`).addClass("text-danger");
-          $(`.status-${result["id"]}`).removeClass("text-warning");
-          $(`.status-${result["id"]}`).removeClass("text-success");
-        },
-      });
-    }
+    let id = $(e).data("id");
+    console.log(id);
+    $("#detail-id").val(id);
   });
 });

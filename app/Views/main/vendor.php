@@ -2,16 +2,16 @@
 
 <?= $this->section('banner'); ?>
 <div class="vendor-profile">
-    <img src="/img/vendors/banners/1.jpg" alt="" class="cover">
+    <img src="/img/vendors/banners/<?= $vendor['vendor_banner']; ?>" alt="" class="cover">
     <div class="container-fluid">
         <div class="content-frame mb-5 shadow">
             <div class="row mb-4 align-items-center">
                 <div class="col-2">
-                    <img src="/img/vendors/logo/logo.png" alt="" class="img-profile" width="100px">
+                    <img src="/img/vendors/logo/<?= $vendor['vendor_logo']; ?>" alt="" class="img-profile" width="100px">
                 </div>
                 <div class="col-8">
-                    <p class="font-weight-bold">RH Wedding Planner</p>
-                    <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> Platinum Vendor</span>
+                    <p class="font-weight-bold"><?= $vendor['vendor_name']; ?></p>
+                    <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> <?= $vendor['level']; ?> Vendor</span>
                 </div>
             </div>
         </div>
@@ -20,31 +20,34 @@
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
 <div class="container-fluid">
-    <ul class="nav vendor-nav mb-3">
+    <!-- <ul class="nav vendor-nav mb-3">
         <li class="nav-item">
             <a class="nav-link active" href="#">Vendor Store</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Products</a>
         </li>
-    </ul>
+    </ul> -->
+    <?php if($vendor['vendor_billboard']) :?>
     <div class="vendor-video">
         <video class="object-fit" controls>
-            <source src="/video/vendors/billboard/rhvideo.mp4" type="video/mp4">
+            <source src="/video/vendors/billboard/<?= $vendor['vendor_billboard']; ?>" type="video/mp4">
         </video>
     </div>
+    <?php endif ?>
     <div class="content-frame mt-5 shadow mb-5">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="content-heading mb-0">All Products</h1>
         </div>
         <div class="row">
+        <?php foreach($products as $product) :?>
             <div class="col-3">
-                <a href="">
+                <a href="/<?= $product['slug']; ?>">
                     <div class="card card-product">
-                        <img src="/img/products/6.jpg" class="card-img-top" alt="...">
+                        <img src="/img/products/main-img/<?= $product['product_main_image']; ?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Davinci Photografi</h5>
-                            <p class="main-product-price">Rp. 4.000.000</p>
+                            <h5 class="card-title"><?= $product['product_name']; ?></h5>
+                            <p class="main-product-price">Rp<?= number_format($product['price'], 0, ',', '.'); ?>,-</p>
                             <div class="rating">
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star"></span>
@@ -52,198 +55,12 @@
                                 <span class="fa fa-star"></span>
                                 <span class="fa fa-star unrate"></span>
                             </div>
-                            <p class="main-product-location">Tasikmalaya</p>
+                            <p class="main-product-location"><?= $vendor['city']; ?></p>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/7.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/8.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/9.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/2.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/3.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/4.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/5.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/10.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/11.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card card-product">
-                    <img src="/img/products/12.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Davinci Photografi</h5>
-                        <p class="main-product-price">Rp. 4.000.000</p>
-                        <div class="rating">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star unrate"></span>
-                        </div>
-                        <p class="main-product-location">Tasikmalaya</p>
-                    </div>
-                </div>
-            </div>
+        <?php endforeach; ?>
         </div>
         <div class="text-center">
             <nav aria-label="Page navigation example" class="d-inline-block">

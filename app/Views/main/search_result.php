@@ -18,7 +18,7 @@
                 <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> Platinum Vendor</span>
             </div>
             <div class="col-2">
-            <a href="/vendors/products/add" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill">Visit The Vendor</a>
+            <a href="/vendor/<?= $vendor['slug']; ?>" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill">Visit The Vendor</a>
             </div>
         </div>
     </div>

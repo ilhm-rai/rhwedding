@@ -8,5 +8,4 @@
 <script src="https://cdn.tiny.cloud/1/gpe91r6ssffac21qy6khpp92qa4cxrxkjmhawlmdb63l65ho/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js" type="text/javascript"></script>
 <script src="<?= base_url('js/bootstrap-datetimepicker.js'); ?>"></script>
-<script src=" <?= base_url('js/suggestions.js'); ?>"></script>
 <script src="<?= base_url('js/script.js'); ?>"></script>

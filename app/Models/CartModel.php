@@ -93,7 +93,7 @@ class CartModel extends Model
         $this->builder->select('v.vendor_name, vendor_id');
         $this->builder->join('products as p', 'cd.product_id = p.id');
         $this->builder->join('vendors as v', 'p.vendor_id = v.id');
-        $this->builder->groupBy('v.vendor_name');
+        $this->builder->groupBy('p.vendor_id');
         $this->builder->orderBy('cd.created_at', 'DESC');
         $query =  $this->builder->getWhere(['cart_id' => $cart]);
         return $query->getResultArray();
@@ -111,7 +111,7 @@ class CartModel extends Model
             $where['vendor_id'] = $vendor['vendor_id'];
             $data[] = $this->getItemInUserCart($where);
         }
-
+        // dd($vendors);
         return $data;
     }
 

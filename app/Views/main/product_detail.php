@@ -9,22 +9,26 @@
             <div class="swiper-container main gallery-top">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"><img src="/img/products/main-img/<?= $product['product_main_image']; ?>" alt="" class="img-main"></div>
-                    <?php foreach ($productImg as $img) : ?>
-                        <div class="swiper-slide"><img src="/img/products/other/<?= $img['image']; ?>" alt="" class="img-main"></div>
-                    <?php endforeach; ?>
+                        <?php foreach ($productImg as $img) : ?>
+                            <div class="swiper-slide"><img src="/img/products/other/<?= $img['image']; ?>" alt="" class="img-main"></div>
+                        <?php endforeach; ?>
                 </div>
                 <!-- Add Arrows -->
+                <?php if(count($productImg) > 0) :?>
                 <div class="swiper-button-next swiper-button-white"></div>
                 <div class="swiper-button-prev swiper-button-white"></div>
+                <?php endif; ?>
             </div>
+            <?php if(count($productImg) > 0) :?>
             <div class="swiper-container gallery-thumbs">
                 <div class="img-second swiper-wrapper">
-                    <div class="swiper-slide"><img src="/img/products/main-img/<?= $product['product_main_image']; ?>" alt="" class=""></div>
-                    <?php foreach ($productImg as $img) : ?>
-                        <div class="swiper-slide"><img src="/img/products/other/<?= $img['image']; ?>" alt="" class=""></div>
-                    <?php endforeach; ?>
+                    <div class="swiper-slide"><img src="/img/products/main-img/<?= $product['product_main_image']; ?>" alt="" class=""></div>     
+                        <?php foreach ($productImg as $img) : ?>
+                            <div class="swiper-slide"><img src="/img/products/other/<?= $img['image']; ?>" alt="" class=""></div>
+                        <?php endforeach; ?>
                 </div>
             </div>
+            <?php endif; ?>
         </div>
 
         <div class="col-sm-6 pl-4">
@@ -41,17 +45,6 @@
             (<?= $product['total_review']; ?> reviews)
             </p>
             <h2 class="product-price">Rp<?= number_format($product['price'], 0, ',', '.'); ?>,-</h2>
-            <p class="product-qty">Quantity</p>
-            <div class="input-group w-auto d-inline-flex">
-                <div class="input-group-prepend">
-                    <button class="input-group-text">-</button>
-                </div>
-                <input type="text" class="form-control text-center" id="qty" name="qty" value="1" style="max-width: 60px;">
-                <div class="input-group-append">
-                    <button class="input-group-text">+</button>
-                </div>
-            </div>
-            <p class="small mt-1">Minimal order 1</p>
             <p class="product-note">Add Note</p>
             <textarea class="form-control" id="productDescription" rows="4" style="border-radius: 15px;"></textarea>
             <div class="mt-4">
@@ -71,7 +64,7 @@
                 <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> <?= $vendor['vendor_level']; ?> Vendor</span>
             </div>
             <div class="col-2">
-                <a href="/vendor/<?= $vendor['vendor_id']; ?>" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill">Visit The Vendor</a>
+                <a href="/vendor/<?= $vendor['slug']; ?>" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill">Visit The Vendor</a>
             </div>
         </div>
     </div>
