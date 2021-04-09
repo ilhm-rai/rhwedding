@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\UsersModel;
+
 /**
  * Class BaseController
  *
@@ -28,7 +30,7 @@ class BaseController extends Controller
 	 *
 	 * @var array
 	 */
-	protected $helpers = ['auth'];
+	protected $helpers = ['auth', 'form'];
 	/**
 	 * Constructor.
 	 */
