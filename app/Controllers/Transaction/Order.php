@@ -65,12 +65,11 @@ class Order extends BaseController
         $order = $this->transDetailModel->getWhere(['id' => $id])->getRowArray();
         $this->notificationModel->save([
             'user_id' => $userId,
-            'message' => 'Pesanan dengan'. $order['id']. 'telah disetujui',
+            'message' => 'Pesanan dengan' . $order['id'] . 'telah disetujui',
             'link' => ''
         ]);
         session()->setFlashdata('message', 'Transaction has been successfully Accepted');
         return redirect()->to('/transaction/confirm/' . $code);
-
     }
 
     public function reject()
@@ -89,7 +88,7 @@ class Order extends BaseController
 
         $this->notificationModel->save([
             'user_id' => $userId,
-            'message' => 'Pesanan dengan'. $order['id']. 'ditolak',
+            'message' => 'Pesanan dengan' . $order['id'] . 'ditolak',
             'link' => ''
         ]);
         session()->setFlashdata('message', 'Transaction has been successfully Rejected');
