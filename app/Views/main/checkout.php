@@ -87,13 +87,6 @@ function isUserOrderVenue(array $items)
 
 <?= $this->section('script'); ?>
 <script>
-    const swiper = new Swiper('.swiper-container', {
-        autoplay: {
-            delay: 4000,
-        },
-        loop: true,
-    });
-
     $('#event-date').datetimepicker({
         format: 'L'
     });
