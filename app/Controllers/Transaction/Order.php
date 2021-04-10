@@ -19,21 +19,15 @@ class Order extends BaseController
     protected $request;
     protected $transactionModel;
     protected $transDetailModel;
-<<<<<<< HEAD
     protected $cartModel;
-
-=======
     protected $notificationModel;
->>>>>>> 4672cc2a8a37adda505c822fbb3134bf70c570d7
+
     public function __construct()
     {
         $this->transactionModel = new TransactionModel();
         $this->transDetailModel = new TransDetailModel();
-<<<<<<< HEAD
         $this->cartModel = new CartModel();
-=======
         $this->notificationModel = new NotificationModel();
->>>>>>> 4672cc2a8a37adda505c822fbb3134bf70c570d7
     }
 
     public function index()
@@ -59,17 +53,10 @@ class Order extends BaseController
         return view('transaction/order/confirm', $data);
     }
 
-<<<<<<< HEAD
-    public function accept()
-    {
-        $id = $this->request->getVar('dataId');
-
-=======
     public function accept($id)
     {
         $code = $this->request->getVar('code');
         $userId = $this->request->getVar('user-id');
->>>>>>> 4672cc2a8a37adda505c822fbb3134bf70c570d7
         $this->transDetailModel->save([
             'id' => $id,
             'confirm' => 1,
