@@ -154,28 +154,6 @@ function processItemIntoTransaction( productId, processIntoTransaction ) {
     } );
 }
 
-<<<<<<< HEAD
-function processItemIntoTransaction(productId, processIntoTransaction) {
-  $.ajax({
-    type: "POST",
-    url: `/cart/item/${productId}/process_into_transaction/${processIntoTransaction}`,
-  });
-}
-
-function getCheckoutItem() {
-  $.ajax({
-    url: "/cart/item/get/group_by_vendor/checkout",
-    type: "GET",
-    success: function (data) {
-      console.log(data);
-      var html = "";
-      var arrayItems = JSON.parse(data);
-      var total = 0;
-
-      if (arrayItems.length > 0) {
-        arrayItems.forEach(function (items, index) {
-          html += `
-=======
 function getCheckoutItem() {
     $.ajax( {
         url: "/cart/item/get/group_by_vendor/checkout",
@@ -189,21 +167,14 @@ function getCheckoutItem() {
             if ( arrayItems.length > 0 ) {
                 arrayItems.forEach( function ( items, index ) {
                     html += `
->>>>>>> 330ea00f616f39491bb266e21f8a42e51a7bc9ac
                     <div class="content-frame mb-4 shadow">
                         <p class="font-weight-bold">${items[index]["vendor_name"]} <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> Platinum Vendor</span></p>
                         <!-- card product list -->
                     `;
 
-<<<<<<< HEAD
-          items.forEach((item) => {
-            total += parseInt(item["price"]);
-            html += `
-=======
                     items.forEach( item => {
                         total += parseInt( item['price'] );
                         html += `
->>>>>>> 330ea00f616f39491bb266e21f8a42e51a7bc9ac
                             <div class="content-frame mb-3 shadow p-0">
                                 <div class="card card-product">
                                     <div class="row align-items-center">
@@ -227,20 +198,6 @@ function getCheckoutItem() {
                                 </div>
                             </div>
                         `;
-<<<<<<< HEAD
-          });
-
-          html += `</div>`;
-        });
-      } else {
-        html += '<div class="col-12 text-center"><p>Cart is empty.</p></div>';
-      }
-
-      $(".js-item-checkout").html(html);
-      $(".js-total").html(total.toLocaleString("id-ID", { style: "currency", currency: "IDR" }));
-    },
-  });
-=======
                     } );
 
                     html += `</div>`;
@@ -253,5 +210,4 @@ function getCheckoutItem() {
             $( '.js-total' ).html( total.toLocaleString( 'id-ID', { style: 'currency', currency: 'IDR' } ) );
         }
     } );
->>>>>>> 330ea00f616f39491bb266e21f8a42e51a7bc9ac
 }
