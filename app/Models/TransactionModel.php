@@ -17,7 +17,18 @@ class TransactionModel extends Model
 
     public function getTransByUser($id)
     {
-        $query = "SELECT `t`.*, COUNT(`td`.`id`) AS amount, SUM(IF(`td`.`confirm` = 1,`p`.`price`,0)) AS `subtotal`
+        
+        // $query = "SELECT `t`.*, COUNT(`td`.`id`) AS amount, SUM(IF(`td`.`confirm` = 1,`p`.`price`,0)) AS `subtotal`
+        // FROM `transaction` AS `t`
+        // JOIN `transaction_detail` AS `td`
+        // ON `t`.`id` = `td`.`transaction_id`
+        // JOIN `products` As `p`
+        // ON `td`.`product_id` = `p`.`id`
+        // JOIN `vendors` AS `v`
+        // ON `p`.`vendor_id` = `v`.`id`
+        // WHERE `v`.`user_id` = $id
+        // ";
+        $query = "SELECT `t`.`id`, `t`.`transaction_code`, `t`.`event_date`,COUNT(`td`.`id`) AS amount, SUM(IF(`td`.`confirm` = 1,`p`.`price`,0)) AS `subtotal`
         FROM `transaction` AS `t`
         JOIN `transaction_detail` AS `td`
         ON `t`.`id` = `td`.`transaction_id`
@@ -26,6 +37,7 @@ class TransactionModel extends Model
         JOIN `vendors` AS `v`
         ON `p`.`vendor_id` = `v`.`id`
         WHERE `v`.`user_id` = $id
+        GROUP BY `t`.`transaction_code`
         ";
         return $this->db->query($query)->getResultArray();
     }

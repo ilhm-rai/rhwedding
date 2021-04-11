@@ -7,6 +7,7 @@ use App\Models\CartModel;
 use App\Models\TransactionModel;
 use App\Models\TransDetailModel;
 use App\Models\NotificationModel;
+use App\Models\ProductModel;
 
 class Order extends BaseController
 {
@@ -21,6 +22,7 @@ class Order extends BaseController
     protected $transDetailModel;
     protected $cartModel;
     protected $notificationModel;
+    protected $productModel;
 
     public function __construct()
     {
@@ -28,6 +30,7 @@ class Order extends BaseController
         $this->transDetailModel = new TransDetailModel();
         $this->cartModel = new CartModel();
         $this->notificationModel = new NotificationModel();
+        $this->productModel = new ProductModel();
     }
 
     public function index()
@@ -126,7 +129,9 @@ class Order extends BaseController
             $transaction_detail[] = [
                 'transaction_id' => $transaction_id,
                 'product_id' => $item['product_id']
-            ];
+            ];  
+            
+            
         }
 
         $isInsertItemSuccess = $this->transactionModel->insertTransactionDetail($transaction_detail);
@@ -134,5 +139,24 @@ class Order extends BaseController
         if ($isInsertItemSuccess != false) {
             $this->cartModel->deleteItemAfterTransaction();
         }
+
+         // kirim notifikasi pesanan barang kepada owner vendor
+         foreach ($items as $item ) {
+            $product = $this->productModel->getProductBy($item['product_id']);
+            $message = 'New orders for ' .$item['product_name'] .' require confirmation';
+            $this->notificationModel->save([
+                'user_id' => $product['owner'],
+                'message' =>  $message,
+                'link' => '/transaction/confirm/'. $transaction_code
+            ]);
+         }
+        //  kirim notifikasi kepada pembeli
+        $message_buyer = 'Order with code ' . $transaction_code . ' is being processed';
+        $this->notificationModel->save([
+            'user_id' => user()->id,
+            'message' => $message_buyer,
+            'link' => '/transaction/'. $transaction_code
+        ]);
+        
     }
 }

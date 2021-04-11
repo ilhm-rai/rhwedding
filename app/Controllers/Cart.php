@@ -49,6 +49,20 @@ class Cart extends BaseController
         return json_encode(count($cartItem));
     }
 
+    public function buyNow($productId)
+    {
+        // dd('ok');
+        $cart = $this->getUserCart();
+        $data = [
+            'cart_id' => $cart['id'],
+            'product_id' => $productId,
+            'process_into_transaction' =>1
+        ];
+
+        $this->CartModel->addItemToCart($data);
+        return redirect()->to('/cart'); 
+    }
+
     protected function getUserCart()
     {
         return $this->CartModel->getUserCart();

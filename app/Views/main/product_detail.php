@@ -14,12 +14,12 @@
                         <?php endforeach; ?>
                 </div>
                 <!-- Add Arrows -->
-                <?php if(count($productImg) > 0) :?>
+                
                 <div class="swiper-button-next swiper-button-white"></div>
                 <div class="swiper-button-prev swiper-button-white"></div>
-                <?php endif; ?>
+               
             </div>
-            <?php if(count($productImg) > 0) :?>
+            
             <div class="swiper-container gallery-thumbs">
                 <div class="img-second swiper-wrapper">
                     <div class="swiper-slide"><img src="/img/products/main-img/<?= $product['product_main_image']; ?>" alt="" class=""></div>     
@@ -28,7 +28,7 @@
                         <?php endforeach; ?>
                 </div>
             </div>
-            <?php endif; ?>
+
         </div>
 
         <div class="col-sm-6 pl-4">
@@ -48,8 +48,19 @@
             <p class="product-note">Add Note</p>
             <textarea class="form-control" id="productDescription" rows="4" style="border-radius: 15px;"></textarea>
             <div class="mt-4">
+        
                 <a class="btn btn-action rounded-pill js-add-to-cart" data-userid="<?= (logged_in()) ? user()->id : 'false'; ?>" data-productid="<?= $product['id']; ?>"><span class="fa fa-shopping-cart"></span> Add to Cart</a>
-                <a class="btn btn-wild-watermelon rounded-pill">Buy Now</a>
+                <?php if(logged_in()): ?>
+                    <form action="/buy/<?= $product['id']; ?>" method='post' class='d-inline'>
+                        <button type='submit' class="btn btn-wild-watermelon rounded-pill"  data-userid="<?= (logged_in()) ? user()->id : 'false'; ?>" data-productid="<?= $product['id']; ?>">Buy Now</button>
+                    </form>
+                <?php else : ?>
+                    <form action="/mustlogin" method='post' class='d-inline'>
+                        <button type='submit' class="btn btn-wild-watermelon rounded-pill"  data-userid="<?= (logged_in()) ? user()->id : 'false'; ?>" data-productid="<?= $product['id']; ?>">Buy Now</button>
+                    </form>
+                <?php endif; ?>
+
+                
             </div>
         </div>
     </div>
@@ -117,12 +128,6 @@
 
 <?= $this->section('script'); ?>
 <script>
-    // const swiper = new Swiper('.swiper-container', {
-    //     autoplay: {
-    //         delay: 4000,
-    //     },
-    //     loop: true,
-    // });
     var galleryThumbs = new Swiper('.gallery-thumbs', {
         spaceBetween: 10,
         slidesPerView: 4,

@@ -49,14 +49,12 @@ class ProductModel extends Model
     }
     public function getProductBy($id)
     {
-        $query = "SELECT `p`.*
+        $query = "SELECT `p`.*, `v`.`user_id` AS `owner`
         FROM `products` AS `p`
         JOIN `vendors` AS `v`
         ON `p`.`vendor_id` = `v`.`id`
-        JOIN `vendors_services` AS `vs`
-        ON `p`.`product_service_id` = `vs`.`id`
         JOIN `services` AS `s`
-        ON `vs`.`service_id` = `s`.`id`
+        ON `p`.`product_service_id` = `s`.`id`
         WHERE `p`.`id` = $id
     ";
         return $this->db->query($query)->getRowArray();

@@ -1,23 +1,23 @@
 function getItemInUserCartLimit() {
-    $.ajax( {
-        url: "/cart/item/get",
-        type: "GET",
-        success: function ( data ) {
-            var html = "";
-            var items = JSON.parse( data );
-            const cartItem = $( ".js-count-cart-item" );
+  $.ajax({
+    url: "/cart/item/get",
+    type: "GET",
+    success: function (data) {
+      var html = "";
+      var items = JSON.parse(data);
+      const cartItem = $(".js-count-cart-item");
 
-            if ( items.length > 0 ) {
-                cartItem.removeClass( "d-none" );
-                cartItem.html( items.length );
-            } else {
-                cartItem.addClass( "d-none" );
-            }
+      if (items.length > 0) {
+        cartItem.removeClass("d-none");
+        cartItem.html(items.length);
+      } else {
+        cartItem.addClass("d-none");
+      }
 
-            var itemsLimit = items.splice( 0, 5 );
+      var itemsLimit = items.splice(0, 5);
 
-            itemsLimit.forEach( ( item ) => {
-                html += `
+      itemsLimit.forEach((item) => {
+        html += `
                     <a class="dropdown-item d-flex align-items-center" href="#">
                         <div class="mr-3">
                             <div class="dropdown-list-image">
@@ -27,36 +27,36 @@ function getItemInUserCartLimit() {
                         <div>
                             <span class="font-weight-bold">${item["product_name"]}</span>
                             <div class="small text-gray-500">
-                            ${parseInt( item["price"] ).toLocaleString( "id-ID", { style: "currency", currency: "IDR" } )}
+                            ${parseInt(item["price"]).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}
                             </div>
                         </div>
                     </a>
                 `;
-            } );
+      });
 
-            $( ".js-item-cart" ).html( html );
-        },
-    } );
+      $(".js-item-cart").html(html);
+    },
+  });
 }
 
 function getItemInUserCart() {
-    $.ajax( {
-        url: "/cart/item/get/group_by_vendor",
-        type: "GET",
-        success: function ( data ) {
-            var html = "";
-            var arrayItems = JSON.parse( data );
+  $.ajax({
+    url: "/cart/item/get/group_by_vendor",
+    type: "GET",
+    success: function (data) {
+      var html = "";
+      var arrayItems = JSON.parse(data);
 
-            if ( arrayItems.length > 0 ) {
-                arrayItems.forEach( function ( items, index ) {
-                    html += `
+      if (arrayItems.length > 0) {
+        arrayItems.forEach(function (items, index) {
+          html += `
                         <div class="content-frame mb-4 shadow">
                         <p class="font-weight-bold">${items[index]["vendor_name"]} <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> Platinum Vendor</span></p>
                         <!-- card product list -->
                     `;
 
-                    items.forEach( ( item ) => {
-                        html += `
+          items.forEach((item) => {
+            html += `
                             <div class="content-frame mb-3 shadow p-0">
                                 <div class="card card-product">
                                     <div class="row align-items-center">
@@ -67,7 +67,7 @@ function getItemInUserCart() {
                                             <div class="col-8">
                                                 <h5 class="card-title">${item["product_name"]}</h5>
                                                 <p class="main-product-price">
-                                                ${parseInt( item["price"] ).toLocaleString( "id-ID", { style: "currency", currency: "IDR" } )}
+                                                ${parseInt(item["price"]).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}
                                                 </p>
                                                 <p class="main-product-location">Tasikmalaya</p>
                                             </div>
@@ -89,92 +89,92 @@ function getItemInUserCart() {
                                 </div>
                             </div>
                         `;
-                    } );
+          });
 
-                    html += `</div>`;
-                } );
-            } else {
-                html += '<div class="col-12 text-center"><p>Cart is empty.</p></div>';
-            }
+          html += `</div>`;
+        });
+      } else {
+        html += '<div class="col-12 text-center"><p>Cart is empty.</p></div>';
+      }
 
-            $( ".js-item-group-by-vendor" ).html( html );
-            getItemInUserCartLimit();
-        },
-    } ).then( function () {
-        $( ".js-delete-item" ).on( "click", function ( e ) {
-            e.preventDefault();
-            var $el = $( e.currentTarget );
-            var productId = $el.data( "item-id" );
-            deleteItem( productId );
-        } );
+      $(".js-item-group-by-vendor").html(html);
+      getItemInUserCartLimit();
+    },
+  }).then(function () {
+    $(".js-delete-item").on("click", function (e) {
+      e.preventDefault();
+      var $el = $(e.currentTarget);
+      var productId = $el.data("item-id");
+      deleteItem(productId);
+    });
 
-        $( ".js-process-into-transaction" ).on( "click", function ( e ) {
-            var $el = $( e.currentTarget );
-            var slug = $el.attr( "id" );
-            var processIntoTransaction = 0;
+    $(".js-process-into-transaction").on("click", function (e) {
+      var $el = $(e.currentTarget);
+      var slug = $el.attr("id");
+      var processIntoTransaction = 0;
 
-            if ( $el.is( ":checked" ) ) {
-                processIntoTransaction = 1;
-            }
+      if ($el.is(":checked")) {
+        processIntoTransaction = 1;
+      }
 
-            processItemIntoTransaction( slug, processIntoTransaction );
-        } );
-    } );
+      processItemIntoTransaction(slug, processIntoTransaction);
+    });
+  });
 }
 
-function addToCart( productId ) {
-    $.ajax( {
-        url: "cart/item/add/" + productId,
-        type: "POST",
-        success: function ( data ) {
-            console.log( data );
-            if ( data ) {
-                $( ".js-count-cart-item" ).removeClass( "d-none" );
-                $( ".js-count-cart-item" ).html( data );
-                getItemInUserCartLimit();
-            }
-        },
-    } );
+function addToCart(productId) {
+  $.ajax({
+    url: "cart/item/add/" + productId,
+    type: "POST",
+    success: function (data) {
+      console.log(data);
+      if (data) {
+        $(".js-count-cart-item").removeClass("d-none");
+        $(".js-count-cart-item").html(data);
+        getItemInUserCartLimit();
+      }
+    },
+  });
 }
 
-function deleteItem( productId ) {
-    $.ajax( {
-        type: "DELETE",
-        url: "/cart/item/delete/" + productId,
-        success: function ( param ) {
-            getItemInUserCart();
-        },
-    } );
+function deleteItem(productId) {
+  $.ajax({
+    type: "DELETE",
+    url: "/cart/item/delete/" + productId,
+    success: function (param) {
+      getItemInUserCart();
+    },
+  });
 }
 
-function processItemIntoTransaction( productId, processIntoTransaction ) {
-    $.ajax( {
-        type: "POST",
-        url: `/cart/item/${productId}/process_into_transaction/${processIntoTransaction}`,
-    } );
+function processItemIntoTransaction(productId, processIntoTransaction) {
+  $.ajax({
+    type: "POST",
+    url: `/cart/item/${productId}/process_into_transaction/${processIntoTransaction}`,
+  });
 }
 
 function getCheckoutItem() {
-    $.ajax( {
-        url: "/cart/item/get/group_by_vendor/checkout",
-        type: "GET",
-        success: function ( data ) {
-            console.log( data );
-            var html = "";
-            var arrayItems = JSON.parse( data );
-            var total = 0;
+  $.ajax({
+    url: "/cart/item/get/group_by_vendor/checkout",
+    type: "GET",
+    success: function (data) {
+      console.log(data);
+      var html = "";
+      var arrayItems = JSON.parse(data);
+      var total = 0;
 
-            if ( arrayItems.length > 0 ) {
-                arrayItems.forEach( function ( items, index ) {
-                    html += `
+      if (arrayItems.length > 0) {
+        arrayItems.forEach(function (items, index) {
+          html += `
                     <div class="content-frame mb-4 shadow">
                         <p class="font-weight-bold">${items[index]["vendor_name"]} <span class="badge badge-geyser p-2"><i class="fas fa-gem"></i> Platinum Vendor</span></p>
                         <!-- card product list -->
                     `;
 
-                    items.forEach( item => {
-                        total += parseInt( item['price'] );
-                        html += `
+          items.forEach((item) => {
+            total += parseInt(item["price"]);
+            html += `
                             <div class="content-frame mb-3 shadow p-0">
                                 <div class="card card-product">
                                     <div class="row align-items-center">
@@ -185,7 +185,7 @@ function getCheckoutItem() {
                                             <div class="col-6">
                                                 <h5 class="card-title">${item["product_name"]}</h5>
                                                 <p class="main-product-price">
-                                                ${parseInt( item["price"] ).toLocaleString( "id-ID", { style: "currency", currency: "IDR" } )}
+                                                ${parseInt(item["price"]).toLocaleString("id-ID", { style: "currency", currency: "IDR" })}
                                                 </p>
                                                 <p class="main-product-location">Tasikmalaya</p>
                                             </div>
@@ -198,16 +198,16 @@ function getCheckoutItem() {
                                 </div>
                             </div>
                         `;
-                    } );
+          });
 
-                    html += `</div>`;
-                } );
-            } else {
-                html += '<div class="col-12 text-center"><p>Cart is empty.</p></div>';
-            }
+          html += `</div>`;
+        });
+      } else {
+        html += '<div class="col-12 text-center"><p>Cart is empty.</p></div>';
+      }
 
-            $( '.js-item-checkout' ).html( html );
-            $( '.js-total' ).html( total.toLocaleString( 'id-ID', { style: 'currency', currency: 'IDR' } ) );
-        }
-    } );
+      $(".js-item-checkout").html(html);
+      $(".js-total").html(total.toLocaleString("id-ID", { style: "currency", currency: "IDR" }));
+    },
+  });
 }
