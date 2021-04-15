@@ -41,6 +41,7 @@ if (logged_in()) {
                 </div>
             </div>
         </li>
+        
         <li class="nav-item">
             <a class="nav-link collapsed <?= ($active == 'vendors')?'active':''; ?>" href="#" data-toggle="collapse" data-target="#collapseVendor" aria-expanded="true" aria-controls="collapseUser">
                 <div class="nav-icon">
@@ -56,6 +57,22 @@ if (logged_in()) {
                 </div>
             </div>
         </li>
+        <li class="nav-item">
+        <a class="nav-link php <?= ($active == 'product')?'active':''; ?>" href="/vendors/products">
+            <div class="nav-icon">
+                <i class="fas fa-fw fa-box-open"></i>
+            </div>
+            <span>Product</span>
+        </a>
+    </li>
+        <li class="nav-item">
+        <a class="nav-link <?= ($active == 'order')?'active':''; ?>" href="/transaction">
+            <div class="nav-icon">
+                <i class="fas fa-fw fa-shopping-cart"></i>
+            </div>
+            <span>Order & Shop</span>
+        </a>
+    </li>
     <?php endif; ?>
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -86,21 +103,6 @@ if (logged_in()) {
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/">
-            <div class="nav-icon">
-                <i class="fas fa-fw fa-calendar"></i>
-            </div>
-            <span>Calendar</span>
-        </a>
-    </li>
-
-    <hr class="sidebar-divider">
-
-    <div class="sidebar-heading">
-        Transaction
-    </div>
-
-    <li class="nav-item">
         <a class="nav-link <?= ($active == 'order')?'active':''; ?>" href="/transaction">
             <div class="nav-icon">
                 <i class="fas fa-fw fa-shopping-cart"></i>
@@ -108,30 +110,8 @@ if (logged_in()) {
             <span>Order & Shop</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/">
-            <div class="nav-icon">
-                <i class="fas fa-fw fa-percentage"></i>
-            </div>
-            <span>Discount</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/">
-            <div class="nav-icon">
-                <i class="fas fa-fw fa-chart-line"></i>
-            </div>
-            <span>Income</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/">
-            <div class="nav-icon">
-                <i class="fas fa-fw fa-file-alt"></i>
-            </div>
-            <span>Report</span>
-        </a>
-    </li>
+
+    <hr class="sidebar-divider">
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
