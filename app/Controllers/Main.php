@@ -10,6 +10,7 @@ use App\Models\VendorModel;
 use App\Models\LevelModel;
 use App\Models\UsersModel;
 use App\Models\TransactionModel;
+use App\Models\TransDetailModel;
 
 class Main extends BaseController
 {
@@ -27,6 +28,7 @@ class Main extends BaseController
     protected $cartModel;
     protected $userModel;
     protected $transactionModel;
+    protected $transDetailModel;
 
     public function __construct()
     {
@@ -38,6 +40,7 @@ class Main extends BaseController
         $this->levelModel = new LevelModel();
         $this->userModel = new UsersModel();
         $this->transactionModel = new TransactionModel();
+        $this->transDetailModel = new TransDetailModel();
 
         helper('text');
     }
@@ -177,14 +180,26 @@ class Main extends BaseController
         return redirect()->to('/vendors');
     }
 
-    public function transaction()
+    public function order()
     {
         $data = [
-            'title' => 'My Transaction',
+            'title' => 'My Order',
             'user' => $this->userModel->getUserBy(user()->id),
             'transactions' => $this->transactionModel->getTransByBuyer(user()->id)
         ];
         // dd($data);
-        return view('main/transaction', $data); 
+        return view('main/transaction/index', $data); 
+    }
+
+
+    public function detailOrder($code)
+    {
+        $data = [
+            'title'  => 'Detail Order',
+            'trans' => $this->transactionModel->getTransBy($code),
+            // 'detail' => $this->transDetailModelModel->getDetailBy($code),
+        ];
+        // dd($data);
+        return view('main/transaction/detail', $data); 
     }
 }

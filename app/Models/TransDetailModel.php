@@ -20,4 +20,9 @@ class TransDetailModel extends Model
         ";
         return $this->db->query($query)->getRowArray();
     }
+    
+    public function getDetailTransByCode($code)
+    {
+        
+    }
 }
