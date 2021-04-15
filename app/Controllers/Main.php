@@ -9,6 +9,7 @@ use App\Models\ProductsImagesModel;
 use App\Models\VendorModel;
 use App\Models\LevelModel;
 use App\Models\UsersModel;
+use App\Models\TransactionModel;
 
 class Main extends BaseController
 {
@@ -25,6 +26,7 @@ class Main extends BaseController
     protected $levelModel;
     protected $cartModel;
     protected $userModel;
+    protected $transactionModel;
 
     public function __construct()
     {
@@ -35,6 +37,7 @@ class Main extends BaseController
         $this->cartModel = new CartModel();
         $this->levelModel = new LevelModel();
         $this->userModel = new UsersModel();
+        $this->transactionModel = new TransactionModel();
 
         helper('text');
     }
@@ -172,5 +175,16 @@ class Main extends BaseController
 
         session()->setFlashdata('message', 'vendor has been successfully created');
         return redirect()->to('/vendors');
+    }
+
+    public function transaction()
+    {
+        $data = [
+            'title' => 'My Transaction',
+            'user' => $this->userModel->getUserBy(user()->id),
+            'transactions' => $this->transactionModel->getTransByBuyer(user()->id)
+        ];
+        // dd($data);
+        return view('main/transaction', $data); 
     }
 }

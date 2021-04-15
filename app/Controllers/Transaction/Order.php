@@ -65,11 +65,12 @@ class Order extends BaseController
             'confirm' => 1,
             'reason_reject' => null
         ]);
-        $order = $this->transDetailModel->getWhere(['id' => $id])->getRowArray();
+        $order = $this->transDetailModel->getDetailTransBy($id);
+        // kirim notifikasi kepada pembeli
         $this->notificationModel->save([
             'user_id' => $userId,
-            'message' => 'Pesanan dengan' . $order['id'] . 'telah disetujui',
-            'link' => ''
+            'message' => 'Order for ' . $order['product_name'] . ' has been approved',
+            'link' => '/transaction/'. $code
         ]);
         session()->setFlashdata('message', 'Transaction has been successfully Accepted');
         return redirect()->to('/transaction/confirm/' . $code);
@@ -150,7 +151,7 @@ class Order extends BaseController
                 'link' => '/transaction/confirm/'. $transaction_code
             ]);
          }
-        //  kirim notifikasi kepada pembeli
+        //  kirim notifikasi ke pada pembeli
         $message_buyer = 'Order with code ' . $transaction_code . ' is being processed';
         $this->notificationModel->save([
             'user_id' => user()->id,

@@ -9,3 +9,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js" type="text/javascript"></script>
 <script src="<?= base_url('js/bootstrap-datetimepicker.js'); ?>"></script>
 <script src="<?= base_url('js/script.js'); ?>"></script>
+<script src="<?= base_url('js/jquery.dataTables.min.js'); ?>"></script>
+<script src="<?= base_url('js/dataTables.bootstrap4.min.js'); ?>"></script>

@@ -19,11 +19,17 @@ function getItemInUserNotificationLimit() {
 
       itemsLimit.forEach((item) => {
         html += `
-                        <a class="dropdown-item d-flex align-items-center" href="${item["link"]}">
-                            <div>
-                                <span class="font-weight-bold">${item["message"]}</span>
-                            </div>
-                        </a>
+                <a class="dropdown-item d-flex align-items-center" href="${item["link"]}">
+                    <div class="mr-3">
+                        <div class="icon-circle bg-primary">
+                            <i class="fas fa-file-alt text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="small text-gray-500">${item["created_at"]}</div>
+                        <span class="">${item["message"]}</span>
+                    </div>
+                </a>
                     `;
       });
 
