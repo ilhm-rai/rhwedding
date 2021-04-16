@@ -12,18 +12,18 @@ class ProductModel extends Model
     protected $db;
 
 
-    public function getProducts()
+    public function getAllProducts()
     {
-        $query = "SELECT `p`.*
-            FROM `products` AS `p`
-            JOIN `vendors` AS `v`
-            ON `p`.`vendor_id` = `v`.`id`
-            JOIN `vendors_service` AS `vs`
-            ON `p`.`product_service_id` = `vs`.`id`
+        $query = "SELECT `p`.*, `s`.`service_name`
+        FROM `products` AS `p`
+        JOIN `vendors` AS `v`
+        ON `p`.`vendor_id` = `v`.`id`
+        JOIN `services` AS `s`
+        ON `p`.`product_service_id` = `s`.`id`
         ";
         return $this->db->query($query)->getResultArray();
     }
-    public function getProductsByVendor($id)
+    public function getProductsByVendorId($id)
     {
         $query = "SELECT `p`.*, `s`.`service_name`
         FROM `products` AS `p`
@@ -35,7 +35,7 @@ class ProductModel extends Model
     ";
         return $this->db->query($query)->getResultArray();
     }
-    public function getProductsByUser($id)
+    public function getProductsByOwnerId($id)
     {
         $query = "SELECT `p`.*, `s`.`service_name`
         FROM `products` AS `p`
@@ -47,7 +47,7 @@ class ProductModel extends Model
     ";
         return $this->db->query($query)->getResultArray();
     }
-    public function getProductBy($id)
+    public function getProductById($id)
     {
         $query = "SELECT `p`.*, `v`.`user_id` AS `owner`
         FROM `products` AS `p`

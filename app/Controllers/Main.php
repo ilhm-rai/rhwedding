@@ -110,7 +110,7 @@ class Main extends BaseController
             'vendor' => $this->vendorModel->getVendorBySlug($slug),  
         ];
         $data['title'] = $data['vendor']['vendor_name'];
-        $data['products'] = $this->productModel->getProductsByVendor($data['vendor']['id']);
+        $data['products'] = $this->productModel->getProductsByVendorId($data['vendor']['id']);
         // dd($data);
         return view('main/vendor', $data);
     }

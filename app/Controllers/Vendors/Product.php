@@ -33,7 +33,7 @@ class Product extends BaseController
         $data = [
             'title'  => 'Products - RH Wedding',
             'active' => 'product',
-            'products'  => $this->productModel->getProductsByUser(user()->id),
+            'products'  => $this->productModel->getProductsByOwnerId(user()->id),
             'services' => $this->serviceModel->getServices(),
         ];
         return view('vendors/product/index', $data);
@@ -198,7 +198,7 @@ class Product extends BaseController
 
     public function update($slug)
     {
-        $product = $this->productModel->getProductBy($this->request->getVar('product-id'));
+        $product = $this->productModel->getProductById($this->request->getVar('product-id'));
         $productName = $this->request->getVar('product-name');
         if($product['product_name'] == $productName){
             $rulesProductName = 'required';
@@ -339,7 +339,7 @@ class Product extends BaseController
 
     public function delete($id)
     {
-        $product =  $this->productModel->getProductBy($id);
+        $product =  $this->productModel->getProductById($id);
         $productImages =  $this->productsImagesModel->getWhere(['product_id' => $id])->getResultArray();
         unlink('img/products/main-img/' . $product['product_main_image']);
         foreach ($productImages as $img) {

@@ -85,7 +85,11 @@ $routes->group('admin', function ($routes) {
 			$routes->add('detail/(:num)', 'Admin\VendorLevel::detail/$1');
 		});
 	});
-	// $routes->add('permissions', 'Admin\User::userPermission');
+	// admin products
+	$routes->group('products', function ($routes) {
+		$routes->add('/', 'Admin\Product::index');
+		$routes->add('detail/(:any)', 'Admin\Product::detail/$1');
+	});
 });
 
 // routes for vendor
@@ -147,6 +151,7 @@ $routes->group('/', function ($routes) {
 $routes->delete('admin/users/roles/(:num)', 'Admin\UserRole::delete/$1');
 $routes->delete('admin/vendors/services/(:num)', 'Admin\VendorService::delete/$1');
 $routes->delete('admin/vendors/level/(:num)', 'Admin\VendorLevel::delete/$1');
+$routes->delete('admin/products/(:num)', 'Admin\Product::delete/$1');
 
 $routes->delete('vendors/products/(:num)', 'Vendors\Product::delete/$1');
 $routes->delete('users/profile', 'User::profile');
