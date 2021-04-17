@@ -143,8 +143,8 @@ $routes->group('/', function ($routes) {
 	$routes->add('cart', 'Main::cart');
 	$routes->add('mustlogin', 'Main::mustlogin');
 	$routes->add('checkout', 'Main::checkout');
-	$routes->add('my/order/', 'Main::order');
-	$routes->add('my/order/(:any)', 'Main::detailOrder/$1');
+	$routes->add('order/', 'Main::order');
+	$routes->add('order/(:any)', 'Main::detailOrder/$1');
 	$routes->add('(:any)', 'Main::productDetail/$1');
 });
 

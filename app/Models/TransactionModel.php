@@ -91,7 +91,7 @@ class TransactionModel extends Model
     }
 
     // setiap pembeli
-    public function getTransByBuyer($id)
+    public function getTransByBuyerId($id)
     {
         $query = "SELECT `t`.`id`, `t`.`transaction_code`,`t`.`total_pay`,`t`.`created_at`,COUNT(`td`.`id`) AS amount, SUM(IF(`td`.`confirm` = 1,`p`.`price`,0)) AS `subtotal`
         FROM `transaction` AS `t`

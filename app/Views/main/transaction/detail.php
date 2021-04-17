@@ -38,7 +38,7 @@
         <?php endif; ?>
  
         <!-- list detail transaksi -->
-            <table class="table table-bordered td-align-middle" id="dataProducts" width="100%" cellspacing="0">
+            <table class="table table-bordered td-align-middle" id="" width="100%" cellspacing="0">
                 <thead class="th-no-border">
                     <tr>
                         <th>No</th>
@@ -86,9 +86,13 @@
                     <div class="col">
                     <input type="hidden" name="total" id='total' value='0'>
                     <h4 class="font-weight-bold text-wild-watermelon total-screen">Rp<?= number_format($trans['subtotal'],0,',','.'); ?>,-</h4>
+
+                    <button type='button' class='btn btn-wild-watermelon mt-3' id='pay-button'>Pay Now</button>
+                    <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre> 
+
                     </div>
-                    
                 </div>
+ 
             </div>
         </div>
     </div>
@@ -100,6 +104,25 @@
     $(document).ready(function() {
         $('#dataProducts').DataTable();
     });
+
+    // midtrans
+    document.getElementById('pay-button').onclick = function(){
+        // SnapToken acquired from previous step
+        snap.pay('<?=$snapToken?>', {
+          // Optional
+          onSuccess: function(result){
+            /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+          },
+          // Optional
+          onPending: function(result){
+            /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+          },
+          // Optional
+          onError: function(result){
+            /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+          }
+        });
+      };
 </script>
 <?= $this->endSection(); ?>
 

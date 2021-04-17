@@ -30,7 +30,7 @@
                     <td><?= $trans['total_pay']; ?></td>
                     <td><?= $trans['subtotal']; ?></td>
                     <td>
-                    <a href="/my/order/<?= $trans['transaction_code']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail Order</span></a>
+                    <a href="/order/<?= $trans['transaction_code']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail Order</span></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

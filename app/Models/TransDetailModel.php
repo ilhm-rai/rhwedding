@@ -20,9 +20,19 @@ class TransDetailModel extends Model
         ";
         return $this->db->query($query)->getRowArray();
     }
-    
-    public function getDetailTransByCode($code)
+
+    public function getDetailByTransCode($code)
     {
-        
+        $query = "SELECT `td`.*, `p`.`product_name`, `p`.`product_main_image`,`p`.`price`,`s`.`service_name`
+        FROM `transaction` AS `t`
+        JOIN `transaction_detail` AS `td`
+        ON `t`.`id` = `td`.`transaction_id`
+        JOIN `products` AS `p`
+        ON `td`.`product_id` = `p`.`id`
+        JOIN `services` AS `s`
+        ON `p`.`product_service_id` = `s`.`id`
+        WHERE `t`.`transaction_code` = '$code'
+        ";
+         return $this->db->query($query)->getResultArray();
     }
 }

@@ -185,7 +185,7 @@ class Main extends BaseController
         $data = [
             'title' => 'My Order',
             'user' => $this->userModel->getUserBy(user()->id),
-            'transactions' => $this->transactionModel->getTransByBuyer(user()->id)
+            'transactions' => $this->transactionModel->getTransByBuyerId(user()->id)
         ];
         // dd($data);
         return view('main/transaction/index', $data); 
@@ -194,12 +194,30 @@ class Main extends BaseController
 
     public function detailOrder($code)
     {
+
         $data = [
             'title'  => 'Detail Order',
             'trans' => $this->transactionModel->getTransBy($code),
-            // 'detail' => $this->transDetailModelModel->getDetailBy($code),
+            'detail' => $this->transDetailModel->getDetailByTransCode($code),
         ];
-        // dd($data);
+        // midtrans
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-0CdKKn0ekLgYSuUWp2V7huR5';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => $data['trans']['transaction_code'],
+                'gross_amount' => 10000,
+            )
+        );
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+       
+        $data['snapToken'] = $snapToken;
         return view('main/transaction/detail', $data); 
     }
 }
