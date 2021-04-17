@@ -7,10 +7,14 @@ use CodeIgniter\Model;
 class VendorModel extends Model
 {
     protected $table = 'vendors';
-    protected $allowedFields = ['user_id','vendor_code','slug','vendor_name','vendor_logo','vendor_banner','vendor_billboard','vendor_level_id','vendor_description','contact_vendor','vendor_address','city','province','postal_code','active'];
+    protected $allowedFields = ['user_id', 'vendor_code', 'slug', 'vendor_name', 'vendor_logo', 'vendor_banner', 'vendor_billboard', 'vendor_level_id', 'vendor_description', 'contact_vendor', 'vendor_address', 'city', 'province', 'postal_code', 'active'];
     protected $useTimestamps = true;
     protected $db;
 
+    public function __construct()
+    {
+        $this->db = \Config\Database::connect();
+    }
 
     public function getVendor()
     {
@@ -108,7 +112,7 @@ class VendorModel extends Model
         WHERE `vendor_name` LIKE '$keyword%'
 
     ";
-    return $this->db->query($query)->getResultArray();
+        return $this->db->query($query)->getResultArray();
     }
 
 
@@ -130,5 +134,13 @@ class VendorModel extends Model
         $limit = str_pad($uniq, 3, "0", STR_PAD_LEFT);
         $code_vend = "VND" . $date . $limit;  //format kode
         return $code_vend;
+    }
+
+    public function getMyVendorId()
+    {
+        $this->builder = $this->db->table('vendors');
+        $this->builder->select('id');
+        $query = $this->builder->getWhere(['user_id' => user()->id])->getRowArray();
+        return $query['id'];
     }
 }

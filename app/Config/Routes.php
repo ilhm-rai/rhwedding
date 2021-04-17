@@ -116,14 +116,17 @@ $routes->group('vendors', function ($routes) {
 			$routes->add('/', 'Vendors\ProductCategory::index');
 		});
 	});
+
+	$routes->group('transaction', function ($routes) {
+		$routes->add('/', 'Transaction\Order::index');
+		$routes->add('report', 'Transaction\Order::report_view');
+		$routes->add('report/(:any)/(:any)', 'Transaction\Order::report_pdf/$1/$2');
+		$routes->add('confirm/(:any)', 'Transaction\Order::confirm/$1');
+		$routes->add('accept/(:num)', 'Transaction\Order::accept/$1');
+		$routes->add('reject', 'Transaction\Order::reject');
+	});
 });
 
-$routes->group('transaction', function ($routes) {
-	$routes->add('/', 'Transaction\Order::index');
-	$routes->add('confirm/(:any)', 'Transaction\Order::confirm/$1');
-	$routes->add('accept/(:num)', 'Transaction\Order::accept/$1');
-	$routes->add('reject', 'Transaction\Order::reject');
-});
 
 
 // Routes for user
