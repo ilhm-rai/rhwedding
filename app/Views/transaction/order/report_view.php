@@ -93,11 +93,10 @@ $TransactionModel = new TransactionModel();
 <script>
     $('.date').datetimepicker({
         format: 'L',
+        useCurrent: false,
     });
 
     $('#start-date').data("DateTimePicker").minDate('<?= $date_min ?>');
-    $('#start-date').data("DateTimePicker").maxDate('<?= $date_max ?>');
     $('#end-date').data("DateTimePicker").minDate('<?= $date_min ?>');
-    $('#end-date').data("DateTimePicker").maxDate('<?= $date_max ?>');
 </script>
 <?= $this->endSection(); ?>

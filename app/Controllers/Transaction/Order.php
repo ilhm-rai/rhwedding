@@ -165,7 +165,6 @@ class Order extends BaseController
         $data = [
             'title' => 'Transaction Report',
             'active' => 'vendor_order',
-            'date_max' => $this->transactionModel->getMaxPaymentDate(),
             'date_min' => $this->transactionModel->getMinPaymentDate()
         ];
 
