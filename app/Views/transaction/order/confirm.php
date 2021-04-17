@@ -51,7 +51,7 @@
                     <?php $i = 1;
                     $total = 0; ?>
                     <?php foreach ($detail as $item) : ?>
-                        <?php $total += $item['price']; ?>
+                        <?php ($item['confirm'] > 0) ? $total += $item['price'] : 0; ?>
                         <tr>
                             <td><?= $i++ ?></td>
                             <td><img src="/img/products/main-img/<?= $item['product_main_image']; ?>" alt="" class="w-100"></td>
