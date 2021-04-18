@@ -167,6 +167,12 @@ $routes->group('admin/products/categories', function ($routes) {
 	$routes->add('', 'Admin\ProductCategory::show');
 });
 
+$routes->get('admin/transaction', 'Admin\Transaction::index');
+$routes->get('admin/transaction/report', 'Admin\Transaction::report_view');
+$routes->post('admin/transaction/report', 'Admin\Transaction::report_view');
+$routes->get('admin/transaction/report/(:any)/(:any)', 'Admin\Transaction::report_pdf/$1/$2');
+$routes->get('admin/transaction/detail/(:any)', 'Admin\Transaction::detail/$1');
+
 // Cart Routes
 $routes->get('cart/item/get', 'Cart::getJsonItemInUserCart');
 $routes->get('cart/item/get/group_by_vendor', 'Cart::getJsonItemGroupByVendor');

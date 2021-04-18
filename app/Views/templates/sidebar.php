@@ -58,15 +58,15 @@ if (logged_in()) {
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link php <?= ($active == 'products')?'active':''; ?>" href="/admin/products">
+            <a class="nav-link php <?= ($active == 'products') ? 'active' : ''; ?>" href="/admin/products">
                 <div class="nav-icon">
                     <i class="fas fa-fw fa-box-open"></i>
                 </div>
                 <span>Products</span>
             </a>
-        </li> 
+        </li>
         <li class="nav-item">
-            <a class="nav-link <?= ($active == 'order') ? 'active' : ''; ?>" href="/transaction">
+            <a class="nav-link <?= ($active == 'order') ? 'active' : ''; ?>" href="/admin/transaction">
                 <div class="nav-icon">
                     <i class="fas fa-fw fa-shopping-cart"></i>
                 </div>

@@ -43,7 +43,7 @@ $TransactionModel = new TransactionModel();
 <?php if (isset($_POST['preview-data'])) : ?>
     <?php
     $total = 0;
-    $soldProducts = $TransactionModel->getSoldProductBetweenDate($_POST['start_date'], $_POST['end_date']);
+    $soldProducts = $TransactionModel->getMyVendorSoldProductBetweenDate($_POST['start_date'], $_POST['end_date']);
     ?>
     <div class="container-fluid content-frame">
         <div class="row">

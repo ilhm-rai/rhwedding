@@ -19,21 +19,19 @@ class TransactionModel extends Model
     }
 
     // sesuai pemilik vendor
-    public function getTransByUser($id)
+    public function getAllTransaction()
     {
-        $query = "SELECT `t`.`id`, `t`.`transaction_code`, `t`.`event_date`,COUNT(`td`.`id`) AS amount, SUM(IF(`td`.`confirm` = 1,`p`.`price`,0)) AS `subtotal`
+        $query = "SELECT `t`.`transaction_code`, `t`.`event_date`, COUNT(`td`.`id`) AS amount, IF(`t`.`payment_status` > 0, 'Paid', 'Unpaid') as `payment_status`, SUM(IF(`td`.`confirm` = 1, `p`.`price`, 0)) AS `invoice`
         FROM `transaction` AS `t`
         JOIN `transaction_detail` AS `td`
         ON `t`.`id` = `td`.`transaction_id`
-        JOIN `products` As `p`
-        ON `td`.`product_id` = `p`.`id`
-        JOIN `vendors` AS `v`
-        ON `p`.`vendor_id` = `v`.`id`
-        WHERE `v`.`user_id` = $id
+        JOIN `products` AS `p`
+        ON `p`.`id` = `td`.`product_id`
         GROUP BY `t`.`transaction_code`
         ";
         return $this->db->query($query)->getResultArray();
     }
+
     public function getTransBy($code)
     {
         $query = "SELECT `t`.*, `up`.`full_name` AS `customer` , COUNT(`td`.`id`) AS amount, SUM(IF(`td`.`confirm` = 1,`p`.`price`,0)) AS `subtotal`
@@ -53,7 +51,7 @@ class TransactionModel extends Model
         return $this->db->query($query)->getRowArray();
     }
 
-    public function getTransDetailBy($userId, $code)
+    public function getTransDetailBy($code)
     {
         $query = "SELECT `p`.`product_name`,`p`.`product_main_image`,`p`.`price`,`s`.`service_name` ,`td`.`id`,`td`.`note`,`td`.`confirm`
         FROM `transaction` AS `t`
@@ -65,8 +63,7 @@ class TransactionModel extends Model
         ON `p`.`vendor_id` = `v`.`id`
         JOIN `services` AS `s`
         ON `p`.`product_service_id` = `s`.id
-        WHERE `v`.`user_id` = $userId
-        AND `t`.`transaction_code` = '$code'
+        WHERE `t`.`transaction_code` = '$code'
         ";
         return $this->db->query($query)->getResultArray();
     }
@@ -107,21 +104,42 @@ class TransactionModel extends Model
         return $this->db->query($query)->getResultArray();
     }
 
-    public function getMinPaymentDate()
+    public function getMinPaymentDate($isMyVendor = false)
     {
         $query = "SELECT min(`payment_date`) as `min_date`
         FROM `transaction` as `t`
         INNER JOIN `transaction_detail` as `td`
         ON `t`.id = `td`.`transaction_id`
         INNER JOIN `products` as `p`
-        ON `p`.`id` = `td`.`product_id`
-        WHERE `p`.`vendor_id` =
-        " . $this->VendorModel->getMyVendorId();
+        ON `p`.`id` = `td`.`product_id`";
+
+        if ($isMyVendor == true) {
+            $query .= " WHERE `p`.`vendor_id` = " . $this->VendorModel->getMyVendorId();
+        }
+
         $result = $this->db->query($query)->getRow();
         return date('m/d/Y', strtotime($result->min_date));
     }
 
     public function getSoldProductBetweenDate($start_date, $end_date)
+    {
+        $start_date = date('Y-m-d', strtotime($start_date));
+        $end_date = date('Y-m-d', strtotime($end_date));
+
+        $query = "SELECT `p`.`product_code`, `p`.`product_name`, `s`.`service_name`, `t`.`payment_date`, `p`.`price`, `p`.`vendor_id`
+        FROM `transaction` as `t`
+        INNER JOIN `transaction_detail` as `td`
+        ON `t`.id = `td`.`transaction_id`
+        INNER JOIN `products` as `p`
+        ON `p`.`id` = `td`.`product_id`
+        INNER JOIN `services` as `s`
+        ON `s`.`id` = `p`.`product_service_id`
+        WHERE `td`.`confirm` = '1' AND `t`.`payment_date` BETWEEN '$start_date' AND '$end_date'";
+
+        return $this->db->query($query)->getResultArray();
+    }
+
+    public function getMyVendorSoldProductBetweenDate($start_date, $end_date)
     {
         $start_date = date('Y-m-d', strtotime($start_date));
         $end_date = date('Y-m-d', strtotime($end_date));
@@ -150,6 +168,22 @@ class TransactionModel extends Model
         WHERE p.vendor_id = " . $this->VendorModel->getMyVendorId() . "
         GROUP BY t.transaction_code";
 
+        return $this->db->query($query)->getResultArray();
+    }
+
+    public function getVendorInTransactionBetweenDate($start_date, $end_date)
+    {
+        $query = "SELECT `v`.`id`, `v`.`vendor_name`
+        FROM `transaction` AS `t`
+        JOIN `transaction_detail` AS `td`
+        ON `t`.`id` = `td`.`transaction_id`
+        JOIN `products` As `p`
+        ON `td`.`product_id` = `p`.`id`
+        JOIN `vendors` AS `v`
+        ON `p`.`vendor_id` = `v`.`id`
+        WHERE `t`.`payment_status` = '1'
+        GROUP BY `v`.`id`
+        ";
         return $this->db->query($query)->getResultArray();
     }
 }

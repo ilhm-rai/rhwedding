@@ -52,7 +52,7 @@ class Order extends BaseController
             'title'  => 'Detail Order',
             'active' => 'vendor_order',
             'trans' => $this->transactionModel->getTransBy($code),
-            'detail' => $this->transactionModel->getTransDetailBy(user()->id, $code),
+            'detail' => $this->transactionModel->getTransDetailBy($code),
         ];
         // dd($data);
         return view('transaction/order/confirm', $data);
@@ -165,7 +165,7 @@ class Order extends BaseController
         $data = [
             'title' => 'Transaction Report',
             'active' => 'vendor_order',
-            'date_min' => $this->transactionModel->getMinPaymentDate()
+            'date_min' => $this->transactionModel->getMinPaymentDate(true)
         ];
 
         return view('transaction/order/report_view', $data);
