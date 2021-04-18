@@ -158,6 +158,10 @@ if (logged_in()) {
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Profile
                     </a>
+                    <a class="dropdown-item" href="/order">
+                        <i class="fas fa-shopping-cart fa-sm fa-fw mr-2 text-gray-400"></i>
+                        My Order
+                    </a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

@@ -14,6 +14,7 @@
                     <th>No</th>
                     <th>Transaction Code</th>
                     <th>Cash In</th>
+                    <th>amount Item</th>
                     <th>Item Confirmed</th>
                     <th>Event Date</th>
                     <th>Payment Status</th>
@@ -25,6 +26,7 @@
                     <th>No</th>
                     <th>Transaction Code</th>
                     <th>Cash In</th>
+                    <th>Amount Item</th>
                     <th>Item Confirmed</th>
                     <th>Event Date</th>
                     <th>Payment Status</th>
@@ -38,6 +40,7 @@
                         <td><?= $i++; ?></td>
                         <td><?= $t['transaction_code']; ?></td>
                         <td>Rp<?= number_format($t['cash_in'], 0, ',', '.'); ?>,-</td>
+                        <td><?= $t['amount_item']; ?></td>
                         <td><?= $t['item_confirmed']; ?></td>
                         <td><?= date("d-m-Y", strtotime($t['event_date'])); ?></td>
                         <td><?= ($t['payment_status'] > 0) ? 'Paid' : 'Unpaid' ?></td>

@@ -157,13 +157,13 @@ class TransactionModel extends Model
 
     public function getMyVendorTransaction()
     {
-        $query = "SELECT t.transaction_code, SUM(p.price) as 'cash_in', COUNT(td.product_id) AS 'item_confirmed', t.event_date, t.payment_status
+        $query = "SELECT t.transaction_code, SUM(IF(td.confirm = 1, p.price,0)) as 'cash_in',COUNT(td.product_id) AS 'amount_item', COUNT(IF(td.confirm = 1,td.product_id,null)) AS 'item_confirmed', t.event_date, t.payment_status
         FROM transaction as t
         INNER JOIN transaction_detail as td
         ON t.id = td.transaction_id
         INNER JOIN products as p
         ON p.id = td.product_id
-        WHERE p.vendor_id = " . $this->VendorModel->getMyVendorId() . " AND td.confirm = 1
+        WHERE p.vendor_id = " . $this->VendorModel->getMyVendorId() . "
         GROUP BY t.transaction_code";
 
         return $this->db->query($query)->getResultArray();
