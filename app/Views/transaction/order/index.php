@@ -14,7 +14,7 @@
                     <th>No</th>
                     <th>Transaction Code</th>
                     <th>Cash In</th>
-                    <th>amount Item</th>
+                    <th>Amount Item</th>
                     <th>Item Confirmed</th>
                     <th>Event Date</th>
                     <th>Payment Status</th>
