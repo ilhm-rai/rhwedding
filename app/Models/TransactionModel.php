@@ -134,7 +134,7 @@ class TransactionModel extends Model
         ON `p`.`id` = `td`.`product_id`
         INNER JOIN `services` as `s`
         ON `s`.`id` = `p`.`product_service_id`
-        WHERE `p`.`vendor_id` = " . $this->VendorModel->getMyVendorId() . " AND `t`.`payment_date` BETWEEN '$start_date' AND '$end_date'";
+        WHERE `p`.`vendor_id` = " . $this->VendorModel->getMyVendorId() . " AND `td`.`confirm` = '1' AND `t`.`payment_date` BETWEEN '$start_date' AND '$end_date'";
 
         return $this->db->query($query)->getResultArray();
     }
