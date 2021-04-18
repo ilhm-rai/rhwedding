@@ -107,22 +107,6 @@ class TransactionModel extends Model
         return $this->db->query($query)->getResultArray();
     }
 
-
-    public function getMaxPaymentDate()
-    {
-        $query = "SELECT max(`payment_date`) as `max_date`
-        FROM `transaction` as `t`
-        INNER JOIN `transaction_detail` as `td`
-        ON `t`.id = `td`.`transaction_id`
-        INNER JOIN `products` as `p`
-        ON `p`.`id` = `td`.`product_id`
-        WHERE `p`.`vendor_id` =
-        " . $this->VendorModel->getMyVendorId();
-        $result = $this->db->query($query)->getRow();
-
-        return date('m/d/Y', strtotime($result->max_date));
-    }
-
     public function getMinPaymentDate()
     {
         $query = "SELECT min(`payment_date`) as `min_date`
