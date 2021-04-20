@@ -8,14 +8,16 @@ $event_address = $user['address'];
 $address_from = 'Main';
 
 if ($isUserOrderVenue == true) {
-    $event_address = $items['vendor_address'];
+    foreach ($items as $item) {
+        $event_address = $item['vendor_address'];
+    }
     $address_from = 'Venue';
 }
 
 function isUserOrderVenue(array $items)
 {
     foreach ($items as $item) {
-        return ($item['service_name'] == 'Venue') ? $item['vendor_address'] : false;
+        return ($item['service_name'] == 'Venue') ? true : false;
     }
 }
 ?>
