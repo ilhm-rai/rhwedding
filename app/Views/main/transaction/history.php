@@ -5,17 +5,8 @@
 <div class="container-fluid content-frame mb-4">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="content-heading mb-0 text-gray-800">My Order</h1>
-        <a href="/order/history" class="d-block d-sm-inline-block btn btn-wild-watermelon"><i class="fas fa-history mr-1"></i> Order History</a>
+        <h1 class="content-heading mb-0 text-gray-800">Order History</h1>
     </div>
-    <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
-
-    <?php if (session()->getFlashdata('message')) : ?>
-        <div class="alert alert-success" role="alert">
-            <?= session()->getFlashdata('message'); ?>
-        </div>
-    <?php endif; ?>
-
     <table class="table table-bordered" id="dataUsers" width="100%" cellspacing="0">
             <thead>
                 <tr>
@@ -53,7 +44,7 @@
                         <td><?= date("d-m-Y", strtotime($t['event_date'])); ?></td>
                         <td><?= ($t['payment_status'] > 0) ? 'Paid' : 'Unpaid' ?></td>
                         <td class="text-center">
-                        <a href="/order/<?= $t['transaction_code']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail Order</span></a>
+                        <a href="" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail Order</span></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

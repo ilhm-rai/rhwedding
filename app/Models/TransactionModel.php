@@ -34,7 +34,7 @@ class TransactionModel extends Model
 
     public function getTransBy($code)
     {
-        $query = "SELECT `t`.*, `up`.`full_name` AS `customer` , COUNT(`td`.`id`) AS amount, SUM(IF(`td`.`confirm` = 1,`p`.`price`,0)) AS `subtotal`
+        $query = "SELECT `t`.*, `up`.`full_name` AS `customer` , COUNT(`td`.`id`) AS amount, SUM(IF(`td`.`confirm` = 1,`p`.`price`,0)) AS `cash_in`
         FROM `transaction` AS `t`
         JOIN `transaction_detail` AS `td`
         ON `t`.`id` = `td`.`transaction_id`
@@ -92,13 +92,27 @@ class TransactionModel extends Model
     // setiap pembeli
     public function getTransByBuyerId($id)
     {
-        $query = "SELECT `t`.`id`, `t`.`transaction_code`,`t`.`total_pay`,`t`.`created_at`,COUNT(`td`.`id`) AS amount, SUM(IF(`td`.`confirm` = 1,`p`.`price`,0)) AS `subtotal`
+        $query = "SELECT t.transaction_code, SUM(IF(td.confirm = 1, p.price,0)) as 'cash_in',COUNT(td.product_id) AS 'amount_item', COUNT(IF(td.confirm = 1,td.product_id,null)) AS 'item_confirmed', t.event_date, t.payment_status
         FROM `transaction` AS `t`
         JOIN `transaction_detail` AS `td`
         ON `t`.`id` = `td`.`transaction_id`
         JOIN `products` As `p`
         ON `td`.`product_id` = `p`.`id`
-        WHERE `t`.`user_id` = $id
+        WHERE `t`.`user_id` = $id AND `t`.`payment_status` = 0
+        GROUP BY `t`.`transaction_code`
+        ";
+        return $this->db->query($query)->getResultArray();
+    }
+
+    public function getHistoryTransByBuyerId($id)
+    {
+        $query = "SELECT t.transaction_code, SUM(IF(td.confirm = 1, p.price,0)) as 'cash_in',COUNT(td.product_id) AS 'amount_item', COUNT(IF(td.confirm = 1,td.product_id,null)) AS 'item_confirmed', t.event_date, t.payment_status
+        FROM `transaction` AS `t`
+        JOIN `transaction_detail` AS `td`
+        ON `t`.`id` = `td`.`transaction_id`
+        JOIN `products` As `p`
+        ON `td`.`product_id` = `p`.`id`
+        WHERE `t`.`user_id` = $id AND `t`.`payment_status` = 1
         GROUP BY `t`.`transaction_code`
         ";
         return $this->db->query($query)->getResultArray();

@@ -72,7 +72,7 @@ class Order extends BaseController
         $this->notificationModel->save([
             'user_id' => $userId,
             'message' => 'Order for ' . $order['product_name'] . ' has been approved',
-            'link' => '/vendors/transaction/' . $code
+            'link' => '/order/' . $code
         ]);
         session()->setFlashdata('message', 'Transaction has been successfully Accepted');
         return redirect()->to('/vendors/transaction/confirm/' . $code);
@@ -94,8 +94,8 @@ class Order extends BaseController
 
         $this->notificationModel->save([
             'user_id' => $userId,
-            'message' => 'Pesanan dengan' . $order['id'] . 'ditolak',
-            'link' => ''
+            'message' => 'Order for ' . $order['product_name'] . ' has been rejected',
+            'link' => '/order/' . $code
         ]);
         session()->setFlashdata('message', 'Transaction has been successfully Rejected');
         return redirect()->to('/vendors/transaction/confirm/' . $code);
@@ -143,7 +143,7 @@ class Order extends BaseController
 
         // kirim notifikasi pesanan barang kepada owner vendor
         foreach ($items as $item) {
-            $product = $this->productModel->getProductBy($item['product_id']);
+            $product = $this->productModel->getProductById($item['product_id']);
             $message = 'New orders for ' . $item['product_name'] . ' require confirmation';
             $this->notificationModel->save([
                 'user_id' => $product['owner'],
@@ -158,6 +158,11 @@ class Order extends BaseController
             'message' => $message_buyer,
             'link' => '/vendors/transaction/' . $transaction_code
         ]);
+
+        // arahkan ke order
+        session()->setFlashdata('message', 'Order with code ' . $transaction_code . ' is being processed, please wait for the confirmation of your order');
+        return redirect()->to('/order');
+
     }
 
     public function report_view()

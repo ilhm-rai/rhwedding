@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\NotificationModel;
+use App\Models\PaymentModel;
 
 class Notification extends BaseController
 {
@@ -13,10 +14,12 @@ class Notification extends BaseController
      */
     protected $request;
     protected $notificationModel;
+    protected $paymentModel;
 
     public function __construct()
     {
         $this->notificationModel = new NotificationModel();
+        $this->paymentModel = new PaymentModel();
     }
 
 
@@ -28,6 +31,20 @@ class Notification extends BaseController
     public function getJsonItemInUserNotification()
     {
         return json_encode($this->getItemInUserNotification(), JSON_PRETTY_PRINT);
+    }
+
+
+    public function handling()
+    {
+        $notif = new \Midtrans\Notification();
+        $payment = $this->paymentModel->getWhere(['order_id' => $notif['order_id']]);
+
+        $this->paymentModel->save([
+            'id' => $payment['id'],
+            'order_id' => $notif['order_id'],
+            'status_code' => $notif['status_code']
+        ]);
+        
     }
 
 }
