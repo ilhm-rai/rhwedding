@@ -504,6 +504,10 @@ a.img-service:hover {
   font-weight: 600;
 }
 
+.main-product-location {
+  color: #5a5c69;
+}
+
 .card.card-blog,
 .card.card-product {
   background-color: transparent;
@@ -544,12 +548,7 @@ a.img-service:hover {
   object-position: center;
 }
 
-a {
-  color: inherit;
-}
-
 a:hover {
-  color: #5a5c69;
   text-decoration: none;
 }
 

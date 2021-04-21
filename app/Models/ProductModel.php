@@ -92,12 +92,13 @@ class ProductModel extends Model
         return $code_prod;
     }
 
-    public function getProductsByService()
+    public function getProductsByService($service_name)
     {
         $query = "SELECT `p`.`product_name`, `p`.`product_main_image`, `p`.`price`, `p`.`slug`, `s`.`service_name`, `s`.`id` as `service_id`
         FROM `products` as `p`
         INNER JOIN `services` AS `s`
         ON `p`.`product_service_id` = `s`.`id`
+        WHERE `s`.`service_name` = '$service_name'
     ";
         return $this->db->query($query)->getResultArray();
     }

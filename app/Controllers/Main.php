@@ -49,9 +49,8 @@ class Main extends BaseController
     {
         $data = [
             'title' => 'RH Wedding Planner',
-            'services' => $this->serviceModel->getServices(),
             'servicesByProduct' => $this->serviceModel->getServicesByProduct(),
-            'products' => $this->productModel->getProductsByService()
+            'products' => $this->productModel->getAllProducts()
         ];
         // dd($data);
         return view('index', $data);
@@ -107,7 +106,7 @@ class Main extends BaseController
     public function vendor($slug)
     {
         $data = [
-            'vendor' => $this->vendorModel->getVendorBySlug($slug),  
+            'vendor' => $this->vendorModel->getVendorBySlug($slug),
         ];
         $data['title'] = $data['vendor']['vendor_name'];
         $data['products'] = $this->productModel->getProductsByVendorId($data['vendor']['id']);
@@ -188,7 +187,7 @@ class Main extends BaseController
             'transactions' => $this->transactionModel->getTransByBuyerId(user()->id)
         ];
         // dd($data);
-        return view('main/transaction/index', $data); 
+        return view('main/transaction/index', $data);
     }
 
 
@@ -216,8 +215,19 @@ class Main extends BaseController
             )
         );
         $snapToken = \Midtrans\Snap::getSnapToken($params);
-       
+
         $data['snapToken'] = $snapToken;
-        return view('main/transaction/detail', $data); 
+        return view('main/transaction/detail', $data);
+    }
+
+    public function productByService($service_name)
+    {
+        $data = [
+            'title' => 'Products by Service',
+            'products' => $this->productModel->getProductsByService(urldecode($service_name)),
+            'service_name' => urldecode($service_name)
+        ];
+
+        return view('main/product_by_service', $data);
     }
 }

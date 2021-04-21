@@ -150,6 +150,7 @@ $routes->group('/', function ($routes) {
 	$routes->add('checkout', 'Main::checkout');
 	$routes->add('order/', 'Main::order');
 	$routes->add('order/(:any)', 'Main::detailOrder/$1');
+	$routes->add('products/services/(:any)', 'Main::productByService/$1');
 	$routes->add('(:any)', 'Main::productDetail/$1');
 });
 

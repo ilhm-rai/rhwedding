@@ -24,15 +24,15 @@
         </div>
         <div class="swiper-container-service w-100">
             <div class="swiper-wrapper">
-                <?php foreach ($services as $service) : ?>
+                <?php foreach ($servicesByProduct as $service) : ?>
                     <div class="swiper-slide d-flex">
-                        <a href="#" class="service">
+                        <a href="products/services/<?= urlencode($service['service_name']); ?>" class="service">
                             <img src="/img/vendors/service/1.jpg" alt="" class="img-service">
                             <p class="service-name"><?= $service['service_name']; ?></p>
                         </a>
                     </div>
                 <?php endforeach; ?>
-                <?php if (count($services) > 7) : ?>
+                <?php if (count($servicesByProduct) > 7) : ?>
                     <div class="swiper-slide">
                         <a href="#" class="service">
                             <div class="img-service service">
@@ -52,7 +52,7 @@
             <p class="product-desc"><?= $service['description']; ?></p>
             <div class="row">
                 <?php foreach ($products as $product) : ?>
-                    <?php if ($service['id'] == $product['service_id']) : ?>
+                    <?php if ($service['id'] == $product['product_service_id']) : ?>
                         <div class="col-3">
                             <a href="/<?= $product['slug']; ?>">
                                 <div class="card card-product">
