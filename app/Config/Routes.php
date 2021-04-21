@@ -42,6 +42,8 @@ $routes->group('search', function ($routes) {
 	$routes->add('result', 'Search::result');
 });
 
+$routes->post('users/edit/address', 'User::editAddress');
+
 // routes for admin
 $routes->group('admin', function ($routes) {
 	$routes->add('/', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);

@@ -17,8 +17,10 @@ if ($isUserOrderVenue == true) {
 function isUserOrderVenue(array $items)
 {
     foreach ($items as $item) {
-        return ($item['service_name'] == 'Venue') ? true : false;
+        $result = ($item['service_name'] == 'Venue') ? true : false;
     }
+
+    return $result;
 }
 ?>
 
@@ -34,10 +36,18 @@ function isUserOrderVenue(array $items)
                     <div class="card-body col-6">
                         <p class="font-weight-bold mb-0"><?= $user['full_name']; ?> <span class="badge badge-neon p-2"><?= $address_from; ?> Address</span></p>
                         <p class="mb-0"><?= $user['contact']; ?></p>
-                        <p><?= $event_address; ?></p>
+                        <?php
+                        if ($event_address) {
+                            echo "<p>$event_address</p>";
+                        } else {
+                            echo "<p class='text-danger'>Add event address!</p>";
+                        }
+                        ?>
                     </div>
                     <div class="col-2 text-center">
-                        <a href="#" class="btn btn-info rounded-pill"><i class="fas fa-pen mr-1"></i> Change</a>
+                        <?php if ($address_from != 'Venue') : ?>
+                            <a href="#" data-toggle="modal" data-target="#changeAddress" class="btn btn-info rounded-pill"><i class="fas <?= ($event_address) ? 'fa-pen' : 'fa-plus'; ?> mr-1"></i> <?= ($event_address) ? 'Change' : 'Add'; ?></a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -81,6 +91,34 @@ function isUserOrderVenue(array $items)
                 </tr>
             </table>
             <input type="submit" name="order" form="form-order" class="btn btn-wild-watermelon mt-5" value="Continue Order">
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="changeAddress" tabindex="-1" role="dialog" aria-labelledby="changeAddressLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/users/edit/address" method="POST" class="">
+                <div class="modal-body">
+                    <input type="hidden" name="detail-id" id='detail-id'>
+                    <!-- modal content -->
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea rows="4" class="text-left form-control" name="address" id="address"><?= old('address'); ?></textarea>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-action" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-wild-watermelon">Add</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
