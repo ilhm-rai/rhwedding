@@ -6,7 +6,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="content-heading mb-0 text-gray-800">My Order</h1>
-        <a href="/order/history" class="d-block d-sm-inline-block btn btn-wild-watermelon"><i class="fas fa-history mr-1"></i> Order History</a>
+        <a href="/transaction/history" class="d-block d-sm-inline-block btn btn-wild-watermelon"><i class="fas fa-history mr-1"></i>Transaction History</a>
     </div>
     <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
 

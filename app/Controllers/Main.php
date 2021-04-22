@@ -342,9 +342,20 @@ class Main extends BaseController
         ];
         $simpan = $this->paymentModel->save($data);
         if ($simpan) {
-            echo 'Sukses';
+            session()->setFlashdata('message', 'Transaction has been successfully added, please make payment');
+            return redirect()->to('/transaction/history');
         } else {
-            echo "Gagal";
+            session()->setFlashdata('message', 'Transaction filed');
+            return redirect()->to('/transaction/history');
         }
+    }
+
+    public function transactionHistory()
+    {
+        $data = [
+            'title' => 'Transaction History',
+            'transactions' => $this->transactionModel->getHistoryTransByBuyerId(user()->id)
+        ];
+        return view('main/transaction/history', $data);
     }
 }
