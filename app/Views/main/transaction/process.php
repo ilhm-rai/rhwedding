@@ -4,16 +4,16 @@
 
 <?= $this->section('content'); ?>
 
-
+<form id="payment-form" method="post" action="/order/finish">
+      <input type="hidden" name="result_type" id="result-type" value=""></div>
+      <input type="hidden" name="result_data" id="result-data" value=""></div>
+</form>
 <div class="container-fluid content-frame mb-4">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="content-heading mb-0 text-gray-800">Order Process</h1>
     </div>
-    <form id="payment-form" method="post" action="/order/finish">
-      <input type="hidden" name="result_type" id="result-type" value=""></div>
-      <input type="hidden" name="result_data" id="result-data" value=""></div>
-    </form>
+   
    
     <div class="content-frame mb-4 shadow">
         <h4 class="font-weight-bold mb-4 text-wild-watermelon"><?= $trans['transaction_code']; ?></h4>
@@ -100,6 +100,8 @@
             </div>
         </div>
     </div>
+</div>
+
 
    
 <?= $this->endSection(); ?>

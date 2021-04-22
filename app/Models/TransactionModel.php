@@ -8,7 +8,7 @@ class TransactionModel extends Model
 {
     protected $table = 'transaction';
     protected $useTimestamps = true;
-    protected $allowedFields = ['transaction_code', 'user_id ', 'total_pay', 'transaction_date', 'transaction_exp_date', 'payment_method', 'payment_date', 'payment_status', 'event_date'];
+    protected $allowedFields = ['transaction_code', 'user_id ', 'total_pay', 'payment_method', 'payment_date', 'payment_status', 'event_date'];
     protected $db;
     protected $VendorModel;
 
@@ -110,7 +110,8 @@ class TransactionModel extends Model
         FROM `transaction` AS `t`
         JOIN `payment` AS `p`
         ON `t`.`transaction_code` = `p`.`order_id`
-        WHERE `t`.`user_id` = $id AND `t`.`payment_status` = 1
+        WHERE `t`.`user_id` = $id
+        ORDER By `p`.`id` DESC
         ";
         return $this->db->query($query)->getResultArray();
     }
@@ -177,7 +178,8 @@ class TransactionModel extends Model
         INNER JOIN products as p
         ON p.id = td.product_id
         WHERE p.vendor_id = " . $this->VendorModel->getMyVendorId() . "
-        GROUP BY t.transaction_code";
+        GROUP BY t.transaction_code
+        ORDER By t.id DESC";
 
         return $this->db->query($query)->getResultArray();
     }

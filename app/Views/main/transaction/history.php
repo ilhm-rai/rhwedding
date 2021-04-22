@@ -5,7 +5,7 @@
 <div class="container-fluid content-frame mb-4">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="content-heading mb-0 text-gray-800">Order History</h1>
+        <h1 class="content-heading mb-0 text-gray-800">Transaction History</h1>
     </div>
     <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
 

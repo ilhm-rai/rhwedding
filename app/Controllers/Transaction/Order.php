@@ -104,8 +104,6 @@ class Order extends BaseController
     public function insertTransaction()
     {
         date_default_timezone_set("Asia/Bangkok");
-        $transaction_date = date('Y-d-m H:i:s');
-        $transaction_expired = date('Y-d-m H:i:s', strtotime($transaction_date) + (7 * 24 * 60 * 60));
         $invoice = $this->cartModel->getInvoice();
         $items = $this->cartModel->getItemInUserCart(['process_into_transaction' => 1]);
         $event_date = date('Y-m-d', strtotime($this->request->getVar('event_date')));
@@ -116,8 +114,6 @@ class Order extends BaseController
         $data = [
             'transaction_code' => $transaction_code,
             'user_id' => user()->id,
-            'transaction_date' => $transaction_date,
-            'transaction_exp_date' => $transaction_expired,
             'total_pay' => $invoice,
             'event_date' => $event_date,
             'event_time' => $event_time,

@@ -59,6 +59,9 @@ class Notification extends BaseController
             'payment_date' => date("Y-m-d", now('Asia/Bangkok')),
             'payment_status' => 1
             ]);
+
+            session()->setFlashdata('message', 'Thank you for your payment');
+            return redirect()->to('/transaction/history');
         }
       
         
