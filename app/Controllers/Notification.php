@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\NotificationModel;
 use App\Models\PaymentModel;
-
+use App\Models\TransactionModel;
 class Notification extends BaseController
 {
     /**
@@ -15,11 +15,14 @@ class Notification extends BaseController
     protected $request;
     protected $notificationModel;
     protected $paymentModel;
+    protected $transactionModel;
 
     public function __construct()
     {
         $this->notificationModel = new NotificationModel();
         $this->paymentModel = new PaymentModel();
+        $this->transactionModel = new TransactionModel();
+        helper('date');
     }
 
 
@@ -36,14 +39,28 @@ class Notification extends BaseController
 
     public function handling()
     {
+        \Midtrans\Config::$isProduction = false;
+        \Midtrans\Config::$serverKey = "SB-Mid-server-0CdKKn0ekLgYSuUWp2V7huR5";
         $notif = new \Midtrans\Notification();
-        $payment = $this->paymentModel->getWhere(['order_id' => $notif['order_id']]);
-
+        $transaction = $notif->transaction_status;
+        $order_id = $notif->order_id;
+        $payment = $this->paymentModel->getWhere(['order_id' => $order_id])->getRowArray();
+        $transaction = $this->transactionModel->getWhere(['transaction_code' => $order_id])->getRowArray();
+         
         $this->paymentModel->save([
             'id' => $payment['id'],
-            'order_id' => $notif['order_id'],
-            'status_code' => $notif['status_code']
+            'order_id' => $order_id,
+            'status_code' => $notif->status_code
         ]);
+        
+        if($notif->status_code == 200){
+             $this->transactionModel->save([
+            'id' => $transaction['id'],
+            'payment_date' => date("Y-m-d", now('Asia/Bangkok')),
+            'payment_status' => 1
+            ]);
+        }
+      
         
     }
 

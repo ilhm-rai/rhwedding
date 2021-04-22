@@ -194,17 +194,6 @@ class Main extends BaseController
         return view('main/transaction/index', $data); 
     }
 
-    public function orderHistory()
-    {
-        $data = [
-            'title' => 'Order History',
-            'user' => $this->userModel->getUserBy(user()->id),
-            'transactions' => $this->transactionModel->getHistoryTransByBuyerId(user()->id)
-        ];
-        // dd($data);
-        return view('main/transaction/history', $data); 
-    }
-
 
     public function detailOrder($code)
     {
@@ -334,9 +323,20 @@ class Main extends BaseController
         ];
         $simpan = $this->paymentModel->save($data);
         if($simpan){
-            echo 'Sukses';
+            session()->setFlashdata('message', 'Transaction has been successfully added, please make payment');
+            return redirect()->to('/transaction/history');
         }else{
-            echo "Gagal";
+            session()->setFlashdata('message', 'Transaction filed');
+            return redirect()->to('/transaction/history');
         }
+    }
+
+    public function transactionHistory()
+    {
+        $data = [
+            'title' => 'Transaction History',
+            'transactions' => $this->transactionModel->getHistoryTransByBuyerId(user()->id)
+        ];
+        return view('main/transaction/history', $data); 
     }
 }

@@ -147,10 +147,12 @@ $routes->group('/', function ($routes) {
 	$routes->add('mustlogin', 'Main::mustlogin');
 	$routes->add('checkout', 'Main::checkout');
 	$routes->add('order/', 'Main::order');
-	$routes->add('order/history', 'Main::orderHistory');
 	$routes->add('order/finish', 'Main::orderFinish');
 	$routes->add('order/process/(:any)', 'Main::orderProcess/$1');
 	$routes->add('order/(:any)', 'Main::detailOrder/$1');
+	$routes->add('transaction/history', 'Main::transactionHistory');
+	$routes->add('notification/handling', 'Notification::handling');
+	$routes->add('notification/item/get', 'Notification::getJsonItemInUserNotification');
 	$routes->add('(:any)', 'Main::productDetail/$1');
 });
 
@@ -184,9 +186,6 @@ $routes->delete('cart/item/delete/(:num)', 'Cart::deleteItemInCart/$1');
 $routes->post('cart/item/(:any)/process_into_transaction/(:num)', 'Cart::updateProcessItemIntoTransaction/$1/$2');
 $routes->post('cart/item/add/(:num)', 'Cart::addItemToCart/$1');
 $routes->post('/buy/(:num)', 'Cart::buyNow/$1');
-// Notification Routes
-$routes->get('notification/item/get', 'notification::getJsonItemInUserNotification');
-$routes->post('notification/handling', 'Notification::handling');
 // Checkout Routes
 $routes->post('checkout/order', 'Transaction\Order::insertTransaction');
 
