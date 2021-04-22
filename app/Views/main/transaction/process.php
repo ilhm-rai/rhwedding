@@ -8,8 +8,12 @@
 <div class="container-fluid content-frame mb-4">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="content-heading mb-0 text-gray-800">Detail Order</h1>
+        <h1 class="content-heading mb-0 text-gray-800">Order Process</h1>
     </div>
+    <form id="payment-form" method="post" action="/order/finish">
+      <input type="hidden" name="result_type" id="result-type" value=""></div>
+      <input type="hidden" name="result_data" id="result-data" value=""></div>
+    </form>
    
     <div class="content-frame mb-4 shadow">
         <h4 class="font-weight-bold mb-4 text-wild-watermelon"><?= $trans['transaction_code']; ?></h4>
@@ -53,6 +57,7 @@
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach($detail as $item): ?>
+                    <?php if($item['confirm'] == 1) :?>
                     <tr>
                         <td><?= $i++ ?></td>
                         <td><img src="/img/products/main-img/<?= $item['product_main_image']; ?>" alt="" class="w-100"></td>
@@ -73,6 +78,7 @@
                         ?>
                         <td><p class="<?= $color; ?> status-<?= $item['id']; ?> "><?= $text; ?></p></td>
                     </tr>
+                    <?php endif; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -86,11 +92,8 @@
                     <div class="col">
                     <input type="hidden" name="total" id='total' value='0'>
                     <h4 class="font-weight-bold text-wild-watermelon total-screen">Rp<?= number_format($trans['cash_in'],0,',','.'); ?>,-</h4>
-                    <?php if($trans['cash_in'] > 0) : ?>
                     <!-- <button type='button' class='btn btn-wild-watermelon mt-3' id='pay-button'>Pay Now</button> -->
-                    <a href='/order/process/<?= $trans['transaction_code']; ?>' class='btn btn-wild-watermelon mt-3'>Continue Payment</a>
-                    <?php endif; ?>
-
+                    <button type='button' class='btn btn-wild-watermelon mt-3' id='pay-button'>Pay Now</button>
                     </div>
                 </div>
  
@@ -106,6 +109,43 @@
         $('#dataProducts').DataTable();
     });
 </script>
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-QD_c2mAionu-LIuk"></script>
+        <script type="text/javascript">
+
+        var resultType = document.getElementById('result-type');
+        var resultData = document.getElementById('result-data');
+
+        function changeResult(type,data){
+          $("#result-type").val(type);
+          $("#result-data").val(JSON.stringify(data));
+          //resultType.innerHTML = type;
+          //resultData.innerHTML = JSON.stringify(data);
+        }
+
+            document.getElementById('pay-button').onclick = function(){
+                // SnapToken acquired from previous step
+                snap.pay('<?php echo $snapToken?>', {
+                    // Optional
+                    onSuccess: function(result){
+                        changeResult('success', result);
+                        console.log(result.status_message);
+                        console.log(result);
+                        $("#payment-form").submit();
+                    },
+                    onPending: function(result){
+                        changeResult('pending', result);
+                        console.log(result.status_message);
+                        $("#payment-form").submit();
+                    },
+                    onError: function(result){
+                        changeResult('error', result);
+                        console.log(result.status_message);
+                        $("#payment-form").submit();
+                    }
+
+                });
+            };
+        </script>
 <?= $this->endSection(); ?>
 
 

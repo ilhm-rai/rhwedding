@@ -149,6 +149,9 @@ $routes->group('/', function ($routes) {
 	$routes->add('mustlogin', 'Main::mustlogin');
 	$routes->add('checkout', 'Main::checkout');
 	$routes->add('order/', 'Main::order');
+	$routes->add('order/history', 'Main::orderHistory');
+	$routes->add('order/finish', 'Main::orderFinish');
+	$routes->add('order/process/(:any)', 'Main::orderProcess/$1');
 	$routes->add('order/(:any)', 'Main::detailOrder/$1');
 	$routes->add('products/services/(:any)', 'Main::productByService/$1');
 	$routes->add('(:any)', 'Main::productDetail/$1');
@@ -186,8 +189,10 @@ $routes->post('cart/item/add/(:num)', 'Cart::addItemToCart/$1');
 $routes->post('/buy/(:num)', 'Cart::buyNow/$1');
 // Notification Routes
 $routes->get('notification/item/get', 'notification::getJsonItemInUserNotification');
+$routes->post('notification/handling', 'Notification::handling');
 // Checkout Routes
 $routes->post('checkout/order', 'Transaction\Order::insertTransaction');
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

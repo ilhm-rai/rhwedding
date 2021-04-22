@@ -44,9 +44,9 @@
             </div>
             (<?= $product['total_review']; ?> reviews)
             </p>
-            <h2 class="product-price">Rp<?= number_format($product['price'], 0, ',', '.'); ?>,-</h2>
-            <p class="product-note">Add Note</p>
-            <textarea class="form-control" id="productDescription" rows="4" style="border-radius: 15px;"></textarea>
+            <h2 class="product-price mb-4">Rp<?= number_format($product['price'], 0, ',', '.'); ?>,-</h2>
+            <!-- <p class="product-note">Add Note</p>
+            <textarea class="form-control" id="productDescription" rows="4" style="border-radius: 15px;"></textarea> -->
             <div class="mt-4">
         
                 <a class="btn btn-action rounded-pill js-add-to-cart" data-userid="<?= (logged_in()) ? user()->id : 'false'; ?>" data-productid="<?= $product['id']; ?>"><span class="fa fa-shopping-cart"></span> Add to Cart</a>

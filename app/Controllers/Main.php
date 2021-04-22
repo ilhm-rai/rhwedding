@@ -11,6 +11,7 @@ use App\Models\LevelModel;
 use App\Models\UsersModel;
 use App\Models\TransactionModel;
 use App\Models\TransDetailModel;
+use App\Models\PaymentModel;
 
 class Main extends BaseController
 {
@@ -29,6 +30,7 @@ class Main extends BaseController
     protected $userModel;
     protected $transactionModel;
     protected $transDetailModel;
+    protected $paymentModel;
 
     public function __construct()
     {
@@ -41,6 +43,7 @@ class Main extends BaseController
         $this->userModel = new UsersModel();
         $this->transactionModel = new TransactionModel();
         $this->transDetailModel = new TransDetailModel();
+        $this->paymentModel = new PaymentModel();
 
         helper('text');
     }
@@ -190,6 +193,17 @@ class Main extends BaseController
         return view('main/transaction/index', $data);
     }
 
+    public function orderHistory()
+    {
+        $data = [
+            'title' => 'Order History',
+            'user' => $this->userModel->getUserBy(user()->id),
+            'transactions' => $this->transactionModel->getHistoryTransByBuyerId(user()->id)
+        ];
+        // dd($data);
+        return view('main/transaction/history', $data);
+    }
+
 
     public function detailOrder($code)
     {
@@ -199,25 +213,106 @@ class Main extends BaseController
             'trans' => $this->transactionModel->getTransBy($code),
             'detail' => $this->transDetailModel->getDetailByTransCode($code),
         ];
-        // midtrans
-        // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = 'SB-Mid-server-0CdKKn0ekLgYSuUWp2V7huR5';
-        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        \Midtrans\Config::$isProduction = false;
-        // Set sanitization on (default)
-        \Midtrans\Config::$isSanitized = true;
-        // Set 3DS transaction for credit card to true
-        \Midtrans\Config::$is3ds = true;
-        $params = array(
-            'transaction_details' => array(
-                'order_id' => $data['trans']['transaction_code'],
-                'gross_amount' => 10000,
-            )
-        );
-        $snapToken = \Midtrans\Snap::getSnapToken($params);
-
-        $data['snapToken'] = $snapToken;
         return view('main/transaction/detail', $data);
+    }
+
+    public function orderProcess($code)
+    {
+        $data = [
+            'title'  => 'Order Process',
+            'trans' => $this->transactionModel->getTransBy($code),
+            'detail' => $this->transDetailModel->getDetailByTransCode($code),
+        ];
+        // dd($data);
+
+        $user = $this->userModel->getUserBy(user()->id);
+
+        //Set Your server key
+        \Midtrans\Config::$serverKey = "SB-Mid-server-0CdKKn0ekLgYSuUWp2V7huR5";
+
+        // Uncomment for production environment
+        \Midtrans\Config::$isProduction = false;
+
+        // Enable sanitization
+        \Midtrans\Config::$isSanitized = true;
+
+        // Enable 3D-Secure
+        \Midtrans\Config::$is3ds = true;
+
+        // Uncomment for append and override notification URL
+        // Config::$appendNotifUrl = "https://example.com";
+        // Config::$overrideNotifUrl = "https://example.com";
+
+        // Required
+        $transaction_details = array(
+            'order_id' => $data['trans']['transaction_code'],
+            'gross_amount' => $data['trans']['cash_in'], // no decimal allowed for creditcard
+        );
+
+        // Optional
+        $item_details = array();
+
+        foreach ($data['detail'] as $item) {
+            if ($item['confirm'] == 1) {
+                $item = [
+                    'id' => $item['id'],
+                    'price' => $item['price'],
+                    'quantity' => 1,
+                    'name' => $item['product_name'],
+                ];
+                array_push($item_details, $item);
+            }
+        }
+
+        //   Optional
+        $shipping_address = array(
+            'address'       => $data['trans']['event_address'],
+            'country_code'  => 'IDN'
+        );
+
+        // Optional
+        $customer_details = array(
+            'first_name'    => $user['full_name'],
+            'email'         => $user['email'],
+            'phone'         => $user['contact'],
+            'shipping_address' => $shipping_address
+        );
+
+        // Optional, remove this to display all available payment methods
+        $enable_payments =  [
+            "credit_card",
+            "gopay",
+            "shopeepay",
+            "permata_va",
+            "bca_va",
+            "bni_va",
+            "bri_va",
+            "echannel",
+            "other_va",
+            "danamon_online",
+            "mandiri_clickpay",
+            "cimb_clicks",
+            "bca_klikbca",
+            "bca_klikpay",
+            "bri_epay",
+            "xl_tunai",
+            "indosat_dompetku",
+            "kioson",
+            "Indomaret",
+            "alfamart",
+            "akulaku"
+        ];
+        // Fill transaction details
+        $transaction = array(
+            'enabled_payments' => $enable_payments,
+            'transaction_details' => $transaction_details,
+            'customer_details' => $customer_details,
+            'item_details' => $item_details,
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($transaction);
+        $data['snapToken'] = $snapToken;
+        return view('main/transaction/process', $data);
     }
 
     public function productByService($service_name)
@@ -229,5 +324,27 @@ class Main extends BaseController
         ];
 
         return view('main/product_by_service', $data);
+    }
+
+
+    public function orderFinish()
+    {
+        $result = json_decode($this->request->getPost('result_data'), true);
+        $data = [
+            'order_id' => $result['order_id'],
+            'gross_amount' => $result['gross_amount'],
+            'payment_type' => $result['payment_type'],
+            'transaction_time' => $result['transaction_time'],
+            'bank' => $result['va_numbers'][0]['bank'],
+            'va_number' => $result['va_numbers'][0]['va_number'],
+            'pdf_url' => $result['pdf_url'],
+            'status_code' => $result['status_code'],
+        ];
+        $simpan = $this->paymentModel->save($data);
+        if ($simpan) {
+            echo 'Sukses';
+        } else {
+            echo "Gagal";
+        }
     }
 }
