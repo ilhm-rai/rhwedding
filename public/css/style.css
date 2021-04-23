@@ -552,6 +552,10 @@ a:hover {
   text-decoration: none;
 }
 
+footer a {
+  color: white;
+}
+
 /* footer-main */
 
 footer .main-footer {
