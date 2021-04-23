@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Controllers\BaseController;
 use App\Models\RoleModel;
 use App\Models\UsersModel;
+
 class UserRole extends BaseController
 {
 
@@ -26,15 +27,16 @@ class UserRole extends BaseController
         ];
         return view('admin/user/role/index', $data);
     }
-    
+
 
     public function add()
     {
         $data = [
             'title'  => 'Add User Roles | RH Wedding Planner',
+            'active' => 'users',
             'validation' => \Config\Services::validation(),
         ];
-        return view('admin/user/role/add', $data);   
+        return view('admin/user/role/add', $data);
     }
 
     public function save()
@@ -52,7 +54,7 @@ class UserRole extends BaseController
         session()->setFlashdata('message', 'Role has been successfully added');
         return redirect()->to('/admin/users/roles');
     }
-    
+
     public function delete($id)
     {
         // cari role berdasarkan id
@@ -97,5 +99,4 @@ class UserRole extends BaseController
         // dd($data);
         return view('admin/user/role/detail', $data);
     }
-
 }

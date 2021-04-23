@@ -1,7 +1,7 @@
 <?= $this->extend('templates/main'); ?>
 
 <?= $this->section('content'); ?>
-<div class="content-frame bg-none">
+<div class="content-frame bg-none pt-0">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>

@@ -24,7 +24,7 @@
             <?= $this->renderSection('banner'); ?>
 
             <!-- Begin Page Content -->
-            <div class="container-fluid">
+            <div class="container-fluid mt-5">
                 <?= $this->renderSection('content'); ?>
             </div>
             <!-- /.container-fluid -->

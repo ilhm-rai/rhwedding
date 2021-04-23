@@ -17,7 +17,7 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('content'); ?>
-<div class="container-fluid mt-5">
+<div class="container-fluid">
     <div class="content-frame mb-5 shadow clearfix" style="clear: both; overflow: hidden;">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="content-heading mb-0">Service</h1>
