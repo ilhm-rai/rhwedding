@@ -37,7 +37,7 @@ class Product extends BaseController
     {
         $data = [
             'title'  => 'Products - RH Wedding',
-            'active' => 'product',
+            'active' => 'vendor_product',
             'products'  => $this->productModel->getProductsByOwnerId(user()->id),
             'services' => $this->serviceModel->getServices(),
         ];
@@ -48,7 +48,7 @@ class Product extends BaseController
     {
         $data = [
             'title' => 'Add New Product - RH Wedding',
-            'active' => 'product',
+            'active' => 'vendor_product',
             'services' => $this->serviceModel->getServiceByUser(user()->id),
             'vendor'  => $this->vendorModel->getVendorByUser(user()->id),
             'validation' => \Config\Services::validation(),
@@ -177,7 +177,7 @@ class Product extends BaseController
         $product = $this->productModel->getProductBySlug($slug);
         $data = [
             'title'  => 'Products - RH Wedding',
-            'active' => 'product',
+            'active' => 'vendor_product',
             'product'  => $product,
             'productImg' => $this->productsImagesModel->getWhere(['product_id' => $product['id']])->getResultArray(),
         ];
@@ -191,7 +191,7 @@ class Product extends BaseController
 
         $data = [
             'title'  => 'Edit Products - RH Wedding',
-            'active' => 'product',
+            'active' => 'vendor_product',
             'product'  => $product,
             'services' => $this->serviceModel->getServiceByUser(user()->id),
             'productImg' => $this->productsImagesModel->getWhere(['product_id' => $product['id']])->getResultArray(),

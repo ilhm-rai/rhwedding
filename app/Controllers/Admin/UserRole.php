@@ -20,23 +20,24 @@ class UserRole extends BaseController
 
     public function index()
     {
-        $data = [
+        $this->data = [
             'title'  => 'User Roles | RH Wedding Planner',
-            'active' => 'users',
-            'roles'  => $this->roleModel->getRoles()
+            'roles'  => $this->roleModel->getRoles(),
+            'active' => 'users'
         ];
-        return view('admin/user/role/index', $data);
+        return view('admin/user/role/index', $this->data);
     }
 
 
     public function add()
     {
-        $data = [
+        $this->data = [
             'title'  => 'Add User Roles | RH Wedding Planner',
-            'active' => 'users',
             'validation' => \Config\Services::validation(),
+            'active' => 'users'
         ];
-        return view('admin/user/role/add', $data);
+
+        return view('admin/user/role/add', $this->data);
     }
 
     public function save()
@@ -65,12 +66,13 @@ class UserRole extends BaseController
 
     public function edit($id)
     {
-        $data = [
+        $this->data = [
             'title'  => 'Edit Roles | RH Wedding Planner',
             'validation' => \Config\Services::validation(),
             'role'  => $this->roleModel->getWhere(['id' => $id])->getRowArray(),
+            'active' => 'users'
         ];
-        return view('admin/user/role/edit', $data);
+        return view('admin/user/role/edit', $this->data);
     }
 
     public function update($id)
@@ -91,12 +93,12 @@ class UserRole extends BaseController
 
     public function detail($id)
     {
-        $data = [
+        $this->data = [
             'title'  => 'Detail Roles | RH Wedding Planner',
             'role'  => $this->roleModel->getWhere(['id' => $id])->getRowArray(),
             'users'  => $this->usersModel->getUsersByRole($id),
+            'active' => 'users'
         ];
-        // dd($data);
-        return view('admin/user/role/detail', $data);
+        return view('admin/user/role/detail', $this->data);
     }
 }

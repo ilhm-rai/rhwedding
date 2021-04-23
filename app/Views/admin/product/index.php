@@ -5,7 +5,6 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="content-heading mb-0 text-gray-800">All Products</h1>
-        <a href="/vendors/products/add" class="d-block d-sm-inline-block btn btn-wild-watermelon rounded-pill"><i class="fas fa-plus-square mr-1"></i> Add New Product</a>
     </div>
     <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
 
@@ -21,9 +20,9 @@
                     Service Category
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <?php foreach($services as $s) : ?>
-                    <a class="dropdown-item" href="#"><?= $s['service_name']; ?></a>
-                <?php endforeach; ?>
+                    <?php foreach ($services as $s) : ?>
+                        <a class="dropdown-item" href="#"><?= $s['service_name']; ?></a>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <button type="submit" class="btn btn-wild-watermelon rounded-pill btn-sm">Find</button>
@@ -39,7 +38,6 @@
                     <th>Service</th>
                     <th>Price</th>
                     <th>Status</th>
-                    <th>Action</th>
                 </tr>
             </thead>
             <tfoot>
@@ -50,29 +48,19 @@
                     <th>Service</th>
                     <th>Price</th>
                     <th>Status</th>
-                    <th>Action</th>
                 </tr>
             </tfoot>
             <tbody>
                 <?php $i = 1; ?>
-                <?php foreach($products as $product): ?>
-                <tr>
-                    <td><?= $i++ ?></td>
-                    <td><img src="/img/products/main-img/<?= $product['product_main_image']; ?>" alt="" class="w-100"></td>
-                    <td><?= $product['product_name']; ?></td>
-                    <td><?= $product['service_name']; ?></td>
-                    <td>Rp<?= number_format($product['price'],0,',','.'); ?>,-</td>
-                    <td> <button type="button" class="btn <?= ($product['active'] == 1) ? 'btn-success' : 'btn-warning'; ?> btn-sm small"><?= ($product['active'] == 1) ? 'Active' : 'Disable'; ?></button></td>
-                    <td class="text-center">
-                            <a href="/admin/products/detail/<?= $product['slug']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-eye"></span><span class="d-sm-none d-lg-inline">Detail</span></a>
-                            <a href="/admin/products/edit/<?= $product['slug']; ?>" class="btn btn-action btn-sm small mb-1"><span class="d-lg-none fa fa-pencil-alt"></span><span class="d-sm-none d-lg-inline">Edit</span></a>
-                            <form action="/admin/products/<?= $product['id']; ?>" method="POST" class="d-inline form-delete">
-                                <?= csrf_field(); ?>
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="btn btn-action btn-sm small mb-1 btn-delete"><span class="d-lg-none fa fa-trash"></span><span class="d-sm-none d-lg-inline">Delete</span></span></button>
-                            </form>
-                        </td>
-                </tr>
+                <?php foreach ($products as $product) : ?>
+                    <tr>
+                        <td><?= $i++ ?></td>
+                        <td><img src="/img/products/main-img/<?= $product['product_main_image']; ?>" alt="" class="w-100"></td>
+                        <td><?= $product['product_name']; ?></td>
+                        <td><?= $product['service_name']; ?></td>
+                        <td>Rp<?= number_format($product['price'], 0, ',', '.'); ?>,-</td>
+                        <td> <button type="button" class="btn <?= ($product['active'] == 1) ? 'btn-success' : 'btn-warning'; ?> btn-sm small"><?= ($product['active'] == 1) ? 'Active' : 'Disable'; ?></button></td>
+                    </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
