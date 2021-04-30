@@ -98,7 +98,9 @@ if (logged_in()) {
                 <div class="js-item-notification">
                     <!-- Item in Notification -->
                 </div>
+                <?php if(user()): ?>
                 <a class="dropdown-item text-center small text-gray-500" href="/notification">Show All Notification</a>
+                <?php endif; ?>
             </div>
         </li>
 

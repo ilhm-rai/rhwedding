@@ -166,7 +166,7 @@ class Main extends BaseController
             'vendor_level_id' => $level['id'],
             'contact_vendor' => $this->request->getVar('contact_vendor'),
             'city' => $this->request->getVar('city'),
-            'address' => $this->request->getVar('address'),
+            'vendor_address' => $this->request->getVar('address'),
             'active' => 1,
         ]);
         $db = \Config\Database::connect();

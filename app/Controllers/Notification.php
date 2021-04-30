@@ -26,6 +26,24 @@ class Notification extends BaseController
     }
 
 
+
+    public function index()
+    {
+        $data = [
+            'menuActive' => false,
+            'title' => 'My Notification',
+            'notification' => $this->notificationModel->getWhere(['user_id' =>user()->id])->getResultArray(),       
+         ];
+        //   dd($data);
+         return view('main/notification', $data);
+    }
+    public function delete($id)
+    {
+        $this->notificationModel->delete($id);
+        session()->setFlashdata('message', 'Notification has been successfully deleted');
+        return redirect()->to('/notification');
+
+    }
     public function getItemInUserNotification()
     {
         return $this->notificationModel->getWhere(['user_id' => user()->id])->getResultArray();

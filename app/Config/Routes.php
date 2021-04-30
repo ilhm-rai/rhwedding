@@ -43,7 +43,7 @@ $routes->group('search', function ($routes) {
 });
 
 $routes->post('users/edit/address', 'User::editAddress');
-
+$routes->post('notification/handling', 'Notification::handling');
 // routes for admin
 $routes->group('admin', function ($routes) {
 	$routes->add('/', 'Admin\Dashboard::index', ['filter' => 'role:Admin']);
@@ -154,7 +154,8 @@ $routes->group('/', function ($routes) {
 	$routes->add('order/(:any)', 'Main::detailOrder/$1');
 	$routes->add('products/services/(:any)', 'Main::productByService/$1');
 	$routes->add('transaction/history', 'Main::transactionHistory');
-	$routes->add('notification/handling', 'Notification::handling');
+	// $routes->add('notification/handling', 'Notification::handling');
+	$routes->add('notification', 'Notification::index');
 	$routes->add('notification/item/get', 'Notification::getJsonItemInUserNotification');
 	$routes->add('(:any)', 'Main::productDetail/$1');
 });
@@ -163,6 +164,7 @@ $routes->delete('admin/users/roles/(:num)', 'Admin\UserRole::delete/$1');
 $routes->delete('admin/vendors/services/(:num)', 'Admin\VendorService::delete/$1');
 $routes->delete('admin/vendors/level/(:num)', 'Admin\VendorLevel::delete/$1');
 $routes->delete('admin/products/(:num)', 'Admin\Product::delete/$1');
+$routes->delete('notification/(:num)', 'Notification::delete/$1');
 
 $routes->delete('vendors/products/(:num)', 'Vendors\Product::delete/$1');
 $routes->delete('users/profile', 'User::profile');
