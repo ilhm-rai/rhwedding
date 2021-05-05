@@ -32,31 +32,30 @@
                     </div>
                     <div class="col">
                         <div class="text-xs font-weight-bold text-uppercase mb-1">
-                            My Wallet</div>
-                        <div class="h5 mb-0 font-weight-bold">Rp103.000.000</div>
+                            Earnings</div>
+                        <div class="h5 mb-0 font-weight-bold">Rp<?= number_format($earnings, 0, ',', '.'); ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
+    <!-- <div class="col-xl-3 col-md-6 mb-4">
         <div class="card shadow h-100 border-0 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col-auto mr-3">
-                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        <i class="fas fa-box-open fa-2x text-gray-300"></i>
                     </div>
                     <div class="col">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Earnings (Monthly)</div>
+                            Total Product</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">Rp21.000.000</div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
@@ -67,11 +66,11 @@
                         <i class="fas fa-calendar-alt fa-2x text-gray-300"></i>
                     </div>
                     <div class="col">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Events
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Customer
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">20</span>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $customers['customers']; ?></span>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +81,7 @@
     </div>
 
     <!-- Pending Requests Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
+    <!-- <div class="col-xl-3 col-md-6 mb-4">
         <div class="card shadow border-0 h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -97,15 +96,14 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
-<div class="container-fluid content-frame shadow">
-    <!-- Page Heading -->
+<!-- <div class="container-fluid content-frame shadow">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="content-heading mb-0 text-gray-800">Transaction</h1>
     </div>
-</div>
+</div> -->
 <?= $this->endSection(); ?>
 
 <?= $this->section('script'); ?>

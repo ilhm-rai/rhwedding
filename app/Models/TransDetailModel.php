@@ -35,4 +35,10 @@ class TransDetailModel extends Model
         ";
          return $this->db->query($query)->getResultArray();
     }
+
+    public function getMyCustomer($vendor_id)
+    {
+        $sql = "SELECT count(DISTINCT t.user_id) as customers FROM transaction as t INNER JOIN transaction_detail as td ON td.transaction_id = t.id INNER JOIN products as p ON p.id = td.product_id WHERE p.vendor_id = $vendor_id";
+        return $this->db->query($sql)->getRowArray();
+    }
 }

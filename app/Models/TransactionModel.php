@@ -199,4 +199,17 @@ class TransactionModel extends Model
         ";
         return $this->db->query($query)->getResultArray();
     }
+
+    public function getEarnings()
+    {
+        $sql =  "SELECT sum(total_pay) as earnings FROM transaction WHERE payment_status=1";
+        return $this->db->query($sql)->getRowArray();
+    }
+
+    public function getVendorEarnings($vendor_id)
+    {
+        $sql =  "SELECT sum(p.price) as earnings FROM transaction as t INNER JOIN transaction_detail as td ON td.transaction_id = t.id INNER JOIN products as p ON p.id = td.product_id WHERE p.vendor_id=$vendor_id AND t.payment_status=1 ";
+        $query = $this->db->query($sql)->getRowArray();
+        return $query['earnings'];
+    }
 }
