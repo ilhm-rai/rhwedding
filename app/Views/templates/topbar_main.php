@@ -48,11 +48,11 @@ if (logged_in()) {
             </a>
             <!-- Dropdown - Messages -->
             <div class="dropdown-menu p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
+                <form action="/search/result" method="post" class="form-inline mr-auto w-100 navbar-search">
                     <div class="input-group">
                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
+                            <button class="btn btn-primary" type="submit">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
                         </div>
@@ -79,7 +79,9 @@ if (logged_in()) {
                 <div class="js-item-cart">
                     <!-- Item in Cart -->
                 </div>
+                <?php if(user()): ?>
                 <a class="dropdown-item text-center small text-gray-500" href="/cart">Show All Items</a>
+                <?php endif; ?>
             </div>
         </li>
         <li class="nav-item dropdown no-arrow">

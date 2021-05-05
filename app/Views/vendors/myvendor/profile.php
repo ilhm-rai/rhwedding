@@ -5,10 +5,17 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="content-heading mb-0 text-gray-800">Vendor Profile</h1>
     </div>
+    <div class="flash-data" data-flashdata="<?= session()->getFlashdata('message'); ?>"></div>
+
+<?php if (session()->getFlashdata('message')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('message'); ?>
+    </div>
+<?php endif; ?>
     <div class="row">
         <div class="col">
             <div class="mb-3">
-            <img src="/img/vendors/banners/1.jpg" alt="" class="w-100 rounded mb-4">
+            <img src="/img/vendors/banners/<?= ($vendor['vendor_banner'])?$vendor['vendor_banner']:'1.jpg'; ?>" alt="" class="w-100 rounded mb-4">
             <div class="content-frame shadow">
                 <div class="row align-items-center">
                     <div class="col-2">
@@ -28,6 +35,14 @@
                     <input type="text" class="form-control rounded-pill" name="owner" id="owner" value="<?= $user['full_name']; ?>" readonly>
                 </div>
                 <div class="form-group">
+                    <label for="contact" class="v-form-label">Contact Vendor</label>
+                    <input type="text" class="form-control rounded-pill" name="contact" id="contact" value="<?= $vendor['contact_vendor']; ?>" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="city" class="v-form-label">City</label>
+                    <input type="text" class="form-control rounded-pill" name="city" id="city" value="<?= $vendor['city']; ?>" readonly>
+                </div>
+                <div class="form-group">
                     <label for="services" class="v-form-label">Services</label>
                     <div class="service-group d-block ml-3">
                         <?php foreach ($myServices as $service) : ?>
@@ -38,7 +53,7 @@
                 </div>
                 <div class="form-group">
                     <label for="address" class="v-form-label">Address</label>
-                    <textarea class="form-control" id="address" rows="5" style="border-radius: 20px;" readonly><?= $user['address']; ?></textarea>
+                    <textarea class="form-control" id="address" rows="5" style="border-radius: 20px;" readonly><?= $vendor['vendor_address']; ?></textarea>
                 </div>
                 <div class="form-group">
                     <label for="description" class="v-form-label">Description</label>

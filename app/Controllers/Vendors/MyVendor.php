@@ -58,6 +58,63 @@ class Myvendor extends BaseController
         return view('vendors/myvendor/edit', $data);
     }
 
+    public function update()
+    {
+        $vendorId = $this->request->getVar('vendor-id');
+        $vendorName = $this->request->getVar('vendor-name');
+        $oldVendorName = $this->request->getVar('old-vendor-name');
+        $oldSlug = $this->request->getVar('old-slug');
+
+        if($vendorName == $oldVendorName){
+            $rulesVendorName = 'Required';
+            $slug = $oldSlug;
+        }else{
+            $rulesVendorName ="required|is_unique[vendors.vendor_name]";
+            $slug = url_title($vendorName, '-') . '.V-' . random_string('numeric');
+        }
+
+        if (!$this->validate([
+            'vendor-name' => $rulesVendorName,
+            'contact' => 'required',
+            'city' => 'required',
+            'vendor-address' => 'required',
+            'vendor-banner' => [
+                'rules'  => 'max_size[vendor-banner,5024]|ext_in[vendor-banner,png,jpg,jpeg,svg,gif]',
+                'errors' => [
+                    'ext_in' => "Extension must Image",
+
+                ]
+            ]
+        ])) {
+            return redirect()->to('/vendors/myvendor/edit')->withInput();
+        }
+        $vendorBanner = $this->request->getFile('vendor-banner');
+        if ($vendorBanner->getError() == 4) {
+            $vendorBannerName = $this->request->getVar('old-vendor-banner');
+        }else{
+            // pindahkan file
+            $vendorBanner->move('img/vendors/banners');
+            $vendorBannerName = $vendorBanner->getName();
+            // hapus file lama
+            $oldVendorBanner = $this->request->getVar('old-vendor-banner');
+            if($oldVendorBanner != '1.jpg'){
+                unlink('img/vendors/banners/' . $oldVendorBanner);
+            }
+        }
+
+        $this->vendorModel->save([
+            'id' => $vendorId,
+            'vendor_name' => $vendorName,
+            'slug' => $slug,
+            'contact_vendor' => $this->request->getVar('contact'),
+            'city' => $this->request->getVar('city'),
+            'vendor_address' => $this->request->getVar('vendor-address'),
+            'vendor_banner' => $vendorBannerName
+        ]);
+        session()->setFlashdata('message', 'vendor has been successfully edited');
+        return redirect()->to('/vendors/myvendor');
+    }
+
 
 
 

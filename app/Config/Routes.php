@@ -101,6 +101,7 @@ $routes->group('vendors', function ($routes) {
 	$routes->group('myvendor', function ($routes) {
 		$routes->add('/', 'Vendors\MyVendor::index');
 		$routes->add('edit', 'Vendors\MyVendor::edit');
+		$routes->add('update', 'Vendors\MyVendor::update');
 		$routes->group('service', function ($routes) {
 			$routes->add('/', 'Vendors\MyVendor::service');
 			$routes->add('add', 'Vendors\MyVendor::addservice');

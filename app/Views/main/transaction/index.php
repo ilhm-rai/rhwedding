@@ -21,7 +21,7 @@
                 <tr>
                     <th>No</th>
                     <th>Transaction Code</th>
-                    <th>Cash In</th>
+                    <th>Gross Amount</th>
                     <th>Amount Item</th>
                     <th>Item Confirmed</th>
                     <th>Event Date</th>
@@ -33,7 +33,7 @@
                 <tr>
                     <th>No</th>
                     <th>Transaction Code</th>
-                    <th>Cash In</th>
+                    <th>Gross Amount</th>
                     <th>Amount Item</th>
                     <th>Item Confirmed</th>
                     <th>Event Date</th>
