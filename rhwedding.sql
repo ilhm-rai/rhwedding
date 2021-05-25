@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Waktu pembuatan: 22 Apr 2021 pada 06.59
--- Versi server: 10.3.16-MariaDB
--- Versi PHP: 7.3.23
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 25 Bulan Mei 2021 pada 10.42
+-- Versi server: 10.4.14-MariaDB
+-- Versi PHP: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `id16491235_rhwedding`
+-- Database: `rhwedding`
 --
 
 -- --------------------------------------------------------
@@ -260,7 +259,11 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (131, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-21 10:18:40', 1),
 (132, '27.122.14.92', 'muhamadarsaludin71@gmail.com', 5, '2021-04-21 20:11:12', 1),
 (133, '27.122.14.92', 'muhamadarsaludin71@gmail.com', 5, '2021-04-22 00:02:49', 1),
-(134, '36.72.221.63', 'muhamadarsaludin71@gmail.com', 5, '2021-04-22 01:54:47', 1);
+(134, '36.72.221.63', 'muhamadarsaludin71@gmail.com', 5, '2021-04-22 01:54:47', 1),
+(135, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-22 02:29:02', 1),
+(136, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-30 11:11:56', 1),
+(137, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-04-30 12:44:30', 1),
+(138, '::1', 'muhamadarsaludin71@gmail.com', 5, '2021-05-04 17:26:09', 1);
 
 -- --------------------------------------------------------
 
@@ -348,6 +351,13 @@ CREATE TABLE `cart_detail` (
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `cart_detail`
+--
+
+INSERT INTO `cart_detail` (`id`, `cart_id`, `product_id`, `process_into_transaction`, `created_at`) VALUES
+(56, 1, 41, 0, '2021-04-30 23:26:20');
+
 -- --------------------------------------------------------
 
 --
@@ -417,6 +427,13 @@ CREATE TABLE `notification` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `notification`
+--
+
+INSERT INTO `notification` (`id`, `user_id`, `message`, `link`, `created_at`, `updated_at`) VALUES
+(55, 5, 'Order for Gaun Monalisa has been approved', '/order/TRA-608127F834BB5', '2021-04-22 02:41:08', '2021-04-22 02:41:08');
+
 -- --------------------------------------------------------
 
 --
@@ -442,7 +459,8 @@ CREATE TABLE `payment` (
 INSERT INTO `payment` (`id`, `order_id`, `gross_amount`, `payment_type`, `transaction_time`, `bank`, `va_number`, `pdf_url`, `status_code`) VALUES
 (1, 'TRA-60806C5320557', 10000000, 'bank_transfer', '2021-04-22 01:18:38', 'bca', '32589288570', 'https://app.sandbox.midtrans.com/snap/v1/transactions/9463cf83-6cb7-444f-8351-81848de6b083/pdf', '200'),
 (2, 'TRA-60811681A3BA0', 12000000, 'bank_transfer', '2021-04-22 13:25:53', 'bca', '32589083013', 'https://app.sandbox.midtrans.com/snap/v1/transactions/0b6604cf-e1a3-46d3-ac6f-d0a80b728b79/pdf', '200'),
-(3, 'TRA-60811AE60B547', 3000000, 'bank_transfer', '2021-04-22 13:49:06', 'bca', '32589486508', 'https://app.sandbox.midtrans.com/snap/v1/transactions/35a6949d-43ad-4ccc-a13c-ffff987305fd/pdf', '200');
+(3, 'TRA-60811AE60B547', 3000000, 'bank_transfer', '2021-04-22 13:49:06', 'bca', '32589486508', 'https://app.sandbox.midtrans.com/snap/v1/transactions/35a6949d-43ad-4ccc-a13c-ffff987305fd/pdf', '200'),
+(4, 'TRA-608127F834BB5', 3000000, 'bank_transfer', '2021-04-22 14:41:32', 'bca', '32589097137', 'https://app.sandbox.midtrans.com/snap/v1/transactions/36da045d-b31e-40c8-8b8d-b452ccddf1af/pdf', '201');
 
 -- --------------------------------------------------------
 
@@ -589,7 +607,8 @@ CREATE TABLE `transaction` (
 INSERT INTO `transaction` (`id`, `transaction_code`, `user_id`, `total_pay`, `payment_date`, `payment_status`, `created_at`, `updated_at`, `event_date`, `event_time`, `event_address`) VALUES
 (31, 'TRA-60806C5320557', 5, 10000000, '2021-04-22', 1, '2021-04-22 01:17:55', '2021-04-21 22:07:30', '2021-04-22', '13:17:00', 'Jl. Intan Permata IX No. 24 kota Tasikmalaya Jawa Barat'),
 (32, 'TRA-60811681A3BA0', 5, 12000000, '2021-04-22', 1, '2021-04-22 06:24:01', '2021-04-22 01:36:51', '2021-05-01', '12:00:00', 'Jl. Intan Permata IX No. 24 kota Tasikmalaya Jawa Barat'),
-(33, 'TRA-60811AE60B547', 5, 3000000, '2021-04-22', 1, '2021-04-22 06:42:46', '2021-04-22 01:50:25', '2021-04-22', '13:42:00', 'Jl. Intan Permata IX No. 24 kota Tasikmalaya Jawa Barat');
+(33, 'TRA-60811AE60B547', 5, 3000000, '2021-04-22', 1, '2021-04-22 06:42:46', '2021-04-22 01:50:25', '2021-04-22', '13:42:00', 'Jl. Intan Permata IX No. 24 kota Tasikmalaya Jawa Barat'),
+(34, 'TRA-608127F834BB5', 5, 3000000, NULL, 0, '2021-04-22 14:38:32', '2021-04-22 14:38:32', '2021-04-22', '02:38:00', 'Jl. Intan Permata IX No. 24 kota Tasikmalaya Jawa Barat');
 
 -- --------------------------------------------------------
 
@@ -614,7 +633,8 @@ INSERT INTO `transaction_detail` (`id`, `transaction_id`, `product_id`, `note`, 
 (47, 31, 41, NULL, 1, NULL),
 (48, 32, 30, NULL, 1, NULL),
 (49, 32, 41, NULL, 1, NULL),
-(50, 33, 29, NULL, 1, NULL);
+(50, 33, 29, NULL, 1, NULL),
+(51, 34, 29, NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -710,7 +730,7 @@ CREATE TABLE `vendors` (
 INSERT INTO `vendors` (`id`, `user_id`, `slug`, `vendor_code`, `vendor_name`, `vendor_logo`, `vendor_banner`, `vendor_billboard`, `vendor_level_id`, `vendor_description`, `active`, `contact_vendor`, `city`, `created_at`, `updated_at`, `vendor_address`) VALUES
 (2, 1, 'Grand-Aston-Bali', 'VND_0220210001', 'Grand Aston Bali', 'logo1.png', NULL, 'default.png', 4, NULL, 1, '', NULL, '2021-02-24 14:48:01', '2021-02-24 14:48:01', NULL),
 (3, 4, 'Sarovar', 'VND_0220210002', 'Sarovar', 'logo2.png', NULL, 'default.png', 1, NULL, 1, '', NULL, '2021-02-24 14:50:28', '2021-02-24 14:50:28', NULL),
-(4, 5, 'RH-Wedding-Planner', 'VND_0220210003', 'RH Wedding Planner', 'logo.png', '1.jpg', 'rhvideo.mp4', 4, 'Official vendor from RH Wedding Planner', 1, '', NULL, '2021-03-03 19:45:09', '2021-03-03 19:45:09', NULL),
+(4, 5, 'RH-Wedding-Planner', 'VND_0220210003', 'RH Wedding Planner', 'logo.png', '1.jpg', 'rhvideo.mp4', 4, 'Official vendor from RH Wedding Planner', 1, '08129038938', 'Tasikmalay', '2021-03-03 19:45:09', '2021-05-04 19:23:49', '<p>Jl.blalabla</p>'),
 (7, 12, 'Fatmalia', 'VND202104005', 'Fatmalia', 'default.png', NULL, 'default.png', 1, NULL, 1, '08129038938', 'Tasikmalaya', '2021-04-08 04:26:32', '2021-04-08 04:26:32', NULL);
 
 -- --------------------------------------------------------
@@ -977,7 +997,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
@@ -1007,7 +1027,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT untuk tabel `cart_detail`
 --
 ALTER TABLE `cart_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT untuk tabel `category`
@@ -1025,13 +1045,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT untuk tabel `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `products`
@@ -1067,13 +1087,13 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT untuk tabel `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaction_detail`
 --
 ALTER TABLE `transaction_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
